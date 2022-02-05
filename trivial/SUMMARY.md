@@ -7,3 +7,6 @@
 
 ### LIFE
 
+- [power-我爱学习！](LIFE/我爱学习.md)
+- [power-我爱生活！](LIFE/我爱生活.md)
+- [power-Q&A](LIFE/Q&A.md)
