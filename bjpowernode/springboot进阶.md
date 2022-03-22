@@ -75,7 +75,6 @@
             @Override 
             public void addCorsMappings(CorsRegistry registry) { 
                 registry.addMapping("url"); 
-
             }
         ```
 17. SpringBoot 静态资源处理
@@ -101,17 +100,75 @@
             - `... env.getProperty("property_name"); ...`
         - 通过嵌套静态内部类（static class）读取（如server.前缀的相关属性）
 19. SpringBoot 线程池异步调用
-    - @Async
-    - 手动编码
+    - 框架自动装配一个线程池，用于提交异步任务（用`@Async`注解）
+        - application上用`@EnableAsync`注解开启异步执行
+    - 手动配置线程池
 20. SpringBoot 集成Swagger（OAS、springfox、swagger的关系）
+    1. OAS（OpenAPI Specification），通过定义一种用来描述API格式或API定义的语言，来规范RESTful服务开发过程
+    2. Swagger，遵循OpenAPI开发的工具框架，支持从设计和文档到测试部署的整个API生命周期的开发
+        - SpringBoot可以集成Swagger，生成Swagger接口文档
+        - application上用`@EnableSwagger2`注解开启Swagger
+        - API文档地址：http://localhost:8080/swagger-ui.html
+        - 常用注解：
+            - `@Api`：用在类上，说明类的作用
+            - `@ApiOperation`：用在方法上，说明方法的作用
+            - `@ApiImplicitParams`：用在方法上，一组参数说明
+            - `@ApiImplicitParam`：用在`@ApiImplicitParams`注解中，指定一个请求参数的各个方面
+                - `paramType`：参数位置
+                    - `header`：`@RequestHeader`
+                    - `query`：`@RequestParam`
+                    - `path`：`@PathVariable`（用于restful接口）
+                    - `body`
+                    - `form`
+                - `name`：参数名称
+                - `dataType`：参数类型
+                - `required`：参数是否必须传
+                - `value`：参数值
+                - `defaultValue`：参数的默认值
+            - `@ApiResponses`：用于表示一组响应
+            - `@ApiResponse`：用在`@ApiResponses`注解中，用于表达一个错误的响应信息
+                - `code`：数字
+                - `message`：信息
+                - `response`：抛出的异常类
+            - `@ApiIgnore`：告知忽略这个API，在swagger生成的文档中不显示
+            - `@ApiModel`：描述一个Model的信息
+            - `@ApiModelProperty`：描述一个model的属性
+    3. springfox：从基于Spring的组件swagger-springmvc发展而来
+        - springfox-swagger2：依赖OAS文档，自动生成描述API的json文件
+        - springfox-swagger-ui：解析自动生成的json文件，以可视化的方式呈现
 21. SpringBoot 集成websocket
+    - WebSocket协议：由HTML5定义，基于TCP协议实现的一种网络协议，可以通过该服务器主动向客户端发送信息
+    - HTTP和WebSocket的对比：
+        - HTTP：短连接，请求后关闭连接，下次重新请求数据时，需要再次打开连接；客户端$\to$服务器，服务器返回响应
+        - WebSocket：长连接，只需要一次请求来初始化连接，然后所有的请求和响应都通过这个TCP连接进行通讯；服务器和客户端全双工通信
+            - 单工：信息只能单向传送
+            - 半双工：信息能双向传送但不能同时双向传送
+            - 全双工：信息能够同时双向传送
+        - WebSocket适用场景：客户端和服务器进行频繁的双向通信时，可以避免服务器频繁创建HTTP连接
 22. SpringBoot 注册Servlets，Filters，Listeners作为Spring Beans
-23. SpringBoot 使用拦截器
+23. SpringBoot 使用拦截器Interceptor
 24. SpringBoot 内嵌Web服务器
+    - SpringBoot默认为Tomcat
+    - Undertow：JBoss的默认服务器
+    - Jetty：eclipse的默认服务器
 25. SpringBoot 打包部署
+    - jar包：不支持jsp；可以直接使用`java -jar filename.jar`命令运行
+    - war包：入口类需要扩展继承`SpringBootServletInitializer`类
 26. SpringBoot 配置SSL（https）
+    - 配置文件：
+        ``` java
+            # 配置端口号，原端口号8080失效
+            server.port=8443
+            # 配置https证书
+            server.ssl.key-store=classpath:tomcat.keystore
+            server.ssl.key-store-password=123456
+            server.ssl.key-store-type=jks/pkcs12
+        ```
+    - 生成证书：
+        - 自签名证书（测试）：JDK工具/Openssl工具
+        - SSL证书授权中心购买（上线）
 27. SpringBoot 全局异常处理
 28. SpringBoot 404页面处理
-29. SpringBoot 源码分析
-30. SpringBoot 自动配置原理
-31. SpringBoot 中如何自定义starter?
+29. SpringBoot 源码分析（略）
+30. SpringBoot 自动配置原理（略）
+31. SpringBoot 中如何自定义starter?（略）
