@@ -15,7 +15,7 @@
     // 只使用类加载机制，不返回任何值
     Class.forName("完整类名");
     // 操作这个类中的其他字节码，例如：方法、构造、字段/属性等，可以返回值
-    Class c =Class.forName("完整类名");
+    Class c = Class.forName("完整类名");
 ```
 
 ### 面向横切面的编程方式AOP(Aspect Oriented Programming)
