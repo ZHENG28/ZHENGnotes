@@ -40,17 +40,36 @@
 ---
 
 ## 8. @Singular
+- 在使用@Builder构建新对象的情况下，标注在集合类型的字段上
+```java
+    @Builder
+    public class User {
+        private Integer id;
+        private String name;
+        @Singular
+        private List<Address> addresses;
+    }
+```
+- 属性名必须为复数（addresses --解析--> address），否则需要显式指定名字`@Singular("name")`
 ## 9. @Builder
-- 不可变对象
+- 用于构建不可变对象
+- 在builder中，每个字段都会有一个类似setter的方法
+
+**<font color=red>不可变对象(Immutable Object)</font>：对象一旦被创建后，对象所有的状态及属性在其生命周期内不会发生任何变化。**
+1. 不要提供setter方法（包括修改字段的方法和修改字段引用对象的方法）；如果提供修改方法，需要新创建一个对象，并在新创建的对象上进行修改；
+2. 将类的所有字段定义为final、private；
+3. 不允许子类重写方法（可以将构造函数声明为私有的，通过工厂方法创建对象）；
+4. 通过构造器初始化所有成员变量，引用类型的成员变量必须进行深拷贝；
+5. getter方法不能对外泄露this引用以及成员变量的引用；
 
 ---
 
-## 10. @Cleanup
-## 11. @Generated
-## 13. @SneakyThrows
-## 14. @Synchronized
+## 10. @Synchronized
+## 11. @Cleanup
+## 12. @SneakyThrows
+## 13. @Generated
 
-## 15. @val
-## 16. @var
+## 14. @val
+## 15. @var
 
-## 17. @With
+## 16. @With
