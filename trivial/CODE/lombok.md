@@ -39,7 +39,7 @@
 
 ---
 
-## 8. @Singular
+## 8. `@Singular`
 - 在使用@Builder构建新对象的情况下，标注在集合类型的字段上
 ```java
     @Builder
@@ -51,7 +51,7 @@
     }
 ```
 - 属性名必须为复数（addresses --解析--> address），否则需要显式指定名字`@Singular("name")`
-## 9. @Builder
+## 9. `@Builder`
 - 用于构建不可变对象
 - 在builder中，每个字段都会有一个类似setter的方法
 
@@ -64,12 +64,12 @@
 
 ---
 
-## 10. @Synchronized
-## 11. @Cleanup
-## 12. @SneakyThrows
-## 13. @Generated
+## 10. `@Synchronized`
+## 11. `@Cleanup`
+## 12. `@SneakyThrows`
+## 13. `@Generated`
 
-## 14. @val
-## 15. @var
+## 14. `@val`
+## 15. `@var`
 
-## 16. @With
+## 16. `@With`

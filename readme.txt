@@ -1,3 +1,4 @@
+【低版本node】
 1. gitbook init：生成gitbook
 2. gitbook serve：预览网页
     1) 地址：http://localhost:4000/
