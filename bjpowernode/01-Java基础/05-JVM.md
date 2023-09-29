@@ -6,7 +6,7 @@
 
 ## 1 JVM概述
 ### 1.1 JVM简介
-- JDK、JRE、JVM三者关系：![Java Conceptual Diagram](./img/22.jpg)
+- JDK、JRE、JVM三者关系：![Java Conceptual Diagram](./img/5-1-Java-Conceptual-Diagram.jpg)
     - JDK（Java Development Kit）：JRE + Development/debugging tools
     - JRE（Java Runtime Environment）：JVM + Package Classes + Runtime Libraries
     - JVM（Java Virtual Machine）：Class Loader System + Runtime Data Area + Execution Engine
@@ -18,7 +18,7 @@
 - 语言规范（The Java Language Specification）
 - 虚拟机规范（The Java Virtual Machine Specification）
 ### 1.3 JVM整体结构
-![JVM structure](./img/11.png)
+![JVM structure](./img/5-2-JVM-structure.png)
 - **类加载子系统Class Loader SubSystem**：在运行时，首次引用类的时候加载、链接、并初始化类文件
     - 加载Loading：类通过该组件进行加载 <- 双亲委托机制
         1. 启动类加载器BootStrap Class Loader：【最高优先级】负责加载来自于Bootstrap类路径的类 <- `System.getProperty("sun.boot.class.path")`
