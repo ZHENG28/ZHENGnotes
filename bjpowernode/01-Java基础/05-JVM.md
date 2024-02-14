@@ -15,9 +15,11 @@
     - 系统虚拟机：对物理计算机的仿真，提供可运行完整操作系统的软件平台（如VMware）
     - 程序虚拟机：（如Java虚拟机）
 - JVM：Java语言生成编译代码的运行平台，有自己的指令集和各种运行时内存区域；但只与特定的二进制文件格式class文件格式有关联
+
 ### 1.2 JVM规范
 - 语言规范（The Java Language Specification）
 - 虚拟机规范（The Java Virtual Machine Specification）
+
 ### 1.3 JVM整体结构
 ![JVM structure](./img/5-2-JVM-structure.png)
 - **类加载子系统Class Loader SubSystem**：在运行时，首次引用类的时候加载、链接、并初始化类文件
