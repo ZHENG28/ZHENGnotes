@@ -26,7 +26,7 @@
 
 # 2 移除链表元素
 
-> 【LC203】给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> [【LC203】]()给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
 
 1. 删除头节点要分情况讨论：
     1. 直接在原来的链表上操作：需要区分头节点和其他节点的处理方式【以下选择该方式】
@@ -84,9 +84,31 @@
 
 # 4 翻转链表
 
-> 【LC206】给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> [【LC704】](https://leetcode.cn/problems/binary-search/description/)给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target ，如果目标值存在返回下标，否则返回-1。  
+- 你可以假设 nums 中的所有元素是不重复的  
+- n 将在 [1, 10000] 之间  
+- nums 的每个元素都将在 [-9999, 9999] 之间
 
-1. 
+1. **<font color="red">有序数组 & 无重复元素 &rarr; 使用二分法</font>**
+2. 二分法应当遵循**循环不变量规则**，即在while循环时每一次边界的处理都要坚持根据区间的定义来操作 &rarr; 区间的定义
+    1. 左闭右闭[left, right]：
+        ``` c++
+            // 右闭 -> left == right 有意义
+            while (left <= right)
+            ...
+            // 防止两者相加的结果溢出；结果等同于(left + right) / 2
+            int middle = left + ((right - left) / 2);
+            if (nums[middle] > target) right = middle - 1;
+        ```
+    2. 左闭右开[left, right)：
+        ``` c++
+            // 右开 -> left == right 没有意义
+            while (left < right)
+            ...
+            if (nums[middle] > target) right = middle;
+        ```
+
+3. 相关题目：[LC35](https://leetcode.cn/problems/search-insert-position/description/)、[LC34](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)、[LC69](https://leetcode.cn/problems/sqrtx/description/)（隐藏数组）、[LC367](https://leetcode.cn/problems/valid-perfect-square/description/)
 
 ---
 
@@ -123,5 +145,5 @@
 ---
 
 # 9 总结篇
-1. 理论基础：`见 1.数组理论基础`
+1. 理论基础：`见 1 链表理论基础`
 2. 
