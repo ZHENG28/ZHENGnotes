@@ -6,6 +6,7 @@
 - [markdown语法](trivial/STUDY/markdown.md)
 - [HTML知识点](trivial/STUDY/frontend.md)
 - [java知识点](trivial/STUDY/java.md)
+- [vim语法](trivial/STUDY/vim.md)
 
 ## 代码随想录
 - [1. 数组](leetcode-master/1-array.md)
@@ -30,6 +31,6 @@
     - [2. SpringBoot3](bjpowernode/06-微服务结构/02-SpringBoot3.md)
     - [5. Redis7](bjpowernode/06-微服务结构/05-Redis7.md)
     - [8. MyBatisPlus](bjpowernode/06-微服务结构/08-MyBatisPlus.md)
+    - [10. RocketMQ](bjpowernode/06-微服务结构/10-RocketMQ.md)
 - [7. 互联网生态]()
     - [1. Linux](bjpowernode/07-互联网生态/01-Linux.md)
-- [JPA](bjpowernode/jpa.md)
