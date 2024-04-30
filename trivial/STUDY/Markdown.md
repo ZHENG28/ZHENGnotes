@@ -1,38 +1,38 @@
 # 1 基础语法
-## 1.1 标题
+## 1.1 标题Heading
 1. 几个#表示几级标题
 2. 插件`anchor-navigation-ex`会给##自动加上1.1.
 
 ## 1.2 换行
 1. 行尾加2个空格 + 回车 = 换行
-    1. 一个空格：  
-        `&nbsp;`：No-Break Space，按下space键产生的空格
-    2. 两个空格：  
-        `&ensp;`：En Space，em的一半
-    3. 四个空格：  
-        `&emsp;`：Em Space，一个中文字的宽度
+   1. 一个空格：  
+      `&nbsp;`：No-Break Space，按下space键产生的空格
+   2. 两个空格：  
+      `&ensp;`：En Space，em的一半
+   3. 四个空格：  
+      `&emsp;`：Em Space，一个中文字的宽度
 
 ## 1.3 强调
-1. *斜体效果*：`*斜体1* 或 _斜体2_`
-2. **加粗效果**：`**加粗1** 或 __加粗2__`
+1. _斜体效果Italic_：`*斜体1* 或 _斜体2_`
+2. **加粗效果Bold**：`**加粗1** 或 __加粗2__`
 3. ~~删除线效果~~：`~~删除线~~`
 
 ## 1.4 列表
-1. 无序列表：`-` 或 `*`
-2. 有序列表：`1. `
+1. 无序列表Unordered List：`-` 或 `*`
+2. 有序列表Ordered List：`1. `
 3. 任务列表：`- [ ]` 与 `- [x]`
-    - [ ] 第一个todo
-    - [ ] 第二个todo
-    - [x] 第三个todo
+   - [ ] 第一个todo
+   - [ ] 第二个todo
+   - [x] 第三个todo
 
 > [!DANGER]
 > 插件安装失败，TODO勾选框无法正常显示
 
-## 1.5 链接
+## 1.5 链接Link
 - [Github](http://github.com)
 - [Go to Baidu](https://www.baidu.com)
 
-## 1.6 引用
+## 1.6 引用Blockquote
 1. 几个`>`表示几个引用嵌套
 2. 要跳出引用，只需打一个空行即可
     > 这是第一行
@@ -41,22 +41,22 @@
 
     这是在外面
 
-## 1.7 分割线
+## 1.7 分割线Horizontal Rule
 1. `---`
 2. `***`
 3. `___`
 
 ## 1.8 代码块
-1. 行内代码：\`  
-    `function add(x, y) { return x + y; }`
-2. 块代码：\`\`\`
-    ``` java
-    function add(x, y) {
-        return x + y;
-    }
-    ```
+1. 行内代码Code：\`  
+   `function add(x, y) { return x + y; }`
+2. 块代码Fenced Code Block：\`\`\`
+   ```java
+   function add(x, y) {
+       return x + y;
+   }
+   ```
 
-## 1.9 表格
+## 1.9 表格Table
 - 代码：
 ```
     | a | b | c |
@@ -78,9 +78,9 @@
 - 类似于Latex
 - 行内显示：$$ f(x)=x+12 $$
 - 块显示：
-    $$
-    \sum_{n=1}^{100} n
-    $$
+   $$
+   \sum_{n=1}^{100} n
+   $$
 - [常用符号](https://blog.csdn.net/u013914471/article/details/82973812)
 
 ---
@@ -131,3 +131,37 @@ out: <font face="Times New Roman">This is Times New Roman</font>
 
 # 6 幻灯片的制作
 To see [my first slide](res/toHelloSlide.md)
+
+# 7 转义字符
+|        标识 Symbol         | 字符实体 Entity | 特殊字符 Example |
+| :------------------------: | :-------------: | :--------------: |
+|            tab             |     `&tab;`     |      &tab;       |
+|  空格 non-breaking-space   |    `&nbsp;`     |      &nbsp;      |
+|        双引号 quote        |    `&quot;`     |      &quot;      |
+|        与 ampersand        |     `&amp;`     |      &amp;       |
+|       小于 less-than       |     `&lt;`      |       &lt;       |
+|     大于 greater-than      |     `&gt;`      |       &gt;       |
+|         分币 cent          |    `&cent;`     |      &cent;      |
+|         英镑 pound         |    `&pound;`    |     &pound;      |
+|        人民币 yuan         |     `&yen;`     |      &yen;       |
+|        章节 section        |    `&sect;`     |      &sect;      |
+|       版权 copyright       |    `&copy;`     |      &copy;      |
+|       商标 trademark       |     `&reg;`     |      &reg;       |
+|         度 degree          |     `&deg;`     |      &deg;       |
+|    正负号 plus-or-minus    |   `&plusmn;`    |     &plusmn;     |
+|           点 dot           |     `&dot;`     |      &dot;       |
+|     乘 multiplication      |    `&times;`    |     &times;      |
+|         除 divide          |   `&divide;`    |     &divide;     |
+|      不等于 not-equal      |     `&ne;`      |       &ne;       |
+|   小于等于 less-or-equal   |     `&le;`      |       &le;       |
+| 大于等于 greater-or-equal  |     `&ge;`      |       &ge;       |
+|      根号 square-root      |    `&radic;`    |     &radic;      |
+|     向上箭头 up-arrow      |    `&uarr;`     |      &uarr;      |
+|    向下箭头 down-arrow     |    `&darr;`     |      &darr;      |
+|    向左箭头 left-arrow     |    `&larr;`     |      &larr;      |
+|    向右箭头 right-arrow    |    `&rarr;`     |      &rarr;      |
+| 双向箭头 double-head-arrow |    `&harr;`     |      &harr;      |
+|         黑桃 spade         |   `&spades;`    |     &spades;     |
+|         梅花 club          |    `&clubs;`    |     &clubs;      |
+|         红心 heart         |   `&hearts;`    |     &hearts;     |
+|        方块 diamond        |    `&diams;`    |     &diams;      |
