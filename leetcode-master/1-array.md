@@ -180,7 +180,7 @@
         }
     };
     ```
-3. 相关题目：[LC904](https://leetcode.cn/problems/fruit-into-baskets/)、[LC76](https://leetcode.cn/problems/minimum-window-substring/)（209 -> 904 -> 76：滑动窗口、哈希表unordered_map）
+3. 相关题目：[LC904](https://leetcode.cn/problems/fruit-into-baskets/)、[LC76](https://leetcode.cn/problems/minimum-window-substring/)（209 &rarr; 904 &rarr; 76：滑动窗口、哈希表unordered_map）
 
 ---
 

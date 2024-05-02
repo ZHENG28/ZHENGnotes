@@ -16,8 +16,8 @@
     - 消息中间件：mq
 ### 1.2 RocketMQ简介
 - 组成结构：
-    - Producer：消息的发送者、生产者 -> ProducerGroup：生产者组
-    - Consumer：消息的接收者、消费者 -> ConsumerGroup：消费者组（多个消费者组可同时消费同一个topic的消息）
+    - Producer：消息的发送者、生产者 &rarr; ProducerGroup：生产者组
+    - Consumer：消息的接收者、消费者 &rarr; ConsumerGroup：消费者组（多个消费者组可同时消费同一个topic的消息）
     - NameServer：注册路由中心，管理Broker
     - Broker：暂存和传输消息的通道，含多个Topic
     - Topic：（虚拟结构）主题，分类消息，含多个Queue
