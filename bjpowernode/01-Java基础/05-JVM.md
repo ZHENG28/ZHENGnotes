@@ -1,12 +1,8 @@
-[toc]
-
----
-
 # JVM（Java Virtual Machine）
 
 ## 1 JVM概述
 ### 1.1 JVM简介
-- JDK、JRE、JVM三者关系：![Java Conceptual Diagram](./img/5-1-Java-Conceptual-Diagram.jpg)
+- JDK、JRE、JVM三者关系：![Java Conceptual Diagram](./img/5.1.java_conceptual_diagram.jpg)
     - JDK（Java Development Kit）：JRE + Development/debugging tools
     - JRE（Java Runtime Environment）：JVM + Package Classes(Compact Profiles) + Runtime Libraries
     - JVM（Java Virtual Machine）：Class Loader System + Runtime Data Area + Execution Engine
@@ -21,15 +17,15 @@
 - 虚拟机规范（The Java Virtual Machine Specification）
 
 ### 1.3 JVM整体结构
-![JVM structure](./img/5-2-JVM-structure.png)
+![JVM structure](./img/5.2.jvm_structure.png)
 - **类加载子系统Class Loader SubSystem**：在运行时，首次引用类的时候加载、链接、并初始化类文件
-    - 加载Loading：类通过该组件进行加载 <- 双亲委托机制
-        1. 启动类加载器BootStrap Class Loader：【最高优先级】负责加载来自于Bootstrap类路径的类 <- `System.getProperty("sun.boot.class.path")`
+    - 加载Loading：类通过该组件进行加载 &larr; 双亲委托机制
+        1. 启动类加载器BootStrap Class Loader：【最高优先级】负责加载来自于Bootstrap类路径的类 &larr; `System.getProperty("sun.boot.class.path")`
             - 加载`$JAVA_HOME/jre/lib`目录下的rt.jar（runtime jar）
-        2. 扩展类加载器Extension Class Loader：负责加载在ext文件夹内的类 <- `System.getProperty("java.ext.dirs")`
+        2. 扩展类加载器Extension Class Loader：负责加载在ext文件夹内的类 &larr; `System.getProperty("java.ext.dirs")`
             - 加载`$JAVA_HOME/lib/ext`目录下的类文件
             - 是Bootstrap Class Loader的子类
-        3. 系统类加载器Application Class Loader：负责加载应用程序级类路径CLASSPATH <- `System.getProperty("java.class.path")`
+        3. 系统类加载器Application Class Loader：负责加载应用程序级类路径CLASSPATH &larr; `System.getProperty("java.class.path")`
             - 加载`CLASSPATH`环境变量目录下的所有类文件和jar包
             - 是Extension Class Loader的子类
     - 链接Linking：
@@ -39,12 +35,12 @@
     - 初始化Initialization：给所有的静态变量赋予初始值，并执行静态代码块
 - **运行时数据区Runtime Data Areas**：
     - 方法区Method Area：用于存储被JVM加载的类信息、常量、静态变量
-        - 每个JVM只有一个方法区，且是共享资源 -> 非线程安全
+        - 每个JVM只有一个方法区，且是共享资源 &rarr; 非线程安全
         - 运行时常量池Runtime Constant Pool
     - 堆区Heap Area：用于存储创建的对象及其对应的实例变量、数组
-        - 每个JVM只有一个堆区，且是共享资源 -> 非线程安全
+        - 每个JVM只有一个堆区，且是共享资源 &rarr; 非线程安全
     - 栈区Stack Area：
-        - 每个线程都会创建一个单独的运行时栈 -> 线程安全
+        - 每个线程都会创建一个单独的运行时栈 &rarr; 线程安全
         - 为每个调用的方法产生一个栈帧（Stack Frame）：用于存储局部变量表、操作数栈、动态链接、返回地址、帧数据区（如捕获的异常信息）等
     - 程序计数器PC Registers：用于保存当前执行指令的物理地址（唯一一块不会出现OutOfMemoryError的区域）
         - 每个线程都有一个单独的PC寄存器
@@ -62,6 +58,8 @@
         - 垃圾回收算法：标记-清除算法（存在内存碎片的问题）、复制算法（整理复制至另一半，但存在可使用内存大大减少的问题）、标记-整理算法（对内存变动过于频繁，存在效率差的问题）、分代收集算法（根据对象存活周期分为新生代、老年代等，并根据不同存活周期的特点选择不同的算法）
 - **本地方法接口Java Native Interface**：与本地方法库进行交互，并提供执行引擎所需的本地库
 - **本地方法库Native Method Library**：执行引擎所需的本地库的集合
+
+---
 
 ## 2 class字节码文件结构
 ### 2.1 class文件的理解
@@ -84,11 +82,11 @@
 3. 常量池计数constant_pool_count（u2）：有效索引为1到n-1，0为保留索引
 4. 常量池constant_pool（cp_info）：
     - 命令`javap -v xxx.class`：反编译字节码文件
-    - 初始化顺序：静态代码块`<clinit>` -> 实例代码块`<init>` -> 构造方法`<init>`
+    - 初始化顺序：静态代码块`<clinit>` &rarr; 实例代码块`<init>` &rarr; 构造方法`<init>`
     - 数据结构：
         ``` c
             cp_info {
-                // 标志该项常量是哪一种常量结构，一般是固定值 -> 根据常量结构计算常量所占用的字节数
+                // 标志该项常量是哪一种常量结构，一般是固定值 &rarr; 根据常量结构计算常量所占用的字节数
                 u1 tag;
                 u1 info[];
             }
@@ -357,7 +355,7 @@
                 }
             ```
         5. RuntimeVisibleAnnotations：运行时可见注解（JVM能反射读取），保留策略为`RetentionPolicy.RUNTIME`
-            - 保留策略RetentionPolicy：`SOURCE`（保留到.java文件中） -> `CLASS`（保留到.class文件中） -> `RUNTIME`（保留到JVM中，可反射读取）
+            - 保留策略RetentionPolicy：`SOURCE`（保留到.java文件中） &rarr; `CLASS`（保留到.class文件中） &rarr; `RUNTIME`（保留到JVM中，可反射读取）
             ``` c
                 RuntimeVisibleAnnotations_attribute {
                     // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为RuntimeVisibleAnnotations
