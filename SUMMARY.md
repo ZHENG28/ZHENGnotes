@@ -3,10 +3,10 @@
 - [README](/README.md)
 
 ## 琐碎知识
-- [markdown语法](trivial/STUDY/markdown.md)
-- [HTML知识点](trivial/STUDY/frontend.md)
-- [java知识点](trivial/STUDY/java.md)
-- [vim语法](trivial/STUDY/vim.md)
+- [markdown语法](trivial/markdown.md)
+- [HTML知识点](trivial/frontend.md)
+- [java知识点](trivial/java.md)
+- [vim语法](trivial/vim.md)
 
 ## 代码随想录
 - [1. 数组](leetcode-master/1-array.md)
