@@ -98,7 +98,7 @@
 # 4 图表
 ## 4.1 流程图
 ```mermaid
-graph TD
+graph TB
 A[Hard] -->|Text| B(Round)
 B --> C{Decision}
 C -- One --> D[Result 1]

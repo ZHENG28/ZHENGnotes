@@ -141,8 +141,8 @@
 
 ---
 
-## 5 快速搞定AJAX（Asynchronous JavaScript and XML）
-1. 用于局部刷新，其核心对象为异步对象XMLHttpRequest，该对象可启动一个线程和服务器交互，代替UI线程
+## 5 快速搞定AJAX
+1. 即Asynchronous JavaScript and XML，用于局部刷新，其核心对象为异步对象XMLHttpRequest，该对象可启动一个线程和服务器交互，代替UI线程
     - javascript：负责创建异步对象、发送请求、更新页面的dom对象
     - xml：网络中传输的数据格式（目前用json代替xml）
 
