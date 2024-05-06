@@ -192,21 +192,20 @@
     3. 实现数据独立性
 2. 创建只读型视图`… WITH READ ONLY`，使用户无法执行DML操作
 3. 行内视图（又名子查询）：无命名，不会保存在数据库中
-4. **TOP-N分析法**：用于查询某个范围内最大/最小（TOP级别）的前N个值
-    - 等于某值：仅支持查询`rownum = 1`的数据，无法查询到`rownum = n`的数据
-        ``` sql
-        SELECT ROWNUM, * FROM student
-        WHERE ROWNUM = 1;
+4. **TOP-N分析法**：通过TOP-N算法从研究对象中得到所需的N个数据，并从排序列表中选取最大或最小（TOP级别）的N个数据
+    - `ROWNUM`：伪列，伴随结果集生成而生成的递增列
+    - 结果集生成过程：
+        ``` mermaid
+        graph TB
+        start[产生 ROWNUM = 1 的记录] --> if{查询条件}
+        if -- 满足 --> save[保留数据]
+        if -- 不满足 --> discard[舍弃数据]
+        save --> save_result[ROWNUM + 1]
+        save_result --> next[查找下一条记录]
+        discard --> next
+        next --> if
         ```
-    - 大于某值：与等于同理，无法查询到`rownum > n`的数据
-        - 可用子查询来查找第二行以后的记录：
-            ``` sql
-            SELECT *
-            FROM (SELECT ROWNUM AS no, * FROM temp)
-            WHERE no >= 2
-            ```
-    - 小于某值：支持查询`rownum < n`的数据
-5. `ROWNUM`：记录插入时即生成的序号；查询`ROWNUM`在某区间的数据/指定排序 &larr; 子查询
+    - 支持查询`ROWNUM = 1`或`ROWNUM < n`的数据
 
 ### 2.4 索引
 1. 用于提高查询的速度，且与表分开独立存放
