@@ -59,11 +59,11 @@
 - 模式：
     ``` mermaid
         graph
-        命令行--#vim xxx-->norm[一般模式/正常模式]
-        norm--i或a-->edit[编辑模式]
-        edit--ESC-->norm
-        norm--:或/-->command[命令模式]
-        command--ESC-->norm
+        命令行-- #vim xxx --> norm[一般模式/正常模式]
+        norm -- i或a --> edit[编辑模式]
+        edit -- ESC --> norm
+        norm -- :或/ --> command[命令模式]
+        command -- ESC --> norm
     ```
     1. 一般模式：可查看文件，但不能编辑文件
         - `vim filename.txt`：
