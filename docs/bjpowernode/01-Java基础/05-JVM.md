@@ -89,11 +89,11 @@ sidebar_label: 5. JVM
     - 初始化顺序：静态代码块`<clinit>` &rarr; 实例代码块`<init>` &rarr; 构造方法`<init>`
     - 数据结构：
         ```cpp showLineNumbers
-            cp_info {
-                // 标志该项常量是哪一种常量结构，一般是固定值 &rarr; 根据常量结构计算常量所占用的字节数
-                u1 tag;
-                u1 info[];
-            }
+        cp_info {
+            // 标志该项常量是哪一种常量结构，一般是固定值 &rarr; 根据常量结构计算常量所占用的字节数
+            u1 tag;
+            u1 info[];
+        }
         ```
     - 存放的常量类别：
         1. 字面量Literal：基本数据类型以及string类型
@@ -101,74 +101,74 @@ sidebar_label: 5. JVM
                 1. 普通字符串：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_String_info {
-                                // 固定值为8
-                                u1 tag;
-                                // 必须是CONSTANT_Utf8_info常量，表示某个字符串常量的索引
-                                u2 string_index;
-                            }
+                        CONSTANT_String_info {
+                            // 固定值为8
+                            u1 tag;
+                            // 必须是CONSTANT_Utf8_info常量，表示某个字符串常量的索引
+                            u2 string_index;
+                        }
                         ```
                     - 所有static final修饰的或使用到的字符串字面量
                 2. UTF-8编码字符串：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_Utf8_info {
-                                // 固定值为1
-                                u1 tag;
-                                // bytes数组长度
-                                u2 length;
-                                // 字符串内容
-                                u1 bytes[length];
-                            }
+                        CONSTANT_Utf8_info {
+                            // 固定值为1
+                            u1 tag;
+                            // bytes数组长度
+                            u2 length;
+                            // 字符串内容
+                            u1 bytes[length];
+                        }
                         ```
             2. 被final修饰的字面量（如整型、浮点型）：
                 1. 整型：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_Integer_info {
-                                // 固定值为3
-                                u1 tag;
-                                // 16进制的整型值
-                                u4 bytes;
-                            }
+                        CONSTANT_Integer_info {
+                            // 固定值为3
+                            u1 tag;
+                            // 16进制的整型值
+                            u4 bytes;
+                        }
                         ```
                     - 所有static final或final修饰的byte（-2^7到2^7-1）、char（0到2^16-1；转换成ASCII码）、short（-2^15到2^15-1）、boolean（true-1; false-0）、int类型的字面量
                     - 所有非final修饰且在short数值范围内的直接进入字节码指令内部；但超过short数值范围的进入常量池
                 2. 浮点型：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_Float_info {
-                                // 固定值为4
-                                u1 tag;
-                                // 16进制的浮点值
-                                u4 bytes;
-                            }
+                        CONSTANT_Float_info {
+                            // 固定值为4
+                            u1 tag;
+                            // 16进制的浮点值
+                            u4 bytes;
+                        }
                         ```
                     - 所有static final修饰的或使用到的浮点型字面量
                 3. 长整型：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_Long_info {
-                                // 固定值为5
-                                u1 tag;
-                                // 16进制的高32区长整型值
-                                u4 high_bytes;
-                                // 16进制的低32区长整型值
-                                u4 low_bytes;
-                            }
+                        CONSTANT_Long_info {
+                            // 固定值为5
+                            u1 tag;
+                            // 16进制的高32区长整型值
+                            u4 high_bytes;
+                            // 16进制的低32区长整型值
+                            u4 low_bytes;
+                        }
                         ```
                     - 所有static final修饰的或使用到的长整型字面量
                 4. 双精度浮点型：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_Double_info {
-                                // 固定值为6
-                                u1 tag;
-                                // 16进制的高32区双精度浮点型值
-                                u4 high_bytes;
-                                // 16进制的低32区双精度浮点型值
-                                u4 low_bytes;
-                            }
+                        CONSTANT_Double_info {
+                            // 固定值为6
+                            u1 tag;
+                            // 16进制的高32区双精度浮点型值
+                            u4 high_bytes;
+                            // 16进制的低32区双精度浮点型值
+                            u4 low_bytes;
+                        }
                         ```
                     - 所有static final修饰的或使用到的双精度浮点型字面量
         2. 符号引用Symbolic References：
@@ -176,14 +176,14 @@ sidebar_label: 5. JVM
                 0. 分析：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_NameAndType_info {
-                                // 固定值为12
-                                u1 tag;
-                                // 必须是CONSTANT_Utf8_info常量，表示字段与字段类型或方法与方法类型的名称
-                                u2 name_index;
-                                // 必须是CONSTANT_Utf8_info常量，表示字段与字段类型或方法与方法类型的描述符
-                                u2 descriptor_index;
-                            }
+                        CONSTANT_NameAndType_info {
+                            // 固定值为12
+                            u1 tag;
+                            // 必须是CONSTANT_Utf8_info常量，表示字段与字段类型或方法与方法类型的名称
+                            u2 name_index;
+                            // 必须是CONSTANT_Utf8_info常量，表示字段与字段类型或方法与方法类型的描述符
+                            u2 descriptor_index;
+                        }
                         ```
                     - 构造方法的名称统一使用`<init>`
                     - 和字段引用（Fieldref）、方法引用（Methodref）相对应
@@ -194,12 +194,12 @@ sidebar_label: 5. JVM
             1. 类、接口的全限定名Fully Qualified Name：
                 - 数据结构：
                     ```cpp showLineNumbers
-                        CONSTANT_Class_info {
-                            // 固定值为7
-                            u1 tag;
-                            // 必须是CONSTANT_Utf8_info常量，表示类或接口的全限定名
-                            u2 name_index;
-                        }
+                    CONSTANT_Class_info {
+                        // 固定值为7
+                        u1 tag;
+                        // 必须是CONSTANT_Utf8_info常量，表示类或接口的全限定名
+                        u2 name_index;
+                    }
                     ```
                 - 类、接口、枚举、注解、数组（在类中）的符号引用
                 - 只有在类或接口中实际使用了该类（静态代码块、成员变量、方法、方法抛异常等实例化类，方法形参、声明类等并不算实际使用），才会在常量池中找到该项
@@ -211,77 +211,77 @@ sidebar_label: 5. JVM
             2. 字段的名称和描述符：
                 - 数据结构：
                     ```cpp showLineNumbers
-                        CONSTANT_Fieldref_info {
-                            // 固定值为9
-                            u1 tag;
-                            // 必须是CONSTANT_Class_info常量，表示当前字段所在类的类名
-                            u2 class_index;
-                            // 必须是CONSTANT_NameAndType_info常量，表示当前字段的名称和类型描述符
-                            u2 name_and_type_index;
-                        }
+                    CONSTANT_Fieldref_info {
+                        // 固定值为9
+                        u1 tag;
+                        // 必须是CONSTANT_Class_info常量，表示当前字段所在类的类名
+                        u2 class_index;
+                        // 必须是CONSTANT_NameAndType_info常量，表示当前字段的名称和类型描述符
+                        u2 name_and_type_index;
+                    }
                     ```
                 - 所有非static final的、引用其他类的（直接引用，不能通过getter方法）、在该类中使用的（被赋值或被引用）字段
             3. 方法的名称和描述符：
                 1. 类中方法：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_Methodref_info {
-                                // 固定值为10
-                                u1 tag;
-                                // 必须是CONSTANT_Class_info常量，表示当前方法所在类的类名
-                                u2 class_index;
-                                // 必须是CONSTANT_NameAndType_info常量，表示当前类方法的名称和类型描述符
-                                u2 name_and_type_index;
-                            }
+                        CONSTANT_Methodref_info {
+                            // 固定值为10
+                            u1 tag;
+                            // 必须是CONSTANT_Class_info常量，表示当前方法所在类的类名
+                            u2 class_index;
+                            // 必须是CONSTANT_NameAndType_info常量，表示当前类方法的名称和类型描述符
+                            u2 name_and_type_index;
+                        }
                         ```
                     - 所有类中被调用的方法
                     - 默认调用父类的无参构造方法`<init>:()V`
                 2. 接口中方法：
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_InterfaceMethodref_info {
-                                // 固定值为11
-                                u1 tag;
-                                // 必须是CONSTANT_Class_info常量，表示当前方法所属接口的类名
-                                u2 class_index;
-                                // 必须是CONSTANT_NameAndType_info常量，表示当前接口方法的名称和类型描述符
-                                u2 name_and_type_index;
-                            }
+                        CONSTANT_InterfaceMethodref_info {
+                            // 固定值为11
+                            u1 tag;
+                            // 必须是CONSTANT_Class_info常量，表示当前方法所属接口的类名
+                            u2 class_index;
+                            // 必须是CONSTANT_NameAndType_info常量，表示当前接口方法的名称和类型描述符
+                            u2 name_and_type_index;
+                        }
                         ```
             4. 方法句柄和方法类型：
                 1. 方法句柄Method Handle：虚拟机为实现动态调用InvokedDynamic指令增加的常量结构
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_MethodHandle_info {
-                                // 固定值为15
-                                u1 tag;
-                                // 取值范围1-9，表示方法句柄的类型
-                                u1 reference_kind;
-                                // 必须是CONSTANT_Utf8_info常量，表示某个常量的索引
-                                u2 reference_index;
-                            }
+                        CONSTANT_MethodHandle_info {
+                            // 固定值为15
+                            u1 tag;
+                            // 取值范围1-9，表示方法句柄的类型
+                            u1 reference_kind;
+                            // 必须是CONSTANT_Utf8_info常量，表示某个常量的索引
+                            u2 reference_index;
+                        }
                         ```
                 2. 方法类型Method Type：虚拟机为实现动态调用InvokedDynamic指令增加的常量结构
                     - 数据结构：
                         ```cpp showLineNumbers
-                            CONSTANT_MethodType_info {
-                                // 固定值为16
-                                u1 tag;
-                                // 必须是CONSTANT_Utf8_info常量，表示某个常量的索引
-                                u2 descriptor_index;
-                            }
+                        CONSTANT_MethodType_info {
+                            // 固定值为16
+                            u1 tag;
+                            // 必须是CONSTANT_Utf8_info常量，表示某个常量的索引
+                            u2 descriptor_index;
+                        }
                         ```
             5. 动态调用点和动态常量Dynamically-Computed Call Site、Dynamically-Computed Constant：
                 - 数据结构：
                     ```cpp showLineNumbers
-                        CONSTANT_InvokeDynamic_info {
-                            // 固定值为18
-                            u1 tag;
-                            // 指向class文件结构属性表中引导方法表的某个引导方法
-                            u2 bootstrap_method_attr_index;
-                            // 必须是CONSTANT_NameAndType_info常量，表示
-                            u2 name_and_type_index;
-                        }
+                    CONSTANT_InvokeDynamic_info {
+                        // 固定值为18
+                        u1 tag;
+                        // 指向class文件结构属性表中引导方法表的某个引导方法
+                        u2 bootstrap_method_attr_index;
+                        // 必须是CONSTANT_NameAndType_info常量，表示
+                        u2 name_and_type_index;
+                    }
                     ```
                 - InvokedDynamic指令用到的引导方法bootstrap method以及引导方法所用到的动态调用名称、参数、返回类型
     - 字段与字面量在常量池出现的规则：
@@ -304,181 +304,181 @@ sidebar_label: 5. JVM
 11. 字段数组fields[fields_count]（field_info）：
     - 数据结构：
         ```cpp showLineNumbers
-            field_info {
-                // 表示字段访问标志
-                u2 access_flags;
-                // 必须是CONSTANT_Utf8_info常量，表示字段名称索引
-                u2 name_index;
-                // 必须是CONSTANT_Utf8_info常量，表示字段描述符索引
-                u2 descriptor_index;
-                // 表示字段属性总数
-                u2 attributes_count;
-                // 表示字段属性数组
-                attribute_info attributes[attributes_count];
-            }
+        field_info {
+            // 表示字段访问标志
+            u2 access_flags;
+            // 必须是CONSTANT_Utf8_info常量，表示字段名称索引
+            u2 name_index;
+            // 必须是CONSTANT_Utf8_info常量，表示字段描述符索引
+            u2 descriptor_index;
+            // 表示字段属性总数
+            u2 attributes_count;
+            // 表示字段属性数组
+            attribute_info attributes[attributes_count];
+        }
         ```
     - 字段属性类型：
         1. ConstantValue：表示静态变量（static final修饰）的初始值，且必须是基本数据类型或String类型
             ```cpp showLineNumbers
-                ConstantValue_attribute {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为ConstantValue
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为2
-                    u4 attribute_length;
-                    // 必须是常量池中的字面量，表示常量值索引
-                    u2 constantvalue_index;
-                }
+            ConstantValue_attribute {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为ConstantValue
+                u2 attribute_name_index;
+                // 表示属性长度，固定为2
+                u4 attribute_length;
+                // 必须是常量池中的字面量，表示常量值索引
+                u2 constantvalue_index;
+            }
             ```
         2. Synthetic：类成员没有在源文件中出现，由编译器自动产生的，即动态常量
             ```cpp showLineNumbers
-                Synthetic_attribute {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Synthetic
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为2
-                    u4 attribute_length;
-                }
+            Synthetic_attribute {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Synthetic
+                u2 attribute_name_index;
+                // 表示属性长度，固定为2
+                u4 attribute_length;
+            }
             ```
         3. Signature：泛型签名
             ```cpp showLineNumbers
-                Synthetic_attribute {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Signature
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为2
-                    u4 attribute_length;
-                    // 必须是常量池中的字面量，表示签名索引
-                    u2 signature_index;
-                }
+            Synthetic_attribute {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Signature
+                u2 attribute_name_index;
+                // 表示属性长度，固定为2
+                u4 attribute_length;
+                // 必须是常量池中的字面量，表示签名索引
+                u2 signature_index;
+            }
             ```
         4. Deprecated：过时字段
             ```cpp showLineNumbers
-                Deprecated_attribute {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Deprecated
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为0
-                    u4 attribute_length;
-                }
+            Deprecated_attribute {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Deprecated
+                u2 attribute_name_index;
+                // 表示属性长度，固定为0
+                u4 attribute_length;
+            }
             ```
         5. RuntimeVisibleAnnotations：运行时可见注解（JVM能反射读取），保留策略为`RetentionPolicy.RUNTIME`
             - 保留策略RetentionPolicy：`SOURCE`（保留到.java文件中） &rarr; `CLASS`（保留到.class文件中） &rarr; `RUNTIME`（保留到JVM中，可反射读取）
             ```cpp showLineNumbers
-                RuntimeVisibleAnnotations_attribute {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为RuntimeVisibleAnnotations
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为6
-                    u4 attribute_length;
-                    // 表示注解数量
-                    u2 num_annotations;
-                    // 表示注解数组
-                    annotation annotations[num_annotations];
-                }
+            RuntimeVisibleAnnotations_attribute {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为RuntimeVisibleAnnotations
+                u2 attribute_name_index;
+                // 表示属性长度，固定为6
+                u4 attribute_length;
+                // 表示注解数量
+                u2 num_annotations;
+                // 表示注解数组
+                annotation annotations[num_annotations];
+            }
             ```
         6. RuntimelnvisibleAnnotations：运行时不可见注解（JVM不能反射读取），保留策略为`RetentionPolicy.CLASS`
             ```cpp showLineNumbers
-                RuntimelnvisibleAnnotations_attribute {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为RuntimelnvisibleAnnotations
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为6
-                    u4 attribute_length;
-                    // 表示注解数量
-                    u2 num_annotations;
-                    // 表示注解数组
-                    annotation annotations[num_annotations];
-                }
+            RuntimelnvisibleAnnotations_attribute {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为RuntimelnvisibleAnnotations
+                u2 attribute_name_index;
+                // 表示属性长度，固定为6
+                u4 attribute_length;
+                // 表示注解数量
+                u2 num_annotations;
+                // 表示注解数组
+                annotation annotations[num_annotations];
+            }
             ```
 12. 方法计数methods_count（u2）：用于描述类和接口中声明的方法，包含类级别的变量以及实例变量
 13. 方法数组methods[methods_count]（method_info）：
     - 数据结构：
         ```cpp showLineNumbers
-            method_info {
-                // 表示方法访问标志
-                u2 access_flags;
-                // 必须是CONSTANT_Utf8_info常量，表示方法名称索引
-                u2 name_index;
-                // 必须是CONSTANT_Utf8_info常量，表示方法描述索引
-                u2 descriptor_index;
-                // 表示方法属性总数
-                u2 attributes_count;
-                // 表示方法属性数组
-                attribute_info attributes[attributes_count];
-            }
+        method_info {
+            // 表示方法访问标志
+            u2 access_flags;
+            // 必须是CONSTANT_Utf8_info常量，表示方法名称索引
+            u2 name_index;
+            // 必须是CONSTANT_Utf8_info常量，表示方法描述索引
+            u2 descriptor_index;
+            // 表示方法属性总数
+            u2 attributes_count;
+            // 表示方法属性数组
+            attribute_info attributes[attributes_count];
+        }
         ```
     - 方法属性类型：
         1. Code：源代码对应的JVM指令操作码（字节码增强时主要操作的部分）
             ```cpp showLineNumbers
-                Code {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Code
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为64
-                    u4 attribute_length;
-                    // 表示操作数栈最大深度
-                    u2 max_stack;
-                    // 表示局部变量最大槽数
-                    u2 max_locals;
-                    // 表示字节码长度
-                    u4 code_length;
-                    u1 code[code_length];
-                    // 表示异常表长度
-                    u2 exception_table_length;
-                    // 表示异常表数组
-                    exception_info exception_table[exception_table_length];
-                    u2 attributes_count;
-                    attribute_info attributes[attributes_count];
-                }
+            Code {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为Code
+                u2 attribute_name_index;
+                // 表示属性长度，固定为64
+                u4 attribute_length;
+                // 表示操作数栈最大深度
+                u2 max_stack;
+                // 表示局部变量最大槽数
+                u2 max_locals;
+                // 表示字节码长度
+                u4 code_length;
+                u1 code[code_length];
+                // 表示异常表长度
+                u2 exception_table_length;
+                // 表示异常表数组
+                exception_info exception_table[exception_table_length];
+                u2 attributes_count;
+                attribute_info attributes[attributes_count];
+            }
             ```
         2. LineNumberTable：行号表，将Code区的操作码和Java源码的行号对应，即Java源码走一行，需要走多少个JVM指令操作码
             ```cpp showLineNumbers
-                LineNumberTable {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为LineNumberTable
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为10
-                    u4 attribute_length;
-                    // 表示行号表长度
-                    u2 line_number_table_length;
-                    // 表示行号表数组
-                    line_number_info line_number_table[line_number_table_length];
-                }
+            LineNumberTable {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为LineNumberTable
+                u2 attribute_name_index;
+                // 表示属性长度，固定为10
+                u4 attribute_length;
+                // 表示行号表长度
+                u2 line_number_table_length;
+                // 表示行号表数组
+                line_number_info line_number_table[line_number_table_length];
+            }
 
-                line_number_info {
-                    // 表示字节码行号
-                    u2 start_pc;
-                    // 表示Java源码行号
-                    u2 line_number;
-                }
+            line_number_info {
+                // 表示字节码行号
+                u2 start_pc;
+                // 表示Java源码行号
+                u2 line_number;
+            }
             ```
         3. LocalVariableTable：本地变量表，包含this（对非static方法，JVM隐式传入）和局部变量
             ```cpp showLineNumbers
-                LocalVariableTable {
-                    // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为LocalVariableTable
-                    u2 attribute_name_index;
-                    // 表示属性长度，固定为22
-                    u4 attribute_length;
-                    // 表示本地变量表长度
-                    u2 local_variable_table_length;
-                    // 表示本地变量表数组
-                    local_variable_info local_variable_table[local_variable_table_length];
-                }
+            LocalVariableTable {
+                // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为LocalVariableTable
+                u2 attribute_name_index;
+                // 表示属性长度，固定为22
+                u4 attribute_length;
+                // 表示本地变量表长度
+                u2 local_variable_table_length;
+                // 表示本地变量表数组
+                local_variable_info local_variable_table[local_variable_table_length];
+            }
 
-                local_variable_info {
-                    // 表示字节码行号
-                    u2 start_pc;
-                    // 表示Java源码行号
-                    u2 line_number;
-                    // 表示本地变量序号
-                    u2 local_variable_number;
-                    // 必须是CONSTANT_Utf8_info常量，表示本地变量名称索引
-                    u2 local_variable_name_index;
-                }
+            local_variable_info {
+                // 表示字节码行号
+                u2 start_pc;
+                // 表示Java源码行号
+                u2 line_number;
+                // 表示本地变量序号
+                u2 local_variable_number;
+                // 必须是CONSTANT_Utf8_info常量，表示本地变量名称索引
+                u2 local_variable_name_index;
+            }
             ```
 14. 属性计数attributes_count（u2）：用于存放在该class文件中类或接口所定义的属性的基本信息
 15. 属性数组attributes[attributes_count]（attribute_info）：
     - 数据结构：
         ```cpp showLineNumbers
-            attribute_info {
-                // 必须是CONSTANT_Utf8_info常量，表示属性名索引
-                u2 attribute_name_index;
-                // 表示属性信息表长度
-                u4 attributes_length;
-                // 表示属性信息表数组
-                u1 info[attributes_length];
-            }
+        attribute_info {
+            // 必须是CONSTANT_Utf8_info常量，表示属性名索引
+            u2 attribute_name_index;
+            // 表示属性信息表长度
+            u4 attributes_length;
+            // 表示属性信息表数组
+            u1 info[attributes_length];
+        }
         ```

@@ -16,10 +16,10 @@ sidebar_position: 4
         6. `g_`：移动至当行最后一个非空字符
         7. `w/W`（**w**ord）：向后跳过一个单词（定位至单词开头）
             ```
-                wwww ==> v   v v  v   v
-                        word. is two words
-                        word. is one WORD
-                WWW  ==> ^     ^  ^   ^
+            wwww ==> v   v v  v   v
+                    word. is two words
+                    word. is one WORD
+            WWW  ==> ^     ^  ^   ^
             ```
             - `word`：仅包含字母、数字等。
             - `WORD`：包含字母、数字以及特殊字符（如,.(){}）等。
@@ -28,9 +28,9 @@ sidebar_position: 4
         10. `ge`：向前跳过一个单词（定位至单词结尾）
         11. `f{character}`（**f**ind）：在当行内容中查找字符（定位至查找字符）
             ```
-                f(   ==> v                        v
-                        const fireball = function(target){
-                wwww ==> ^     ^        ^ ^       ^
+            f(   ==> v                        v
+                    const fireball = function(target){
+            wwww ==> ^     ^        ^ ^       ^
             ```
         12. `t{character}`（un**t**il）：在当行内容中查找字符（定位至查找字符的前一个字符）
     - 竖向移动：

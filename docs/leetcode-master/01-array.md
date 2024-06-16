@@ -20,19 +20,19 @@
 2. 二分法应当遵循**循环不变量规则**，即在while循环时每一次边界的处理都要坚持根据区间的定义来操作 &rarr; 区间的定义
     1. 左闭右闭[left, right]：
         ```cpp showLineNumbers
-            // 右闭 -> left == right 有意义
-            while (left <= right)
-            ...
-            // 防止两者相加的结果溢出；结果等同于(left + right) / 2
-            int middle = left + ((right - left) / 2);
-            if (nums[middle] > target) right = middle - 1;
+        // 右闭 -> left == right 有意义
+        while (left <= right)
+        ...
+        // 防止两者相加的结果溢出；结果等同于(left + right) / 2
+        int middle = left + ((right - left) / 2);
+        if (nums[middle] > target) right = middle - 1;
         ```
     2. 左闭右开[left, right)：
         ```cpp showLineNumbers
-            // 右开 -> left == right 没有意义
-            while (left < right)
-            ...
-            if (nums[middle] > target) right = middle;
+        // 右开 -> left == right 没有意义
+        while (left < right)
+        ...
+        if (nums[middle] > target) right = middle;
         ```
 
 3. 相关题目：[LC35](https://leetcode.cn/problems/search-insert-position/description/)、[LC34](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)、[LC69](https://leetcode.cn/problems/sqrtx/description/)（隐藏数组）、[LC367](https://leetcode.cn/problems/valid-perfect-square/description/)
@@ -45,52 +45,52 @@
     3. target在数组范围中，且数组中存在target &rarr; [left, right]
 2. 拆分成寻找目标数组的左、右区间：（初学者最好一块一块的解决！）
     ```cpp showLineNumbers
-        class Solution {
-        public:
-            vector<int> searchRange(vector<int>& nums, int target) {
-                int leftBorder = getLeftBorder(nums, target);
-                int rightBorder = getRightBorder(nums, target);
-                // 情况一：target在数组范围外
-                if (leftBorder == -2 || rightBorder == -2) return {-1, -1};
-                // 情况三：target在数组范围中，且数组中存在target
-                if (rightBorder - leftBorder > 1)
-                    return {leftBorder + 1, rightBorder - 1};
-                // 情况二：target在数组范围中，但数组中不存在target
-                return {-1, -1};
-            }
+    class Solution {
+    public:
+        vector<int> searchRange(vector<int>& nums, int target) {
+            int leftBorder = getLeftBorder(nums, target);
+            int rightBorder = getRightBorder(nums, target);
+            // 情况一：target在数组范围外
+            if (leftBorder == -2 || rightBorder == -2) return {-1, -1};
+            // 情况三：target在数组范围中，且数组中存在target
+            if (rightBorder - leftBorder > 1)
+                return {leftBorder + 1, rightBorder - 1};
+            // 情况二：target在数组范围中，但数组中不存在target
+            return {-1, -1};
+        }
 
-        private:
-            int getRightBorder(vector<int>& nums, int target) {
-                int left = 0, right = nums.size() - 1;
-                // right能达到-1，因此要设置-2表示未赋值
-                int rightBorder = -2;
-                while (left <= right) {
-                    int middle = left + ((right - left) / 2);
-                    if (nums[middle] > target) {
-                        right = middle - 1;
-                    } else {
-                        // nums[middle] == target的情况也要包含，要使left划到相同目标值的最右边，即右边界
-                        left = middle + 1;
-                        rightBorder = left;
-                    }
+    private:
+        int getRightBorder(vector<int>& nums, int target) {
+            int left = 0, right = nums.size() - 1;
+            // right能达到-1，因此要设置-2表示未赋值
+            int rightBorder = -2;
+            while (left <= right) {
+                int middle = left + ((right - left) / 2);
+                if (nums[middle] > target) {
+                    right = middle - 1;
+                } else {
+                    // nums[middle] == target的情况也要包含，要使left划到相同目标值的最右边，即右边界
+                    left = middle + 1;
+                    rightBorder = left;
                 }
-                return rightBorder;
             }
-            int getLeftBorder(vector<int>& nums, int target) {
-                int left = 0, right = nums.size() - 1;
-                int leftBorder = -2;
-                while (left <= right) {
-                    int middle = left + ((right - left) / 2);
-                    if (nums[middle] < target) {
-                        left = middle + 1;
-                    } else {
-                        right = middle - 1;
-                        leftBorder = right;
-                    }
+            return rightBorder;
+        }
+        int getLeftBorder(vector<int>& nums, int target) {
+            int left = 0, right = nums.size() - 1;
+            int leftBorder = -2;
+            while (left <= right) {
+                int middle = left + ((right - left) / 2);
+                if (nums[middle] < target) {
+                    left = middle + 1;
+                } else {
+                    right = middle - 1;
+                    leftBorder = right;
                 }
-                return leftBorder;
             }
-        };
+            return leftBorder;
+        }
+    };
     ```
 
 ---
@@ -105,19 +105,19 @@
     2. 慢指针：指向更新后的新数组的位置
     ![double_index](./img/1.array/3.1.double_index.gif)
     ```cpp showLineNumbers
-        class Solution {
-        public:
-            int removeElement(vector<int>& nums, int val) {
-                int slowIndex = 0;
-                for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++) {
-                    if (val != nums[fastIndex]) {
-                        nums[slowIndex++] = nums[fastIndex];
-                    }
+    class Solution {
+    public:
+        int removeElement(vector<int>& nums, int val) {
+            int slowIndex = 0;
+            for (int fastIndex = 0; fastIndex < nums.size(); fastIndex++) {
+                if (val != nums[fastIndex]) {
+                    nums[slowIndex++] = nums[fastIndex];
                 }
-                // 每次循环，如有元素纳入数组中，slowIndex才++ -> 直接返回slowIndex
-                return slowIndex;
             }
-        };
+            // 每次循环，如有元素纳入数组中，slowIndex才++ -> 直接返回slowIndex
+            return slowIndex;
+        }
+    };
     ```
 3. 相关题目：[LC26](https://leetcode.cn/problems/remove-duplicates-from-sorted-array/description/)、[LC283](https://leetcode.cn/problems/move-zeroes/description/)、[LC844](https://leetcode.cn/problems/backspace-string-compare/description/)、[LC977](https://leetcode.cn/problems/squares-of-a-sorted-array/description/)（下）
 
@@ -130,24 +130,24 @@
 1. 自想解法：数组内元素全部平方，然后排序 &rarr; 暴力解法
 2. 双指针法：仔细观察数组，负数平方后降序，正数平方后升序，因此可以用归并排序。
     ```cpp showLineNumbers
-        class Solution {
-        public:
-            vector<int> sortedSquares(vector<int>& nums) {
-                vector<int> ret(nums.size(), 0);
-                int i = 0, j = nums.size() - 1, k = nums.size() - 1;
-                while (i <= j) {
-                    // 数组元素平方的最大值一定在左右边界
-                    if (nums[i] * nums[i] > nums[j] * nums[j]) {
-                        ret[k--] = nums[i] * nums[i];
-                        i++;
-                    } else {
-                        ret[k--] = nums[j] * nums[j];
-                        j--;
-                    }
+    class Solution {
+    public:
+        vector<int> sortedSquares(vector<int>& nums) {
+            vector<int> ret(nums.size(), 0);
+            int i = 0, j = nums.size() - 1, k = nums.size() - 1;
+            while (i <= j) {
+                // 数组元素平方的最大值一定在左右边界
+                if (nums[i] * nums[i] > nums[j] * nums[j]) {
+                    ret[k--] = nums[i] * nums[i];
+                    i++;
+                } else {
+                    ret[k--] = nums[j] * nums[j];
+                    j--;
                 }
-                return ret;
             }
-        };
+            return ret;
+        }
+    };
     ```
 
 ---
@@ -194,46 +194,46 @@
 2. 模拟顺时针画矩阵：上行从左到右、右列从上到下、下行从右到左、左列从下到上
 3. 要坚持**循环不变量规则**，保持一致的左闭右开、左开右闭的原则
     ```cpp showLineNumbers
-        class Solution {
-        public:
-            vector<vector<int>> generateMatrix(int n) {
-                vector<vector<int>> matrix(n, vector<int>(n, 0));
-                // 每一圈的起始坐标
-                int startX = 0, startY = 0;
-                // 圈数
-                int loop = n / 2;
-                // 边界长度，每循环一圈就缩减1
-                int margin = 1;
-                int count = 1;
-                int i = 0, j = 0;
-                while (loop--) {
-                    // 上行：从左到右
-                    for (j = startY; j < n - margin; j++) {
-                        matrix[startX][j] = count++;
-                    }
-                    // 右列：从上到下
-                    for (i = startX; i < n - margin; i++) {
-                        matrix[i][j] = count++;
-                    }
-                    // 下行：从右到左
-                    for (; j > startY; j--) {
-                        matrix[i][j] = count++;
-                    }
-                    // 左列：从下到上
-                    for (; i > startX; i--) {
-                        matrix[i][startY] = count++;
-                    }
-                    startX++;
-                    startY++;
-                    margin++;
+    class Solution {
+    public:
+        vector<vector<int>> generateMatrix(int n) {
+            vector<vector<int>> matrix(n, vector<int>(n, 0));
+            // 每一圈的起始坐标
+            int startX = 0, startY = 0;
+            // 圈数
+            int loop = n / 2;
+            // 边界长度，每循环一圈就缩减1
+            int margin = 1;
+            int count = 1;
+            int i = 0, j = 0;
+            while (loop--) {
+                // 上行：从左到右
+                for (j = startY; j < n - margin; j++) {
+                    matrix[startX][j] = count++;
                 }
-                // 奇数判断：如果是，就给最中心的元素赋值
-                if (n % 2) {
-                    matrix[n / 2][n / 2] = n * n;
+                // 右列：从上到下
+                for (i = startX; i < n - margin; i++) {
+                    matrix[i][j] = count++;
                 }
-                return matrix;
+                // 下行：从右到左
+                for (; j > startY; j--) {
+                    matrix[i][j] = count++;
+                }
+                // 左列：从下到上
+                for (; i > startX; i--) {
+                    matrix[i][startY] = count++;
+                }
+                startX++;
+                startY++;
+                margin++;
             }
-        };
+            // 奇数判断：如果是，就给最中心的元素赋值
+            if (n % 2) {
+                matrix[n / 2][n / 2] = n * n;
+            }
+            return matrix;
+        }
+    };
     ```
 4. 相关题目：[LC54](https://leetcode.cn/problems/spiral-matrix/description/)、[LCR 146](https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/)
 

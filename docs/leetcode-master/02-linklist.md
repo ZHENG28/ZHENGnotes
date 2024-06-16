@@ -12,11 +12,11 @@
 3. 存储方式：散乱分布，只由指针链接（如何分配取决于内存管理）
 4. 定义：
     ```cpp showLineNumbers
-        struct ListNode { // 单链表
-            int value;
-            ListNode *next;
-            ListNode(int x) : value(x), next(NULL) {} // 构造函数
-        };
+    struct ListNode { // 单链表
+        int value;
+        ListNode *next;
+        ListNode(int x) : value(x), next(NULL) {} // 构造函数
+    };
     ```
 5. 操作：
     1. 删除节点：将前一个节点的next指针指向后一个节点（c++中需要手动释放删除节点的内存；java中有自己的内存回收机制，因此不需要手动）
@@ -34,38 +34,38 @@
     1. 直接在原来的链表上操作：需要区分头节点和其他节点的处理方式【以下选择该方式】
     1. 设置一个虚拟头节点进行删除操作：统一处理
     ```cpp showLineNumbers
-        /**
-         * Definition for singly-linked list.
-        * struct ListNode {
-        *     int val;
-        *     ListNode *next;
-        *     ListNode() : val(0), next(nullptr) {}
-        *     ListNode(int x) : val(x), next(nullptr) {}
-        *     ListNode(int x, ListNode *next) : val(x), next(next) {}
-        * };
-        */
-        class Solution {
-        public:
-            ListNode* removeElements(ListNode* head, int val) {
-                // 这里不是if，而是while，因为要删除满足条件的所有头节点
-                while (head != NULL && head->val == val) {
-                    // 删除多余节点，手动释放内存
-                    ListNode* tmp = head;
-                    head = head->next;
-                    delete tmp;
-                }
-
-                ListNode* node = head;
-                while (node != NULL && node->next != NULL) {
-                    if (node->next->val == val) {
-                        node->next = (node->next)->next;
-                    } else {
-                        node = node->next;
-                    }
-                }
-                return head;
+    /**
+        * Definition for singly-linked list.
+    * struct ListNode {
+    *     int val;
+    *     ListNode *next;
+    *     ListNode() : val(0), next(nullptr) {}
+    *     ListNode(int x) : val(x), next(nullptr) {}
+    *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+    * };
+    */
+    class Solution {
+    public:
+        ListNode* removeElements(ListNode* head, int val) {
+            // 这里不是if，而是while，因为要删除满足条件的所有头节点
+            while (head != NULL && head->val == val) {
+                // 删除多余节点，手动释放内存
+                ListNode* tmp = head;
+                head = head->next;
+                delete tmp;
             }
-        };
+
+            ListNode* node = head;
+            while (node != NULL && node->next != NULL) {
+                if (node->next->val == val) {
+                    node->next = (node->next)->next;
+                } else {
+                    node = node->next;
+                }
+            }
+            return head;
+        }
+    };
     ```
 
 ---
