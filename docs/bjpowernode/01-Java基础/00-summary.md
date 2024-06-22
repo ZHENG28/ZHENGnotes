@@ -29,23 +29,23 @@ sidebar_label: 0. 小结
     4. default: 在同一个package下可以访问
 
 ### 2.2 进阶知识
-1. 方法由`native`修饰 &rarr; 调用底层C++写的dll程序（动态链接库文件）
+1. 方法由 `native` 修饰 &rarr; 调用底层C++写的dll程序（动态链接库文件）
 2. `类名@内存地址`：物理地址 &rarr; 通过哈希算法计算 &rarr; 十六进制内存地址
 3. Throwable：
     - Error：不可处理，直接退出
     - Exception：可处理
         - 直接继承的子类：编译时异常/受检异常 &rarr; 要求处理
         - RuntimeException：运行时异常/未受检异常 &rarr; 可不处理
-4. 关键词`final`、关键词`finally`（与`try`联合使用）、标识符`finalize`（由GC调用）
+4. 关键词 `final` 、关键词 `finally` （与 `try` 联合使用）、标识符 `finalize` （由GC调用）
 5. 集合类：数组查询效率高，链表增删效率高
     - `Collection`：单个存储元素
         - `List`：有序、可重复、有下标
-            - `ArrayList`：底层数据结构为数组`Object[]`，非线程安全
+            - `ArrayList`：底层数据结构为数组 `Object[]` ，非线程安全
             - `LinkedList`：底层数据结构为双向链表
-            - `Vector`：底层数据结构为数组`Object[]`，线程安全
+            - `Vector`：底层数据结构为数组 `Object[]` ，线程安全
         - `Set`：无序、不可重复、无下标
-            - `HashSet`：其元素实际存入`HashMap`的key值中
-            - `TreeSet`：其元素实际存入`TreeMap`的key值中
+            - `HashSet`：其元素实际存入 `HashMap` 的key值中
+            - `TreeSet`：其元素实际存入 `TreeMap` 的key值中
     - `Map`：键值对存储元素
         - `TreeMap`：底层数据结构为二叉树
         - `HashMap`：底层数据结构为哈希表，非线程安全
@@ -168,7 +168,7 @@ sidebar_label: 0. 小结
     order by -> 7
     ```
 2. 只要有NULL参与的运算结果一定是NULL
-3. 一条语句中有`group by`的话，`select`后面只能跟**分组函数**和**参与分组的字段**
+3. 一条语句中有 `group by` 的话， `select` 后面只能跟**分组函数**和**参与分组的字段**
 4. 连接查询：出现笛卡尔积现象（两张连表的记录条数的乘积）
     1. 内连接：`(inner )join … on …`，两张连表能匹配上的记录才会被查询出来
     2. 左外连接：`left (outer )join … on …`，左为主表，主表数据无条件全部查询出来

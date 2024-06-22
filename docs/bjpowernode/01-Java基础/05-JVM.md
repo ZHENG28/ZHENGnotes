@@ -25,12 +25,12 @@ sidebar_label: 5. JVM
 - **类加载子系统Class Loader SubSystem**：在运行时，首次引用类的时候加载、链接、并初始化类文件
     - 加载Loading：类通过该组件进行加载 &larr; 双亲委托机制
         1. 启动类加载器BootStrap Class Loader：【最高优先级】负责加载来自于Bootstrap类路径的类 &larr; `System.getProperty("sun.boot.class.path")`
-            - 加载`$JAVA_HOME/jre/lib`目录下的rt.jar（runtime jar）
+            - 加载 `$JAVA_HOME/jre/lib` 目录下的rt.jar（runtime jar）
         2. 扩展类加载器Extension Class Loader：负责加载在ext文件夹内的类 &larr; `System.getProperty("java.ext.dirs")`
-            - 加载`$JAVA_HOME/lib/ext`目录下的类文件
+            - 加载 `$JAVA_HOME/lib/ext` 目录下的类文件
             - 是Bootstrap Class Loader的子类
         3. 系统类加载器Application Class Loader：负责加载应用程序级类路径CLASSPATH &larr; `System.getProperty("java.class.path")`
-            - 加载`CLASSPATH`环境变量目录下的所有类文件和jar包
+            - 加载 `CLASSPATH` 环境变量目录下的所有类文件和jar包
             - 是Extension Class Loader的子类
     - 链接Linking：
         1. 验证Verify：验证生成的字节码是否正确，即校验生成的.class文件是否正确
@@ -79,7 +79,7 @@ sidebar_label: 5. JVM
     - 命名以“_info”结尾
 
 ### 2.3 基本信息
-1. 魔数magic（u4）：固定字节的内容，用于区分文件类型，如class文件中固定为`CAFEBABE`
+1. 魔数magic（u4）：固定字节的内容，用于区分文件类型，如class文件中固定为 `CAFEBABE`
 2. 版本号version（u2+u2）：
     1. 次版本号（Minor Version）：起始值为0
     2. 主版本号（Major Version）：起始值为45，每个JDK的大版本（如JDK1.6、JDK1.8）就加1
@@ -187,9 +187,9 @@ sidebar_label: 5. JVM
                         ```
                     - 构造方法的名称统一使用`<init>`
                     - 和字段引用（Fieldref）、方法引用（Methodref）相对应
-                1. 字段描述符field descriptor：字符-类型-含义，如object类型的实例，其描述符为`Ljava/lang/Object;`；double类型的二维数组实例，其描述符为`[[D`
+                1. 字段描述符field descriptor：字符-类型-含义，如object类型的实例，其描述符为 `Ljava/lang/Object;` ；double类型的二维数组实例，其描述符为`[[D`
                 2. 方法描述符method descriptor：
-                    - 包含0个或多个参数描述符和返回值描述符，如`Object method(int i, double d, Thread t) { ... }`，其描述符为`(IDLjava/lang/Thread;)Ljava/lang/Object;`
+                    - 包含0个或多个参数描述符和返回值描述符，如 `Object method(int i, double d, Thread t) { ... }` ，其描述符为 `(IDLjava/lang/Thread;)Ljava/lang/Object;`
                     - 实例方法还需额外传递参数this，但该传递由jvm的指令实现
             1. 类、接口的全限定名Fully Qualified Name：
                 - 数据结构：
@@ -292,14 +292,14 @@ sidebar_label: 5. JVM
                 - 在其他类中以字段（Fieldref_info）的形式出现
         - 引用类型：在该类和其他类中都以字段（Fieldref_info）的形式出现
 5. 类访问标志access_flags（u2）：用于表示某个类或者接口的访问权限属性
-6. 本类索引this_class（u2）：必须是`CONSTANT_Class_info`常量，表示该class文件所定义的类或接口
+6. 本类索引this_class（u2）：必须是 `CONSTANT_Class_info` 常量，表示该class文件所定义的类或接口
 7. 父类索引super_class（u2）：
     - 类：
         - 0：只能是Object类（它是唯一没有父类的类）
         - `CONSTANT_Class_info`常量：表示该class文件所定义的类的直接父类
-    - 接口：必须是代表Object类的`CONSTANT_Class_info`常量
+    - 接口：必须是代表Object类的 `CONSTANT_Class_info` 常量
 8. 接口计数interfaces_count（u2）：表示类或接口的直接父接口
-9. 接口数组interfaces[interfaces_count]（u2）：必须是`CONSTANT_Class_info`常量
+9. 接口数组interfaces[interfaces_count]（u2）：必须是 `CONSTANT_Class_info` 常量
 10. 字段计数fields_count（u2）：表示类中定义的字段，包括静态和非静态的字段
 11. 字段数组fields[fields_count]（field_info）：
     - 数据结构：
@@ -372,7 +372,7 @@ sidebar_label: 5. JVM
                 annotation annotations[num_annotations];
             }
             ```
-        6. RuntimelnvisibleAnnotations：运行时不可见注解（JVM不能反射读取），保留策略为`RetentionPolicy.CLASS`
+        6. RuntimelnvisibleAnnotations：运行时不可见注解（JVM不能反射读取），保留策略为 `RetentionPolicy.CLASS`
             ```cpp showLineNumbers
             RuntimelnvisibleAnnotations_attribute {
                 // 必须是CONSTANT_Utf8_info常量，表示属性名索引，固定为RuntimelnvisibleAnnotations

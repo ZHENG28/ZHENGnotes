@@ -55,8 +55,8 @@ sidebar_label: 0. 小结
 1. 项目对象模型POM(Project Object Module)：该文件可以被子工程继承
 2. maven多模块管理：
     - 父工程：`<packaging>`设置为pom
-    - 子工程：作为一个`<module>`添加到父工程里
-3. 父工程添加的依赖，所有子模块都会无条件地继承 &rarr; 使用`<dependencyManagement>`来加强管理子工程/子模块的所有依赖
+    - 子工程：作为一个 `<module>` 添加到父工程里
+3. 父工程添加的依赖，所有子模块都会无条件地继承 &rarr; 使用 `<dependencyManagement>` 来加强管理子工程/子模块的所有依赖
 
 ---
 

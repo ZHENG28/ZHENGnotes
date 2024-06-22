@@ -81,7 +81,7 @@ sidebar_label: 0. 小结
     1. 将JSP文件编辑成Servlet接口实现类（.java）
     2. 将Servlet接口实现类编译成.class文件
     3. 服务器负责创建该.class文件的实例对象，即Servlet实例对象
-    4. 通过Servlet实例对象调用`_jspService()`方法，将JSP文件内容写入到响应体中
+    4. 通过Servlet实例对象调用 `_jspService()` 方法，将JSP文件内容写入到响应体中
 4. EL(Expression Language)表达式：
     - 提供在JSP文件中使用的一种特殊的命令格式
     - 负责在JSP文件上，从某个作用域对象读取指定的共享数据并将其输出到响应体中

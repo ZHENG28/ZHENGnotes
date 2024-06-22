@@ -47,16 +47,16 @@ sidebar_label: 0. 小结
 
 ## 3 老杜Mybatis
 1. 三层架构：
-    1. 界面层`Controller` &rarr; SpringMVC：接收请求，返回响应
-    2. 业务逻辑层`Service` &rarr; Spring：处理逻辑，调用数据库，获取数据等
-    3. 数据访问层`Dao` &rarr; MyBatis：访问数据库，对数据进行增删改查（CRUD）操作
+    1. 界面层 `Controller` &rarr; SpringMVC：接收请求，返回响应
+    2. 业务逻辑层 `Service` &rarr; Spring：处理逻辑，调用数据库，获取数据等
+    3. 数据访问层 `Dao` &rarr; MyBatis：访问数据库，对数据进行增删改查（CRUD）操作
 2. 框架功能：
     1. 提供创建Connection，Statement，ResultSet的能力
     2. 提供执行sql语句的能力
     3. 提供循环sql，将sql的结果转为java对象或对象集合的能力
     4. 提供关闭资源的能力
 3. mybatis默认是不自动提交事务的，因此需要**手动提交事务**
-4. 动态代理机制：通过`SqlSession.getMapper(xxxDao.class)`这一方法，可以获取dao接口对应的实现类对象
+4. 动态代理机制：通过 `SqlSession.getMapper(xxxDao.class)` 这一方法，可以获取dao接口对应的实现类对象
 5. 传参：
     - 入参：从java代码中将参数传入到mapper文件的sql语句中去
         - `${parameter}`：使用Statement对象执行，容易产生SQL注入
@@ -100,8 +100,8 @@ sidebar_label: 0. 小结
 ### 4.2 控制反转IoC（Inversion of Control）
 1. 把对象的创建、赋值和管理工作都交给代码之外的容器实现，即对象的创建是由其他外部资源完成的 &rarr; 实现解耦合
 2. 依赖注入DI(Dependency Injection)：只需要在程序中提供对象名称即可，至于如何创建对象、赋值、查找等都由容器内部实现
-    - 基于XML的DI实现：在spring的配置文件中，使用标签`<bean>`完成赋值
-    - 基于注解的DI实现：使用spring中的注解`@Component`，完成赋值
+    - 基于XML的DI实现：在spring的配置文件中，使用标签 `<bean>` 完成赋值
+    - 基于注解的DI实现：使用spring中的注解 `@Component` ，完成赋值
 3. 组件扫描器component-scan：spring会遍历扫描base-package指定的包，把包中和子包中的所有类，找到类中的注解，按照注解的功能进行创建对象或赋值等操作
 
 ### 4.3 面向切面编程AOP（Aspect oriented Programming）
@@ -118,14 +118,14 @@ sidebar_label: 0. 小结
     1. 声明数据源DataSource
     2. 声明工厂类SqlSessionFactoryBean
     3. 声明Dao对象
-2. 集成Web：容器对象只需要创建一次后即可一直使用 &rarr; 将容器对象放入到全局作用域`ServletContext`中
-    - 使用监听器：自己创建，或框架提供的`ContextLoaderListener`
+2. 集成Web：容器对象只需要创建一次后即可一直使用 &rarr; 将容器对象放入到全局作用域 `ServletContext` 中
+    - 使用监听器：自己创建，或框架提供的 `ContextLoaderListener`
 
 ---
 
 ## 5 SpringMVC
 ### 5.1 概述
-1. 基于Spring的、web开发的框架，使用`@Controller`创建控制器对象，并将其放入到SpringMVC容器中
+1. 基于Spring的、web开发的框架，使用 `@Controller` 创建控制器对象，并将其放入到SpringMVC容器中
 2. 中央调度器`DispatcherServlet`：继承HttpServlet，负责接收请求，返回响应，以及调用其他控制器对象
 3. 执行流程：
     ```mermaid
@@ -158,7 +158,7 @@ sidebar_label: 0. 小结
     - 转发forward：`setViewName("forward:视图文件完整路径")`
     - 重定向redirect：`setViewName("redirect:视图文件完整路径")`
 2. 异常处理：采用统一的全局异常处理，即将controller中的所有异常处理都集中到一个地方 &rarr; 将业务逻辑代码和异常处理代码解耦合
-3. 拦截器：需要实现`HandlerInterceptor`接口
+3. 拦截器：需要实现 `HandlerInterceptor` 接口
 
 ---
 

@@ -31,7 +31,7 @@ sidebar_label: 9. Oracle
         1. 日期 +/- 天数 = 新日期
         2. 日期1 +/- 日期2 = 两者之间相差的天数
 3. 连接表达式：出现`NULL`，结果还是原来的数据
-4. WHERE子句中查询日期型数据的默认格式为`DD-MM-YYYY` &rarr; 通过`ALTER SESSION SET nls_date_format="YYYY-MM-DD HH:MI:SS"`修改**当前会话**中的日期格式
+4. WHERE子句中查询日期型数据的默认格式为 `DD-MM-YYYY` &rarr; 通过 `ALTER SESSION SET nls_date_format="YYYY-MM-DD HH:MI:SS"` 修改**当前会话**中的日期格式
 5. 运算符优先级：
     1. 比较运算符
     2. `NOT`
@@ -41,7 +41,7 @@ sidebar_label: 9. Oracle
 ### 1.3 函数
 - 单行函数：每次取一条记录作为输入，得到的输出为**单个**输入对应的**单个**结果
     - 字符函数：大小写转换函数、字符处理函数
-    - 数字函数：小数点四舍五入函数`ROUND(NUMBER,POINT)`、数字截取函数`TRUNC(NUMBER,POINT)`、求模/求余函数`MOD(NUMBER1,NUMBER2)`
+    - 数字函数：小数点四舍五入函数 `ROUND(NUMBER,POINT)` 、数字截取函数 `TRUNC(NUMBER,POINT)` 、求模/求余函数 `MOD(NUMBER1,NUMBER2)`
     - 日期函数
     - 转换函数：隐式数据类型转换函数、显式数据类型转换函数
         ```mermaid
@@ -55,14 +55,14 @@ sidebar_label: 9. Oracle
 ### 1.4 多表查询
 1. 用单个select语句从多张表中查询数据（若无等值条件，会产生笛卡尔积现象）
 2. SQL1992标准（旧）：
-    1. 等值查询：两表之间存在父子关系，用`=`来连接表字段
+    1. 等值查询：两表之间存在父子关系，用 `=` 来连接表字段
         - 只能查询两表中一一对应的记录
         - N张表的等值查询，需要N-1个等值条件
         ```sql
         SELECT * FROM emp e, dept d
         WHERE e.deptno = d.deptno;
         ```
-    2. 非等值查询：两表之间不存在父子关系，用`!=`来连接表字段
+    2. 非等值查询：两表之间不存在父子关系，用 `!=` 来连接表字段
         ```sql
         SELECT * FROM emp e, salgrade s
         WHERE e.sal BETWEEN s.losal AND s.hisal;
@@ -90,7 +90,7 @@ sidebar_label: 9. Oracle
         CROSS JOIN dept d;
         ```
     2. 自然连接：两表之间存在父子关系，自动匹配两表中列名相同的所有字段作为**参照列**，并在所有的参照列上做等值查询
-        - 参照列上无前缀，即`e.deptno`会报错
+        - 参照列上无前缀，即 `e.deptno` 会报错
         - 如果参照列的数据类型不同，会报错
         - 当两表中没有参照列时，会产生笛卡尔积现象
         ```sql
@@ -168,7 +168,7 @@ sidebar_label: 9. Oracle
 ### 2.2 约束
 1. 执行数据校验，保证数据完整性
 2. 必须建立在表上，一张表中可以同时存在多种相同类型的约束
-3. 可以在建表时同时创建，或通过修改表`ALTER TABLE`来创建
+3. 可以在建表时同时创建，或通过修改表 `ALTER TABLE` 来创建
 4. 约束类别：
     1. 非空约束`NOT NULL`：约束该字段的数据不能为NULL
         - 唯一一个可以定义在列级的约束
@@ -192,12 +192,12 @@ sidebar_label: 9. Oracle
     1. 可以限制对数据的访问，指定用户查看的部分
     2. 简化查询
     3. 实现数据独立性
-2. 创建只读型视图`… WITH READ ONLY`，使用户无法执行DML操作
+2. 创建只读型视图 `… WITH READ ONLY` ，使用户无法执行DML操作
 3. 行内视图（又名子查询）：无命名，不会保存在数据库中
 4. **TOP-N分析法**：通过TOP-N算法从研究对象中得到所需的N个数据，并从排序列表中选取最大或最小（TOP级别）的N个数据
     - `ROWNUM`：伪列，伴随结果集生成而生成的递增列
-    - 支持查询`ROWNUM = 1`或`ROWNUM < n`的数据
-    - `ROWNUM`在`SELECT`时已经生成，而`ORDER BY`的执行顺序低于`SELECT` &rarr; 无法通过`ORDER BY`对字段进行排序
+    - 支持查询 `ROWNUM = 1` 或 `ROWNUM < n` 的数据
+    - `ROWNUM` 在 `SELECT` 时已经生成，而 `ORDER BY` 的执行顺序低于 `SELECT` &rarr; 无法通过 `ORDER BY` 对字段进行排序
     - 结果集生成过程：
         ```mermaid
         graph TB
@@ -211,7 +211,7 @@ sidebar_label: 9. Oracle
 1. 用于提高查询的速度，且与表分开独立存放
 2. 创建方式：
     1. 自动创建：自动为主键约束和唯一约束的列创建索引，删除约束时会自动删除对应的索引
-    2. 手动创建`CREATE INDEX` &amp; 手动删除`DROP INDEX`
+    2. 手动创建 `CREATE INDEX` &amp; 手动删除 `DROP INDEX`
 
 ### 2.5 同义词
 1. 数据库对象的别名，以简化对对象的访问

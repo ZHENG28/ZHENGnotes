@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # HTML知识点
 
-## 1. `<base>`标记
+## 1. `<base>` 标记
 1. 概念：head标签，在HTML语法范畴之内，与js、java都无关
 2. 作用范围：只对当前网页中的所有相对路径起作用，绝对路径不起作用
 3. 格式：`request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/"`
@@ -17,10 +17,10 @@ sidebar_position: 2
 
 ## 2. `document.all.idName.xxx`
 - `document.all`：获取整个网页中的dom元素，返回一个集合，该集合中存放了当前网页中的所有dom元素
-- `document.all.idName`：获取id="idName"的元素，等同于`document.getElementById("idName")`
+- `document.all.idName`：获取id="idName"的元素，等同于 `document.getElementById("idName")`
 
 ## 3. ES6中，可以使用反引号``来完成字符串的拼接
-其中可用`${}`来引用变量
+其中可用 `${}` 来引用变量
 
 ## 4. cookie、session、token的区别
 - Notes：
