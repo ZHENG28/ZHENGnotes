@@ -32,7 +32,7 @@ sidebar_label: 0. 小结
     7. 部署`deploy`：将程序安装好并执行
 
 ### 2.2 核心概念
-1. POM(Project Object Model)：项目对象模型，通过pom.xml文件来控制maven构建项目的过程，管理jar依赖
+1. POM（Project Object Model）：项目对象模型，通过pom.xml文件来控制maven构建项目的过程，管理jar依赖
     - 坐标gav：唯一标识一个项目
         ```xml
         <groupId>公司域名的倒写</groupId>
@@ -99,7 +99,7 @@ sidebar_label: 0. 小结
 
 ### 4.2 控制反转IoC（Inversion of Control）
 1. 把对象的创建、赋值和管理工作都交给代码之外的容器实现，即对象的创建是由其他外部资源完成的 &rarr; 实现解耦合
-2. 依赖注入DI(Dependency Injection)：只需要在程序中提供对象名称即可，至于如何创建对象、赋值、查找等都由容器内部实现
+2. 依赖注入DI（Dependency Injection）：只需要在程序中提供对象名称即可，至于如何创建对象、赋值、查找等都由容器内部实现
     - 基于XML的DI实现：在spring的配置文件中，使用标签 `<bean>` 完成赋值
     - 基于注解的DI实现：使用spring中的注解 `@Component` ，完成赋值
 3. 组件扫描器component-scan：spring会遍历扫描base-package指定的包，把包中和子包中的所有类，找到类中的注解，按照注解的功能进行创建对象或赋值等操作

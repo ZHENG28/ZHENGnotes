@@ -52,7 +52,7 @@ sidebar_label: 0. 小结
 ---
 
 ## 4 Maven进阶
-1. 项目对象模型POM(Project Object Module)：该文件可以被子工程继承
+1. 项目对象模型POM（Project Object Module）：该文件可以被子工程继承
 2. maven多模块管理：
     - 父工程：`<packaging>`设置为pom
     - 子工程：作为一个 `<module>` 添加到父工程里
@@ -69,7 +69,7 @@ sidebar_label: 0. 小结
     vertical_application_architecture[垂直应用架构（将大应用拆分为小应用）] --> 
     microservices_architecture[分布式架构（若干个独立系统的集合）]
     ```
-2. 远程过程调用RPC(Remote Procedure Call)：即调用接口，如Dubbo、gRPC、Thrift、HSF
+2. 远程过程调用RPC（Remote Procedure Call）：即调用接口，如Dubbo、gRPC、Thrift、HSF
 
 ### 5.2 概述
 1. 基本结构：![Dubbo Process](./img/0.2.dubbo_process.jpg)

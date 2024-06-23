@@ -24,7 +24,7 @@ Class.forName("完整类名");
 Class c = Class.forName("完整类名");
 ```
 
-## 4. 面向横切面的编程方式AOP(Aspect Oriented Programming)
+## 4. 面向横切面的编程方式AOP（Aspect Oriented Programming）
 将与业务无关的功能从业务流程中剥离出来，形成一个独立的组件，将这个组件以**横向的方式**交叉地应用到业务当中的一种编程方式
 
 ## 5. 输入流和输出流都是相对于内存而言，到内存去是输入，从内存出来是输出

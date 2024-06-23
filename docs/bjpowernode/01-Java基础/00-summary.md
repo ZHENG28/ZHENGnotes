@@ -64,7 +64,7 @@ sidebar_label: 0. 小结
 9. 反射机制：可以操作字节码文件，让代码具有很强的通用性
 10. 注解/注释Annotation：告知编译器的，与运行阶段没有关系
 
-### 2.3 可扩展标记语言XML(eXtensible Markup Language)
+### 2.3 可扩展标记语言XML（eXtensible Markup Language）
 1. 一般作为配置文件，用于数据存储和数据描述，且不依赖于任何一种编程语言，可以完成多种语言之间的数据交换
 2. 解析方式：
     - DOM解析：映射成DOM树
@@ -84,7 +84,7 @@ sidebar_label: 0. 小结
 
 ## 5 JVM
 ### 5.1 概述
-1. JDK(Java Development Kit)、JRE(Java Runtime Environment)、JVM(Java Virtual Machine) &rarr; JDK = JRE(JVM + 其它) + 其它
+1. JDK（Java Development Kit）、JRE（Java Runtime Environment）、JVM（Java Virtual Machine） &rarr; JDK = JRE(JVM + 其它) + 其它
 2. 结构：
     1. 类加载子系统Class Loader SubSystem：加载Loading &rarr; 链接Linking &rarr; 初始化Initialization
     2. 运行时数据区Runtime Data Areas
@@ -142,13 +142,13 @@ sidebar_label: 0. 小结
 
 ## 7 MySQL
 ### 7.1 概述
-1. 数据库DB(DataBase)、数据库管理系统DBMS(DataBase Management System)、结构化查询语言SQL(Structure Query Language) &rarr; DBMS负责执行SQL语句，来操作DB当中的数据
+1. 数据库DB（DataBase）、数据库管理系统DBMS（DataBase Management System）、结构化查询语言SQL（Structure Query Language） &rarr; DBMS负责执行SQL语句，来操作DB当中的数据
 2. SQL类型：
-    - 数据查询语言DQL(Data Query Language)
-    - 数据操作语言DML(Data Manipulation Language)
-    - 数据定义语言DDL(Data Definition Language)
-    - 事务控制语言TCL(Transaction Control Language)
-    - 数据控制语言DCL(Data Control Language)
+    - 数据查询语言DQL（Data Query Language）
+    - 数据操作语言DML（Data Manipulation Language）
+    - 数据定义语言DDL（Data Definition Language）
+    - 事务控制语言TCL（Transaction Control Language）
+    - 数据控制语言DCL（Data Control Language）
 
 ### 7.2 基础命令与语法
 1. 关键词执行顺序：
@@ -210,7 +210,7 @@ sidebar_label: 0. 小结
 ### 9.1 概述
 1. 简单SQL及数据类型，函数，多表查询（1999新标准）
 2. 事务的开始时机：第一个DML语句
-3. PL/SQL(Program Language/Structure Query Language)：Oracle数据库对SQL语句的扩展
+3. PL/SQL（Program Language/Structure Query Language）：Oracle数据库对SQL语句的扩展
 
 ### 9.2 数据库对象
 1. 表：基本的数据存储对象，以行、列的形式存在
