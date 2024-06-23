@@ -46,8 +46,8 @@ sidebar_label: 9. Oracle
     - 转换函数：隐式数据类型转换函数、显式数据类型转换函数
         ```mermaid
         graph LR
-        NUMBER -- TO_CHAR --> CHARACTER -- TO_NUMBER --> NUMBER
-        DATE -- TO_CHAR --> CHARACTER -- TO_DATE --> DATE
+        NUMBER --TO_CHAR--> CHARACTER --TO_NUMBER--> NUMBER
+        DATE --TO_CHAR--> CHARACTER --TO_DATE--> DATE
         ```
     - 其他函数：处理空值函数、嵌套函数、分组函数（忽略空值）
 - 多行函数：一次性取多条记录作为输入，得到的输出为**多个**输入对应的**单个**结果
@@ -202,8 +202,8 @@ sidebar_label: 9. Oracle
         ```mermaid
         graph TB
         start[产生 ROWNUM = 1 的记录] --> if{查询条件}
-        if -- 满足 --> 保留数据 --> save_result[ROWNUM + 1] --> next[查找下一条记录]
-        if -- 不满足 --> 舍弃数据 --> next
+        if --满足--> 保留数据 --> save_result[ROWNUM + 1] --> next[查找下一条记录]
+        if --不满足--> 舍弃数据 --> next
         next --> if
         ```
 
