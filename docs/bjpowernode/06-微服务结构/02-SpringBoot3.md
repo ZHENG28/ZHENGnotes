@@ -55,7 +55,7 @@ sidebar_label: 2. SpringBoot3
     - 在项目入口类上设置 `@SpringBootApplication(exclude={xxx.class, ...})`
     - 在配置文件中设置 `spring.autoconfigure.exclude=xxx` 来排除
 8. SpringBoot项目可以直接打jar包运行（因为SpringBoot已内嵌Tomcat服务器，所以无需打war包）
-9. `CommandLineRunner` 、 `ApplicationRunner` 接口在springboot项目启动后会回调重写的run方法
+9. `CommandLineRunner` 、 `ApplicationRunner` 接口在SpringBoot项目启动后会回调重写的run方法
 
 ### 14 敏感配置信息加密
 - 使用jasypt加解密

@@ -176,8 +176,8 @@ sidebar_label: 5. Redis7
             - 返回成功移除的元素个数
             - 忽略不存在的元素
         - 随机获取指定集合中的一个或多个元素：`srandmember key [count]`
-            - count > 0：随机获取的多个元素之间不能重复
-            - count < 0: 随机获取的多个元素之间可能重复
+            - count &gt; 0：随机获取的多个元素之间不能重复
+            - count &lt; 0: 随机获取的多个元素之间可能重复
         - 从指定集合中随机移除一个或多个元素：`spop key [count]`
         - 将指定集合中的指定元素移动到另一个集合中：`smove source dest member`
         - 获取**第一个集合key1中有的、但其它集合（key2 [key3 key4 ....]）中都没有的**元素组成的新集合：`sdiff key1 key2 [key3 key4 ....]`
