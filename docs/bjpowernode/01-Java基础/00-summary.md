@@ -17,25 +17,25 @@ sidebar_label: 0. 小结
     1. 封装 &rarr; 使外部程序不随意访问类中的成员属性
     2. 继承
     3. 多态 &rarr; 解耦合
-3. 方法重载overload：`differentReturnType sameMethodName(differentParameterType differentParameterName, …)`
-4. 方法重写override/方法覆盖overwrite：`sameReturnType sameMethodName(sameParameterType sameParameterName, …)`
+3. **方法重载overload**：`differentReturnType sameMethodName(differentParameterType differentParameterName, …)`
+4. **方法重写override/方法覆盖overwrite**：`sameReturnType sameMethodName(sameParameterType sameParameterName, …)`
     1. 实现接口中的方法
     2. 访问权限不能更低，可以更高
     3. 抛出异常不能更多，可以更少
 5. 访问控制权限修饰符：
-    1. public: 在任何位置都可以访问
-    2. private: 只有在同一个类下才可以访问
-    3. protected: 在同一个package下可以访问，子类subclass亦可以访问
-    4. default: 在同一个package下可以访问
+    1. `public`: 在任何位置都可以访问
+    2. `private`: 只有在同一个类下才可以访问
+    3. `protected`:` 在同一个package下可以访问，子类subclass亦可以访问
+    4. `default`: 在同一个package下可以访问
 
 ### 2.2 进阶知识
 1. 方法由 `native` 修饰 &rarr; 调用底层C++写的dll程序（动态链接库文件）
 2. `类名@内存地址`：物理地址 &rarr; 通过哈希算法计算 &rarr; 十六进制内存地址
-3. Throwable：
-    - Error：不可处理，直接退出
-    - Exception：可处理
+3. `Throwable`：
+    - `Error`：不可处理，直接退出
+    - `Exception`：可处理
         - 直接继承的子类：编译时异常/受检异常 &rarr; 要求处理
-        - RuntimeException：运行时异常/未受检异常 &rarr; 可不处理
+        - `RuntimeException`：运行时异常/未受检异常 &rarr; 可不处理
 4. 关键词 `final` 、关键词 `finally` （与 `try` 联合使用）、标识符 `finalize` （由GC调用）
 5. 集合类：数组查询效率高，链表增删效率高
     - `Collection`：单个存储元素
@@ -210,7 +210,7 @@ sidebar_label: 0. 小结
 ### 9.1 概述
 1. 简单SQL及数据类型，函数，多表查询（1999新标准）
 2. 事务的开始时机：第一个DML语句
-3. PL/SQL（Program Language/Structure Query Language）：Oracle数据库对SQL语句的扩展
+3. **PL/SQL（Program Language/Structure Query Language）**：Oracle数据库对SQL语句的扩展
 
 ### 9.2 数据库对象
 1. 表：基本的数据存储对象，以行、列的形式存在

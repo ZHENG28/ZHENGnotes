@@ -102,22 +102,22 @@ sidebar_label: 9. Oracle
         SELECT e.empno, e.ename, deptno, d.dname FROM emp e
         JOIN dept d USING(deptno);
         ```
-    4. 外连接`OUTER JOIN … ON`：使用on指定的查询条件
+    4. 外连接 `OUTER JOIN … ON`：使用on指定的查询条件
         ```sql
         SELECT e.*, d.* FROM emp e
         JOIN dept d ON (e.deptno = d.deptno);
         ```
-        - 左外连接`LEFT OUTER JOIN … ON`：可以把左边表不满足等值条件的数据查询出来
+        - 左外连接 `LEFT OUTER JOIN … ON`：可以把左边表不满足等值条件的数据查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             LEFT OUTER JOIN dept d ON (e.deptno = d.deptno);
             ```
-        - 右外连接`RIGHT OUTER JOIN … ON`：可以把右边表不满足等值条件的数据查询出来
+        - 右外连接 `RIGHT OUTER JOIN … ON`：可以把右边表不满足等值条件的数据查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             RIGHT OUTER JOIN dept d ON (e.deptno = d.deptno);
             ```
-        - 全连接`FULL OUTER JOIN … ON`：可以把左右两边表不满足等值条件的数据都查询出来
+        - 全连接 `FULL OUTER JOIN … ON`：可以把左右两边表不满足等值条件的数据都查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             FULL OUTER JOIN dept d ON (e.deptno = d.deptno);
@@ -170,15 +170,15 @@ sidebar_label: 9. Oracle
 2. 必须建立在表上，一张表中可以同时存在多种相同类型的约束
 3. 可以在建表时同时创建，或通过修改表 `ALTER TABLE` 来创建
 4. 约束类别：
-    1. 非空约束`NOT NULL`：约束该字段的数据不能为NULL
+    1. **非空约束** `NOT NULL`：约束该字段的数据不能为NULL
         - 唯一一个可以定义在列级的约束
-    2. 唯一约束`UNIQUE`：约束该字段的数据不能重复，但可以为NULL
+    2. **唯一约束** `UNIQUE`：约束该字段的数据不能重复，但可以为NULL
         - 列级约束：可以作用在单个字段上
         - 表级约束：同时作用在多个字段上
-    3. 主键约束`PRIMARY KEY`：非空约束+唯一约束
+    3. **主键约束** `PRIMARY KEY`：非空约束+唯一约束
         - 一张表中只有一个主键约束
         - 可以作用在单个字段上（即**独立主键**），也可以作用在多个字段上（即**联合主键**）
-    4. 外键约束：连接两表的两个字段，可以重复，可以为NULL
+    4. **外键约束**：连接两表的两个字段，可以重复，可以为NULL
         - 父子表的先后顺序：
             - 创建表/添加数据：父表 &rarr; 子表
             - 删除表/删除数据：子表 &rarr; 父表

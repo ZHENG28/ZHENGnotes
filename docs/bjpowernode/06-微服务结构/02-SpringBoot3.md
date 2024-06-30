@@ -16,12 +16,12 @@ sidebar_label: 2. SpringBoot3
 
 ### 6 main 方法分析
 1. main方法的配置项：
-    `spring.main.sources=path`：在Application类的run()方法中，可缺省primarySource这一形参
-    `spring.main.allow-bean-definition-overriding`：是否允许方法覆盖，默认为false不允许
-    `spring.main.lazy-initialization`：是否延迟初始化，默认为false不延迟
-    `spring.main.log-startup-info`：是否输出日志
-    `spring.main.register-shutdown-hook`：是否注册回调的钩子
-    `spring.main.web-application-type`：说明该项目是哪一种程序
+    - `spring.main.sources=path`：在Application类的run()方法中，可缺省primarySource这一形参
+    - `spring.main.allow-bean-definition-overriding`：是否允许方法覆盖，默认为false不允许
+    - `spring.main.lazy-initialization`：是否延迟初始化，默认为false不延迟
+    - `spring.main.log-startup-info`：是否输出日志
+    - `spring.main.register-shutdown-hook`：是否注册回调的钩子
+    - `spring.main.web-application-type`：说明该项目是哪一种程序
         - none：java程序
         - reactive：响应式程序
         - servlet：web程序

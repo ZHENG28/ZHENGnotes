@@ -73,11 +73,11 @@ sidebar_label: 0. 小结
 
 ### 5.2 概述
 1. 基本结构：![Dubbo Process](./img/0.2.dubbo_process.jpg)
-    - 容器Container：和Spring容器无缝连接
-    - 服务提供者Provider：暴露服务的服务提供者
-    - 服务消费者Consumer：调用远程服务的服务消费者
-    - 注册中心Registry：将服务提供者地址列表返回给Consumer，如Multicast、Redis、Simple、**Zookeeper**（推荐使用）
-    - 监控中心Monitor：Provider和Consumer会在内存中累计调用次数和调用时间，定时发送统计数据到Monitor；是图形化的服务管理页面，可直接下载使用
+    - **容器Container**：和Spring容器无缝连接
+    - **服务提供者Provider**：暴露服务的服务提供者
+    - **服务消费者Consumer**：调用远程服务的服务消费者
+    - **注册中心Registry**：将服务提供者地址列表返回给Consumer，如Multicast、Redis、Simple、**Zookeeper**（推荐使用）
+    - **监控中心Monitor**：Provider和Consumer会在内存中累计调用次数和调用时间，定时发送统计数据到Monitor；是图形化的服务管理页面，可直接下载使用
 2. 过程：
     ```mermaid
     graph TD

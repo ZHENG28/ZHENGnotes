@@ -110,7 +110,7 @@ sidebar_label: 5. Redis7
         - 如果newkey已存在，返回 `OK` 且覆盖旧value
     - 删除指定的key：`del key [key key .....]`
         - 返回实际删除的key的数量
-1. 字符串类型string：`单key:单value`
+1. **<font color="red">字符串类型string</font>**：`单key:单value`
     - 如：`username:zhangsan`、`age:20`等
     - 能存储任何类型的数据，包括二进制数据，最大存储512M的数据
     - 常用操作命令：
@@ -139,7 +139,7 @@ sidebar_label: 5. Redis7
             - 默认情况：`mset key1 value1 key2 value2 ...`
             - 当所有key都不存在时设置成功，否则全部放弃设置：`msetnx key1 value1 key2 value2 ...`
         - 批量获取string数据：`mget key1 key2 key3 ...`
-2. 列表类型list：`单key:多有序value`
+2. **<font color="red">列表类型list</font>**：`单key:多有序value`
     - 如：`contacts:xxx, xxx, xxx`等
     - 有序（按照插入顺序排序）、可重复集合，元素有（负）下标
     - 可以添加一个元素到列表的头部（左边）或者尾部（右边）
@@ -160,7 +160,7 @@ sidebar_label: 5. Redis7
         - 截取指定列表中指定下标区间的元素组成新的列表且赋值给key：`ltrim key startIndex endIndex`
         - 将指定列表中指定下标的元素设置为指定值：`lset key index value`
         - 将value插入到指定列表中位于pivot元素之前或之后的位置：`linsert key before/after pivot vlaue`
-3. 集合类型set：`单key:多无序value`
+3. **<font color="red">集合类型set</font>**：`单key:多无序value`
     - 如：`city:beijing shanghai chongqin`等
     - 无序、无重复集合，元素没有下标
     - 常用操作命令：
@@ -183,7 +183,7 @@ sidebar_label: 5. Redis7
         - 获取**第一个集合key1中有的、但其它集合（key2 [key3 key4 ....]）中都没有的**元素组成的新集合：`sdiff key1 key2 [key3 key4 ....]`
         - 获取所有指定集合中**都有的**元素组成的新集合：`sinter key key [key key ....]`
         - 获取所有指定集合中**所有元素**组成的新集合：`sunion key key [key key .....]`
-4. 哈希类型hash：`单key:对象(属性:值)`
+4. **<font color="red">哈希类型hash</font>**：`单key:对象(属性:值)`
     - 如：`student: id:1001, name:zhangsan, age:20`等
     - 适用于存储对象
     - 常用操作命令：
@@ -203,7 +203,7 @@ sidebar_label: 5. Redis7
             - 所有的value列表：`hvals key`
         - 对指定哈希表中指定field值进行**整数加法**运算：`hincrby key field int`
         - 对指定哈希表中指定field值进行**浮点数加法**运算：`hincrbyfloat key field float`
-5. 有序集合类型zset（sorted set）：`单key:多有序value`
+5. **<font color="red">有序集合类型zset（sorted set）</font>**：`单key:多有序value`
     - 如：`city:1200 chongqing, 1500 shanghai, 2000 beijing`等
     - 不允许重复的成员
     - 与list不同的是，zset中的每个元素会关联一个可重复score，redis通过score来为集合中的成员进行升序排序

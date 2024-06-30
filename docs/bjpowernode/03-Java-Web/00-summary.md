@@ -7,7 +7,7 @@ sidebar_label: 0. 小结
 ## 1 HTML+CSS+JavaScript(JS)
 ### 1.1 超文本标记语言HTML（Hyper Text Markup Language）
 1. 由大量的标签组成，每一个标签都有开始标签和结束标签
-2. 搜索引擎优化SEO（Search Engine Optimization）：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名
+2. **搜索引擎优化SEO（Search Engine Optimization）**：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名
 
 ### 1.2 层叠样式表语言CSS（Cascading Style Sheet）
 1. 用于修饰HTML页面，设置HTML页面中的某些元素的样式
@@ -17,14 +17,14 @@ sidebar_label: 0. 小结
     - 标签选择器：`tag`
 
 ### 1.3 JS（JavaScript）
-1. 是一门事件驱动型的编程语言，依靠事件去驱动，然后执行对应的程序
+1. 一门事件驱动型的编程语言，依靠事件去驱动，然后执行对应的程序
 2. 数据类型的“决定权”：
     - 由赋值等号**左边**来决定：Java是**强类型**语言，编译期强行固定变量的数据类型
     - 由赋值等号**右边**来决定：JavaScript是**弱类型**语言，没有编译阶段，变量可以随意赋值
-3. 文本对象模型DOM（Document Object Model）：对网页当中的节点进行增删改的过程
-4. 浏览器对象模型BOM（Browser Object Model）：关闭浏览器窗口，打开一个新的浏览器窗口，后退、前进，浏览器地址栏上的地址等
-5. 正则表达式RegularExpression：是由普通字符（例如字符a到z）以及特殊字符（称为“元字符”）组成的文字模式，其组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合，主要用在字符串格式匹配方面
-6. JS对象标记JSON（JavaScript Object Notation）：一种标准的数据交换格式，在JS中以JS对象的形式存在
+3. **<font color="red">文本对象模型DOM（Document Object Model）</font>**：对网页当中的节点进行增删改的过程
+4. **<font color="red">浏览器对象模型BOM（Browser Object Model）</font>**：关闭浏览器窗口，打开一个新的浏览器窗口，后退、前进，浏览器地址栏上的地址等
+5. **正则表达式RegularExpression**：是由普通字符（例如字符a到z）以及特殊字符（称为“元字符”）组成的文字模式，其组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合，主要用在字符串格式匹配方面
+6. **<font color="red">JS对象标记JSON（JavaScript Object Notation）</font>**：一种标准的数据交换格式，在JS中以JS对象的形式存在
 
 ### 1.4 《Web前端开发最佳实践》
 1. HTML、CSS、JS命名规范和格式规范
@@ -52,7 +52,7 @@ sidebar_label: 0. 小结
         2. **b** = 选择符中的类选择器 + 属性选择器 + 伪类选择器的数量
         3. **c** = 标签类型选择器 + 伪对象选择器的数量
         4. 忽略全局选择器
-6. 原型prototype：对象的构造函数中有一个prototype对象，该对象上的属性或方法是共享给所有实例对象的
+6. **原型prototype**：对象的构造函数中有一个prototype对象，该对象上的属性或方法是共享给所有实例对象的
 7. 原型链：由各prototype对象组成的链条，最顶端是构造函数Object中的prototype对象
 8. 浏览器的渲染原理：
     1. 解析HTML来构建DOM树
@@ -61,8 +61,8 @@ sidebar_label: 0. 小结
     4. 根据DOM树和CSS规则树（CSS会根据选择器匹配HTML元素）构建渲染树（包括了每个元素的大小、边距等样式属性，不包括隐藏元素及head元素等不可见元素）
     5. 浏览器根据元素的坐标和大小来计算每个元素的位置，并将这些元素绘制到页面上
 9. Web前端攻击方式：
-    1. 跨站点脚本攻击XSS（Cross Site Scripting）：尽一切方法在目标网站上执行非目标网站上原有的脚本
-    2. 跨站请求伪造CSRF（Cross Site Request Forgery）：伪造的请求来源于其他的网站
+    1. **跨站点脚本攻击XSS（Cross Site Scripting）**：尽一切方法在目标网站上执行非目标网站上原有的脚本
+    2. **跨站请求伪造CSRF（Cross Site Request Forgery）**：伪造的请求来源于其他的网站
     3. 界面操作劫持：利用视觉欺骗，诱导用户操作
         1. 点击劫持
         2. 拖放劫持
@@ -82,10 +82,10 @@ sidebar_label: 0. 小结
     2. 将Servlet接口实现类编译成.class文件
     3. 服务器负责创建该.class文件的实例对象，即Servlet实例对象
     4. 通过Servlet实例对象调用 `_jspService()` 方法，将JSP文件内容写入到响应体中
-4. EL（Expression Language）表达式：
+4. **EL（Expression Language）表达式**：
     - 提供在JSP文件中使用的一种特殊的命令格式
     - 负责在JSP文件上，从某个作用域对象读取指定的共享数据并将其输出到响应体中
-5. JSTL（Jsp Standard Tag Library）：JSP标准的标签库，可以使用标签代替java代码
+5. **JSTL（Jsp Standard Tag Library）**：JSP标准的标签库，可以使用标签代替java代码
 
 ### 3.2 Servlet
 1. 可指定动态资源文件的开发步骤、指定Http服务器调用动态资源文件的规则、指定Http服务器管理动态资源文件的实例对象的规则
@@ -115,15 +115,15 @@ sidebar_label: 0. 小结
         - 通过键值对的方式存储任意类型、任意数量的数据
         - 存放在服务端计算机内存
     4. HttpServletRequest接口/请求作用域对象：作用于两个Servlet之间
-6. 监听器Listener：用于监控作用域对象的生命周期变化时刻以及作用域对象的共享数据变化时刻
-7. 过滤器Filter：
+6. **监听器Listener**：用于监控作用域对象的生命周期变化时刻以及作用域对象的共享数据变化时刻
+7. **过滤器Filter**：
     - 对请求进行增强操作：既对请求过滤，也对响应过滤
     - 检测当前请求的合法性：在Http服务器调用资源文件之前，对Http服务器进行拦截
 
 ### 3.3 网络通信
 1. 通信模型：
-    1. C/S通信模型：服务器软件C（Client software）和服务器软件S（Server software）
-    2. B/S通信模型：浏览器B（Browser）和服务器软件S（Server software）
+    1. **<font color="red">C/S通信模型</font>**：服务器软件C（Client software）和服务器软件S（Server software）
+    2. **<font color="red">B/S通信模型</font>**：浏览器B（Browser）和服务器软件S（Server software）
 2. 共享资源文件：
     - 静态资源文件：直接通过输出流将其中的内容或命令以二进制的形式推送给发起请求的浏览器
     - 动态资源文件：需要先创建当前class文件的实例对象，通过实例对象调用对应的方法去处理用户的请求，再通过输出流将运行结果以二进制的形式推送给发起请求的浏览器
@@ -146,14 +146,14 @@ sidebar_label: 0. 小结
 ---
 
 ## 5 快速搞定AJAX
-1. 即Asynchronous JavaScript and XML，用于局部刷新，其核心对象为异步对象XMLHttpRequest，该对象可启动一个线程和服务器交互，代替UI线程
+1. **AJAX（Asynchronous JavaScript and XML）**：用于局部刷新，其核心对象为异步对象XMLHttpRequest，该对象可启动一个线程和服务器交互，代替UI线程
     - javascript：负责创建异步对象、发送请求、更新页面的dom对象
     - xml：网络中传输的数据格式（目前用json代替xml）
 
 ---
 
 ## 6 jQuery
-1. 是一个JS库，封装了JS的相关方法的调用，简化了JS对HTML、DOM的操作
+1. 一个JS库，封装了JS的相关方法的调用，简化了JS对HTML、DOM的操作
     - dom对象：使用js语法创建的对象
     - jquery对象：使用jquery语法表示的对象，是一个数组
 

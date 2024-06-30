@@ -47,19 +47,19 @@ sidebar_label: 0. 小结
         2. 必须部署在tomcat服务器的webapps目录下，可通过 `ip:port/war_packagename/path` 访问
 
 ### 1.2 集成
-1. 集成MyBatis：
+1. 集成**MyBatis**：
     1. Mapper接口类上加 `@Mapper` ：会关联 `.xml` 映射文件和接口的关系
     2. Application启动类上加 `@MapperScan(basePackages="mapper.packagename")` ：扫描包下有 `@Mapper` 注解的类
     3. 访问数据库的方法上加 `@Transactional` ：开启事务
     4. Application启动类上加 `@EnableTransactionManagement` ：支持事务（SpringBoot2.x以后的版本已自动支持）
-2. 集成SpringMVC：
+2. 集成**SpringMVC**：
     1. 控制层类上加 `@RestController` ：相当于控制层类上和方法上加 `@Controller`
     2. 控制层类上加 `@ResponseBody` ：当前控制层类下所有方法的返回值均为JSON对象
     3. REST（Representational State Transfer）Ful架构：一种互联网软件架构设计的风格
-3. 集成Redis：可使用 `RedisTemplate` 对象来操作Redis中的数据
-4. 集成logback日志：
+3. 集成**Redis**：可使用 `RedisTemplate` 对象来操作Redis中的数据
+4. 集成**logback日志**：
     1. 消息级别：`TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL`
-5. 集成Thymeleaf模板：
+5. 集成**Thymeleaf模板**：
     1. 添加 `spring-boot-starter-thymeleaf` 依赖
     2. .html文件中必须包含 `<html xmlns:th="http://www.thymeleaf.org">` ，用于识别thymeleaf标签
         1. `xmlns`：命名空间
@@ -277,7 +277,7 @@ sidebar_label: 0. 小结
         ```xml showLineNumbers
         <!-- additivity="false"：不继承rootLogger -->
         <logger name="priv.zj" level="info" additivity="false">
-        <appender-ref ref="consoleAppender"/>
+            <appender-ref ref="consoleAppender"/>
         </logger>
         ```
 3. **<font color="red">Log4j（Log for java）</font>**：Apache的开源项目
