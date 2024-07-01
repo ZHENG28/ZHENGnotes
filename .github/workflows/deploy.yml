@@ -1,0 +1,11 @@
+on:
+  push:
+    branches:
+      - master
+jobs:
+  docusaurus-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docusaurus Auto Deploy
+        run: |
+          GIT_USER=ZHENG28 yarn deploy

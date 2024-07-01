@@ -6,7 +6,7 @@ import rehypeKatex from "rehype-katex";
 export default {
   title: "Zheng's Notes",
   url: "https://github.com",
-  baseUrl: "/",
+  baseUrl: "/ZHENGnotes/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   presets: [
@@ -54,4 +54,8 @@ export default {
       crossorigin: "anonymous",
     },
   ],
+  organizationName: "ZHENG28",
+  projectName: "ZHENGnotes",
+  deploymentBranch: "docusaurus-pages",
+  trailingSlash: false,
 };
