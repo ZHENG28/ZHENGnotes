@@ -38,7 +38,14 @@ export default {
       prism: {
         theme: prismThemes.vsLight,
         darkTheme: prismThemes.vsDark,
-        additionalLanguages: ["bash", "sql", "java", "properties", "json"],
+        additionalLanguages: [
+          "bash",
+          "sql",
+          "java",
+          "properties",
+          "json",
+          "nginx",
+        ],
       },
     }),
   markdown: {

@@ -208,7 +208,7 @@ sidebar_label: 1. Linux
 2. 压缩（打包）/解压多个文件和目录：
     1. `zip package.zip file/dir_list`：将文件列表或目录列表压缩到压缩包中
     2. `unzip package.zip[ -d dir]`：将指定的.zip压缩包解压到当前目录/指定目录
-3. 压缩（打包）/解压多个文件和目录：`tar [option] xxx.tar.gz file/dir_list`
+3. 压缩（打包）/解压多个文件和目录：`tar [option] xxx.tar.gz -C file/dir_list`
     - `-zcvf`：打包或者压缩
     - `-zxvf`：解压
 

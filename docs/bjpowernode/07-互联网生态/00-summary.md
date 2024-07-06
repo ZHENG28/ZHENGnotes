@@ -28,7 +28,7 @@ sidebar_label: 0. 小结
     7. 普通搜索：`find [range] [standard] keyword`
     8. 压缩/解压`.gz`压缩包：`gzip\gunzip file`
     9. 压缩/解压`.zip`压缩包：`zip\unzip package.zip file/dir_list`
-    10. 压缩/解压`.tar.gz`压缩包：`tar -zcvf\-zxvf xxx.tar.gz file/dir_list`
+    10. 压缩/解压`.tar.gz`压缩包：`tar -zcvf\-zxvf xxx.tar.gz -C file/dir_list`
     11. 查看系统运行的进程：`ps [option]`
     12. 终止进程：`kill id PID`
     13. 管理系统中的服务：`systemctl [start|stop|restart|reload|status|enable] serve`
@@ -100,6 +100,26 @@ sidebar_label: 0. 小结
 ---
 
 ## 8 Nginx
+### 8.1 简介
+1. Nginx（engine x）：一个代理服务器，高性能、低消耗、并发处理能力强
+    1. **反向代理**（Reverse Proxy）：代理对象是服务端
+    2. **正向代理**（Reverse Proxy）：代理对象是客户端
+2. 常用命令：
+    1. 启动：`./nginx`
+    2. 关闭：`kill -QUIT master-pid`
+    3. 重启：`./nginx -s reload`
+3. 核心配置文件`nginx.conf`：
+    1. 基本配置
+    2. events配置
+    3. http配置
+
+### 8.2 应用
+1. 静态网站部署
+2. 负载均衡：将请求均匀分摊到集群中的多个服务器节点上执行
+    - 策略：轮询（默认）、权重 `weight` 、ip绑定 `ip_hash` 、最少连接 `least_conn`
+3. 静态代理：将所有静态资源的访问由访问tomcat改为访问nginx
+4. 动静分离：负载均衡和静态代理结合，即动态资源由web服务器完成，静态资源由nginx服务器完成
+5. 虚拟主机：把一台物理服务器划分成多个虚拟的服务器
 
 ---
 
