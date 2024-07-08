@@ -6,6 +6,5 @@ jobs:
   docusaurus-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Docusaurus Auto Deploy
-        run: |
-          GIT_USER=ZHENG28 yarn deploy
+      - run: |
+          cmd /C 'set "GIT_USER=ZHENG28" && yarn deploy'
