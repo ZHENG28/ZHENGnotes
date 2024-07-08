@@ -4,7 +4,7 @@ on:
       - main
 jobs:
   docusaurus-deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - run: |
-          GIT_USER=ZHENG28 yarn deploy
+          cmd /C 'set "GIT_USER=ZHENG28" && yarn deploy'
