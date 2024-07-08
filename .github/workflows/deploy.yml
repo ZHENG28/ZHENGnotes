@@ -8,8 +8,4 @@ jobs:
     steps:
       - run: |
           dir
-          cd ..
-          dir
-          cd ..
-          dir
           cmd /C 'set "GIT_USER=ZHENG28" && yarn deploy'
