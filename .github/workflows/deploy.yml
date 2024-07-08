@@ -6,6 +6,8 @@ jobs:
   docusaurus-deploy:
     runs-on: self-hosted
     steps:
-      - run: |
-          dir
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy
+        run: |
           cmd /C 'set "GIT_USER=ZHENG28" && yarn deploy'
