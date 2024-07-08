@@ -5,42 +5,32 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
-  build:
-    name: Build Docusaurus
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18.18.2
+          cache: npm
 
-      - name: Install dependencies
-        run: npm install --frozen-lockfile
-      - name: Build website
-        run: npm run build
-
-      - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: webfactory/ssh-agent@v0.5.0
         with:
-          path: build
+          ssh-private-key: ${{ secrets.DOCUSAURUS_DEPLOY_KEY }}
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        env:
+          USE_SSH: true
+        run: |
+          git config --global user.email "309115015@qq.com"
+          npm ci
+          yarn deploy
