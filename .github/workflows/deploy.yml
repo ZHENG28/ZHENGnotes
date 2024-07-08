@@ -4,10 +4,8 @@ on:
       - main
 jobs:
   docusaurus-deploy:
-    runs-on: windows-latest
+    runs-on: self-hosted
     steps:
       - run: |
           dir
-          dir /b
-          dir /b /s
           cmd /C 'set "GIT_USER=ZHENG28" && yarn deploy'
