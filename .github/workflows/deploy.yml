@@ -31,6 +31,7 @@ jobs:
         env:
           USE_SSH: true
         run: |
+          git config --global user.name "86183"
           git config --global user.email "309115015@qq.com"
           npm install
           yarn deploy
