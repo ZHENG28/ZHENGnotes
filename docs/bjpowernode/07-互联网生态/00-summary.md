@@ -26,9 +26,9 @@ sidebar_label: 0. 小结
     5. 查看文件的头10行：`head [option] file`
     6. 查看文件的后10行：`tail [option] file`
     7. 普通搜索：`find [range] [standard] keyword`
-    8. 压缩/解压`.gz`压缩包：`gzip\gunzip file`
-    9. 压缩/解压`.zip`压缩包：`zip\unzip package.zip file/dir_list`
-    10. 压缩/解压`.tar.gz`压缩包：`tar -zcvf\-zxvf xxx.tar.gz -C file/dir_list`
+    8. 压缩/解压`.gz`压缩包：`gzip/gunzip file`
+    9. 压缩/解压`.zip`压缩包：`zip/unzip package.zip file/dir_list`
+    10. 压缩/解压`.tar.gz`压缩包：`tar -zcvf/-zxvf xxx.tar.gz -C file/dir_list`
     11. 查看系统运行的进程：`ps [option]`
     12. 终止进程：`kill id PID`
     13. 管理系统中的服务：`systemctl [start|stop|restart|reload|status|enable] serve`
