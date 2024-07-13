@@ -128,6 +128,13 @@ sidebar_label: 0. 小结
 ---
 
 ## 10 MySQL优化
+### 10.1 概述
+1. 查询语句关键词：`FROM` &rarr; `WHERE` &rarr; `GROUP BY` &rarr; `HAVING` &rarr; `SELECT` &rarr; `ORDER BY` &rarr; `LIMIT`
+2. 索引：一组排好顺序的数据，主要使用 `B-TREE` 索引算法
+    1. 聚簇索引和非聚簇索引
+    2. 主键索引和唯一性索引
+    3. 单个索引和复合索引
+3. `EXPLAIN` 执行计划：`id`、`select_type`、`type`、`possible_keys`、`key`、`key_len`、`ref`、`rows`、`Extra`
 
 ---
 
