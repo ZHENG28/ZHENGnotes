@@ -136,6 +136,6 @@ sidebar_label: 10. MySQL优化
 2. 在索引字段上使用**运算** &rarr; 索引失效
 3. 索引字段上产生了**隐式类型转换** &rarr; 索引失效
 4. 索引字段上进行模糊查询：
-    1. 左模糊 &rarr; 索引<font color="red">生效</font>
-    2. **右**模糊 &rarr; 索引失效
+    1. 右模糊 &rarr; 索引<font color="red">生效</font>
+    2. **左**模糊 &rarr; 索引失效
     3. **左右**模糊 &rarr; 索引失效
