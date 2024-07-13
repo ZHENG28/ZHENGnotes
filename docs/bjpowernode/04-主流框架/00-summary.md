@@ -40,7 +40,7 @@ sidebar_label: 0. 小结
         <version>自定义版本号</version>
         ```
     - 依赖dependency：说明项目中要使用的各种资源，相当于java代码中的import
-        - 依赖范围scope：`compile`（默认值）、`test`、`provided`
+        - 依赖范围scope：`compile` （默认值）、 `test` 、 `provided`
 2. 约定的目录结构：maven项目的目录和文件的位置都是固定的
 
 ---
@@ -94,7 +94,7 @@ sidebar_label: 0. 小结
     - 事务的结束时机：
         1. 提交事务：业务方法执行成功且无异常抛出时，**自动**提交事务
         2. 回滚事务：业务方法抛出异常时
-            1. `RuntimeException`/`ERROR`：**自动**回滚事务
+            1. `RuntimeException` / `ERROR`：**自动**回滚事务
             2. 非运行时异常（受查异常，如IOException、SQLException）：**提交**事务
 
 ### 4.2 控制反转IoC（Inversion of Control）

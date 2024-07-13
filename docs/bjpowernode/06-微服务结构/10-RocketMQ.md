@@ -34,8 +34,8 @@ sidebar_label: 10. RocketMQ
 
 ### 1.3 安装步骤与命令（Linux）
 1. 解压文件
-2. 配置系统环境变量：在 `/etc/profile` 文件末尾添加 `export NAMESRV_ADDR=IP:9876` （默认端口）
-3. 配置RocketMQ相关参数： `runserver.sh` 、 `runbroker.sh` 、 `broker.conf` （配置nameserver和broker的ip地址）
+2. 配置系统环境变量：在 `/etc/profile` 文件末尾添加 `export NAMESRV_ADDR=ip:9876` （默认端口）
+3. 配置RocketMQ相关参数：`runserver.sh` 、 `runbroker.sh` 、 `broker.conf` （配置nameserver和broker的ip地址）
 4. 运行并输出日志：
     ```bash showLineNumbers
     nohup sh mqnamesrv > log-path &
@@ -54,10 +54,10 @@ sidebar_label: 10. RocketMQ
     1. 消费者组间：每组分发一份消息
     2. 消费者组内：支持**广播模式**和**负载均衡模式**（队列数量 &gt; 组内消费者数量）
 4. 消费者的消费模式：
-    1. 推 `push` ：服务端主动推送消息给客户端，适用于**上游消息生产量小或均速**的情况
+    1. 推`push`：服务端主动推送消息给客户端，适用于**上游消息生产量小或均速**的情况
         - 优点：及时性好
         - 缺点：若客户端未做流控，一旦服务端推送大量的消息到客户端时，会导致客户端消息堆积甚至崩溃
-    2. 拉 `pull` ：客户端主动到服务端拉取消息，适用于**消息生产量极大**的情况
+    2. 拉`pull`：客户端主动到服务端拉取消息，适用于**消息生产量极大**的情况
         - 优点：客户端可依据自身消费能力进行消费
         - 缺点：若客户端拉取频繁，容易导致服务端和客户端的压力；若客户端拉取间隔长，容易造成消费不及时
 5. 生产者的消息发送方式：
@@ -73,7 +73,7 @@ sidebar_label: 10. RocketMQ
     3. 单向：适用于不关心发送结果的情况
         - 吞吐量很大，但存在消息丢失的风险
     4. 延迟：消息发送至mq后，间隔固定时间才会被监听消费
-        - 延迟时间间隔： `1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h`
+        - 延迟时间间隔：`1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h`
     5. 批量：一次性发送一组消息 &rarr; 该组消息会被当作一个消息被消费
     6. 顺序：按照消息的发送顺序来消费（FIFO），控制发送的顺序消息依次发送到同一个队列中，消费时也只能从这个队列中依次拉取，即保证了消息的顺序
         - 分区有序：多个队列参与发送和消费
@@ -115,11 +115,11 @@ sidebar_label: 10. RocketMQ
     2. 将mq的刷盘机制设置为**同步刷盘**
     3. 使用集群模式，将消息持久化在不同硬盘上
     4. 开启mq的消息追踪机制：
-        1. `broker.conf` 文件中开启消息追踪： `traceTopicEnable=true`
-        2. 生产者集成的springboot项目配置文件中开启消息轨迹： `enable-msg-trace: true`
-        3. 消费者开启消息轨迹： `@RocketMQMessageListener(enableMsgTrace = true)`
+        1. `broker.conf` 文件中开启消息追踪：`traceTopicEnable=true`
+        2. 生产者集成的springboot项目配置文件中开启消息轨迹：`enable-msg-trace: true`
+        3. 消费者开启消息轨迹：`@RocketMQMessageListener(enableMsgTrace = true)`
 4. 安全控制：
-    1. `broker.conf` 文件中开启acl的控制： `aclEnable=true`
+    1. `broker.conf` 文件中开启acl的控制：`aclEnable=true`
     2. `plain_acl.yml`文件中配置账号密码：`accessKey` 和 `secretKey`
     3. 修改控制面板的配置文件：`rocketmq.config.accessKey/secretKey`
 

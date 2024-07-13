@@ -48,13 +48,13 @@ sidebar_label: 0. 小结
 
 ### 1.2 集成
 1. 集成**MyBatis**：
-    1. Mapper接口类上加 `@Mapper` ：会关联 `.xml` 映射文件和接口的关系
-    2. Application启动类上加 `@MapperScan(basePackages="mapper.packagename")` ：扫描包下有 `@Mapper` 注解的类
-    3. 访问数据库的方法上加 `@Transactional` ：开启事务
-    4. Application启动类上加 `@EnableTransactionManagement` ：支持事务（SpringBoot2.x以后的版本已自动支持）
+    1. Mapper接口类上加`@Mapper`：会关联 `.xml` 映射文件和接口的关系
+    2. Application启动类上加 `@MapperScan(basePackages="mapper.packagename")`：扫描包下有 `@Mapper` 注解的类
+    3. 访问数据库的方法上加`@Transactional`：开启事务
+    4. Application启动类上加`@EnableTransactionManagement`：支持事务（SpringBoot2.x以后的版本已自动支持）
 2. 集成**SpringMVC**：
-    1. 控制层类上加 `@RestController` ：相当于控制层类上和方法上加 `@Controller`
-    2. 控制层类上加 `@ResponseBody` ：当前控制层类下所有方法的返回值均为JSON对象
+    1. 控制层类上加`@RestController`：相当于控制层类上和方法上加 `@Controller`
+    2. 控制层类上加`@ResponseBody`：当前控制层类下所有方法的返回值均为JSON对象
     3. REST（Representational State Transfer）Ful架构：一种互联网软件架构设计的风格
 3. 集成**Redis**：可使用 `RedisTemplate` 对象来操作Redis中的数据
 4. 集成**logback日志**：
@@ -116,7 +116,9 @@ sidebar_label: 0. 小结
 ## 5 Redis7
 ### 5.1 基础知识
 1. 远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的**NoSQL数据库**
-2. 服务端启动：`redis-server`；客户端启动：`redis-cli`
+2. 启动命令：
+    - 服务端：`redis-server`
+    - 客户端启动：`redis-cli`
 3. 查看数据库中的key：`keys pattern`
 4. 5种数据结构：
     1. 字符串类型string：`单key:单value`
@@ -260,7 +262,7 @@ sidebar_label: 0. 小结
         4. 消息表达式`#{}`
         5. 标准表达式
     - 属性：`th:property-name`
-2. 工具类对象：`#execInfo`、`#uris`、`#dates`、`#numbers`、`#strings`等
+2. 工具类对象：`#execInfo` 、 `#uris` 、 `#dates` 、 `#numbers` 、 `#strings` 等
     - 使用：`${#strings.toUpperCase(str)}`
 3. 内部对象：
     1. `#request`：`javax.servlet.http.HttpServletRequest`
@@ -287,23 +289,23 @@ sidebar_label: 0. 小结
 ### 17.2 框架分类
 1. **<font color="red">JUL（Java Util Logging）</font>**：java原生日志框架
     - 结构：![JUL Structure](./img/0.1.jul_structure.jpg)
-        - 记录器 `Logger` ：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
-        - 处理器 `Handler` ：一个 `Logger` 关联一个/一组 `Handler` ，由 `Handler` 负责记录日志，并具体实现日志的输出位置
-        - 过滤器 `Filter` ：自定义哪些信息需要被记录，哪些信息要忽略
-        - 格式化组件 `Formatter` ：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式
-        - 输出级别 `Level` ：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志
+        - 记录器`Logger`：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
+        - 处理器`Handler`：一个 `Logger` 关联一个/一组 `Handler` ，由 `Handler` 负责记录日志，并具体实现日志的输出位置
+        - 过滤器`Filter`：自定义哪些信息需要被记录，哪些信息要忽略
+        - 格式化组件`Formatter`：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式
+        - 输出级别`Level`：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志
             - `ALL` &lt; `FINEST` &lt; `FINER` &lt; `FINE` &lt; `CONFIG` &lt; `INFO` &lt; `WARNING` &lt; `SEVERE` &lt; `OFF`
     - 父子关系：通过树状结构储存；对**父**做的设置，同样能作用于**子**
 2. **<font color="red">Logback</font>**：开源日志框架
     - 依赖：
-        - `logback-core` ：基础核心模块
-        - `logback-classic` ：（包含 `logback-core` ） `Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
-        - `logback-access` ：与Servlet容器集成，可通过http来访问日志的功能
+        - `logback-core`：基础核心模块
+        - `logback-classic`：（包含 `logback-core` ） `Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
+        - `logback-access`：与Servlet容器集成，可通过http来访问日志的功能
     - 组件：
-        - 日志记录器 `Logger` ：存放日志对象，可定义日志类型、级别
-            - 日志级别： `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR`
-        - `Appender` ：指定日志的输出位置（如控制台、文件、数据库等）
-        - `Layout` ：格式化日志的输出，将事件转换成字符串；被封装在 `encoder` 中
+        - 日志记录器`Logger`：存放日志对象，可定义日志类型、级别
+            - 日志级别：`TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR`
+        - `Appender`：指定日志的输出位置（如控制台、文件、数据库等）
+        - `Layout`：格式化日志的输出，将事件转换成字符串；被封装在 `encoder` 中
     - 过滤器：对日志进行更细粒度的打印
     - 异步日志：为日志操作单独分配一个线程 &rarr; 解决记录日志时会阻塞系统本身功能的执行的问题
     - 配置自定义的logger：
@@ -314,43 +316,43 @@ sidebar_label: 0. 小结
         </logger>
         ```
 3. **<font color="red">Log4j（Log for java）</font>**：Apache的开源项目
-    - 日志记录器 `Loggers` ：控制日志是否输出以及输出级别
+    - 日志记录器`Loggers`：控制日志是否输出以及输出级别
         - Logger的命名有继承机制，且所有的logger都直接或间接继承**根logger**
-        - 日志级别： `ALL` &lt; `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL` &lt; `OFF`
-    - 输出控制器 `Appenders` ：指定日志的输出位置
-        - `ConsoleAppender` ：将日志输出到控制台
-        - `FileAppender` ：将日志输出到文件中
-        - `DailyRollingFileAppender` ：将日志输出到一个日志文件中，且支持按照**天数**输出文件
-        - `RollingFileAppender` ：将日志信息输出到一个日志文件中，且支持按照**文件大小**输出文件
-        - `JDBCAppender` ：以流的形式，把日志信息保存到数据库中
-    - 日志格式化器 `Layout` ：控制日志的输出格式
-        - `SimpleLayout` ：简单的格式化
-        - `HTMLLayout` ：格式化为HTML表格形式
-        - `PatternLayout` ：最强大的格式化组件，支持自定义格式
+        - 日志级别：`ALL` &lt; `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL` &lt; `OFF`
+    - 输出控制器`Appenders`：指定日志的输出位置
+        - `ConsoleAppender`：将日志输出到控制台
+        - `FileAppender`：将日志输出到文件中
+        - `DailyRollingFileAppender`：将日志输出到一个日志文件中，且支持按照**天数**输出文件
+        - `RollingFileAppender`：将日志信息输出到一个日志文件中，且支持按照**文件大小**输出文件
+        - `JDBCAppender`：以流的形式，把日志信息保存到数据库中
+    - 日志格式化器`Layout`：控制日志的输出格式
+        - `SimpleLayout`：简单的格式化
+        - `HTMLLayout`：格式化为HTML表格形式
+        - `PatternLayout`：最强大的格式化组件，支持自定义格式
 4. **<font color="red">Log4j2</font>**：是对 `Log4j` 的改进，以及融合了 `Logback`
     - 特征：
-        - 性能提升： `Log4j2` 包含基于 `LMAX Disruptor` 库的下一代异步记录器
+        - 性能提升：`Log4j2` 包含基于 `LMAX Disruptor` 库的下一代异步记录器
         - 自动重新加载配置
         - 高级过滤：支持基于Log事件中的上下文数据、标记、正则表达式和其他组件进行过滤
         - 插件架构：  `Log4j2` 使用插件模式配置组件，即无需编写代码来创建和配置Appender、Layout、PatternConverter等
         - 无垃圾机制：稳态日志记录期间，在独立应用程序中是无垃圾，在Web应用程序中是低垃圾
     - 异步日志：
-        - `AsyncAppender` ：通过引用别的Appender来实现，即 `<AppenderRef ref="consoleAppender"/>`
+        - `AsyncAppender`：通过引用别的Appender来实现，即 `<AppenderRef ref="consoleAppender"/>`
             - 在多线程的环境下，阻塞队列容易受到锁征用的影响 &rarr; 应该考虑使用无锁的异步记录器，即 `AsyncLogger`
-        - `AsyncLogger` ：使得调用 `Logger.log` 返回更快
+        - `AsyncLogger`：使得调用 `Logger.log` 返回更快
             - 全局异步：所有日志都异步的记录
             - 混合异步：在应用中混合使用同步日志和异步日志
-    - 日志级别： `ALL` &lt; `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL` &lt; `OFF`
+    - 日志级别：`ALL` &lt; `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL` &lt; `OFF`
 
 ### 17.3 门面分类
 1. **<font color="red">JCL（Jakarta Commons Logging）</font>**：java原生日志门面
     - 本身不具有记录日志的功能，但会提供通用的接口
     - 优先使用导入的第三方日志框架（如 `Log4j` 、 `Logback` 等）；若没有导入，则默认使用 `JUL`
     - 结构：![JCL Structure](./img/0.2.jcl_structure.jpg)
-        - `Jdk13LumberjackLogger` ：旧版JUL
-        - `Jdk14Logger` ：目前使用的JUL
-        - `Log4JLogger` ：集成使用的Log4j
-        - `SimpleLog` ：JCL自带的实现类
+        - `Jdk13LumberjackLogger`：旧版JUL
+        - `Jdk14Logger`：目前使用的JUL
+        - `Log4JLogger`：集成使用的Log4j
+        - `SimpleLog`：JCL自带的实现类
 2. **<font color="red">SLF4j（Simple Logging Facade For Java）</font>**：绑定、桥接日志框架
     ![SLF4j Bound](./img/0.3.slf4j_bound.jpg)
     - 桥接技术：某些日志框架依赖 `SLF4j` 之外的日志API &rarr; `SLF4j` 附带桥接模块

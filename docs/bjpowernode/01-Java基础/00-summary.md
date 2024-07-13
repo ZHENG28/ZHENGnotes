@@ -52,11 +52,11 @@ sidebar_label: 0. 小结
         - `HashTable`：底层数据结构为哈希表，线程安全
 6. IO流：
     - 流的方向：
-        - 输入`Input`/读`Read`：硬盘 &rarr; 内存
-        - 输出`Output`/写`Write`：内存 &rarr; 硬盘
+        - 输入`Input` / 读`Read`：硬盘 &rarr; 内存
+        - 输出`Output` / 写`Write`：内存 &rarr; 硬盘
     - 读取数据的方式：
-        - 字节流`InputStream/OutputStream`：一次读取一个字节
-        - 字符流`Reader/Writer`：一次读取一个字符
+        - 字节流`InputStream` / `OutputStream`：一次读取一个字节
+        - 字符流`Reader` / `Writer`：一次读取一个字符
 7. java中的线程：调度、生产者和消费者模式、安全问题
     1. 用户线程：一般编写在程序中的（如主线程）
     2. 守护线程/后台线程：作死循环；所有的用户线程全部结束后，守护线程就会自动结束（如垃圾回收线程）

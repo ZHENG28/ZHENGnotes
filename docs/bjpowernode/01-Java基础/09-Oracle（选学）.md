@@ -102,22 +102,22 @@ sidebar_label: 9. Oracle
         SELECT e.empno, e.ename, deptno, d.dname FROM emp e
         JOIN dept d USING(deptno);
         ```
-    4. 外连接 `OUTER JOIN … ON`：使用on指定的查询条件
+    4. 外连接`OUTER JOIN … ON`：使用on指定的查询条件
         ```sql
         SELECT e.*, d.* FROM emp e
         JOIN dept d ON (e.deptno = d.deptno);
         ```
-        - 左外连接 `LEFT OUTER JOIN … ON`：可以把左边表不满足等值条件的数据查询出来
+        - 左外连接`LEFT OUTER JOIN … ON`：可以把左边表不满足等值条件的数据查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             LEFT OUTER JOIN dept d ON (e.deptno = d.deptno);
             ```
-        - 右外连接 `RIGHT OUTER JOIN … ON`：可以把右边表不满足等值条件的数据查询出来
+        - 右外连接`RIGHT OUTER JOIN … ON`：可以把右边表不满足等值条件的数据查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             RIGHT OUTER JOIN dept d ON (e.deptno = d.deptno);
             ```
-        - 全连接 `FULL OUTER JOIN … ON`：可以把左右两边表不满足等值条件的数据都查询出来
+        - 全连接`FULL OUTER JOIN … ON`：可以把左右两边表不满足等值条件的数据都查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             FULL OUTER JOIN dept d ON (e.deptno = d.deptno);

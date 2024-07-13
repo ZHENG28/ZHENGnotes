@@ -10,12 +10,9 @@ sidebar_position: 1
 
 ### 1.2 换行
 1. 行尾加2个空格 + 回车 = 换行
-   1. 一个空格：  
-      `&nbsp;`：No-Break Space，按下space键产生的空格
-   2. 两个空格：  
-      `&ensp;`：En Space，em的一半
-   3. 四个空格：  
-      `&emsp;`：Em Space，一个中文字的宽度
+   1. 一个空格`&nbsp;`：No-Break Space，按下space键产生的空格
+   2. 两个空格`&ensp;`：En Space，em的一半
+   3. 四个空格`&emsp;`：Em Space，一个中文字的宽度
 
 ### 1.3 强调
 1. _斜体效果Italic_：`*斜体1* 或 _斜体2_`

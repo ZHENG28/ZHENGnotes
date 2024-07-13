@@ -139,7 +139,7 @@ sidebar_label: 2. SpringBoot3
             - `paramType`：参数位置
                 - `header`：`@RequestHeader`
                 - `query`：`@RequestParam`
-                - `path`：`@PathVariable` （用于restful接口）
+                - `path`：`@PathVariable`（用于restful接口）
                 - `body`
                 - `form`
             - `name`：参数名称
