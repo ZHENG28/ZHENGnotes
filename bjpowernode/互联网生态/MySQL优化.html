@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-bjpowernode/互联网生态/MySQL优化" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">MySQL优化 | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/互联网生态/MySQL优化"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="MySQL优化 | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1 简介"><meta data-rh="true" property="og:description" content="1 简介"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/互联网生态/MySQL优化"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/互联网生态/MySQL优化" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/互联网生态/MySQL优化" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.e0f0ba1d.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/main.4e7e52ae.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Expand sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Collapse sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/互联网生态/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/互联网生态/Linux">1. Linux</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/互联网生态/Nginx">8. Nginx</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化">10. MySQL优化</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL索引优化">11. MySQL索引优化</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/互联网生态/MQ解决重复消费问题">14. MQ解决重复消费问题</a></li></ul></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/7-互联网生态"><span itemprop="name">7. 互联网生态</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">10. MySQL优化</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>MySQL优化</h1>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-简介">1 简介<a class="hash-link" aria-label="Direct link to 1 简介" title="Direct link to 1 简介" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#1-简介">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-概述">1.1 概述<a class="hash-link" aria-label="Direct link to 1.1 概述" title="Direct link to 1.1 概述" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#11-概述">​</a></h3>
+<ol>
+<li>查询慢的原因：<!-- -->
+<ol>
+<li>有规律地慢：用户访问量激增 → MySQL集群</li>
+<li>无规律地慢：表中数据量变多 → 优化查询语句</li>
+</ol>
+</li>
+<li>判断查询语句是否需要优化的工具：<!-- -->
+<ol>
+<li>慢查询记录：查询时间长短</li>
+<li><code>explain</code> 执行计划：索引是否生效</li>
+<li>相关日志文件：用户查询习惯等</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-查询语句关键词按照执行优先级由高到低排序">1.2 查询语句关键词（按照执行优先级由高到低排序）<a class="hash-link" aria-label="Direct link to 1.2 查询语句关键词（按照执行优先级由高到低排序）" title="Direct link to 1.2 查询语句关键词（按照执行优先级由高到低排序）" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#12-查询语句关键词按照执行优先级由高到低排序">​</a></h3>
+<ol>
+<li><code>FROM</code>：将硬盘上的表文件加载到内存中，生成一张 <strong><font color="red">临时表</font></strong> ；定位 内存中的临时表<!-- -->
+<ol>
+<li>查询语句中，第一个执行的永远是 <code>FROM</code> 命令</li>
+<li>由于定位的是一张临时表，因此必须手动指定表名</li>
+</ol>
+</li>
+<li><code>WHERE</code>：<strong>循环遍历</strong>临时表中的每一行记录，将满足条件的记录保存到一张 <strong><font color="red">新</font>临时表</strong> 中<!-- -->
+<ol>
+<li>由于 <code>WHERE</code> 命令每次操作的都是一行记录，因此无法使用聚合函数作为判断条件</li>
+</ol>
+</li>
+<li><code>GROUP BY</code>：对临时表中的记录进行排序，将具有相同特征的记录保存到一张 <strong><font color="red">新</font>临时表</strong> 中<!-- -->
+<ol>
+<li>多字段分组：字段执行的先后顺序对查询结果没有影响；从第二个字段开始，每次操作的临时表都是对前一个字段分组后生成的 <strong><font color="red">新</font>临时表</strong></li>
+<li>若 <code>SELECT</code> 命令操作的临时表是由 <code>GROUP BY</code> 命令生成的，则 <code>SELECT</code> 命令会遍历由 <code>GROUP BY</code> 命令生成的每一张临时表，读取指定字段中的第一行记录内容</li>
+</ol>
+</li>
+<li><code>HAVING</code>：将 <code>GROUP BY</code> 生成的临时表中不满足条件的记录删除<!-- -->
+<ol>
+<li><code>HAVING</code> 命令只能出现在 <code>GROUP BY</code> 命令后</li>
+<li><code>HAVING</code> 命令每次操作的都是一张临时表，因此判断条件应该来自于聚合函数</li>
+</ol>
+</li>
+<li><code>SELECT</code>：<!-- -->
+<ul>
+<li>由 <code>FROM</code> 或 <code>WHERE</code> 命令生成的临时表：将指定字段中的所有内容都读取出来，组成一张 <strong><font color="red">新</font>临时表</strong></li>
+<li>由 <code>GROUP BY</code> 和 <code>HAVING</code> 命令生成的临时表：遍历生成的每一张临时表，并只读取指定字段中的第一行记录内容，生成一张 <strong><font color="red">新</font>临时表</strong></li>
+</ul>
+</li>
+<li><code>ORDER BY</code>：对临时表中的记录进行排序，将排序后的内容组成一张 <strong><font color="red">新</font>临时表</strong>
+<ol>
+<li>使用字段名排序时，字段名可以不出现在临时表中</li>
+<li>使用字段顺序排序时，字段必须显式出现在临时表中</li>
+</ol>
+</li>
+<li><code>LIMIT</code>：对临时表中的记录行进行 <strong>截取</strong></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-查询语句的特征与优化项分析">1.3 查询语句的特征与优化项分析<a class="hash-link" aria-label="Direct link to 1.3 查询语句的特征与优化项分析" title="Direct link to 1.3 查询语句的特征与优化项分析" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#13-查询语句的特征与优化项分析">​</a></h3>
+<ol>
+<li>特征：<!-- -->
+<ol>
+<li>除了 <code>HAVING</code> 命令外，其余6个命令执行后均会生成<strong>新</strong>临时表</li>
+<li>除了 <code>FROM</code> 命令外，其余6个命令操作的临时表均是由上一个命令执行后生成的临时表</li>
+<li>当前命令执行结束后，mysql会自动将上一个命令生成的临时表销毁</li>
+</ol>
+</li>
+<li>优化项：（按照执行速度由慢到快排序）<!-- -->
+<ol>
+<li><code>GROUP BY</code>：先排序，再分组</li>
+<li><code>ORDER BY</code>：先排序，再生成一张临时表</li>
+<li><code>WHERE</code>：遍历表中的所有记录（数据量大时，速度非常慢）</li>
+<li><code>LIMIT</code>：指定的行数过大时，会导致速度慢</li>
+<li>多表查询：未指定表的加载顺序时，也会导致速度慢</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-索引">2 索引<a class="hash-link" aria-label="Direct link to 2 索引" title="Direct link to 2 索引" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#2-索引">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="21-概述">2.1 概述<a class="hash-link" aria-label="Direct link to 2.1 概述" title="Direct link to 2.1 概述" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#21-概述">​</a></h3>
+<ol>
+<li>索引，本质是一组排好顺序的数据<!-- -->
+<ol>
+<li>避免数据在查询时再次排序 → 速度慢</li>
+<li>避免在定位记录行时扫描全表（遍历查找） → 速度慢</li>
+</ol>
+</li>
+<li>索引文件位置：<!-- -->
+<ol>
+<li><code>INNODB</code> 存储引擎：存在 <code>.frm</code> 文件中</li>
+<li><code>MYISAM</code> 存储引擎：存在 <code>.myi</code> 文件中</li>
+</ol>
+</li>
+<li>基本操作命令：<!-- -->
+<div class="language-sql codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sql codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token comment" style="color:rgb(0, 128, 0)"># 创建索引</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">CREATE</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">INDEX</span><span class="token plain"> index_name </span><span class="token keyword" style="color:rgb(0, 0, 255)">ON</span><span class="token plain"> table_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">field_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 查看表中的索引</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">SHOW</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">INDEX</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">FROM</span><span class="token plain"> table_name</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 删除索引</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">DROP</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">INDEX</span><span class="token plain"> index_name </span><span class="token keyword" style="color:rgb(0, 0, 255)">ON</span><span class="token plain"> table_name</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="22-分类">2.2 分类<a class="hash-link" aria-label="Direct link to 2.2 分类" title="Direct link to 2.2 分类" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#22-分类">​</a></h3>
+<ol>
+<li>聚簇索引和非聚簇索引：<!-- -->
+<ol>
+<li><strong>聚簇索引</strong>：自动创建在主键字段 → （无主键）唯一约束字段 → （无唯一约束）随机字段<!-- -->
+<ul>
+<li><strong><font color="red">数据节点 = 当前数据所在行数 + 当前数据行内容</font></strong>：查询时，可直接定位到数据节点上，读取数据内容，无需从硬盘中读取 → 执行速度<strong>快</strong></li>
+<li>只能来自于采用了 <code>INNODB</code> 存储引擎的表</li>
+<li>在采用 <code>INNODB</code> 存储引擎的表文件中，必然存在也只有一个聚簇索引</li>
+<li>表中其他索引都是非聚簇索引</li>
+</ul>
+</li>
+<li><strong>非聚簇索引</strong>：由开发者自行创建<!-- -->
+<ul>
+<li><strong><font color="red">数据节点 = 当前数据所在行数</font></strong>：查询时，由于数据节点中只有数据所在行数，因此需要从硬盘中读取数据内容 → 执行速度<strong>慢</strong></li>
+<li>在采用 <code>MYISAM</code> 存储引擎的表文件中，所有索引都是非聚簇索引</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>主键索引和唯一性索引：执行效率上来说，主键索引 &gt; 唯一性索引 &gt; 普通索引<!-- -->
+<ol>
+<li><strong>主键索引</strong>：主键约束生成的索引</li>
+<li><strong>唯一性索引</strong>：唯一约束生成的索引（不包含 <code>NULL</code> ）</li>
+<li><strong>普通索引</strong>：字段上没有任何约束生成的索引</li>
+</ol>
+</li>
+<li>单个索引和复合索引：<!-- -->
+<div class="language-sql codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-sql codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token comment" style="color:rgb(0, 128, 0)"># 单个索引</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">CREATE</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">INDEX</span><span class="token plain"> index_name </span><span class="token keyword" style="color:rgb(0, 0, 255)">ON</span><span class="token plain"> table_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">field_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 复合索引</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">CREATE</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">INDEX</span><span class="token plain"> index_name </span><span class="token keyword" style="color:rgb(0, 0, 255)">ON</span><span class="token plain"> table_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">field1_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> field2_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="23-索引算法">2.3 索引算法<a class="hash-link" aria-label="Direct link to 2.3 索引算法" title="Direct link to 2.3 索引算法" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#23-索引算法">​</a></h3>
+<ol>
+<li><strong>二分查找算法</strong>：可避免对整体数据进行扫描，每次只需扫描一半的数据；但数据量过大时，该算法的效率较低<!-- -->
+<!-- -->
+</li>
+<li><strong>平衡二叉树算法</strong>：二分查找算法的升级版；但索引的字  段数据发生变化时会重新创建平衡二叉树，存在多个查询条件时会多次遍历二叉树和多次I/O读取内容<!-- -->
+<!-- -->
+</li>
+<li><strong><font color="red">B-TREE算法</font></strong>：平衡二叉树算法的升级版，目前各种数据库主要使用的索引算法<!-- -->
+<!-- -->
+<ul>
+<li>使用区间数据来代替具体数据 → 降低维护难度</li>
+<li>在连续叶子节点之间使用<strong>指针</strong>来连接 → 降低遍历次数</li>
+</ul>
+</li>
+<li><strong>哈希算法</strong>：只有 <code>MEMORY</code> 存储引擎才支持，基于哈希表实现<!-- -->
+<ul>
+<li>索引 = 哈希码 <code>hash code</code> + 指向数据行的指针</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-explain-执行计划">3 <code>EXPLAIN</code> 执行计划<a class="hash-link" aria-label="Direct link to 3-explain-执行计划" title="Direct link to 3-explain-执行计划" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#3-explain-执行计划">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="31-基本结构">3.1 基本结构<a class="hash-link" aria-label="Direct link to 3.1 基本结构" title="Direct link to 3.1 基本结构" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#31-基本结构">​</a></h3>
+<p><img decoding="async" loading="lazy" alt="Explain Structure" src="/ZHENGnotes/assets/images/10.1.explain_structure-3047074f5c220e57c4a627db046b276a.jpg" width="1339" height="92" class="img_ev3q"></p>
+<ol>
+<li><code>id</code>：查看表的加载顺序<!-- -->
+<ol>
+<li><code>id</code> 相同：自上而下地顺序加载表文件</li>
+<li><code>id</code> 不同：<code>id</code> 从大到小地加载表文件</li>
+</ol>
+</li>
+<li><code>select_type</code>：查看sql的查询类型<!-- -->
+<ol>
+<li><code>SIMPLE</code>：简单的查询语句，不包含子查询、联合查询、连接查询等</li>
+<li><code>PRIMARY</code>：包含子查询的查询语句，或联合查询语句中的第一个查询语句</li>
+<li><code>DEPENDENT SUBQUERY</code>：子查询语句，且有执行条件依赖于外部查询语句</li>
+<li><code>SUBQUERY</code>：子查询语句</li>
+</ol>
+</li>
+<li><code>type</code>：查看评价级别（按照执行效率从高到低排序） → 优化时，级别应该在 <code>RANGE</code> 和 <code>REF</code> 级别之间<!-- -->
+<ol>
+<li><code>SYSTEM</code>：操作表只有一行数据，且数据内容固定不变</li>
+<li><code>CONST</code>：使用<strong>主键</strong>索引与<strong>直等</strong>方式定位数据行</li>
+<li><code>REF</code>：使用索引与<strong>直等</strong>方式定位数据行</li>
+<li><code>RANGE</code>：使用索引与<strong>区间</strong>方式定位数据行</li>
+<li><code>INDEX</code>：定位数据行时，全表扫描；但在使用 <code>SELECT</code> 命令时，根据索引读取数据</li>
+<li><code>ALL</code>：<strong>全表</strong>扫描，没有任何索引可以使用</li>
+</ol>
+</li>
+<li><code>possible_keys</code>：查看本次查询可能使用到的索引</li>
+<li><code>key</code>：查看本次查询实际使用到的索引</li>
+<li><code>key_len</code>：查看实际使用的索引的长度，越长查询精度越高<!-- -->
+<ul>
+<li>不同数据类型所占的字节数也不同</li>
+</ul>
+</li>
+<li><code>ref</code>：查看实际使用的索引在查找时用到的是常量 <code>CONST</code> 还是列名 <code>FIELD_NAME</code></li>
+<li><code>rows</code>：查看优化器读取的行数</li>
+<li><code>Extra</code>：其他额外信息</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="32-使用规则">3.2 使用规则<a class="hash-link" aria-label="Direct link to 3.2 使用规则" title="Direct link to 3.2 使用规则" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#32-使用规则">​</a></h3>
+<ol>
+<li>在索引字段上使用<strong>函数</strong> → 索引失效</li>
+<li>在索引字段上使用<strong>运算</strong> → 索引失效</li>
+<li>索引字段上产生了<strong>隐式 类型转换</strong> → 索引失效</li>
+<li>索引字段上进行模糊查询：<!-- -->
+<ol>
+<li>右模糊 → 索引<font color="red">生效</font></li>
+<li><strong>左</strong>模糊 → 索引失效</li>
+<li><strong>左右</strong>模糊 → 索引失效</li>
+</ol>
+</li>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/bjpowernode/互联网生态/Nginx"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">8. Nginx</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL索引优化"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">11. MySQL索引优化</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#1-简介">1 简介</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#11-概述">1.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#12-查询语句关键词按照执行优先级由高到低排序">1.2 查询语句关键词（按照执行优先级由高到低排序）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#13-查询语句的特征与优化项分析">1.3 查询语句的特征与优化项分析</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#2-索引">2 索引</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#21-概述">2.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#22-分类">2.2 分类</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#23-索引算法">2.3 索引算法</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#3-explain-执行计划">3 <code>EXPLAIN</code> 执行计划</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#31-基本结构">3.1 基本结构</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/互联网生态/MySQL优化#32-使用规则">3.2 使用规则</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
