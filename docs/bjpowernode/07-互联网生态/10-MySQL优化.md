@@ -57,9 +57,14 @@ sidebar_label: 10. MySQL优化
     1. `INNODB` 存储引擎：存在 `.frm` 文件中
     2. `MYISAM` 存储引擎：存在 `.myi` 文件中
 3. 基本操作命令：
-    1. `CREATE INDEX index_name ON table_name(field_name)`：创建索引
-    2. `SHOW INDEX FROM table_name`：查看表中的索引
-    3. `DROP INDEX index_name ON table_name`：删除索引
+    ```sql showLineNumbers
+    # 创建索引
+    CREATE INDEX index_name ON table_name(field_name)
+    # 查看表中的索引
+    SHOW INDEX FROM table_name
+    # 删除索引
+    DROP INDEX index_name ON table_name
+    ```
 
 ### 2.2 分类
 1. 聚簇索引和非聚簇索引：
@@ -76,8 +81,13 @@ sidebar_label: 10. MySQL优化
     2. **唯一性索引**：唯一约束生成的索引（不包含 `NULL` ）
     3. **普通索引**：字段上没有任何约束生成的索引
 3. 单个索引和复合索引：
-    1. **单个索引**：`CREATE INDEX index_name ON table_name(field_name)`
-    2. **复合索引**：`CREATE INDEX index_name ON table_name(field1_name, field2_name, ...)`
+    ```sql showLineNumbers
+    # 单个索引
+    CREATE INDEX index_name ON table_name(field_name)
+
+    # 复合索引
+    CREATE INDEX index_name ON table_name(field1_name, field2_name, ...)
+    ```
 
 ### 2.3 索引算法
 1. **二分查找算法**：可避免对整体数据进行扫描，每次只需扫描一半的数据；但数据量过大时，该算法的效率较低

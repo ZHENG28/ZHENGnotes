@@ -112,19 +112,39 @@ sidebar_label: 1. Linux
 
 ### 5.3 组管理
 1. 组简介：组相当于角色的概念，可将具有共性的用户进行统一管理；每个用户至少属于一个组，也可属于多个组
-2. 添加组：`groupadd group`
-3. 删除组：`groupdel group`
-4. 添加用户时指定组：`useradd [-g group] username`
-5. 将用户添加到组：`gpasswd -a username group`
-6. 将用户从组中移除：`gpasswd -d username group`
+2. 命令：
+    ```bash showLineNumbers
+    # 添加组
+    groupadd group
+
+    # 删除组
+    groupdel group
+
+    # 添加用户时指定组
+    useradd [-g group] username
+
+    # 将用户添加到组
+    gpasswd -a username group
+
+    # 将用户从组中移除
+    gpasswd -d username group
+    ```
 
 ### 5.4 系统操作
-1. 关机：
-    1. 立即关机：`shutdown now`
-    2. 定时关机：`shutdown -h xxx`
-    3. 立即重启：`shutdown -r now`
-2. 立即重启：`reboot`
-3. 同步数据库：`sync`
+```bash showLineNumbers
+# 立即关机
+shutdown now
+# 定时关机
+shutdown -h xxx
+# 立即重启
+shutdown -r now
+
+# 立即重启
+reboot
+
+# 同步数据库
+sync
+```
 
 ---
 
@@ -138,12 +158,59 @@ sidebar_label: 1. Linux
 2. 用来查看命名的内置帮助信息：`help 命令`
 
 ### 6.2 文件目录指令
-1. 查看当前所在目录：`pwd`
-2. 查看指定目录下所有的子目录和文件列表：`ls [option] [dir]`
-    - `-l`：以列表形式显示
-    - `-a`：显示指定目录下所有的子目录和文件（包括虚拟的目录）
-    - `-al`：以列表形式显示指定目录下所有的子目录和文件（包括虚拟的目录）
-3. 切换目录：`cd dir`
+```bash showLineNumbers
+# 查看当前所在目录
+pwd
+
+# 查看指定目录下所有的子目录和文件列表（-l：以列表形式显示；-a：显示虚拟目录）
+ls [option] [dir]
+
+# 切换目录
+cd dir
+
+# 创建目录（-p：一次创建多级目录）
+mkdir [option] dir
+
+# 删除一个空目录
+rmdir dir
+
+# 创建一个或者多个空文件
+touch file1[ file2 ...]
+
+# 复制文件或者目录（-r：递归）
+cp [option] source dest
+
+# 删除文件或者目录（-f：强制；-r：递归）
+rm [option] file/dir
+
+# 移动目录或者文件（两者均为文件时，只会重命名文件）
+mv source dest
+
+# 查看文件所有内容（-n：显示行号）
+cat [option] file
+
+# 分页查看文件内容
+more file
+
+# 分页查看文件内容
+less file
+
+# 查看文件的头n行
+head [option] file
+
+# 查看文件的后n行
+tail [option] file
+
+# 输出系统变量或者常量的值到命令行终端
+echo $var
+
+# 将命令结果输出到指定的文件中（目标文件不存在：新建；目标文件已存在：覆盖内容）
+command > file
+
+# 将命令结果追加输出到指定的文件中（目标文件不存在：新建；目标文件已存在：追加）
+command >> file
+```
+- 切换目录：
     1. 绝对目录：以盘符开始的目录
         - `~`：当前用户的根目录
             - 超级管理员：`/root`
@@ -151,46 +218,30 @@ sidebar_label: 1. Linux
     2. 相对目录：以目录名开始的目录
         - `..`：当前目录的上一级目录
         - `.`：当前目录
-4. 创建目录：`mkdir [option] dir`
-    - `-p`：一次创建多级目录
-5. 删除一个空目录：`rmdir dir`
-6. 创建一个或者多个空文件：`touch file_list`
-    - 文件名用空格隔开
-7. 复制文件或者目录：`cp [option] source dest`
-    - `-r`：递归复制目录
-8. 删除文件或者目录：`rm [option] file/dir`
-    - `-f`：强制删除文件
-    - `-r`：提示递归删除目录
-    - `-rf`：强制递归删除目录
-9. 移动目录或者文件：`mv source dest`
-    - source和dest均为文件时，会将source文件重命名为dest文件名
-10. 查看文件内容：`cat [option] file`，一次性显示文件内容
-    - `-n`：显示行号
-11. 分页查看文件内容：`more file`，一次性加载文件中的所有内容到内存，但分页显示
+- 分页查看文件内容：一次性加载文件中的所有内容到内存，但分页显示
     - 按回车翻一行
     - 按空格翻一页
-12. 分页查看文件内容：`less file`（比 `more` 功能更强大）
-13. 查看文件的头10行：`head [option] file`
-14. 查看文件的后10行：`tail [option] file`
-15. 输出系统变量或者常量的值到命令行终端：`echo $var`
-16. 将命令结果输出到指定的文件中：`command > file`
-    - 如果目标文件不存在，则新建一个文件
-    - 如果目标文件已存在，则覆盖文件内容
-17. 将命令结果追加输出到指定的文件中：`command >> file`
-    - 如果目标文件不存在，则新建一个文件
-    - 如果目标文件已存在，则在文件原来的内容上追加
 
 ### 6.3 时间日期指令
-1. 查看或者设置系统的日期或者时间：`date [command]`
-    1. 查看系统当前的完整的日期和时间：`date`
-    2. 系统当前的年份：`date +%Y`
-    3. 系统当前的月份：`date +%m`
-    4. 系统当前的日期：`date +%d`
-    5. 查看系统日期：`date '+%Y-%m-%d %H:%M:%S'`（按yyyy-MM-dd HH:mm:ss格式显示）
-    6. 设置当前的系统时间：`date -S 'yyyy-MM-dd HH:mm:ss'`
-2. 查看系统日历：`cal [command]`
-    1. 查看当前月份的日历：`cal`
-    2. 查看指定年份的日历：`cal yyyy`
+```bash showLineNumbers
+# 查看系统当前的完整的日期和时间
+date
+# 查看系统当前的年份
+date +%Y
+# 查看系统当前的月份
+date +%m
+# 查看系统当前的日期
+date +%d
+# 查看系统日期（按yyyy-MM-dd HH:mm:ss格式显示）
+date '+%Y-%m-%d %H:%M:%S'
+# 设置当前的系统时间
+date -S 'yyyy-MM-dd HH:mm:ss'
+
+# 查看当前月份的日历
+cal
+# 查看指定年份的日历
+cal yyyy
+```
 
 ### 6.4 搜索查找指令
 1. 普通搜索：`find [range] [standard] keyword`
@@ -203,23 +254,43 @@ sidebar_label: 1. Linux
 
 ### 6.5 压缩和解压缩指令
 1. 压缩/解压单个文件：
-    1. `gzip file`：压缩单个文件，生成一个.gz的压缩包，并会把原来的文件删除
-    2. `gunzip package.gz`：解压.gz压缩包，并把原来的.gz压缩包删除
+    ```bash showLineNumbers
+    # 压缩单个文件，生成一个.gz的压缩包，并会把原来的文件删除
+    gzip file
+    # 解压.gz压缩包，并把原来的.gz压缩包删除
+    gunzip package.gz
+    ```
 2. 压缩（打包）/解压多个文件和目录：
-    1. `zip package.zip file/dir_list`：将文件列表或目录列表压缩到压缩包中
-    2. `unzip package.zip[ -d dir]`：将指定的.zip压缩包解压到当前目录/指定目录
-3. 压缩（打包）/解压多个文件和目录：`tar [option] xxx.tar.gz -C file/dir_list`
-    - `-zcvf`：打包或者压缩
-    - `-zxvf`：解压
+    ```bash showLineNumbers
+    # 将文件列表或目录列表压缩到压缩包中
+    zip package.zip file/dir_list
+    # 将指定的.zip压缩包解压到当前目录/指定目录
+    unzip package.zip[ -d dir]
+    ```
+3. 压缩（打包）/解压多个文件和目录：
+    ```bash showLineNumbers
+    # 打包或者压缩
+    tar -zcvf xxx.tar.gz -C file/dir_list
+    # 解压
+    tar -zxvf xxx.tar.gz -C file/dir_list
+    ```
 
 ### 6.6 组管理指令
 1. linux系统的用户分类：文件或目录通过组来控制用户的访问权限
     1. 所有者：默认情况下，文件或者目录的所有者都是创建者，可以修改
     2. 同组用户：和文件或者目录属于同一个组的用户
     3. 其它组用户：既不是文件或者目录的所有者，也不是同组用户
-2. 查看文件的所有者和所在的组：`ls -l`
-3. 修改文件或者目录的所有者（change ownship）：`chown new_owner:new_group file/dir`
-4. 修改文件或者目录的所在组（change group）：`chgrp new_group file/dir`
+2. 命令：
+    ```bash showLineNumbers
+    # 查看文件的所有者和所在的组
+    ls -l
+
+    # 修改文件或者目录的所有者
+    chown new_owner:new_group file/dir
+
+    # 修改文件或者目录的所在组
+    chgrp new_group file/dir
+    ```
 
 ### 6.7 权限管理指令
 1. 文件或者目录的三种权限：
@@ -264,11 +335,17 @@ sidebar_label: 1. Linux
 1. 进程介绍
     1. 线程：一个程序的线路
     2. 进程：一个程序的执行，一个进程占用一个端口
-2. 查看系统运行的进程：`ps [option]`
-    - 为空：只显示应用进程
-    - `-e`：显示所有进程
-    - `-ef`：以全格式的形式显示所有进程
-    - `-ef|grep keyword`：根据关键字查找进程信息
+2. 查看系统运行的进程：
+    ```bash showLineNumbers
+    # 只显示应用进程
+    ps
+    # 显示所有进程
+    ps -e
+    # 以全格式的形式显示所有进程
+    ps -ef
+    # 根据关键字查找进程信息
+    ps -ef | grep keyword
+    ```
 3. 终止进程：`kill id PID`
 4. 服务管理
     1. 服务介绍：服务是支持Linux运行的一些必要程序，本质上也是进程，叫守护进程
@@ -280,16 +357,30 @@ sidebar_label: 1. Linux
 ### 9.1 RPM包的管理
 1. 简介：一种Linux的软件包的打包和安装工具，它操作的软件包都是.rpm结尾
 2. 命令：
-    - 查看当前系统中已经安装的rpm软件包：`rpm -qa|grep keyword`
-    - 卸载rpm软件包：`rpm -e keyword`
-    - 安装rpm包：`rpm -ivh xxx.rpm`
+    ```bash showLineNumbers
+    # 查看当前系统中已经安装的rpm软件包
+    rpm -qa | grep keyword
+
+    # 卸载rpm软件包
+    rpm -e keyword
+
+    # 安装rpm包
+    rpm -ivh xxx.rpm
+    ```
 
 ### 9.2 YUM包的管理
 1. 简介：一种基于RPM的软件包管理工具，它能够从指定服务器上自动下载RPM包并且自动安装，可以自动处理软件包之间的依赖关系
 2. 命令：
-    - 查看当前系统中已经安装的rpm软件包：`yum list installed|grep keyword`
-    - 卸载rpm软件包：`yum remove xxx.xxx`
-    - 安装rpm包：`yum install keyword`
+    ```bash showLineNumbers
+    # 查看当前系统中已经安装的rpm软件包
+    yum list installed | grep keyword
+
+    # 卸载rpm软件包
+    yum remove xxx.xxx
+
+    # 安装rpm包
+    yum install keyword
+    ```
 
 ---
 

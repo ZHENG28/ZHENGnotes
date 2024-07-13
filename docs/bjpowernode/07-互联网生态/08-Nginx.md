@@ -22,21 +22,42 @@ sidebar_label: 8. Nginx
 
 ### 1.2 安装与命令
 1. 检查相关库是否安装（否则配置和编译会出现错误）：
-    1. gcc编译器：`yum list installed | grep gcc`
-    2. openssl库：`yum list installed | grep openssl`
-    3. pcre库：`yum list installed | grep pcre`
-    4. zlib库：`yum list installed | grep zlib`
-2. 启动：`/install-path/sbin/nginx[ -c /configuration-path -t]`
-    - 启动**一个** `master` 主进程和**多个** `worker` 子进程
-    - `-c /configuration-path`：使用指定配置文件启动
-    - `-t`：检查配置文件的语法
-3. 关闭：
-    1. 处理完请求后关闭：`kill -QUIT master-pid`
-    2. 直接关闭：`kill -TEAM master-pid`
-4. 重启：`/install-path/sbin/nginx -s reload`
-5. 查看版本：`/install-path/sbin/nginx -v/-V`
-    - `-v`：显示版本号
-    - `-V`：显示版本号、编译器版本、配置参数等
+    ```bash showLineNumbers
+    # gcc编译器
+    yum list installed | grep gcc
+
+    # openssl库
+    yum list installed | grep openssl
+
+    # pcre库
+    yum list installed | grep pcre
+
+    # zlib库
+    yum list installed | grep zlib
+    ```
+2. 相关命令：
+    ```bash showLineNumbers
+    # 启动
+    /install-path/sbin/nginx
+    # 使用指定配置文件启动
+    /install-path/sbin/nginx -c /configuration-path -t
+    # 检查配置文件的语法
+    /install-path/sbin/nginx -t
+
+    # 处理完请求后关闭
+    kill -QUIT master-pid
+    # 直接关闭
+    kill -TEAM master-pid
+
+    # 重启
+    /install-path/sbin/nginx -s reload
+
+    # 查看版本号
+    /install-path/sbin/nginx -v
+    # 查看版本号、编译器版本、配置参数等
+    /install-path/sbin/nginx -V
+    ```
+3. 启动时会启动**一个** `master` 主进程和**多个** `worker` 子进程
 
 ### 1.3 核心配置文件`nginx.conf`
 1. 基本配置：

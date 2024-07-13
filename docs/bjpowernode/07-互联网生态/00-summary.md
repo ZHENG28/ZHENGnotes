@@ -19,21 +19,52 @@ sidebar_label: 0. 小结
 1. 文本编辑器：vi、vim（vi的增强版本）
 2. 用户`useradd`、用户组`groupadd`、权限`chmod`管理指令
 3. 常用指令：
-    1. 查看当前所在目录：`pwd`
-    2. 查看指定目录下所有的子目录和文件列表：`ls [option] [dir]`
-    3. 切换目录：`cd dir`
-    4. 查看文件内容：`cat [option] file`，一次性显示文件内容
-    5. 查看文件的头10行：`head [option] file`
-    6. 查看文件的后10行：`tail [option] file`
-    7. 普通搜索：`find [range] [standard] keyword`
-    8. 压缩/解压`.gz`压缩包：`gzip/gunzip file`
-    9. 压缩/解压`.zip`压缩包：`zip/unzip package.zip file/dir_list`
-    10. 压缩/解压`.tar.gz`压缩包：`tar -zcvf/-zxvf xxx.tar.gz -C file/dir_list`
-    11. 查看系统运行的进程：`ps [option]`
-    12. 终止进程：`kill id PID`
-    13. 管理系统中的服务：`systemctl [start|stop|restart|reload|status|enable] serve`
-    14. 安装rpm包：`rpm -ivh xxx.rpm`
-    15. 安装rpm包：`yum install keyword`
+    ```bash showLineNumbers
+    # 查看当前所在目录
+    pwd
+
+    # 查看指定目录下所有的子目录和文件列表
+    ls [option] [dir]
+
+    # 切换目录
+    cd dir
+
+    # 查看文件所有内容
+    cat [option] file
+
+    # 查看文件的头10行
+    head [option] file
+
+    # 查看文件的后10行
+    tail [option] file
+
+    # 普通搜索
+    find [range] [standard] keyword
+
+    # 压缩/解压.gz压缩包
+    gzip/gunzip file
+
+    # 压缩/解压.zip压缩包
+    zip/unzip package.zip file/dir_list
+
+    # 压缩/解压.tar.gz压缩包
+    tar -zcvf/-zxvf xxx.tar.gz -C file/dir_list
+
+    # 查看系统运行的进程
+    ps [option]
+
+    # 终止进程
+    kill id PID
+
+    # 管理系统中的服务
+    systemctl [start|stop|restart|reload|status|enable] serve
+
+    # 安装rpm包
+    rpm -ivh xxx.rpm
+
+    # 安装rpm包
+    yum install keyword
+    ```
 
 ---
 
@@ -105,9 +136,16 @@ sidebar_label: 0. 小结
     1. **反向代理**（Reverse Proxy）：代理对象是服务端
     2. **正向代理**（Reverse Proxy）：代理对象是客户端
 2. 常用命令：
-    1. 启动：`./nginx`
-    2. 关闭：`kill -QUIT master-pid`
-    3. 重启：`./nginx -s reload`
+    ```bash showLineNumbers
+    # 启动
+    ./nginx
+
+    # 关闭
+    kill -QUIT master-pid
+
+    # 重启
+    ./nginx -s reload
+    ```
 3. 核心配置文件`nginx.conf`：
     1. 基本配置
     2. events配置
