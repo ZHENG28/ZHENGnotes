@@ -123,6 +123,17 @@ sidebar_label: 0. 小结
 ---
 
 ## 6 SpringSession
+### 6.1 概述
+1. 会话 `Session`：记录用户状态，从而使服务端能识别用户
+2. `Cookie`：用来存储相关客户端信息（如 `sessionId` ），HTTP请求时会发送对应的 `Cookie` 信息到服务端
+3. 集群模式下，tomcat服务器之间无法共享session &rarr; 采用 `Spring Session`
+
+### 6.2 应用
+1. 同域名下相同项目（即集群环境）
+2. 同域名下不同项目：配置 `Cookie` 的存放路径
+3. 同根域名不同二级子域名下的项目：配置 `Cookie` 的存放域名
+4. 不同根域名下的项目（即单点登录）
+5. 集成SpringBoot
 
 ---
 
