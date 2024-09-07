@@ -8,7 +8,7 @@ sidebar_label: 11. MySQL索引优化
 ### 1.1 概述
 1. 索引，是帮助MySQL高效获取数据的一种数据结构，即排好序的、可以快速查找数据的数据结构
     ```mermaid
-    graph TD
+    graph TB
     root((12)) --- left((5))
     root --- right((20))
     ```

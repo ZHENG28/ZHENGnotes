@@ -95,7 +95,7 @@ sidebar_label: 0. 小结
 ### 5.1 RPC基础知识
 1. 应用架构的发展演变：
     ```mermaid
-    graph TD
+    graph TB
     monolithic_architecture[单一架构（开发、部署简单，但扩展、维护不易）] --> 
     vertical_application_architecture[垂直应用架构（将大应用拆分为小应用）] --> 
     microservices_architecture[分布式架构（若干个独立系统的集合）]
@@ -111,7 +111,7 @@ sidebar_label: 0. 小结
     - **监控中心Monitor**：Provider和Consumer会在内存中累计调用次数和调用时间，定时发送统计数据到Monitor；是图形化的服务管理页面，可直接下载使用
 2. 过程：
     ```mermaid
-    graph TD
+    graph TB
     start[0.start：系统初始化时，将Provider加载到Container中] --> 
     register[1.register：Provider将自己对外的服务注册到Registry] --> 
     subscribe[2.subscribe：Consumer向Registry订阅自己所需的服务] --> 

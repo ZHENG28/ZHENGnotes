@@ -29,7 +29,7 @@ sidebar_label: 1. Linux
 - 只有一个根目录/
 - 层级式的目录结构
     ```mermaid
-    graph TD
+    graph TB
     / --> /root
     /root --> /root/Desktop
     /root --> /root/Maildir
@@ -69,7 +69,7 @@ sidebar_label: 1. Linux
 两者都是linux中的文本编辑器，可用于创建、查看、编辑文本文件，但vim是vi的增强版本
 - 模式：
     ```mermaid
-    graph TD
+    graph TB
     命令行 --#vim xxx--> norm[一般模式/正常模式]
     norm --i或a--> 编辑模式 --ESC--> norm
     norm --:或/--> 命令模式 --ESC--> norm
