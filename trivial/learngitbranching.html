@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-trivial/learngitbranching" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">Learn Git Branching | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/trivial/learngitbranching"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Learn Git Branching | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="https://learngitbranching.js.org/?locale=zh_CN"><meta data-rh="true" property="og:description" content="https://learngitbranching.js.org/?locale=zh_CN"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/trivial/learngitbranching"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/trivial/learngitbranching" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/trivial/learngitbranching" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.86b1470a.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/main.d717b736.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Collapse sidebar category &#x27;琐碎知识&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/trivial/markdown">markdown语法</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/trivial/frontend">HTML知识点</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/trivial/java">java知识点</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/trivial/vim">vim语法</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/trivial/learngitbranching">Learn Git Branching</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Expand sidebar category &#x27;动力节点&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/琐碎知识"><span itemprop="name">琐碎知识</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Learn Git Branching</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>Learn Git Branching</h1>
+<p><a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" rel="noopener noreferrer">https://learngitbranching.js.org/?locale=zh_CN</a></p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-主要">1 主要<a class="hash-link" aria-label="Direct link to 1 主要" title="Direct link to 1 主要" href="/ZHENGnotes/trivial/learngitbranching#1-主要">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-基础篇">1.1 基础篇<a class="hash-link" aria-label="Direct link to 1.1 基础篇" title="Direct link to 1.1 基础篇" href="/ZHENGnotes/trivial/learngitbranching#11-基础篇">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-git-commit">1.1.1 Git Commit<a class="hash-link" aria-label="Direct link to 1.1.1 Git Commit" title="Direct link to 1.1.1 Git Commit" href="/ZHENGnotes/trivial/learngitbranching#111-git-commit">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git commit</code> → 产生一条新的提交记录</li>
+</ul>
+</li>
+<li>Git仓库中的提交记录保存的是目录下所有文件的 <strong><font color="red">快照</font></strong> ；会将 <strong>当前版本</strong> 与仓库中的上一个版本进行对比，并把所有的差异打包到一起作为一个提交记录；同时还保存提交的历史记录</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-git-branch">1.1.2 Git Branch<a class="hash-link" aria-label="Direct link to 1.1.2 Git Branch" title="Direct link to 1.1.2 Git Branch" href="/ZHENGnotes/trivial/learngitbranching#112-git-branch">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git branch &lt;new-branch-name&gt;</code> → 产生一个新分支</li>
+<li><code>git checkout &lt;branch-name&gt;</code> → 切换到某分支上</li>
+<li><code>git checkout -b &lt;branch-name&gt;</code> → 创建一个新的分支同时切换到新创建的分支上<!-- -->
+<ul>
+<li><code>-b &lt;branch-name&gt;</code>：新建一个分支（branch）并检出</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>基于这个提交以及它所有的parent提交</strong> 进行新的工作</li>
+<li>创建新分支后，需要使用 <code>checkout</code> 命令切换到新分支上，再进行提交</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-git-merge">1.1.3 Git Merge<a class="hash-link" aria-label="Direct link to 1.1.3 Git Merge" title="Direct link to 1.1.3 Git Merge" href="/ZHENGnotes/trivial/learngitbranching#113-git-merge">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git merge &lt;branch-name&gt;</code> → 将分支合并到当前分支</li>
+</ul>
+</li>
+<li>合并两个分支后产生一个特殊的提交记录，它有两个parent节点</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-git-rebase">1.1.4 Git Rebase<a class="hash-link" aria-label="Direct link to 1.1.4 Git Rebase" title="Direct link to 1.1.4 Git Rebase" href="/ZHENGnotes/trivial/learngitbranching#114-git-rebase">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git rebase &lt;to-branch-name&gt; &lt;from-branch-name&gt;</code> → 将源分支（默认为当前分支）的副本复制到目标分支上</li>
+</ul>
+</li>
+<li>这个命令实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个地放下去</li>
+<li>与 <code>merge</code> 命令的区别：<code>rebase</code> 命令使得提交记录更加线性</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-高级篇">1.2 高级篇<a class="hash-link" aria-label="Direct link to 1.2 高级篇" title="Direct link to 1.2 高级篇" href="/ZHENGnotes/trivial/learngitbranching#12-高级篇">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="121-分离head">1.2.1 分离HEAD<a class="hash-link" aria-label="Direct link to 1.2.1 分离HEAD" title="Direct link to 1.2.1 分离HEAD" href="/ZHENGnotes/trivial/learngitbranching#121-分离head">​</a></h4>
+<ol>
+<li><code>HEAD</code> 是一个对当前所在分支的符号引用，也就是指向你正在其基础上进行工作的提交记录，通常情况下是指向分支的</li>
+<li>分离的 <code>HEAD</code>：让其指向了 <strong>某个具体的提交记录</strong> 而不是分支名</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="122-相对引用-">1.2.2 相对引用 <code>^</code><a class="hash-link" aria-label="Direct link to 122-相对引用-" title="Direct link to 122-相对引用-" href="/ZHENGnotes/trivial/learngitbranching#122-相对引用-">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git checkout &lt;ref&gt;^</code> → 将 <code>HEAD</code> 移动到指定分支的上1个提交记录上（n个操作符 <code>^</code> 即移动到上n个提交记录上）</li>
+</ul>
+</li>
+<li>相对引用：可以从一个易于记忆的地方（比如某一分支或 <code>HEAD</code>）开始计算</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="123-相对引用2-">1.2.3 相对引用2 <code>~</code><a class="hash-link" aria-label="Direct link to 123-相对引用2-" title="Direct link to 123-相对引用2-" href="/ZHENGnotes/trivial/learngitbranching#123-相对引用2-">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git checkout &lt;ref&gt;~&lt;num&gt;</code> → 将 <code>HEAD</code> 移动到指定分支的上num个提交记录上</li>
+</ul>
+</li>
+<li><code>~</code> 该操作符后面可以跟一个数字num（可选，不跟数字时与 <code>^</code> 相同，向上移动一次），指定向上移动num次</li>
+<li>强制修改分支位置：使用相对引用来移动分支<!-- -->
+<ul>
+<li>如 <code>git branch -f main HEAD~3</code>：强制让 <code>main</code> 分支移动到 <code>HEAD</code> 上的第3个parent节点上<!-- -->
+<ul>
+<li><code>-f &lt;branch-name&gt; &lt;start-point&gt;</code>：强制让分支移动到起始点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="124-撤销变更">1.2.4 撤销变更<a class="hash-link" aria-label="Direct link to 1.2.4 撤销变更" title="Direct link to 1.2.4 撤销变更" href="/ZHENGnotes/trivial/learngitbranching#124-撤销变更">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git reset &lt;ref&gt;~&lt;num&gt;</code> → 将指定分支回退num个提交记录（原改动仍存在，但未加入暂存区）</li>
+<li><code>git revert &lt;ref&gt;</code> → 会产生新的提交记录，该记录就是用来撤销提交的</li>
+</ul>
+</li>
+<li>撤销变更：由底层部分（ <strong>暂存区</strong> 的独立文件或者片段）和上层部分（变更到底是通过 <strong>哪种方式</strong> 被撤销的）组成</li>
+<li><code>reset</code> 和 <code>revert</code> 的区别：<code>reset</code> 命令的撤销只有本地记录，无法推送到远程；而 <code>revert</code> 命令可以使撤销记录推送到远程共享</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-移动提交记录">1.3 移动提交记录<a class="hash-link" aria-label="Direct link to 1.3 移动提交记录" title="Direct link to 1.3 移动提交记录" href="/ZHENGnotes/trivial/learngitbranching#13-移动提交记录">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="131-git-cherry-pick">1.3.1 Git Cherry-pick<a class="hash-link" aria-label="Direct link to 1.3.1 Git Cherry-pick" title="Direct link to 1.3.1 Git Cherry-pick" href="/ZHENGnotes/trivial/learngitbranching#131-git-cherry-pick">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git cherry-pick &lt;commit&gt;...</code> → 将指定的commit节点复制到当前分支下</li>
+</ul>
+</li>
+<li>用于整理提交记录</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="132-交互式-rebase">1.3.2 交互式 rebase<a class="hash-link" aria-label="Direct link to 1.3.2 交互式 rebase" title="Direct link to 1.3.2 交互式 rebase" href="/ZHENGnotes/trivial/learngitbranching#132-交互式-rebase">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git rebase -i &lt;commit&gt;</code> → 从指定commit节点往后的所有提交记录作为备选，使用可视化界面进行调整</li>
+</ul>
+</li>
+<li>不清楚想要的提交记录的哈希值时，无法使用 <code>git cherry-pick</code> 命令，用使用带参数 <code>--interactive</code> （缩写为 <code>-i</code>）的 <code>rebase</code> 命令</li>
+<li>使用参数 <code>--interactive</code> 时，会打开一个UI界面并列出将要被复制到目标分支的备选提交记录，还会显示每个提交记录的哈希值和提交说明；该UI界面可以调整提交记录的顺序、删除不想要的提交、合并提交</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="14-杂项">1.4 杂项<a class="hash-link" aria-label="Direct link to 1.4 杂项" title="Direct link to 1.4 杂项" href="/ZHENGnotes/trivial/learngitbranching#14-杂项">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="141-只取一个提交记录仅练习命令">1.4.1 只取一个提交记录（仅练习命令）<a class="hash-link" aria-label="Direct link to 1.4.1 只取一个提交记录（仅练习命令）" title="Direct link to 1.4.1 只取一个提交记录（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#141-只取一个提交记录仅练习命令">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="142-提交的技巧1仅练习命令">1.4.2 提交的技巧1（仅练习命令）<a class="hash-link" aria-label="Direct link to 1.4.2 提交的技巧1（仅练习命令）" title="Direct link to 1.4.2 提交的技巧1（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#142-提交的技巧1仅练习命令">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="143-提交的技巧2仅练习命令">1.4.3 提交的技巧2（仅练习命令）<a class="hash-link" aria-label="Direct link to 1.4.3 提交的技巧2（仅练习命令）" title="Direct link to 1.4.3 提交的技巧2（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#143-提交的技巧2仅练习命令">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="144-git-tag">1.4.4 Git Tag<a class="hash-link" aria-label="Direct link to 1.4.4 Git Tag" title="Direct link to 1.4.4 Git Tag" href="/ZHENGnotes/trivial/learngitbranching#144-git-tag">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git tag &lt;tag-name&gt; &lt;ref&gt;</code> → 在指定的提交记录（默认在 <code>HEAD</code> 上）上打标签</li>
+</ul>
+</li>
+<li>tag：<strong>永久</strong> 地将某个特定的提交命名为里程碑，可以像分支一样被引用</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="145-git-describe">1.4.5 Git Describe<a class="hash-link" aria-label="Direct link to 1.4.5 Git Describe" title="Direct link to 1.4.5 Git Describe" href="/ZHENGnotes/trivial/learngitbranching#145-git-describe">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git describe &lt;ref&gt;</code> → 输出 <code>&lt;tag&gt;_&lt;numCommits&gt;_g&lt;hash&gt;</code>
+<ol>
+<li><code>tag</code>：离 <code>ref</code> 最近的标签</li>
+<li><code>numCommits</code>：表示 <code>ref</code> 与 <code>tag</code> 相差有多少个提交记录</li>
+<li><code>hash</code>：<code>ref</code> 所表示的提交记录的前几位哈希值</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>输出结果表示当前指针所在方向</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="15-高级话题">1.5 高级话题<a class="hash-link" aria-label="Direct link to 1.5 高级话题" title="Direct link to 1.5 高级话题" href="/ZHENGnotes/trivial/learngitbranching#15-高级话题">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="151-多次rebase仅练习命令">1.5.1 多次Rebase（仅练习命令）<a class="hash-link" aria-label="Direct link to 1.5.1 多次Rebase（仅练习命令）" title="Direct link to 1.5.1 多次Rebase（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#151-多次rebase仅练习命令">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="152-两个parent节点">1.5.2 两个parent节点<a class="hash-link" aria-label="Direct link to 1.5.2 两个parent节点" title="Direct link to 1.5.2 两个parent节点" href="/ZHENGnotes/trivial/learngitbranching#152-两个parent节点">​</a></h4>
+<ol>
+<li><code>git checkout &lt;ref&gt;^&lt;num&gt;</code> 命令：指定合并提交记录的第num个parent节点</li>
+<li><code>~</code> 和 <code>^</code> 支持链式操作，如：<code>git checkout main~^2~2</code></li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="153-纠缠不清的分支仅练习命令">1.5.3 纠缠不清的分支（仅练习命令）<a class="hash-link" aria-label="Direct link to 1.5.3 纠缠不清的分支（仅练习命令）" title="Direct link to 1.5.3 纠缠不清的分支（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#153-纠缠不清的分支仅练习命令">​</a></h4>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-远程">2 远程<a class="hash-link" aria-label="Direct link to 2 远程" title="Direct link to 2 远程" href="/ZHENGnotes/trivial/learngitbranching#2-远程">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="21-push--pull--git-远程仓库">2.1 Push &amp; Pull —— Git 远程仓库！<a class="hash-link" aria-label="Direct link to 2.1 Push &amp; Pull —— Git 远程仓库！" title="Direct link to 2.1 Push &amp; Pull —— Git 远程仓库！" href="/ZHENGnotes/trivial/learngitbranching#21-push--pull--git-远程仓库">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="211-git-clone">2.1.1 Git Clone<a class="hash-link" aria-label="Direct link to 2.1.1 Git Clone" title="Direct link to 2.1.1 Git Clone" href="/ZHENGnotes/trivial/learngitbranching#211-git-clone">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git clone</code> → 在本地创建一个远程仓库的拷贝</li>
+</ul>
+</li>
+<li>远程仓库：是一个强大的备份，即使丢失了本地所有数据，你仍可以通过远程仓库拿回你丢失的数据；让代码社交化，允许其他开发者给项目做贡献</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="212-远程分支">2.1.2 远程分支<a class="hash-link" aria-label="Direct link to 2.1.2 远程分支" title="Direct link to 2.1.2 远程分支" href="/ZHENGnotes/trivial/learngitbranching#212-远程分支">​</a></h4>
+<ol>
+<li>远程分支：在本地仓库中，多了一个名为 <code>origin/main</code> 的分支；它反映了远程仓库（在你上次和它通信时）的 <strong>状态</strong></li>
+<li>当切换到远程分支时，自动进入分离 <code>HEAD</code> 的状态 → 无法在远程分支上直接进行操作</li>
+<li>远程分支的命名规范：<code>&lt;remote-name&gt;/&lt;remote-branch-name&gt;</code>
+<ul>
+<li><code>&lt;remote-name&gt;</code>：远程仓库的名字，默认为 <code>origin</code></li>
+<li><code>&lt;branch-name&gt;</code>：远程分支的名字</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="213-git-fetch">2.1.3 Git Fetch<a class="hash-link" aria-label="Direct link to 2.1.3 Git Fetch" title="Direct link to 2.1.3 Git Fetch" href="/ZHENGnotes/trivial/learngitbranching#213-git-fetch">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git fetch</code> → 从远程仓库 <strong>下载</strong> 本地仓库中缺失的提交记录，以及更新本地的远程分支指针</li>
+</ul>
+</li>
+<li>远程仓库的操作：向远程仓库传输数据，从远程仓库获取数据</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="214-git-pull">2.1.4 Git Pull<a class="hash-link" aria-label="Direct link to 2.1.4 Git Pull" title="Direct link to 2.1.4 Git Pull" href="/ZHENGnotes/trivial/learngitbranching#214-git-pull">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git pull</code> → 先抓取更新，再合并到本地分支</li>
+</ul>
+</li>
+<li><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="215-模拟团队合作仅练习命令">2.1.5 模拟团队合作（仅练习命令）<a class="hash-link" aria-label="Direct link to 2.1.5 模拟团队合作（仅练习命令）" title="Direct link to 2.1.5 模拟团队合作（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#215-模拟团队合作仅练习命令">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="216-git-push">2.1.6 Git Push<a class="hash-link" aria-label="Direct link to 2.1.6 Git Push" title="Direct link to 2.1.6 Git Push" href="/ZHENGnotes/trivial/learngitbranching#216-git-push">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git push</code> → 将变更 <strong>上传</strong> 到指定的远程仓库，并在远程仓库上合并新的提交记录</li>
+</ul>
+</li>
+<li><code>git push</code> 命令不带任何参数时的行为，与Git的 <code>push.default</code> 的配置有关<!-- -->
+<ul>
+<li><code>simple</code>：（默认）推送当前分支到上游分支，如果上游分支不存在，则 <strong>报错</strong></li>
+<li><code>upstream</code>：推送当前分支到上游分支，如果上游分支不存在，则 <strong>自动创建</strong></li>
+<li><code>current</code>：推送当前分支到上游分支，如果上游分支不存在，则 <strong>自动创建</strong></li>
+<li><code>matching</code>：推送 <strong>所有本地分支</strong> 到 <strong>同名</strong> 的上游分支，如果上游分支不存在，则 <strong>报错</strong></li>
+<li><code>nothing</code>：<strong>不推送</strong> 任何分支</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="217-偏离的提交历史">2.1.7 偏离的提交历史<a class="hash-link" aria-label="Direct link to 2.1.7 偏离的提交历史" title="Direct link to 2.1.7 偏离的提交历史" href="/ZHENGnotes/trivial/learngitbranching#217-偏离的提交历史">​</a></h4>
+<ol>
+<li>本地仓库与远程仓库相比，存在偏离的提交历史记录，Git不允许直接 <code>push</code> → 使本地分支基于最新的远程分支进行工作</li>
+<li>方法：<!-- -->
+<ol>
+<li><code>rebase</code>：<code>git pull --rebase</code> = <code>git fetch</code> + <code>git rebase</code>
+<img decoding="async" loading="lazy" alt="rebase" src="/ZHENGnotes/assets/images/learngitbranching.remote_rebase-2bc7c9bb132977039556a3573c09642b.jpg" width="537" height="500" class="img_ev3q">
+<ol>
+<li><code>git fetch</code>：更新本地仓库中的远程分支</li>
+<li><code>git rebase origin/main</code>：将工作移动到最新的提交记录下</li>
+<li><code>git push</code>：推送到远程仓库</li>
+</ol>
+</li>
+<li><code>merge</code>：<code>git pull</code> = <code>git fetch</code> + <code>git merge</code>
+<img decoding="async" loading="lazy" alt="merge" src="/ZHENGnotes/assets/images/learngitbranching.remote_merge-37f1cad45ef3bace22775c25712a0541.jpg" width="537" height="500" class="img_ev3q">
+<ol>
+<li><code>git fetch</code>：更新本地仓库 中的远程分支</li>
+<li><code>git merge origin/main</code>：合并新变更到我们的本地分支</li>
+<li><code>git push</code>：推送到远程仓库</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="218-锁定的mainlocked-main">2.1.8 锁定的Main（Locked Main）<a class="hash-link" aria-label="Direct link to 2.1.8 锁定的Main（Locked Main）" title="Direct link to 2.1.8 锁定的Main（Locked Main）" href="/ZHENGnotes/trivial/learngitbranching#218-锁定的mainlocked-main">​</a></h4>
+<ol>
+<li>远程服务器拒绝直接推送 <code>push</code> 提交到 <code>main</code>，因为策略配置要求 <code>pull requests</code> 来提交更新</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="22-关于-origin-和它的周边--git-远程仓库高级操作">2.2 关于 origin 和它的周边 —— Git 远程仓库高级操作<a class="hash-link" aria-label="Direct link to 2.2 关于 origin 和它的周边 —— Git 远程仓库高级操作" title="Direct link to 2.2 关于 origin 和它的周边 —— Git 远程仓库高级操作" href="/ZHENGnotes/trivial/learngitbranching#22-关于-origin-和它的周边--git-远程仓库高级操作">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="221-推送主分支仅练习命令">2.2.1 推送主分支（仅练习命令）<a class="hash-link" aria-label="Direct link to 2.2.1 推送主分支（仅练习命令）" title="Direct link to 2.2.1 推送主分支（仅练习命令）" href="/ZHENGnotes/trivial/learngitbranching#221-推送主分支仅练习命令">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="222-合并远程仓库">2.2.2 合并远程仓库<a class="hash-link" aria-label="Direct link to 2.2.2 合并远程仓库" title="Direct link to 2.2.2 合并远程仓库" href="/ZHENGnotes/trivial/learngitbranching#222-合并远程仓库">​</a></h4>
+<ol>
+<li><code>rebase</code> 的优缺点：<!-- -->
+<ul>
+<li>优点：<code>rebase</code> 使提交树变得 很干净, 所有的提交都在一条线上</li>
+<li>缺点：<code>rebase</code> 修改了提交树的历史</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="223-远程追踪">2.2.3 远程追踪<a class="hash-link" aria-label="Direct link to 2.2.3 远程追踪" title="Direct link to 2.2.3 远程追踪" href="/ZHENGnotes/trivial/learngitbranching#223-远程追踪">​</a></h4>
+<ol>
+<li>命令：<!-- -->
+<ul>
+<li><code>git checkout -b &lt;local-branch-name&gt; &lt;remote-name&gt;/&lt;remote-branch-name&gt;</code> → 通过远程分支切换到一个新的分支</li>
+<li><code>git branch -u &lt;remote-name&gt;/&lt;remote-branch-name&gt; &lt;local-branch-name&gt;</code> → 设置远程追踪分支<!-- -->
+<ul>
+<li><code>-u</code>：设置本地分支的上游（upstream）分支</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>追踪远程分支：由分支的 <code>remote tracking</code> 属性决定，为分支指定了推送的目的地以及拉取后合并的目标<!-- -->
+<ul>
+<li><code>pull</code>：提交记录会被先下载到 <code>origin/main</code> 上，之后再合并到本地的 <code>main</code> 分支上 → <strong>合并目标</strong> 由这个关联确定</li>
+<li><code>push</code>：将提交记录从 <code>main</code> 推到远程仓库中的 <code>main</code> 分支（同时会更新远程分支 <code>o/main</code>） → <strong>推送的目的地</strong> 由这个关联确定</li>
+</ul>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="224-git-push-的参数">2.2.4 Git push 的参数<a class="hash-link" aria-label="Direct link to 2.2.4 Git push 的参数" title="Direct link to 2.2.4 Git push 的参数" href="/ZHENGnotes/trivial/learngitbranching#224-git-push-的参数">​</a></h4>
+<ol>
+<li><code>git push &lt;remote-name&gt; &lt;branch-name&gt;</code> → 切到本地仓库中的分支，获取所有的提交记录，再到远程仓库中找到 <strong>同名</strong> 分支，将远程仓库中没有的提交记录都推送上去</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="225-git-push-的参数2">2.2.5 Git push 的参数2<a class="hash-link" aria-label="Direct link to 2.2.5 Git push 的参数2" title="Direct link to 2.2.5 Git push 的参数2" href="/ZHENGnotes/trivial/learngitbranching#225-git-push-的参数2">​</a></h4>
+<ol>
+<li><code>git push &lt;remote-name&gt; &lt;source&gt;:&lt;destination&gt;</code> → 切到 <strong><font color="red">本地仓库中的源分支</font></strong> ，获取所有的提交记录，再找到 <strong><font color="red">远程仓库中的目标分支</font></strong> ，将远程仓库中没有的提交记录都推送上去</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="226-git-fetch-的参数">2.2.6 Git fetch 的参数<a class="hash-link" aria-label="Direct link to 2.2.6 Git fetch 的参数" title="Direct link to 2.2.6 Git fetch 的参数" href="/ZHENGnotes/trivial/learngitbranching#226-git-fetch-的参数">​</a></h4>
+<ol>
+<li><code>git fetch &lt;remote-name&gt; &lt;branch-name&gt;</code> → 下载远程仓库中的提交记录，并更新到本地的远程分支上，但 <strong>不会更新</strong> 你的 <strong><font color="red">本地的非远程分支</font></strong></li>
+<li><code>git fetch &lt;remote-name&gt; &lt;source&gt;:&lt;destination&gt;</code> → 从 <strong><font color="red">远程仓库中的源分支</font></strong> 中下载所有的提交记录，并更新到 <strong><font color="red">本地仓库中的目标分支</font></strong> 上</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="227-没有-source-的-source">2.2.7 没有 source 的 source<a class="hash-link" aria-label="Direct link to 2.2.7 没有 source 的 source" title="Direct link to 2.2.7 没有 source 的 source" href="/ZHENGnotes/trivial/learngitbranching#227-没有-source-的-source">​</a></h4>
+<ol>
+<li><code>git push &lt;remote-name&gt; :&lt;destination&gt;</code> → 删除远程仓库中的目标分支</li>
+<li><code>git fetch &lt;remote-name&gt; :&lt;destination&gt;</code> → 在本地仓库中创建一个新分支</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="228-git-pull-的参数">2.2.8 Git pull 的参数<a class="hash-link" aria-label="Direct link to 2.2.8 Git pull 的参数" title="Direct link to 2.2.8 Git pull 的参数" href="/ZHENGnotes/trivial/learngitbranching#228-git-pull-的参数">​</a></h4>
+<ol>
+<li>带参数的 <code>git pull</code>，相当于用 <strong>同样的参数</strong> 执行 <code>git fetch</code>，然后再 <code>merge</code> 到目标分支<!-- -->
+<ol>
+<li><code>git pull &lt;remote-name&gt; &lt;branch-name&gt;</code> = <code>git fetch &lt;remote-name&gt; &lt;branch-name&gt;</code> + <code>git merge &lt;remote-name&gt;/&lt;branch-name&gt;</code></li>
+<li><code>git pull &lt;remote-name&gt; &lt;source&gt;:&lt;destination&gt;</code> = <code>git fetch &lt;remote-name&gt; &lt;source&gt;:&lt;destination&gt;</code> + <code>git merge &lt;destination&gt;</code></li>
+</ol>
+</li>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/trivial/vim"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">vim语法</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/category/代码随想录"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">代码随想录</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#1-主要">1 主要</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#11-基础篇">1.1 基础篇</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#12-高级篇">1.2 高级篇</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#13-移动提交记录">1.3 移动提交记录</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#14-杂项">1.4 杂项</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#15-高级话题">1.5 高级话题</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#2-远程">2 远程</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#21-push--pull--git-远程仓库">2.1 Push &amp; Pull —— Git 远程仓库！</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/trivial/learngitbranching#22-关于-origin-和它的周边--git-远程仓库高级操作">2.2 关于 origin 和它的周边 —— Git 远程仓库高级操作</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
