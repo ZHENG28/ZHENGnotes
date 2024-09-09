@@ -7,7 +7,7 @@ sidebar_label: 6. SpringSession
 ## 1 会话
 ### 1.1 概述
 1. 会话 `Session`：记录用户状态，从而使服务端能识别用户
-2. `Cookie`：用来存储相关客户端信息（如 `sessionId` ），HTTP请求时会发送对应的 `Cookie` 信息到服务端
+2. `Cookie`：用来存储相关客户端信息（如 `sessionId`），HTTP请求时会发送对应的 `Cookie` 信息到服务端
 3. 客户端禁用 `Cookie` 时，可以采用**URL重写**来进行会话追踪，即在URL后附上 `sessionId=xxx` 参数
 4. `Session` 存放机制：
     1. 首次请求：
@@ -81,7 +81,7 @@ sidebar_label: 6. SpringSession
 
 ## 2 应用
 ### 2.1 同域名下相同项目（即集群环境）
-1. `Spring Session`：会将servlet容器中实现的 `javax.servlet.http.HttpSession` 替换成 `spring-session` ，将session信息存储在redis中
+1. `Spring Session`：会将servlet容器中实现的 `javax.servlet.http.HttpSession` 替换成 `spring-session`，将session信息存储在redis中
 2. 实现步骤：
     1. 添加依赖：
         ```xml showLineNumbers

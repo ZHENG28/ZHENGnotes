@@ -125,7 +125,7 @@ sidebar_label: 0. 小结
 ## 6 SpringSession
 ### 6.1 概述
 1. 会话 `Session`：记录用户状态，从而使服务端能识别用户
-2. `Cookie`：用来存储相关客户端信息（如 `sessionId` ），HTTP请求时会发送对应的 `Cookie` 信息到服务端
+2. `Cookie`：用来存储相关客户端信息（如 `sessionId`），HTTP请求时会发送对应的 `Cookie` 信息到服务端
 3. 集群模式下，tomcat服务器之间无法共享session &rarr; 采用 `Spring Session`
 
 ### 6.2 应用
@@ -198,7 +198,7 @@ sidebar_label: 0. 小结
     2. 唯一索引
     3. 单值索引
     4. 复合索引
-3. `EXPLAIN` 执行计划（详见 [07-10 MySQL优化](./10-MySQL优化.md) 中的 `3 EXPLAIN执行计划` ）
+3. `EXPLAIN` 执行计划（详见 [07-10 MySQL优化](./10-MySQL优化.md) 中的 `3 EXPLAIN执行计划`）
 4. 查询优化：排序优化、关联查询优化、分组优化
 5. 慢查询日志：用来记录在MySQL中响应时间超过阈值的SQL语句
 

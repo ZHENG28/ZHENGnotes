@@ -61,7 +61,7 @@ sidebar_label: 0. 小结
     1. 消息级别：`TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL`
 5. 集成**Thymeleaf模板**：
     1. 添加 `spring-boot-starter-thymeleaf` 依赖
-    2. .html文件中必须包含 `<html xmlns:th="http://www.thymeleaf.org">` ，用于识别thymeleaf标签
+    2. .html文件中必须包含 `<html xmlns:th="http://www.thymeleaf.org">`，用于识别thymeleaf标签
         1. `xmlns`：命名空间
         2. `th`：使用thymeleaf表达式的缩写
         3. `http://www.thymeleaf.org`：一个约束使用thymeleaf表达式的规则文件
@@ -134,7 +134,7 @@ sidebar_label: 0. 小结
     - `multi`：用来标记一个redis事务的开始
     - `exec`：用来执行事务队列中的所有命令
     - `discard`：清除事务队列中的所有命令，并结束整个事务
-4. 消息的发布与订阅：客户端订阅频道 `subscribe channel` ，消息的发布者往频道上发布消息 `publish channel message` ，所有订阅此频道的客户端都能接受到消息
+4. 消息的发布与订阅：客户端订阅频道 `subscribe channel`，消息的发布者往频道上发布消息 `publish channel message`，所有订阅此频道的客户端都能接受到消息
 5. 主从复制：主写从读，读写分离；一台主机配置多台从机，一台从机又可以配置多台从机
 6. 哨兵模式：主机宕机的情况下，从机自动上位
 7. Jedis：允许在java中操作Redis
@@ -290,7 +290,7 @@ sidebar_label: 0. 小结
 1. **<font color="red">JUL（Java Util Logging）</font>**：java原生日志框架
     - 结构：![JUL Structure](./img/0.1.jul_structure.jpg)
         - 记录器`Logger`：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
-        - 处理器`Handler`：一个 `Logger` 关联一个/一组 `Handler` ，由 `Handler` 负责记录日志，并具体实现日志的输出位置
+        - 处理器`Handler`：一个 `Logger` 关联一个/一组 `Handler`，由 `Handler` 负责记录日志，并具体实现日志的输出位置
         - 过滤器`Filter`：自定义哪些信息需要被记录，哪些信息要忽略
         - 格式化组件`Formatter`：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式
         - 输出级别`Level`：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志
@@ -299,7 +299,7 @@ sidebar_label: 0. 小结
 2. **<font color="red">Logback</font>**：开源日志框架
     - 依赖：
         - `logback-core`：基础核心模块
-        - `logback-classic`：（包含 `logback-core` ） `Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
+        - `logback-classic`：（包含 `logback-core`） `Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
         - `logback-access`：与Servlet容器集成，可通过http来访问日志的功能
     - 组件：
         - 日志记录器`Logger`：存放日志对象，可定义日志类型、级别

@@ -40,9 +40,9 @@ sidebar_label: 0. 小结
 5. 集合类：数组查询效率高，链表增删效率高
     - `Collection`：单个存储元素
         - `List`：有序、可重复、有下标
-            - `ArrayList`：底层数据结构为数组 `Object[]` ，非线程安全
+            - `ArrayList`：底层数据结构为数组 `Object[]`，非线程安全
             - `LinkedList`：底层数据结构为双向链表
-            - `Vector`：底层数据结构为数组 `Object[]` ，线程安全
+            - `Vector`：底层数据结构为数组 `Object[]`，线程安全
         - `Set`：无序、不可重复、无下标
             - `HashSet`：其元素实际存入 `HashMap` 的key值中
             - `TreeSet`：其元素实际存入 `TreeMap` 的key值中

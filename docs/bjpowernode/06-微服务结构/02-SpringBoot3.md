@@ -42,7 +42,7 @@ sidebar_label: 2. SpringBoot3
 
 ### 13 开发最佳实践
 1. 合理的包结构：以业务模块为分包基础、以MVC模式为分包基础
-2. 主应用程序 `xxxApplication.java` 应与其他包同在一个根目录下，因为主类上有 `@SpringBootApplication` 的注解，默认扫描当前包及子类下的标有 `@Component` ， `@Service` ， `@Repository` ， `@Controller` 等注解的bean
+2. 主应用程序 `xxxApplication.java` 应与其他包同在一个根目录下，因为主类上有 `@SpringBootApplication` 的注解，默认扫描当前包及子类下的标有 `@Component`， `@Service`， `@Repository`， `@Controller` 等注解的bean
 3. `@SpringBootApplication` = `@EnableAutoConfiguration` + `@ComponentScan` + `@Configuration`
 4. main方法的类也是一个配置类，但如今SpringBoot框架已经不推荐使用xml配置文件
 5. 将bean对象/组件<font color="red">**加入到SpringBoot容器**</font>中：
@@ -122,7 +122,7 @@ sidebar_label: 2. SpringBoot3
     4. 通过嵌套静态内部类（static class）读取（如server.前缀的相关属性）
 
 ### 19 线程池异步调用
-1. 框架自动配置线程池：用于提交异步任务（方法上加`@Async`）
+1. 框架自动配置线程池：用于提交异步任务（方法上加 `@Async`）
     - 启动类上加 `@EnableAsync` &rarr; 开启异步执行
 2. 手动配置线程池
 
