@@ -334,7 +334,7 @@ sidebar_label: 0. 小结
         - 性能提升：`Log4j2` 包含基于 `LMAX Disruptor` 库的下一代异步记录器
         - 自动重新加载配置
         - 高级过滤：支持基于Log事件中的上下文数据、标记、正则表达式和其他组件进行过滤
-        - 插件架构：  `Log4j2` 使用插件模式配置组件，即无需编写代码来创建和配置Appender、Layout、PatternConverter等
+        - 插件架构：`Log4j2` 使用插件模式配置组件，即无需编写代码来创建和配置Appender、Layout、PatternConverter等
         - 无垃圾机制：稳态日志记录期间，在独立应用程序中是无垃圾，在Web应用程序中是低垃圾
     - 异步日志：
         - `AsyncAppender`：通过引用别的Appender来实现，即 `<AppenderRef ref="consoleAppender"/>`
