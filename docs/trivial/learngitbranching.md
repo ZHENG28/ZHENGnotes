@@ -175,7 +175,7 @@ https://learngitbranching.js.org/?locale=zh_CN
 1. `git push <remote-name> <branch-name>` &rarr; 切到本地仓库中的分支，获取所有的提交记录，再到远程仓库中找到 **同名** 分支，将远程仓库中没有的提交记录都推送上去
 
 #### 2.2.5 Git push 的参数2
-1. `git push <remote-name> <source>:<destination>` &rarr; 切到 **<font color="red">本地仓库中的源分支</font>** ，获取所有的提交记录，再找到 **<font color="red">远程仓库中的目标分支</font>** ，将远程仓库中没有的提交记录都推送上去
+1. `git push <remote-name> <source>:<destination>` &rarr; 切到 **<font color="red">本地仓库中的源分支</font>**，获取所有的提交记录，再找到 **<font color="red">远程仓库中的目标分支</font>**，将远程仓库中没有的提交记录都推送上去
 
 #### 2.2.6 Git fetch 的参数
 1. `git fetch <remote-name> <branch-name>` &rarr; 下载远程仓库中的提交记录，并更新到本地的远程分支上，但 **不会更新** 你的 **<font color="red">本地的非远程分支</font>**

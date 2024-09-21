@@ -28,7 +28,7 @@
 
 ## 2 移除链表元素
 
-> [【LC203】](https://leetcode.cn/problems/binary-search/description/)给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> [【LC203】](https://leetcode.cn/problems/binary-search/description/)给你一个链表的头节点 head 和一个整数 val，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
 
 1. 删除头节点要分情况讨论：
     1. 直接在原来的链表上操作：需要区分头节点和其他节点的处理方式【以下选择该方式】
@@ -86,7 +86,7 @@
 
 ## 4 翻转链表
 
-> [【LC704】](https://leetcode.cn/problems/binary-search/description/)给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target ，如果目标值存在返回下标，否则返回-1。  
+> [【LC704】](https://leetcode.cn/problems/binary-search/description/)给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回-1。  
 - 你可以假设 nums 中的所有元素是不重复的  
 - n 将在 [1, 10000] 之间  
 - nums 的每个元素都将在 [-9999, 9999] 之间
@@ -116,7 +116,7 @@
 
 ## 5 两两交换链表中的节点
 
-> 【LC206】给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> 【LC206】给你一个链表的头节点 head 和一个整数 val，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
 
 1. 
 
@@ -124,7 +124,7 @@
 
 ## 6 删除链表的倒数第N个节点
 
-> 【LC206】给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> 【LC206】给你一个链表的头节点 head 和一个整数 val，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
 
 1. 
 
@@ -132,7 +132,7 @@
 
 ## 7 链表相交
 
-> 【LC206】给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> 【LC206】给你一个链表的头节点 head 和一个整数 val，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
 
 1. 
 
@@ -140,7 +140,7 @@
 
 ## 8 环形链表II
 
-> 【LC206】给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
+> 【LC206】给你一个链表的头节点 head 和一个整数 val，请你删除链表中所有满足 Node.val == val 的节点，并返回新的头节点。
 
 1. 
 

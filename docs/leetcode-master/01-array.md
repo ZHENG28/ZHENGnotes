@@ -11,7 +11,7 @@
 
 ## 2 二分查找
 
-> [【LC704】](https://leetcode.cn/problems/binary-search/description/)给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target ，写一个函数搜索 nums 中的 target ，如果目标值存在返回下标，否则返回-1。
+> [【LC704】](https://leetcode.cn/problems/binary-search/description/)给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回-1。
 > - 你可以假设 nums 中的所有元素是不重复的
 > - n 将在 [1, 10000] 之间
 > - nums 的每个元素都将在 [-9999, 9999] 之间
@@ -37,7 +37,7 @@
 
 3. 相关题目：[LC35](https://leetcode.cn/problems/search-insert-position/description/)、[LC34](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)、[LC69](https://leetcode.cn/problems/sqrtx/description/)（隐藏数组）、[LC367](https://leetcode.cn/problems/valid-perfect-square/description/)
 
-> 补充：[【LC34】](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)给你一个按照非递减顺序排列的整数数组 nums ，和一个目标值 target 。请你找出给定目标值在数组中的开始位置和结束位置。如果数组中不存在目标值 target ，返回[-1, -1]。
+> 补充：[【LC34】](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/)给你一个按照非递减顺序排列的整数数组 nums，和一个目标值 target 。请你找出给定目标值在数组中的开始位置和结束位置。如果数组中不存在目标值 target，返回[-1, -1]。
 
 1. 存在三种情况：
     1. target在数组范围外 &rarr; [-1, -1]
@@ -97,7 +97,7 @@
 
 ## 3 移除元素
 
-> [【LC27】](https://leetcode.cn/problems/remove-element/description/)给你一个数组 nums 和一个值 val ，你需要原地移除所有数值等于 val 的元素，并返回移除后数组的新长度。不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并原地修改输入数组。元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
+> [【LC27】](https://leetcode.cn/problems/remove-element/description/)给你一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，并返回移除后数组的新长度。不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并原地修改输入数组。元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
 
 1. 自想解法：两层for循环，外层循环数组，内层覆盖应删除元素 &rarr; 暴力解法
 2. **<font color="red">双指针/快慢指针法</font>**：【适用于数组、链表、字符串等】通过双指针，在一个for循环下完成两个for循环的方法。
@@ -125,7 +125,7 @@
 
 ## 4 有序数组的平方
 
-> [【LC977】](https://leetcode.cn/problems/squares-of-a-sorted-array/description/)给你一个按非递减顺序排序的整数数组 nums ，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。
+> [【LC977】](https://leetcode.cn/problems/squares-of-a-sorted-array/description/)给你一个按非递减顺序排序的整数数组 nums，返回每个数字的平方组成的新数组，要求也按非递减顺序排序。
 
 1. 自想解法：数组内元素全部平方，然后排序 &rarr; 暴力解法
 2. 双指针法：仔细观察数组，负数平方后降序，正数平方后升序，因此可以用归并排序。
@@ -154,7 +154,7 @@
 
 ## 5 长度最小的子数组
 
-> [【LC209】](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)给定一个含有 n 个正整数的数组和一个正整数 target 。找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, ..., numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。
+> [【LC209】](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)给定一个含有 n 个正整数的数组和一个正整数 target 。找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, ..., numsr-1, numsr]，并返回其长度。如果不存在符合条件的子数组，返回 0 。
 
 1. 自想解法：两个for循环嵌套，外层寻找数组的起始位置，内层寻找数组的终止位置 &rarr; 暴力解法
 2. **<font color="red">滑动窗口</font>**：只用一层for循环，不断调节子序列的起始位置和终止位置，从而得到结果
@@ -188,7 +188,7 @@
 
 ## 6 螺旋矩阵II
 
-> [【LC59】](https://leetcode.cn/problems/spiral-matrix-ii/description/)给你一个正整数 n ，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的 n x n 正方形矩阵 matrix 。
+> [【LC59】](https://leetcode.cn/problems/spiral-matrix-ii/description/)给你一个正整数 n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的 n x n 正方形矩阵 matrix 。
 
 1. 不涉及到算法，纯模拟过程
 2. 模拟顺时针画矩阵：上行从左到右、右列从上到下、下行从右到左、左列从下到上
