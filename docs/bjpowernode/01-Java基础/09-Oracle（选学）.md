@@ -162,7 +162,7 @@ sidebar_label: 9. Oracle
 2. 序列：用来维护数据库的主键数据
     ```sql
     CREATE SEQUENCE sequence_name
-    ……
+    …
     ```
 
 ### 2.2 约束

@@ -118,7 +118,7 @@ sidebar_label: 5. Redis7
     keys pattern
 
     # 判断key在数据库中是否存在（返回存在的key的数量）
-    exists key [key key ....]
+    exists key [key key …]
 
     # 移动指定key到指定的数据库实例
     move key index
@@ -137,7 +137,7 @@ sidebar_label: 5. Redis7
     rename key newkey
 
     # 删除指定的key（返回实际删除的key的数量）
-    del key [key key .....]
+    del key [key key …]
     ```
     - 查看数据库中的key：通配符
         - `*`：匹配0个或者多个字符
@@ -187,12 +187,12 @@ sidebar_label: 5. Redis7
         getrange key startIndex endIndex
 
         # 批量设置string数据
-        mset key1 value1 key2 value2 ...
+        mset key1 value1 key2 value2 …
         # 当所有key都不存在时设置成功，否则全部放弃设置
-        msetnx key1 value1 key2 value2 ...
+        msetnx key1 value1 key2 value2 …
 
         # 批量获取string数据
-        mget key1 key2 key3 ...
+        mget key1 key2 key3 …
         ```
         - 追加字符串：
             - 返回追加之后的字符串长度
@@ -207,9 +207,9 @@ sidebar_label: 5. Redis7
     - 常用操作命令：
         ```bash showLineNumbers
         # 将一个或多个值从表头（左侧）依次插入
-        lpush key value [value value .....]
+        lpush key value [value value …]
         # 将一个或多个值从表尾（右侧）依次插入
-        rpush key value [value value .....]
+        rpush key value [value value …]
 
         # 获取指定列表中指定下标区间的元素
         lrange key startIndex endIndex
@@ -247,7 +247,7 @@ sidebar_label: 5. Redis7
     - 常用操作命令：
         ```bash showLineNumbers
         # 将一个或多个元素添加到指定的集合中（返回成功加入的元素的个数；忽略已存在的元素）
-        sadd key value [value value ....]
+        sadd key value [value value …]
 
         # 获取指定集合中所有的元素
         smembers key
@@ -259,7 +259,7 @@ sidebar_label: 5. Redis7
         scard key
 
         # 移除指定集合中一个或多个元素（返回成功移除的元素个数；忽略不存在的元素）
-        srem key member [member .....]
+        srem key member [member …]
 
         # 随机获取指定集合中的一个或多个元素
         srandmember key [count]
@@ -271,13 +271,13 @@ sidebar_label: 5. Redis7
         smove source dest member
 
         # 获取第一个集合key1中有的、但其它集合（keyn）中都没有的元素组成的新集合
-        sdiff key1 key2 [key3 key4 ....]
+        sdiff key1 key2 [key3 key4 …]
 
         # 获取所有指定集合中都有的元素组成的新集合
-        sinter key key [key key ....]
+        sinter key key [key key …]
 
         # 获取所有指定集合中所有元素组成的新集合
-        sunion key key [key key .....]
+        sunion key key [key key …]
         ```
         - 随机获取指定集合中的一个或多个元素：
             - count &gt; 0：随机获取的多个元素之间不能重复
@@ -288,19 +288,19 @@ sidebar_label: 5. Redis7
     - 常用操作命令：
         ```bash showLineNumbers
         # 将一个或多个field-value对设置到哈希表中（如果key已经存在，会覆盖旧value值）
-        hset key filed1 value1 [field2 value2 ....]
+        hset key filed1 value1 [field2 value2 …]
         # 批量设置field-value对到哈希表中
-        hmset key filed1 value1 [field2 value2 ....]
+        hmset key filed1 value1 [field2 value2 …]
         # 当key-field已经存在时放弃设置，否则就设置file-value
         hsetnx key field value
         
         # 批量获取指定哈希表中的field的值
-        hmget key field1 [field2 field3 ....]
+        hmget key field1 [field2 field3 …]
         # 获取指定哈希表中所有的field-value：
         hgetall key
 
         # 从指定哈希表中删除一个或者多个field
-        hdel key field1 [field2 field3 ....]
+        hdel key field1 [field2 field3 …]
 
         # 获取指定哈希表中所有field的个数
         hlen key
@@ -327,7 +327,7 @@ sidebar_label: 5. Redis7
     - 常用操作命令：
         ```bash showLineNumbers
         # 将一个或多个member及其score值加入有序集合（如果元素已经存在，则覆盖旧score值）
-        zadd key score member [score member ....]
+        zadd key score member [score member …]
 
         # withscores会显示元素的score值
 	    # 获取指定有序集合中指定下标区间（闭区间）的元素
@@ -336,7 +336,7 @@ sidebar_label: 5. Redis7
         zrangebyscore/zrevrangebyscore key min max [withscores]
 
         # 删除指定有序集合中一个或多个元素
-        zrem key member [member......]
+        zrem key member [member…]
 
         # 获取指定有序集合中所有元素的个数
         zcard key

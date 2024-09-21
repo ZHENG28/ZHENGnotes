@@ -58,7 +58,7 @@ sidebar_label: 1. SSM源码分析
     // 解析映射语句，转换成SQL语句对象
     MappedStatement ms = this.resolveMappedStatement(mapperInterface, methodName, declaringClass, configuration);
     if (ms == null) {
-        // ...
+        // …
     } else {
         this.name = ms.getId();
         // SQL命令类型：增、删、改、查
@@ -73,7 +73,7 @@ sidebar_label: 1. SSM源码分析
     // 查看XML配置文件中是否存在statementId的语句
     if (configuration.hasStatement(statementId)) {
         return configuration.getMappedStatement(statementId);
-    } // ...
+    } // …
     ```
 5. 构建MethodSignature对象：
     ``` java
@@ -139,7 +139,7 @@ sidebar_label: 1. SSM源码分析
         default:
             throw new BindingException("Unknown execution method for: " + this.command.getName());
     }
-    // ...
+    // …
     ```
 7. `selectOne()`调用`selectList()`去数据库查询：
     ``` java
@@ -191,7 +191,7 @@ sidebar_label: 1. SSM源码分析
         } finally {
             --this.queryStack;
         }
-        // ...
+        // …
         return list;
     }
     ```
@@ -253,11 +253,11 @@ sidebar_label: 1. SSM源码分析
                 if (log.isDebugEnabled()) {
                     log.debug("Created connection " + conn.getRealHashCode() + ".");
                 }
-            } // ...
+            } // …
         } finally {
             this.lock.unlock();
         }
-        // ...
+        // …
     }
     ```
 11. `dataSource.getConnection()`进入到`doGetConnection()`：真正获取连接的方法

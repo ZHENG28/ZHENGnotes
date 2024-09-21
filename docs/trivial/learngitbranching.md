@@ -61,7 +61,7 @@ https://learngitbranching.js.org/?locale=zh_CN
 ### 1.3 移动提交记录
 #### 1.3.1 Git Cherry-pick
 1. 命令：
-    - `git cherry-pick <commit>...` &rarr; 将指定的commit节点复制到当前分支下
+    - `git cherry-pick <commit>…` &rarr; 将指定的commit节点复制到当前分支下
 2. 用于整理提交记录
 
 #### 1.3.2 交互式 rebase

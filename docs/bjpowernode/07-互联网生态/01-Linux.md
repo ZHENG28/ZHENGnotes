@@ -44,7 +44,7 @@ sidebar_label: 1. Linux
     /usr --> /usr/bin
     /usr --> /usr/lib
     / --> /media
-    / --> ...
+    / --> other[…]
     ```
 
 ### 3.2 Linux具体目录结构
@@ -175,7 +175,7 @@ mkdir [option] dir
 rmdir dir
 
 # 创建一个或者多个空文件
-touch file1[ file2 ...]
+touch file1[ file2 …]
 
 # 复制文件或者目录（-r：递归）
 cp [option] source dest

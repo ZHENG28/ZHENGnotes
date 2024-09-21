@@ -52,7 +52,7 @@ sidebar_label: 2. SpringBoot3
     4. `@Configuration` + `@ComponentScan`：`@Configuration` 加在bean对象上， `@ComponentScan` 加在bean对象或xxxApplication类上
     5. `@ImportResource(locations={"url"})`：将xml文件中的bean组件加入到SpringBoot容器中
 7. 禁止框架中的配置：
-    - 在项目入口类上设置 `@SpringBootApplication(exclude={xxx.class, ...})`
+    - 在项目入口类上设置 `@SpringBootApplication(exclude={xxx.class, …})`
     - 在配置文件中设置 `spring.autoconfigure.exclude=xxx` 来排除
 8. SpringBoot项目可以直接打jar包运行（因为SpringBoot已内嵌Tomcat服务器，所以无需打war包）
 9. `CommandLineRunner` 、 `ApplicationRunner` 接口在SpringBoot项目启动后会回调重写的run方法
@@ -109,7 +109,7 @@ sidebar_label: 2. SpringBoot3
 1. 格式：`.properties` 或 `.yml`
 2. 多环境配置文件：`spring.profiles.active=dev测试/product生产`
 3. 随机值：框架提供 `RandomValuePropertySource` 注入随机值（如：整数、longs、uuid或字符串）
-    - 格式：`random.value/int/...`
+    - 格式：`random.value/int/…`
 4. 占位符：`${}`
 5. 时间单位Duration：可以使用任何受支持的单位，如ns、us、ms、s、m、H、d、w、m、y等
 6. 容量单位DataSize：B、KB、MB、GB、TB等
@@ -118,7 +118,7 @@ sidebar_label: 2. SpringBoot3
     2. 通过映射类读取，类上加 `@ConfigurationProperties` 注解
     3. 通过Environment对象读取
         - `@Autowired Environment env;`：由Spring IOC提供的对象
-        - `... env.getProperty("property_name"); ...`
+        - `… env.getProperty("property_name"); …`
     4. 通过嵌套静态内部类（static class）读取（如server.前缀的相关属性）
 
 ### 19 线程池异步调用

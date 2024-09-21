@@ -77,11 +77,11 @@ sidebar_label: 8. MyBatisPlus
     - `like` 和 `notLike`：等同于 `WHERE field (NOT) LIKE %val%`
     - `likeLeft` 和 `likeRight`：等同于 `WHERE field LIKE %val/val%`
     - `isNull` 和 `isNotNull`
-    - `in` 和 `notIn`：函数 `in(column, values...)`，等同于 `WHERE field (NOT) IN (?, ?, ...)`
+    - `in` 和 `notIn`：函数 `in(column, values…)`，等同于 `WHERE field (NOT) IN (?, ?, …)`
     - `inSql` 和 `notInSql`：函数 `inSql(column, sql)`，等同于 `WHERE field (NOT) IN (sql)`，即**子查询**
     - `groupBy`
     - `orderByAsc` 和 `orderByDesc`
-    - `orderBy(boolean condition, boolean isAsc, String... columns`：可指定字段和排序方向
+    - `orderBy(boolean condition, boolean isAsc, String… columns`：可指定字段和排序方向
         - `boolean condition`：orderBy是否添加到sql语句中
         - 可在queryWrapper上追加条件
     - `or` 和 `and`：追加在其他条件函数后即可，系统默认使用 `and`

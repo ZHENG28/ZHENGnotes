@@ -86,7 +86,7 @@ sidebar_label: 10. MySQL优化
     CREATE INDEX index_name ON table_name(field_name)
 
     # 复合索引
-    CREATE INDEX index_name ON table_name(field1_name, field2_name, ...)
+    CREATE INDEX index_name ON table_name(field1_name, field2_name, …)
     ```
 
 ### 2.3 索引算法
@@ -99,13 +99,13 @@ sidebar_label: 10. MySQL优化
     ```mermaid
     graph TB
     root[根数据节点] --- 小于根节点的数据节点 --- leaf[叶子节点 = 数据行数 + 数据内容]
-    root --- 大于根节点的数据节点 --- ...
+    root --- 大于根节点的数据节点 --- other[…]
     ```
 3. **<font color="red">B-TREE算法</font>**：平衡二叉树算法的升级版，目前各种数据库主要使用的索引算法
     ```mermaid
     graph TB
     root[区间数据] --- 小于区间数据的区间数据 --- leaf1[叶子节点 = 数据行数 + 数据内容]
-    root --- 大于区间数据的区间数据 --- leaf2[叶子节点...]
+    root --- 大于区间数据的区间数据 --- leaf2[叶子节点…]
     
     ```
     - 使用区间数据来代替具体数据 &rarr; 降低维护难度

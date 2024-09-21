@@ -215,7 +215,7 @@ sidebar_label: 8. Nginx
 ### 2.3 静态代理
 1. 静态代理：将所有**静态资源**的访问由访问tomcat改为访问nginx
 2. 实现方式：
-    1. 配置静态资源文件的后缀：`location ~.*\.(js|css|html|jpg|...)$ { }`
+    1. 配置静态资源文件的后缀：`location ~.*\.(js|css|html|jpg|…)$ { }`
     2. 配置静态资源文件的目录：`location ~.*/(css/js/imgs) { }`
 
 ### 2.4 动静分离

@@ -97,7 +97,7 @@
         ```cpp showLineNumbers
             // 右闭 -> left == right 有意义
             while (left <= right)
-            ...
+            …
             // 防止两者相加的结果溢出；结果等同于(left + right) / 2
             int middle = left + ((right - left) / 2);
             if (nums[middle] > target) right = middle - 1;
@@ -106,7 +106,7 @@
         ```cpp showLineNumbers
             // 右开 -> left == right 没有意义
             while (left < right)
-            ...
+            …
             if (nums[middle] > target) right = middle;
         ```
 

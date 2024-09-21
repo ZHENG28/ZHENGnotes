@@ -51,8 +51,8 @@ sidebar_label: 11. MySQL索引优化
     4. 复合索引：一个索引包含多列
         ```sql showLineNumbers
         -- 创建
-        ALTER TABLE table_name ADD INDEX index_name(field1_name, field2_name, ...);
-        CREATE INDEX index_name ON table_name(field1_name, field2_name, ...);
+        ALTER TABLE table_name ADD INDEX index_name(field1_name, field2_name, …);
+        CREATE INDEX index_name ON table_name(field1_name, field2_name, …);
         -- 删除
         DROP INDEX index_name ON table_name;
         ```

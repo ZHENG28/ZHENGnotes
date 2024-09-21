@@ -144,7 +144,7 @@ sidebar_label: 0. 小结
 ## 6 SpringSecurity
 ### 6.1 简介
 1. 主要功能：认证authentication、授权authorization
-    1. 基于角色Role的身份认证：`@PreAuthorize("hasAnyRole("role1", "role2", ...)")`
+    1. 基于角色Role的身份认证：`@PreAuthorize("hasAnyRole("role1", "role2", …)")`
     2. 基于JDBC的用户认证：重写 `UserDetails loadUserByUsername(String username)` 方法
 2. 基于角色的访问控制RBAC（Role-Based Access Control）：用户有对应的角色，而角色拥有权限的集合
 

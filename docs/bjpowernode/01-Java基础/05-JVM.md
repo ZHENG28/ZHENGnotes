@@ -189,7 +189,7 @@ sidebar_label: 5. JVM
                     - 和字段引用（Fieldref）、方法引用（Methodref）相对应
                 1. 字段描述符field descriptor：字符-类型-含义，如object类型的实例，其描述符为 `Ljava/lang/Object;`；double类型的二维数组实例，其描述符为`[[D`
                 2. 方法描述符method descriptor：
-                    - 包含0个或多个参数描述符和返回值描述符，如 `Object method(int i, double d, Thread t) { ... }`，其描述符为 `(IDLjava/lang/Thread;)Ljava/lang/Object;`
+                    - 包含0个或多个参数描述符和返回值描述符，如 `Object method(int i, double d, Thread t) { … }`，其描述符为 `(IDLjava/lang/Thread;)Ljava/lang/Object;`
                     - 实例方法还需额外传递参数this，但该传递由jvm的指令实现
             1. 类、接口的全限定名Fully Qualified Name：
                 - 数据结构：

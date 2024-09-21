@@ -22,7 +22,7 @@
         ```cpp showLineNumbers
         // 右闭 -> left == right 有意义
         while (left <= right)
-        ...
+        …
         // 防止两者相加的结果溢出；结果等同于(left + right) / 2
         int middle = left + ((right - left) / 2);
         if (nums[middle] > target) right = middle - 1;
@@ -31,7 +31,7 @@
         ```cpp showLineNumbers
         // 右开 -> left == right 没有意义
         while (left < right)
-        ...
+        …
         if (nums[middle] > target) right = middle;
         ```
 
@@ -154,7 +154,7 @@
 
 ## 5 长度最小的子数组
 
-> [【LC209】](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)给定一个含有 n 个正整数的数组和一个正整数 target 。找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, ..., numsr-1, numsr]，并返回其长度。如果不存在符合条件的子数组，返回 0 。
+> [【LC209】](https://leetcode.cn/problems/minimum-size-subarray-sum/description/)给定一个含有 n 个正整数的数组和一个正整数 target 。找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr]，并返回其长度。如果不存在符合条件的子数组，返回 0 。
 
 1. 自想解法：两个for循环嵌套，外层寻找数组的起始位置，内层寻找数组的终止位置 &rarr; 暴力解法
 2. **<font color="red">滑动窗口</font>**：只用一层for循环，不断调节子序列的起始位置和终止位置，从而得到结果
