@@ -176,7 +176,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 7 RabbitMQ
+## 7 RabbitMQ（略）
 
 ---
 
@@ -244,7 +244,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 14 ActiveMQ（选学）
+## 14 ActiveMQ（选学）（略）
 
 ---
 
