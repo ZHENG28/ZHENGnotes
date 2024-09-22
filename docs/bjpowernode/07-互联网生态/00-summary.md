@@ -216,6 +216,23 @@ sidebar_label: 0. 小结
 ---
 
 ## 12 MyCAT2
+### 12.1 概述
+1. MyCAT：一个分布式数据库中间插件，核心功能是 **分表分库**
+2. 重要的配置文件：
+    1. 用户（user）：`mycat/conf/user/{username}.user.json`
+    2. 数据源（datasource）：`mycat/conf/datasources/{dataSource}.datasource.json`
+    3. 逻辑库与逻辑表（logicaltable）：`mycat/conf/schemas/{database}.schema.json`
+    4. 序列号（sequence）：`mycat/conf/sequences/{database}_{table}.sequence.json`
+    5. 服务器（server）
+3. 集群（Cluster）：在付出较低成本的情况下，获得在性能、可靠性、灵活性方面的相对较高的收益，其核心技术是 **任务调度**
+4. 切分维度：
+    - 垂直切分：基于表或字段划分，表结构不同 &rarr; 分库
+    - 水平切分：基于数据划分，表结构相同，数据不同 &rarr; 分表
+5. 分片算法：
+    1. 取模哈希 `MOD_HASH`
+    2. 范围哈希 `RANGE_HASH`
+    3. 字符串哈希 `UNI_HASH`
+    4. 日期哈希 `YYYYDD`
 
 ---
 
