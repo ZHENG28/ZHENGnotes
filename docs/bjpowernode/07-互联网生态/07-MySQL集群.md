@@ -46,7 +46,7 @@ sidebar_label: 7. MySQL集群
         server-id=3308
         ```
     2. 主服务器客户端：
-        ```bash showLineNumbers
+        ```sql showLineNumbers
         # 创建复制数据的账号并授权
         grant replication slave on *.* to 'copy_username'@'%' identified by 'password';
 
@@ -57,7 +57,7 @@ sidebar_label: 7. MySQL集群
         reset master;
         ```
     3. 从服务器客户端：
-        ```bash showLineNumbers
+        ```sql showLineNumbers
         # 查看从服务器的状态
         reset slave status;
 
