@@ -184,6 +184,20 @@ sidebar_label: 0. 小结
 ---
 
 ## 9 FastDFS
+### 9.1 概述
+1. FastDFS：开源的轻量级分布式文件系统，具备文件存储、文件同步、文件访问（文件上传、文件下载、文件删除）等功能，具有冗余备份、线性扩容等机制
+    1. 客户端
+    2. 服务端：
+        1. **跟踪器tracker**：用于调度，在内存中记录集群中存储节点storage的状态信息
+        2. **存储节点storage**：用于存储文件
+2. 相关命令：
+    1. `fdfs_trackerd <config_file> [start | stop | restart]`
+    2. `fdfs_storaged <config_file> [start | stop | restart]`
+3. 通过Nginx扩展模块，达到HTTP访问FastDFS服务器上的文件的效果
+
+### 9.2 应用
+1. 在java中的应用
+2. 搭建FastDFS分布式文件系统集群
 
 ---
 
