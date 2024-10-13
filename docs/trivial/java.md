@@ -37,3 +37,12 @@ Class c = Class.forName("完整类名");
     - 存储对象：发现序列化操作用于存储时，一般是对于NoSql数据（而在使用Nosql数据库进行存储时，用“freeze”这个说法来理解是再恰当不过了）
     - 数据传输
 3. 当我们让实体类实现Serializable接口（是一个空接口，没有任何方法）时，其实是在告诉JVM，此类可被默认的序列化机制序列化
+
+## 7. `@Configuration` 和 `@Component` 的区别
+- `@Configuration` 注册到Spring容器中的Bean是一个 **CGLIB代理** 的Bean
+- `@Component` 注册到Spring容器中的还是原始Bean
+
+## 8. `ConcurrentHashMap` 的key和value为什么不能为null？
+1. 存在二义性：是没有在集合中，还是值本身就是 `NULL`
+2. 多线程环境下，无法通过 `containsKey(key)` 方法来判断否存在这个键值对 &rarr; 存在二义性问题
+3. 在使用 `ConcurrentHashMap` 时，尽量使用原子性的复合操作方法（如：`putIfAbsent`、`compute`、`computeIfAbsent`、`computeIfPresent`、`merge`）
