@@ -35,7 +35,7 @@ sidebar_label: 10. RocketMQ
 ### 1.3 安装步骤与命令（Linux）
 1. 解压文件
 2. 配置系统环境变量：在 `/etc/profile` 文件末尾添加 `export NAMESRV_ADDR=ip:9876` （默认端口）
-3. 配置RocketMQ相关参数：`runserver.sh` 、 `runbroker.sh` 、 `broker.conf` （配置nameserver和broker的ip地址）
+3. 配置RocketMQ相关参数：`runserver.sh`、`runbroker.sh`、`broker.conf` （配置nameserver和broker的ip地址）
 4. 运行并输出日志：
     ```bash showLineNumbers
     nohup sh mqnamesrv > log-path &

@@ -149,8 +149,8 @@ sidebar_label: 8. Nginx
 ### 2.2 负载均衡
 1. 负载均衡：将请求**均匀分摊到**集群中的多个服务器节点上执行
 2. 实现方式：
-    1. 硬件负载均衡：性能稳定，但费用昂贵，如 `F5` 、深信服、 `Array` 等
-    2. 软件负载均衡：免费开源且成本低廉，如 `Nginx` 、 `LVS` 、 `HAProxy` 等
+    1. 硬件负载均衡：性能稳定，但费用昂贵，如 `F5`、深信服、`Array` 等
+    2. 软件负载均衡：免费开源且成本低廉，如 `Nginx`、`LVS`、`HAProxy` 等
         ```nginx showLineNumbers
         upstream www.example.com {
             server ip:port1;

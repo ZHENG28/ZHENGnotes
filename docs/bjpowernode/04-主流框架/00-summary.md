@@ -40,7 +40,7 @@ sidebar_label: 0. 小结
         <version>自定义版本号</version>
         ```
     - 依赖dependency：说明项目中要使用的各种资源，相当于java代码中的import
-        - 依赖范围scope：`compile` （默认值）、 `test` 、 `provided`
+        - 依赖范围scope：`compile` （默认值）、`test`、`provided`
 2. 约定的目录结构：maven项目的目录和文件的位置都是固定的
 
 ---

@@ -262,7 +262,7 @@ sidebar_label: 0. 小结
         4. 消息表达式`#{}`
         5. 标准表达式
     - 属性：`th:property-name`
-2. 工具类对象：`#execInfo` 、 `#uris` 、 `#dates` 、 `#numbers` 、 `#strings` 等
+2. 工具类对象：`#execInfo`、`#uris`、`#dates`、`#numbers`、`#strings` 等
     - 使用：`${#strings.toUpperCase(str)}`
 3. 内部对象：
     1. `#request`：`javax.servlet.http.HttpServletRequest`
@@ -347,7 +347,7 @@ sidebar_label: 0. 小结
 ### 17.3 门面分类
 1. **<font color="red">JCL（Jakarta Commons Logging）</font>**：java原生日志门面
     - 本身不具有记录日志的功能，但会提供通用的接口
-    - 优先使用导入的第三方日志框架（如 `Log4j` 、 `Logback` 等）；若没有导入，则默认使用 `JUL`
+    - 优先使用导入的第三方日志框架（如 `Log4j`、`Logback` 等）；若没有导入，则默认使用 `JUL`
     - 结构：![JCL Structure](./img/0.2.jcl_structure.jpg)
         - `Jdk13LumberjackLogger`：旧版JUL
         - `Jdk14Logger`：目前使用的JUL

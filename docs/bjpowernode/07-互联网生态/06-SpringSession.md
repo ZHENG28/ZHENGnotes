@@ -69,7 +69,7 @@ sidebar_label: 6. SpringSession
     browser --请求--> nginx[Nginx] --负载均衡--> server1[Tomcat服务器1] --查找对应的sessionId--- 共享容器
     nginx[Nginx] --负载均衡--> server2[Tomcat服务器2] --查找对应的sessionId--- 共享容器
     ```
-    1. 容器扩展插件：复制session到其他服务器，但存在延迟，如 `tomcat-redis-session-manager` 、 `memcached-session-manager`
+    1. 容器扩展插件：复制session到其他服务器，但存在延迟，如 `tomcat-redis-session-manager`、`memcached-session-manager`
         - 无需改动代码，但过于依赖tomcat容器
     2. nginx的 `ip_hash` 策略：用户每次访问都绑定到同一台服务器上
         - ip不能变 &rarr; 失效

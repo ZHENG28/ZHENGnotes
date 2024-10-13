@@ -41,7 +41,7 @@ sidebar_label: 9. Oracle
 ### 1.3 函数
 - 单行函数：每次取一条记录作为输入，得到的输出为**单个**输入对应的**单个**结果
     - 字符函数：大小写转换函数、字符处理函数
-    - 数字函数：小数点四舍五入函数 `ROUND(NUMBER,POINT)` 、数字截取函数 `TRUNC(NUMBER,POINT)` 、求模/求余函数 `MOD(NUMBER1,NUMBER2)`
+    - 数字函数：小数点四舍五入函数 `ROUND(NUMBER,POINT)`、数字截取函数 `TRUNC(NUMBER,POINT)`、求模/求余函数 `MOD(NUMBER1,NUMBER2)`
     - 日期函数
     - 转换函数：隐式数据类型转换函数、显式数据类型转换函数
         ```mermaid
