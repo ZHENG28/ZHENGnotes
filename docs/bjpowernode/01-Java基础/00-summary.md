@@ -72,7 +72,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 3 IntelliJ IDEA
+## [3 IntelliJ IDEA](./03-IntelliJ-IDEA.md)
 1. 文件结构
 2. Debug模式
 
@@ -82,7 +82,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 5 JVM
+## [5 JVM](./05-JVM.md)
 ### 5.1 概述
 1. JDK（Java Development Kit）、JRE（Java Runtime Environment）、JVM（Java Virtual Machine） &rarr; JDK = JRE(JVM + 其它) + 其它
 2. 结构：
@@ -106,7 +106,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 6 设计模式
+## [6 设计模式](./06-设计模式.md)
 ### 6.1 创建型create
 1. 单例（Singleton）
 2. 简单工厂（Simple Factory）
@@ -206,7 +206,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 9 Oracle（选学）
+## [9 Oracle（选学）](./09-Oracle（选学）.md)
 ### 9.1 概述
 1. 简单SQL及数据类型，函数，多表查询（1999新标准）
 2. 事务的开始时机：第一个DML语句

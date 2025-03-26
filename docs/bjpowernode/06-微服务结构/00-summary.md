@@ -86,7 +86,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 2 SpringBoot3
+## [2 SpringBoot3](./02-SpringBoot3.md)
 1. `main` 方法分析：配置项、流式开发 `Builder()`
 2. 将bean对象/组件加入到SpringBoot容器中：多种注解方式，如 `@Configuration`
 3. 敏感配置信息加密：使用jasypt加解密
@@ -113,7 +113,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 5 Redis7
+## [5 Redis7](./05-Redis7.md)
 ### 5.1 基础知识
 1. 远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的**NoSQL数据库**
 2. 启动命令：
@@ -180,7 +180,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 8 MyBatisPlus
+## [8 MyBatisPlus](./08-MyBatisPlus.md)
 ### 8.1 简介
 1. 增强MyBatis的功能，但不做改变
 2. 可通过注解指定表名`@TableName`、列名`@TableField`、主键`@TableId`等
@@ -195,7 +195,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 10 RocketMQ
+## [10 RocketMQ](./10-RocketMQ.md)
 ### 10.1 简介
 1. 消息队列MQ（Message Queue）：面向消息的中间件
 2. 组成结构：
@@ -248,7 +248,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 15 高并发解决方案（选学）
+## [15 高并发解决方案（选学）](./高并发解决方案（选学）)
 ### 15.1 概述
 - 高并发：大量并发访问，即某个时间点有大量请求同时来访问系统
 - 衡量指标：响应时间、吞吐量、QPS、并发用户数

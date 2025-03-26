@@ -4,7 +4,7 @@ sidebar_label: 0. 小结
 
 # 互联网生态
 
-## 1 Linux
+## [1 Linux](./01-Linux.md)
 ### 1.1 简介
 1. 开源、免费的OS，注重安全性、稳定性、高并发处理能力，但没有优异的可视化界面
 2. 版本：Ubuntu（乌班图）、RedHat（红帽）、CentOS
@@ -124,7 +124,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 6 SpringSession
+## [6 SpringSession](./06-SpringSession.md)
 ### 6.1 概述
 1. 会话 `Session`：记录用户状态，从而使服务端能识别用户
 2. `Cookie`：用来存储相关客户端信息（如 `sessionId`），HTTP请求时会发送对应的 `Cookie` 信息到服务端
@@ -139,7 +139,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 7 MySQL集群
+## [7 MySQL集群](./07-MySQL集群.md)
 ### 7.1 概述
 1. 主从复制：服务器分为主服务器和从服务器，主服务器负责读和写，从服务器只负责读
     1. 一主多从
@@ -152,7 +152,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 8 Nginx
+## [8 Nginx](./08-Nginx.md)
 ### 8.1 简介
 1. Nginx（engine x）：一个代理服务器，高性能、低消耗、并发处理能力强
     1. **反向代理**（Reverse Proxy）：代理对象是服务端
@@ -183,7 +183,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 9 FastDFS
+## [9 FastDFS](./09-FastDFS.md)
 ### 9.1 概述
 1. FastDFS：开源的轻量级分布式文件系统，具备文件存储、文件同步、文件访问（文件上传、文件下载、文件删除）等功能，具有冗余备份、线性扩容等机制
     1. 客户端
@@ -201,7 +201,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 10 MySQL优化
+## [10 MySQL优化](./10-MySQL优化.md)
 ### 10.1 概述
 1. 查询语句关键词：`FROM` &rarr; `WHERE` &rarr; `GROUP BY` &rarr; `HAVING` &rarr; `SELECT` &rarr; `ORDER BY` &rarr; `LIMIT`
 2. 索引：一组排好顺序的数据，主要使用 `B-TREE` 索引算法
@@ -212,7 +212,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 11 MySQL索引优化
+## [11 MySQL索引优化](./11-MySQL索引优化.md)
 ### 11.1 概述
 1. 索引，是排好序的、可以快速查找数据的数据结构
     - `INNODB` 存储引擎：`B+ Tree` 索引
@@ -229,7 +229,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 12 MyCAT2
+## [12 MyCAT2](./12-MyCAT2.md)
 ### 12.1 概述
 1. MyCAT：一个分布式数据库中间插件，核心功能是 **分表分库**
 2. 重要的配置文件：
@@ -259,7 +259,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 14 MQ解决重复消费问题
+## [14 MQ解决重复消费问题](./14-MQ解决重复消费问题.md)
 ### 14.1 概述
 1. 幂等性：任意多次执行所产生的影响均与一次执行产生的影响相同
     1. 接口调用重试
