@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-bjpowernode/微服务结构/高并发解决方案（选学）" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">高并发解决方案 | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="高并发解决方案 | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1 概述"><meta data-rh="true" property="og:description" content="1 概述"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.809a353c.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/main.dfb61975.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Collapse sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Expand sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/6-微服务结构"><span itemprop="name">6. 微服务结构</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">15. 高并发解决方案</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>高并发解决方案</h1>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-概述">1 概述<a class="hash-link" aria-label="Direct link to 1 概述" title="Direct link to 1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#1-概述">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-什么是高并发">1.1 什么是高并发<a class="hash-link" aria-label="Direct link to 1.1 什么是高并发" title="Direct link to 1.1 什么是高并发" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#11-什么是高并发">​</a></h3>
+<ul>
+<li>高并发：大量并发访问，即某个时间点有大量请求同时来访问系统；日PV（Page View，页面浏览量或点击量）在千万以上</li>
+<li>衡量指标：<!-- -->
+<ol>
+<li>响应时间：系统对请求做出响应的时间</li>
+<li>吞吐量：单位时间内能处理的用户请求数量</li>
+<li>QPS：系统每秒能够响应的查询次数，即服务器在每秒内能处理多少流量</li>
+<li>并发用户数：同时能承载用户正常使用系统功能的用户数量</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-常见的高并发应用">1.2 常见的高并发应用<a class="hash-link" aria-label="Direct link to 1.2 常见的高并发应用" title="Direct link to 1.2 常见的高并发应用" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#12-常见的高并发应用">​</a></h3>
+<ol>
+<li>淘宝双十一</li>
+<li>京东618</li>
+<li>12306抢票</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-解决方案">2 解决方案<a class="hash-link" aria-label="Direct link to 2 解决方案" title="Direct link to 2 解决方案" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#2-解决方案">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="21-硬件">2.1 硬件<a class="hash-link" aria-label="Direct link to 2.1 硬件" title="Direct link to 2.1 硬件" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#21-硬件">​</a></h3>
+<ul>
+<li>单体应用垂直扩容：提升服务器硬件配置的策略<!-- -->
+<ul>
+<li>单体应用/集中式应用：完成产品只需要一个项目工程</li>
+</ul>
+</li>
+<li>单体应用垂直扩容方案：<!-- -->
+<ol>
+<li>CPU：32位提升到64位</li>
+<li>内存：64GB提升到256GB</li>
+<li>磁盘：HDD（Hard Disk Drive）提升到固态硬盘SSD（Solid State Drives）</li>
+<li>磁盘容量：1TB提升到2TB</li>
+<li>网卡：千兆提升到万兆</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="22-缓存">2.2 缓存<a class="hash-link" aria-label="Direct link to 2.2 缓存" title="Direct link to 2.2 缓存" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#22-缓存">​</a></h3>
+<ol>
+<li>HTTP缓存：<!-- -->
+<ol>
+<li>浏览器缓存：浏览器根据服务器端返回的缓存设置，将响应内容缓存到浏览器<!-- -->
+<ul>
+<li>响应码 <code>304</code>：无需再次传输请求的内容，即可以使用缓存内容</li>
+<li>设置响应头</li>
+</ul>
+</li>
+<li>Nginx缓存：Nginx拦截请求后，会先从Nginx本地缓存查询数据<!-- -->
+<ul>
+<li>提供 <code>expires</code> 指令来实现缓存控制</li>
+</ul>
+</li>
+<li>CDN（Content Delivery Network，内容分发网络）缓存：依靠部署在各地的 <strong>边缘服务器</strong>，通过中心平台的负载均衡、内容分发、调度等能力，使用户 <strong>就近</strong> 获取所需内容<!-- -->
+<ul>
+<li>主要缓存静态资源</li>
+<li>数据传输链路：从用户浏览器到各级（区、市、省）网络，再跨省远距离传输到目标服务器</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>应用缓存：<!-- -->
+<ol>
+<li>内存：高效快速，但重启后缓存丢失</li>
+<li>磁盘：读取效率低，但重启后缓存不会丢失<!-- -->
+<ul>
+<li>代码组件：<code>Guava</code>、<code>Ehcache</code></li>
+<li>服务器：<code>Redis</code>、<code>MemCache</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>多级缓存：在应用系统的不同层级进行数据缓存，如浏览器 → CDN → Nginx → Redis → DB（磁盘、文件系统）</li>
+<li>使用场景：目的是减少对后端服务的访问，降低服务器压力<!-- -->
+<ol>
+<li>经常需要读取的数据</li>
+<li>频繁访问的数据</li>
+<li>IO瓶颈数据</li>
+<li>计算昂贵的数据</li>
+<li>无需实时更新的数据</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="23-集群">2.3 集群<a class="hash-link" aria-label="Direct link to 2.3 集群" title="Direct link to 2.3 集群" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#23-集群">​</a></h3>
+<ul>
+<li>单体应用水平扩容：即集群部署；必须需要负载均衡</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="24-拆分">2.4 拆分<a class="hash-link" aria-label="Direct link to 2.4 拆分" title="Direct link to 2.4 拆分" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#24-拆分">​</a></h3>
+<ol>
+<li>应用拆分：分布式、微服务<!-- -->
+<ul>
+<li>远程调用技术：<code>httpClient</code>、<code>hessian</code>、<code>dubbo</code>、<code>webService</code> 等</li>
+<li>开源方案：<code>Dubbo</code>、<code>SpringCloud</code> 等</li>
+</ul>
+</li>
+<li>数据库拆分：<!-- -->
+<ul>
+<li>分类：<!-- -->
+<ol>
+<li>垂直拆分（分库）：按照业务维度，把相同类型的表放在一个数据库里，即不同库建不同表</li>
+<li>水平拆分（分表）：根据数据行的特点和规则，将表中某些行切分到不同数据库里</li>
+</ol>
+</li>
+<li>开源方案：<code>MyCat</code>、<code>Sharding-Sphere</code> 等</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="25-静态化">2.5 静态化<a class="hash-link" aria-label="Direct link to 2.5 静态化" title="Direct link to 2.5 静态化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#25-静态化">​</a></h3>
+<ul>
+<li>对于访问量大且更新频率低的数据，可定时生成静态页面</li>
+<li>静态化技术：<code>freemaker</code>、<code>velocity</code></li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="26-动静分离">2.6 动静分离<a class="hash-link" aria-label="Direct link to 2.6 动静分离" title="Direct link to 2.6 动静分离" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#26-动静分离">​</a></h3>
+<ul>
+<li>Nginx负责代理静态资源，Tomcat负责处理动态资源</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="27-队列">2.7 队列<a class="hash-link" aria-label="Direct link to 2.7 队列" title="Direct link to 2.7 队列" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#27-队列">​</a></h3>
+<ul>
+<li>作用：<!-- -->
+<ol>
+<li>异步处理</li>
+<li>流量削峰：高峰期将请求暂时入队，将流量削平，避免服务器压力过大</li>
+<li>系统解耦：发消息通知其它系统，而非直接调用</li>
+</ol>
+</li>
+<li>应用场景：<!-- -->
+<ol>
+<li>非必须实时处理的</li>
+<li>非必须实时告知用户结果的</li>
+<li>非必须100%一次性处理成功的</li>
+<li>非必须强一致性的（保证最终一致性即可）</li>
+</ol>
+</li>
+<li>常见的消息队列产品：<!-- -->
+<ol>
+<li><code>ActiveMQ</code></li>
+<li><code>RabbitMQ</code></li>
+<li><code>RocketMQ</code></li>
+<li><code>kafka</code></li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="28-池化">2.8 池化<a class="hash-link" aria-label="Direct link to 2.8 池化" title="Direct link to 2.8 池化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#28-池化">​</a></h3>
+<ol>
+<li>对象池：<code>commons-pool2</code></li>
+<li>数据库连接池：<code>Druid</code>、<code>DBCP</code>、<code>C3P0</code>、<code>BoneCP</code></li>
+<li>Redis连接池：<code>JedisPool</code></li>
+<li>HttpClient连接池：<code>PoolingClientConnectionManager</code></li>
+<li>线程池：<code>java.util.concurrent</code>包</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="29-优化">2.9 优化<a class="hash-link" aria-label="Direct link to 2.9 优化" title="Direct link to 2.9 优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#29-优化">​</a></h3>
+<ol>
+<li>JVM优化：<!-- -->
+<ol>
+<li><code>server</code>：VM的运行模式<!-- -->
+<ol>
+<li><code>Server</code> 模式：启动较慢，但程序运行速度快</li>
+<li><code>Client</code> 模式：启动较快，但程序运行速度慢</li>
+</ol>
+</li>
+<li><code>-Xmx2g</code>：最大堆大小</li>
+<li><code>-Xms2g</code>：初始堆大小</li>
+<li><code>-Xmn256m</code>：堆中年轻代大小</li>
+<li><code>-XX:PermSize</code>：非堆内存初始值，默认是物理内存的1/64</li>
+<li><code>-XX:MaxPermSize</code>：最大非堆内存初始值，默认是物理内存的1/4</li>
+<li><code>-Xss</code>：每个线程的Stack大小</li>
+<li><code>-XX:+DisableExplicitGC</code>：禁止代码中显式调用GC</li>
+<li><code>-XX:CMSInitiatingOccupancyFraction</code>：使用率达到70%时开始CMS垃圾回收</li>
+</ol>
+</li>
+<li>Tomcat优化：<!-- -->
+<ol>
+<li>设置JVM参数</li>
+<li>设置Tomcat的线程池大小</li>
+<li>设置IO模式</li>
+<li>配置APR</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="210-java程序优化">2.10 Java程序优化<a class="hash-link" aria-label="Direct link to 2.10 Java程序优化" title="Direct link to 2.10 Java程序优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#210-java程序优化">​</a></h3>
+<ul>
+<li>优化方向：<!-- -->
+<ol>
+<li>不重复创建对象</li>
+<li>流/文件/连接要在 <code>finally</code> 块中关闭</li>
+<li>少用重量级同步锁 <code>synchronized</code>，可采用 <code>Lock</code></li>
+<li>不要在循环体中使用 <code>try/catch</code></li>
+<li>多定义局部变量，少定义成员变量</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="211-数据库优化">2.11 数据库优化<a class="hash-link" aria-label="Direct link to 2.11 数据库优化" title="Direct link to 2.11 数据库优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#211-数据库优化">​</a></h3>
+<ol>
+<li>数据库服务器优化：修改数据库服务器的配置文件的参数</li>
+<li>数据库架构优化：<!-- -->
+<ol>
+<li>将数据库服务器和应用服务器分离</li>
+<li>读写分离 → 分摊读写压力</li>
+<li>分库分表</li>
+</ol>
+</li>
+<li>数据库索引优化：<!-- -->
+<ol>
+<li>优化方向：<!-- -->
+<ol>
+<li>索引字段尽量小，最好是数值（字符串做比对 → 效率低）</li>
+<li>在唯一性高的字段上创建索引，如主键、序号等</li>
+<li>不要过多地建立索引（索引需要单独存储 → 降低更新效率）</li>
+</ol>
+</li>
+<li>索引结构分类：<!-- -->
+<ol>
+<li>BTree索引（默认）：最多只需要 <strong>3次磁盘IO</strong> 就能判断数据是否存在以及数据的引用位置<!-- -->
+<ol>
+<li>第1次磁盘IO：根节点 → 子节点</li>
+<li>第2次磁盘IO：子节点 → 叶子节点</li>
+<li>第3次磁盘IO：从叶子节点中获取所有数据（索引值-数据值）</li>
+</ol>
+</li>
+<li>Hash索引：适用于字符串类型的索引，但不适用于区间查询<!-- -->
+<ol>
+<li>由索引值得出固定的哈希值</li>
+<li>根据 <code>索引值 % 哈希值</code> 的结果得到数据节点位置（索引值、哈希值、数据的引用位置）</li>
+</ol>
+</li>
+<li>位图索引（Mysql不支持）：索引重复率越高 → 效率越高<!-- -->
+<table><thead><tr><th style="text-align:center">索引值↓ | 记录行号→</th><th style="text-align:center">1</th><th style="text-align:center">2</th><th style="text-align:center">3</th><th style="text-align:center">4</th><th style="text-align:center">5</th></tr></thead><tbody><tr><td style="text-align:center">男</td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">0</td><td style="text-align:center">0</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">女</td><td style="text-align:center">1</td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center">0</td></tr></tbody></table>
+</li>
+</ol>
+</li>
+<li>索引类型：<!-- -->
+<ol>
+<li>聚簇/聚合/聚类索引（主键）：索引在索引结构中的相对位置与数据在表中的相对物理位置保持一致；建议使用int或bigint</li>
+<li>非聚簇索引：普通索引</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>SQL优化：<code>EXPLAIN</code> 执行计划分析 → 避免引擎放弃使用索引而全表扫描<!-- -->
+<ol>
+<li>在 <code>where</code> 及 <code>order by</code> 涉及的列上建立索引</li>
+<li>不在 <code>where</code> 子句中对字段进行null值判断</li>
+<li>不在 <code>where</code> 子句中使用 <code>!=</code> 或 <code>&lt;&gt;</code> 操作符</li>
+<li>不在 <code>where</code> 子句中使用 <code>or</code> 连接符</li>
+<li>不在 <code>where</code> 子句中使用 <code>in</code> 和 <code>not in</code></li>
+<li>不在 <code>where</code> 子句中使用模糊查询</li>
+<li>不在 <code>where</code> 子句中使用表达式</li>
+<li>不在 <code>where</code> 子句中使用函数</li>
+<li>必须使用复合索引的第一个字段作为条件 → 引擎才会使用索引</li>
+<li>不写无意义的查询</li>
+<li>用 <code>exists</code> 代替 <code>in</code></li>
+<li>索引列不宜有过多重复数据</li>
+<li>索引能提高 <code>SELECT</code> 效率，但降低了 <code>INSERT</code> 和 <code>UPDATE</code> 效率</li>
+<li>索引尽量使用数值类型</li>
+<li>用 <code>varchar</code> 代替 <code>char</code>（变长字段存储空间小）</li>
+<li><code>SELECT</code> 中用具体字段名代替 <code>*</code></li>
+<li>避免大事务操作 → 提高系统并发能力</li>
+</ol>
+</li>
+<li>采用数据搜索引擎：<code>solr</code>、<code>elasticsearch</code></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="212-nginx优化">2.12 Nginx优化<a class="hash-link" aria-label="Direct link to 2.12 Nginx优化" title="Direct link to 2.12 Nginx优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#212-nginx优化">​</a></h3>
+<ol>
+<li>调整配置文件参数<!-- -->
+<div class="language-nginx codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-nginx codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token directive keyword" style="color:rgb(0, 0, 255)">worker_processes</span><span class="token directive"> </span><span class="token directive number" style="color:rgb(9, 134, 88)">16</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token directive keyword" style="color:rgb(0, 0, 255)">gzip</span><span class="token directive"> </span><span class="token directive boolean">on</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"> </span><span class="token comment" style="color:rgb(0, 128, 0)">#开启gzip压缩输出</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token directive keyword" style="color:rgb(0, 0, 255)">events</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token directive keyword" style="color:rgb(0, 0, 255)">worker_connections</span><span class="token directive"> </span><span class="token directive number" style="color:rgb(9, 134, 88)">65535</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token directive keyword" style="color:rgb(0, 0, 255)">multi_accept</span><span class="token directive"> </span><span class="token directive boolean">on</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"> </span><span class="token comment" style="color:rgb(0, 128, 0)">#开启多路连接</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token directive keyword" style="color:rgb(0, 0, 255)">use</span><span class="token directive"> epoll</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"> </span><span class="token comment" style="color:rgb(0, 128, 0)">#使用epoll模型</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="213-linux优化">2.13 Linux优化<a class="hash-link" aria-label="Direct link to 2.13 Linux优化" title="Direct link to 2.13 Linux优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#213-linux优化">​</a></h3>
+<ol>
+<li>优化Linux内核参数：<code>/etc/sysctl.conf</code></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="214-网络优化">2.14 网络优化<a class="hash-link" aria-label="Direct link to 2.14 网络优化" title="Direct link to 2.14 网络优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#214-网络优化">​</a></h3>
+<ol>
+<li>优化机房、带宽、路由器等</li>
+<li>设计网络架构</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="215-前端优化">2.15 前端优化<a class="hash-link" aria-label="Direct link to 2.15 前端优化" title="Direct link to 2.15 前端优化" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#215-前端优化">​</a></h3>
+<ol>
+<li>js优化：<!-- -->
+<ol>
+<li>压缩</li>
+<li>多个合并成一个js文件</li>
+</ol>
+</li>
+<li>css优化：<!-- -->
+<ol>
+<li>压缩</li>
+<li>多个合并成一个css文件</li>
+</ol>
+</li>
+<li>html页面优化：<!-- -->
+<ol>
+<li>不加载太多的js和css文件</li>
+<li>js和css的加载放在页面尾部</li>
+<li>页面上减少请求数</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="216-压力测试">2.16 压力测试<a class="hash-link" aria-label="Direct link to 2.16 压力测试" title="Direct link to 2.16 压力测试" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#216-压力测试">​</a></h3>
+<ol>
+<li>工具：<code>Apache JMeter</code>、<code>LoadRunner</code> 等</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="217-总结">2.17 总结<a class="hash-link" aria-label="Direct link to 2.17 总结" title="Direct link to 2.17 总结" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#217-总结">​</a></h3></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">10. RocketMQ</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/category/7-互联网生态"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">7. 互联网生态</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#1-概述">1 概述</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#11-什么是高并发">1.1 什么是高并发</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#12-常见的高并发应用">1.2 常见的高并发应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#2-解决方案">2 解决方案</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#21-硬件">2.1 硬件</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#22-缓存">2.2 缓存</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#23-集群">2.3 集群</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#24-拆分">2.4 拆分</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#25-静态化">2.5 静态化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#26-动静分离">2.6 动静分离</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#27-队列">2.7 队列</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#28-池化">2.8 池化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#29-优化">2.9 优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#210-java程序优化">2.10 Java程序优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#211-数据库优化">2.11 数据库优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#212-nginx优化">2.12 Nginx优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#213-linux优化">2.13 Linux优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#214-网络优化">2.14 网络优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#215-前端优化">2.15 前端优化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#216-压力测试">2.16 压力测试</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）#217-总结">2.17 总结</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
