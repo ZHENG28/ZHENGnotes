@@ -4,6 +4,10 @@ sidebar_label: 1. SSM源码分析
 
 # SSM（Spring + SpringMVC + MyBatis）
 
+:::danger
+未看完！看到第 **22** 个视频！！！
+:::
+
 ## 1 MyBatis源码构建
 
 ## 2 MyBatis动态代理
@@ -311,5 +315,3 @@ sidebar_label: 1. SSM源码分析
     ``` java
     // 3.5.14 & 3.5.4
     ```
-
-22!!!
