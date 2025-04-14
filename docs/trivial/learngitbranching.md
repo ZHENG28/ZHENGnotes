@@ -67,7 +67,7 @@ https://learngitbranching.js.org/?locale=zh_CN
 #### 1.3.2 交互式 rebase
 1. 命令：
     - `git rebase -i <commit>` &rarr; 从指定commit节点往后的所有提交记录作为备选，使用可视化界面进行调整
-2. 不清楚想要的提交记录的哈希值时，无法使用 `git cherry-pick` 命令，用使用带参数 `--interactive` （缩写为 `-i`）的 `rebase` 命令
+2. 不清楚想要的提交记录的哈希值时，无法使用 `git cherry-pick` 命令，用使用带参数 `--interactive`（缩写为 `-i`）的 `rebase` 命令
 3. 使用参数 `--interactive` 时，会打开一个UI界面并列出将要被复制到目标分支的备选提交记录，还会显示每个提交记录的哈希值和提交说明；该UI界面可以调整提交记录的顺序、删除不想要的提交、合并提交
 
 ### 1.4 杂项

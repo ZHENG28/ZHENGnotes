@@ -72,7 +72,7 @@ sidebar_label: 8. MyBatisPlus
     - `ge/>=`
     - `lt/<`
     - `le/<=`
-    - `between`：等同于 `WHERE field BETWEEN ? AND ?` （两端均存在等于号）
+    - `between`：等同于 `WHERE field BETWEEN ? AND ?`（两端均存在等于号）
     - `notBetween`
     - `like` 和 `notLike`：等同于 `WHERE field (NOT) LIKE %val%`
     - `likeLeft` 和 `likeRight`：等同于 `WHERE field LIKE %val/val%`
@@ -87,6 +87,6 @@ sidebar_label: 8. MyBatisPlus
     - `or` 和 `and`：追加在其他条件函数后即可，系统默认使用 `and`
     - `last`：可在sql语句的最后再拼接sql语句
     - `exists` 和 `notExists`：拼接sql语句
-2. 分页：配置分页插件 `PaginationInterceptor` （默认为内存分页）
+2. 分页：配置分页插件 `PaginationInterceptor`（默认为内存分页）
     1. 统计符合queryWrapper的记录数：`SELECT COUNT(1) FROM table( WHERE condition)`
     2. 实现分页，在sql语句末尾加上 `limit num1, num2`

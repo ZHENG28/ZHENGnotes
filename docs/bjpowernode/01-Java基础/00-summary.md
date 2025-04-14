@@ -36,7 +36,7 @@ sidebar_label: 0. 小结
     - `Exception`：可处理
         - 直接继承的子类：编译时异常/受检异常 &rarr; 要求处理
         - `RuntimeException`：运行时异常/未受检异常 &rarr; 可不处理
-4. 关键词 `final`、关键词 `finally` （与 `try` 联合使用）、标识符 `finalize` （由GC调用）
+4. 关键词 `final`、关键词 `finally`（与 `try` 联合使用）、标识符 `finalize`（由GC调用）
 5. 集合类：数组查询效率高，链表增删效率高
     - `Collection`：单个存储元素
         - `List`：有序、可重复、有下标
