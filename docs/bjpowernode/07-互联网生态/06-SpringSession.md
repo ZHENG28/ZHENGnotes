@@ -15,11 +15,11 @@ sidebar_label: 6. SpringSession
         graph LR
         subgraph browser
             direction TB
-            浏览器 --- Cookie容器 --- cookieContent[空]
+            浏览器 --- Cookie容器 --- cookie_content[空]
         end
         subgraph jvm
             direction TB
-            JVM --- Session容器 --- sessionContent[空]
+            JVM --- Session容器 --- session_content[空]
         end
         browser --请求携带Cookie数据--> server[Tomcat服务器] --查询是否存在对应的sessionId\n若没有，则创建一个新的session和sessionId--- jvm
         server --返回新sessionId（123）并存入--> browser

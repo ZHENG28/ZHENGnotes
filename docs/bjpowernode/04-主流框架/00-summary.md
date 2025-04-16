@@ -129,12 +129,12 @@ sidebar_label: 0. 小结
     ```mermaid
     graph TB
     发起请求 --> 
-    HandlerMapper[DispatcherServlet接受请求，将请求转交给处理器映射器] --> 
+    handler_mapper[DispatcherServlet接受请求，将请求转交给处理器映射器] --> 
     将HandlerExecutionChain中的处理器对象交给处理器适配器对象 --> 
     将ModelAndView交给视图解析器对象 --> 
-    View[获取到View对象，调用View类的方法] --> 
-    Model[将Model数据放入到request作用域，并执行视图转发] --> 
-    End[请求结束，返回响应]
+    view[获取到View对象，调用View类的方法] --> 
+    model[将Model数据放入到request作用域，并执行视图转发] --> 
+    finish[请求结束，返回响应]
     ```
 4. 注解式开发：
     - `@Controller`：创建能处理请求的控制器对象
