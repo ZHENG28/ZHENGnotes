@@ -173,7 +173,7 @@ sidebar_label: 8. Nginx
             server ip:port2;
         }
         ```
-    2. **权重**：请求按比例（ `weight` 值大小）转发到不同的服务器 &rarr; 适用于服务器性能不均的情况
+    2. **权重**：请求按比例（`weight` 值大小）转发到不同的服务器 &rarr; 适用于服务器性能不均的情况
         ```nginx showLineNumbers
         upstream www.example.com {
             server ip:port1 weight=2;
