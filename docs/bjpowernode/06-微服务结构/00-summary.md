@@ -320,7 +320,7 @@ sidebar_label: 0. 小结
 2. **<font color="red">Logback</font>**：开源日志框架
     - 依赖：
         - `logback-core`：基础核心模块
-        - `logback-classic`：（包含 `logback-core`） `Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
+        - `logback-classic`：（包含 `logback-core`）`Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
         - `logback-access`：与Servlet容器集成，可通过http来访问日志的功能
     - 组件：
         - 日志记录器`Logger`：存放日志对象，可定义日志类型、级别
