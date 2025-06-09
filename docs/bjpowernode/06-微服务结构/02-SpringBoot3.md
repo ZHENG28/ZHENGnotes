@@ -42,14 +42,14 @@ sidebar_label: 2. SpringBoot3
 
 ### 13 开发最佳实践
 1. 合理的包结构：以业务模块为分包基础、以MVC模式为分包基础
-2. 主应用程序 `xxxApplication.java` 应与其他包同在一个根目录下，因为主类上有 `@SpringBootApplication` 的注解，默认扫描当前包及子类下的标有 `@Component`， `@Service`， `@Repository`， `@Controller` 等注解的bean
+2. 主应用程序 `xxxApplication.java` 应与其他包同在一个根目录下，因为主类上有 `@SpringBootApplication` 的注解，默认扫描当前包及子类下的标有 `@Component`，`@Service`，`@Repository`，`@Controller` 等注解的bean
 3. `@SpringBootApplication` = `@EnableAutoConfiguration` + `@ComponentScan` + `@Configuration`
 4. main方法的类也是一个配置类，但如今SpringBoot框架已经不推荐使用xml配置文件
-5. 将bean对象/组件<font color="red">**加入到SpringBoot容器**</font>中：
+5. 将bean对象/组件 **<font color="red">加入到SpringBoot容器</font>** 中：
     1. `@Import(xxx.class)`：直接导入bean对象
     2. `@Configuration`：加在bean对象上
-    3. `@Configuration` + `@Bean`：`@Configuration` 加在xxxApplication类上， `@Bean` 加在bean对象上
-    4. `@Configuration` + `@ComponentScan`：`@Configuration` 加在bean对象上， `@ComponentScan` 加在bean对象或xxxApplication类上
+    3. `@Configuration` + `@Bean`：`@Configuration` 加在xxxApplication类上，`@Bean` 加在bean对象上
+    4. `@Configuration` + `@ComponentScan`：`@Configuration` 加在bean对象上，`@ComponentScan` 加在bean对象或xxxApplication类上
     5. `@ImportResource(locations={"url"})`：将xml文件中的bean组件加入到SpringBoot容器中
 7. 禁止框架中的配置：
     - 在项目入口类上设置 `@SpringBootApplication(exclude={xxx.class, …})`
@@ -167,7 +167,7 @@ sidebar_label: 2. SpringBoot3
         - 单工：信息只能单向传送
         - 半双工：信息能双向传送但不能同时双向传送
         - 全双工：信息能够同时双向传送
-    - WebSocket适用场景：客户端和服务器进行**频繁地双向通信**时，可以避免服务器频繁创建HTTP连接
+    - WebSocket适用场景：客户端和服务器进行 **频繁地双向通信** 时，可以避免服务器频繁创建HTTP连接
 
 ### 22 注册Servlets，Filters，Listeners作为Spring Beans
 
@@ -179,8 +179,8 @@ sidebar_label: 2. SpringBoot3
 3. Jetty：eclipse的默认服务器
 
 ### 25 打包部署
-- jar包：不支持jsp；可以直接使用`java -jar filename.jar`命令运行
-- war包：入口类需要扩展继承`SpringBootServletInitializer`类
+- jar包：不支持jsp；可以直接使用 `java -jar filename.jar` 命令运行
+- war包：入口类需要扩展继承 `SpringBootServletInitializer` 类
 
 ### 26 配置SSL（https）
 1. 配置文件：

@@ -15,7 +15,7 @@ sidebar_label: 9. Oracle
 3. 网络访问：`host_name/ip:port:server_name`
     - 数据库名
     - 实例名：数据库的内存区域和后台进程集合的总称
-    - 服务名`server_name`：数据库服务名
+    - 服务名 `server_name`：数据库服务名
     - 监听器：在数据库服务器端运行的一个服务，用于监听客户端到数据库的连接请求，通过网络访问时必须启动
 
 ### 1.2 简单的SQL语句
@@ -25,13 +25,13 @@ sidebar_label: 9. Oracle
         - 不定长字符型：`VARCHAR2(LENGTH)`
     2. 数值型：`NUMBER(LENGTH,POINT)`
     3. 日期型：`DATE`
-2. 算术表达式：出现`NULL`，结果就是`NULL`
-    - 数值型数据：支持`+`、`-`、`*`、`/`运算
-    - 日期型数据：支持`+`、`-`运算
+2. 算术表达式：出现 `NULL`，结果就是 `NULL`
+    - 数值型数据：支持 `+`、`-`、`*`、`/` 运算
+    - 日期型数据：支持 `+`、`-` 运算
         1. 日期 +/- 天数 = 新日期
         2. 日期1 +/- 日期2 = 两者之间相差的天数
-3. 连接表达式：出现`NULL`，结果还是原来的数据
-4. WHERE子句中查询日期型数据的默认格式为 `DD-MM-YYYY` &rarr; 通过 `ALTER SESSION SET nls_date_format="YYYY-MM-DD HH:MI:SS"` 修改**当前会话**中的日期格式
+3. 连接表达式：出现 `NULL`，结果还是原来的数据
+4. WHERE子句中查询日期型数据的默认格式为 `DD-MM-YYYY` &rarr; 通过 `ALTER SESSION SET nls_date_format="YYYY-MM-DD HH:MI:SS"` 修改 **当前会话** 中的日期格式
 5. 运算符优先级：
     1. 比较运算符
     2. `NOT`
@@ -39,7 +39,7 @@ sidebar_label: 9. Oracle
     4. `OR`
 
 ### 1.3 函数
-- 单行函数：每次取一条记录作为输入，得到的输出为**单个**输入对应的**单个**结果
+- 单行函数：每次取一条记录作为输入，得到的输出为 **单个** 输入对应的 **单个** 结果
     - 字符函数：大小写转换函数、字符处理函数
     - 数字函数：小数点四舍五入函数 `ROUND(NUMBER,POINT)`、数字截取函数 `TRUNC(NUMBER,POINT)`、求模/求余函数 `MOD(NUMBER1,NUMBER2)`
     - 日期函数
@@ -50,7 +50,7 @@ sidebar_label: 9. Oracle
         DATE --TO_CHAR--> CHARACTER --TO_DATE--> DATE
         ```
     - 其他函数：处理空值函数、嵌套函数、分组函数（忽略空值）
-- 多行函数：一次性取多条记录作为输入，得到的输出为**多个**输入对应的**单个**结果
+- 多行函数：一次性取多条记录作为输入，得到的输出为 **多个** 输入对应的 **单个** 结果
 
 ### 1.4 多表查询
 1. 用单个select语句从多张表中查询数据（若无等值条件，会产生笛卡尔积现象）
@@ -89,7 +89,7 @@ sidebar_label: 9. Oracle
         SELECT e.*, d.* FROM emp e
         CROSS JOIN dept d;
         ```
-    2. 自然连接：两表之间存在父子关系，自动匹配两表中列名相同的所有字段作为**参照列**，并在所有的参照列上做等值查询
+    2. 自然连接：两表之间存在父子关系，自动匹配两表中列名相同的所有字段作为 **参照列**，并在所有的参照列上做等值查询
         - 参照列上无前缀，即 `e.deptno` 会报错
         - 如果参照列的数据类型不同，会报错
         - 当两表中没有参照列时，会产生笛卡尔积现象
@@ -102,22 +102,22 @@ sidebar_label: 9. Oracle
         SELECT e.empno, e.ename, deptno, d.dname FROM emp e
         JOIN dept d USING(deptno);
         ```
-    4. 外连接`OUTER JOIN … ON`：使用on指定的查询条件
+    4. 外连接 `OUTER JOIN … ON`：使用on指定的查询条件
         ```sql
         SELECT e.*, d.* FROM emp e
         JOIN dept d ON (e.deptno = d.deptno);
         ```
-        - 左外连接`LEFT OUTER JOIN … ON`：可以把左边表不满足等值条件的数据查询出来
+        - 左外连接 `LEFT OUTER JOIN … ON`：可以把左边表不满足等值条件的数据查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             LEFT OUTER JOIN dept d ON (e.deptno = d.deptno);
             ```
-        - 右外连接`RIGHT OUTER JOIN … ON`：可以把右边表不满足等值条件的数据查询出来
+        - 右外连接 `RIGHT OUTER JOIN … ON`：可以把右边表不满足等值条件的数据查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             RIGHT OUTER JOIN dept d ON (e.deptno = d.deptno);
             ```
-        - 全连接`FULL OUTER JOIN … ON`：可以把左右两边表不满足等值条件的数据都查询出来
+        - 全连接 `FULL OUTER JOIN … ON`：可以把左右两边表不满足等值条件的数据都查询出来
             ```sql
             SELECT e.*, d.* FROM emp e
             FULL OUTER JOIN dept d ON (e.deptno = d.deptno);
@@ -126,9 +126,9 @@ sidebar_label: 9. Oracle
         - `UNION`：去除重复数据
         - `UNION ALL`：不去除重复数据
 4. 子查询：用来给主查询提供查询条件，会首先被执行
-    1. 单行单列：使用单行比较运算符`=`、`>`、`>=`、`<`、`<=`、`<>`
-    2. 多行单列：使用多行比较运算符`IN`、`ALL`、`ANY`
-    3. 多行多列：使用多行比较运算符`IN`
+    1. 单行单列：使用单行比较运算符 `=`、`>`、`>=`、`<`、`<=`、`<>`
+    2. 多行单列：使用多行比较运算符 `IN`、`ALL`、`ANY`
+    3. 多行多列：使用多行比较运算符 `IN`
         - 成对比较：`WHERE (field1, field2) IN (SELECT field1, field2 FROM table)`
         - 非成对比较：`WHERE field1 IN (SELECT field1 FROM table) AND field2 IN (SELECT field2 FROM table)`
 
@@ -149,7 +149,7 @@ sidebar_label: 9. Oracle
         - 自动结束（隐式）：
             自动提交：`DDL`、`DCL`
             自动回滚：连接异常、断开连接、系统崩溃等
-4. 事务标记点`SAVEPOINT name`：只在事务中有效
+4. 事务标记点 `SAVEPOINT name`：只在事务中有效
 
 ### 1.6 PL/SQL（Program Language/Structure Query Language）
 1. 一种支持SQL的程序语言，是Oracle数据库对SQL语句的扩展
@@ -177,7 +177,7 @@ sidebar_label: 9. Oracle
         - 表级约束：同时作用在多个字段上
     3. **主键约束** `PRIMARY KEY`：非空约束+唯一约束
         - 一张表中只有一个主键约束
-        - 可以作用在单个字段上（即**独立主键**），也可以作用在多个字段上（即**联合主键**）
+        - 可以作用在单个字段上（即 **独立主键**），也可以作用在多个字段上（即 **联合主键**）
     4. **外键约束**：连接两表的两个字段，可以重复，可以为NULL
         - 父子表的先后顺序：
             - 创建表/添加数据：父表 &rarr; 子表

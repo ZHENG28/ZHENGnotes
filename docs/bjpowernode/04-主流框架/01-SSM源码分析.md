@@ -13,9 +13,9 @@ sidebar_label: 1. SSM源码分析
 ## 2 MyBatis动态代理
 
 ## 3 MyBatis核心SQL映射
-0. 以`userMapper.selectById(1)`执行为例，解析源码
-1. 进入`MapperProxy.invoke()`：step 1包含序号2-5，step 1包含序号6
-    ``` java
+0. 以 `userMapper.selectById(1)` 执行为例，解析源码
+1. 进入 `MapperProxy.invoke()`：step 1包含序号2-5，step 1包含序号6
+    ```java showLineNumbers
     // v3.5.14
     return Object.class.equals(method.getDeclaringClass()) ? method.invoke(this, args) : this.cachedInvoker(method).invoke(proxy, method, args, this.sqlSession);
     // this.cachedInvoker(method)返回值，新建一个MapperMethod对象
@@ -29,8 +29,8 @@ sidebar_label: 1. SSM源码分析
     // step 2. 调用MapperMethod对象的execute方法（序号6）
     return mapperMethod.execute(sqlSession, args);
     ```
-2. 查看方法缓存的Map中是否存在这个方法的MapperMethod对象`computeIfAbsent()`：如果存在就直接从缓存中拿，如果没有就将该方法放入缓存中
-    ``` java
+2. 查看方法缓存的Map中是否存在这个方法的MapperMethod对象 `computeIfAbsent()`：如果存在就直接从缓存中拿，如果没有就将该方法放入缓存中
+    ```java showLineNumbers
     // v3.5.14
     return (MapperProxy.MapperMethodInvoker)MapUtil.computeIfAbsent(this.methodCache, method, (m) -> {
         if (!m.isDefault()) {
@@ -48,13 +48,13 @@ sidebar_label: 1. SSM源码分析
     return methodCache.computeIfAbsent(method, k -> new MapperMethod(mapperInterface, method, sqlSession.getConfiguration()));
     ```
 3. 构建MapperMethod对象：定义SQL命令（SqlCommand对象）和方法签名（MethodSignature对象）
-    ``` java
+    ```java showLineNumbers
     // v3.5.14 & v3.5.4
     this.command = new MapperMethod.SqlCommand(config, mapperInterface, method);
     this.method = new MapperMethod.MethodSignature(config, mapperInterface, method);
     ```
 4. 构建SqlCommand对象：
-    ``` java
+    ```java showLineNumbers
     // v3.5.14 & v3.5.4
     // new MapperMethod.SqlCommand(config, mapperInterface, method)方法体
     String methodName = method.getName();
@@ -80,7 +80,7 @@ sidebar_label: 1. SSM源码分析
     } // …
     ```
 5. 构建MethodSignature对象：
-    ``` java
+    ```java showLineNumbers
     // v3.5.14 & v3.5.4
     Type resolvedReturnType = TypeParameterResolver.resolveReturnType(method, mapperInterface);
     if (resolvedReturnType instanceof Class) {
@@ -100,8 +100,8 @@ sidebar_label: 1. SSM源码分析
     this.resultHandlerIndex = this.getUniqueParamIndex(method, ResultHandler.class);
     this.paramNameResolver = new ParamNameResolver(configuration, method);
     ```
-6. 调用MapperMethod对象的`execute()`：
-    ``` java
+6. 调用MapperMethod对象的 `execute()`：
+    ```java showLineNumbers
     // v3.5.14 & v3.5.4
     Object result;
     Object param;
@@ -145,8 +145,8 @@ sidebar_label: 1. SSM源码分析
     }
     // …
     ```
-7. `selectOne()`调用`selectList()`去数据库查询：
-    ``` java
+7. `selectOne()` 调用 `selectList()` 去数据库查询：
+    ```java showLineNumbers
     // 3.5.14
     List var6;
     try {
@@ -171,8 +171,8 @@ sidebar_label: 1. SSM源码分析
         ErrorContext.instance().reset();
     }
     ```
-8. 进入`query()`：
-    ``` java
+8. 进入 `query()`：
+    ```java showLineNumbers
     // 3.5.14 & 3.5.4
     // 单例模式，针对每个线程单开一个记录错误的对象
     ErrorContext.instance().resource(ms.getResource()).activity("executing a query").object(ms.getId());
@@ -199,8 +199,8 @@ sidebar_label: 1. SSM源码分析
         return list;
     }
     ```
-9. `queryFromDatabase()`进入到`doQuery()`：封装JDBC
-    ``` java
+9. `queryFromDatabase()` 进入到 `doQuery()`：封装JDBC
+    ```java showLineNumbers
     // 3.5.14 & 3.5.4
     // doQuery()
     Statement stmt = null;
@@ -231,8 +231,8 @@ sidebar_label: 1. SSM源码分析
     ps.execute();
     return this.resultSetHandler.handleResultSets(ps);
     ```
-10. 获取连接`getConnection()`到`openConnection()`：动态代理连接
-    ``` java
+10. 获取连接 `getConnection()` 到 `openConnection()`：动态代理连接
+    ```java showLineNumbers
     // 3.5.14 & 3.5.4
     return this.popConnection(this.dataSource.getUsername(), this.dataSource.getPassword()).getProxyConnection();
 
@@ -264,8 +264,8 @@ sidebar_label: 1. SSM源码分析
         // …
     }
     ```
-11. `dataSource.getConnection()`进入到`doGetConnection()`：真正获取连接的方法
-    ``` java
+11. `dataSource.getConnection()` 进入到 `doGetConnection()`：真正获取连接的方法
+    ```java showLineNumbers
     // 3.5.14 & 3.5.4
     Properties props = new Properties();
     if (this.driverProperties != null) {
@@ -307,11 +307,11 @@ sidebar_label: 1. SSM源码分析
         }
     }
     ```
-12. `queryFromDatabase()`进入到`doQuery()`：
-    ``` java
+12. `queryFromDatabase()` 进入到 `doQuery()`：
+    ```java showLineNumbers
     // 3.5.14 & 3.5.4
     ```
-13. `queryFromDatabase()`进入到`doQuery()`：
-    ``` java
+13. `queryFromDatabase()` 进入到 `doQuery()`：
+    ```java showLineNumbers
     // 3.5.14 & 3.5.4
     ```

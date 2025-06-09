@@ -11,7 +11,7 @@ sidebar_label: 8. MyBatisPlus
     2. Dao接口/Mapper：继承 `BaseMapper` 的同时，指定实现的实体类
     3. 需要配置 `@MapperScan` 来扫描Mapper类所在的包
 3. 源码分析：通过动态代理实现
-4. 输出日志：在配置文件中加上`mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl`
+4. 输出日志：在配置文件中加上 `mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl`
 
 ---
 
@@ -20,7 +20,7 @@ sidebar_label: 8. MyBatisPlus
 1. `CREATE`
 2. `UPDATE`：
     - 只更新非null的属性
-    - 实体类属性建议使用**包装类型**来定义属性（基本类型存在默认值，会产生意外的操作）
+    - 实体类属性建议使用 **包装类型** 来定义属性（基本类型存在默认值，会产生意外的操作）
 3. `DELETE`：
     1. `deleteById(id)`
     2. `deleteByMap(map)`：根据map中的条件来查找删除记录
@@ -62,7 +62,7 @@ sidebar_label: 8. MyBatisPlus
 2. 配置文件中指明地址：`mybatis-plus.mapper-locations=classpath:xml/*Mapper.xml`
 
 ### 2.5 查询和分页
-1. 查询：构造器`Wrapper`
+1. 查询：构造器 `Wrapper`
     - `allEq(map, boolean)`：
         - true：处理map中的null值，where条件中加入 `field IS NULL`
         - false：忽略map中的null值，不作为where条件
@@ -78,7 +78,7 @@ sidebar_label: 8. MyBatisPlus
     - `likeLeft` 和 `likeRight`：等同于 `WHERE field LIKE %val/val%`
     - `isNull` 和 `isNotNull`
     - `in` 和 `notIn`：函数 `in(column, values…)`，等同于 `WHERE field (NOT) IN (?, ?, …)`
-    - `inSql` 和 `notInSql`：函数 `inSql(column, sql)`，等同于 `WHERE field (NOT) IN (sql)`，即**子查询**
+    - `inSql` 和 `notInSql`：函数 `inSql(column, sql)`，等同于 `WHERE field (NOT) IN (sql)`，即 **子查询**
     - `groupBy`
     - `orderByAsc` 和 `orderByDesc`
     - `orderBy(boolean condition, boolean isAsc, String… columns`：可指定字段和排序方向

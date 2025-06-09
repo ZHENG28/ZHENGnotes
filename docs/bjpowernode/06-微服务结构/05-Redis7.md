@@ -9,12 +9,12 @@ sidebar_label: 5. Redis7
 1. 单机数据库时代
 2. Memcached时代
 3. 读写分离时代
-4. 分表分库时代（集群）：**关系型**数据库，如Oracle、MySql、DB2、SqlServer等
-5. NoSQL时代（彻底改变底层存储机制，采用聚合数据结构存储数据）：**非关系型**数据库，如Redis、mongoDB、HBase等
+4. 分表分库时代（集群）：**关系型** 数据库，如Oracle、MySql、DB2、SqlServer等
+5. NoSQL时代（彻底改变底层存储机制，采用聚合数据结构存储数据）：**非关系型** 数据库，如Redis、mongoDB、HBase等
 
 ### 1.2 NoSQL数据库
 - Not Only SQL，泛指non-relational（非关系型数据库），去掉了关系数据库的关系型特性 &rarr; **数据之间一旦没有关系，使得扩展性、读写性都大大提高**
-- 为解决大规模数据集合**多重数据种类**带来的挑战，特别是**超大规模数据的存储**
+- 为解决大规模数据集合 **多重数据种类** 带来的挑战，特别是 **超大规模数据的存储**
 - 数据库模型：
     - **聚合模型**：把一组相关联的数据作为一个整体进行存储和管理
     - BSON：数据保存到键值对中，数据之间用逗号隔开，{}表示对象，[]表示数组
@@ -41,7 +41,7 @@ sidebar_label: 5. Redis7
 
 ## 2 基础知识
 ### 2.1 简介
-1. 远程字典服务器Remote Dictionary Server，是一个用C语言编写的、开源的、基于内存运行并支持持久化的、高性能的**NoSQL数据库**
+1. 远程字典服务器Remote Dictionary Server，是一个用C语言编写的、开源的、基于内存运行并支持持久化的、高性能的 **NoSQL数据库**
 2. Redis中的数据大部分时间都是存储在内存中，适合存储频繁访问、数据量比较小的数据
 3. 开关服务命令：
     ```bash showLineNumbers
@@ -64,7 +64,7 @@ sidebar_label: 5. Redis7
 
 ### 2.2 客户端
 1. Redis客户端是一个程序，通过网络连接到Redis服务器。可发送命令，同时会显示Redis服务器的处理结果
-2. `redis-cli`（Redis Command Line Interface）：Redis自带的、基于命令行的**Redis客户端**，用于与Redis服务端交互
+2. `redis-cli`（Redis Command Line Interface）：Redis自带的、基于命令行的 **Redis客户端**，用于与Redis服务端交互
     - 启动客户端：（windows系统中需要开两个dos窗口，一个用作redis服务，一个用作redis客户端）
         - `redis-cli -h ip -p port`：连接指定IP（默认127.0.0.1）与端口号（默认6379）的Redis
     - 退出客户端：
@@ -72,7 +72,7 @@ sidebar_label: 5. Redis7
         - `quit`
 3. 基础知识：
     1. 测试redis服务的性能：`redis-benchmark`
-    2. 查看redis服务是否正常运行：`ping`，如果正常则返回`PONG`
+    2. 查看redis服务是否正常运行：`ping`，如果正常则返回 `PONG`
     3. 查看redis服务器的统计信息：
         ```bash showLineNumbers
         # 查看所有统计信息
@@ -148,7 +148,7 @@ sidebar_label: 5. Redis7
         - 如果key不存在，则返回 `(error) ERR no such key`
         - 如果newkey已存在，返回 `OK` 且覆盖旧value
 1. **<font color="red">字符串类型string</font>**：`单key:单value`
-    - 如：`username:zhangsan`、`age:20`等
+    - 如：`username:zhangsan`、`age:20` 等
     - 能存储任何类型的数据，包括二进制数据，最大存储512M的数据
     - 常用操作命令：
         ```bash showLineNumbers
@@ -198,10 +198,10 @@ sidebar_label: 5. Redis7
             - 返回追加之后的字符串长度
             - 如果key不存在，则新建一个键值对
         - 对字符串数值运算：返回运算后的数据
-            - 如果key不存在，则先初始化一个`key 0`，再进行运算
-            - key的value值必须是数值型，否则，报 `(error) ERR value is not an integer or out of range` 的错
+            - 如果key不存在，则先初始化一个 `key 0`，再进行运算
+            - key的value值必须是数值型，否则报错 `(error) ERR value is not an integer or out of range`
 2. **<font color="red">列表类型list</font>**：`单key:多有序value`
-    - 如：`contacts:xxx, xxx, xxx`等
+    - 如：`contacts:xxx, xxx, xxx` 等
     - 有序（按照插入顺序排序）、可重复集合，元素有（负）下标
     - 可以添加一个元素到列表的头部（左边）或者尾部（右边）
     - 常用操作命令：
@@ -240,9 +240,9 @@ sidebar_label: 5. Redis7
         - 根据count值移除指定列表中跟value相等的数据：
             - count &gt; 0：从列表的左侧移除count个跟value相等的数据
             - count &lt; 0：从列表的右侧移除count个跟vlaue相等的数据
-            - count = 0：从列表中移除**所有**跟value相等的数据
+            - count = 0：从列表中移除 **所有** 跟value相等的数据
 3. **<font color="red">集合类型set</font>**：`单key:多无序value`
-    - 如：`city:beijing shanghai chongqin`等
+    - 如：`city:beijing shanghai chongqin` 等
     - 无序、无重复集合，元素没有下标
     - 常用操作命令：
         ```bash showLineNumbers
@@ -281,9 +281,9 @@ sidebar_label: 5. Redis7
         ```
         - 随机获取指定集合中的一个或多个元素：
             - count &gt; 0：随机获取的多个元素之间不能重复
-            - count &lt; 0: 随机获取的多个元素之间可能重复
+            - count &lt; 0：随机获取的多个元素之间可能重复
 4. **<font color="red">哈希类型hash</font>**：`单key:对象(属性:值)`
-    - 如：`student: id:1001, name:zhangsan, age:20`等
+    - 如：`student: id:1001, name:zhangsan, age:20` 等
     - 适用于存储对象
     - 常用操作命令：
         ```bash showLineNumbers
@@ -321,7 +321,7 @@ sidebar_label: 5. Redis7
 
         ```
 5. **<font color="red">有序集合类型zset（sorted set）</font>**：`单key:多有序value`
-    - 如：`city:1200 chongqing, 1500 shanghai, 2000 beijing`等
+    - 如：`city:1200 chongqing, 1500 shanghai, 2000 beijing` 等
     - 不允许重复的成员
     - 与list不同的是，zset中的每个元素会关联一个可重复score，redis通过score来为集合中的成员进行升序排序
     - 常用操作命令：
@@ -357,25 +357,25 @@ sidebar_label: 5. Redis7
 ### 3.1 配置文件
 0. 如果不使用配置文件，则redis会按照默认的参数运行；如果使用配置文件，则在启动redis服务时必须指定所使用的配置文件
 1. 网络配置：如果配置过，则在客户端需要连接redis服务的任何命令处，都必须指定端口和ip
-    - `port`：指定redis服务所使用的端口，默认使用**6379**
-    - `bind`：配置客户端连接redis服务时所能使用的ip地址，默认为**127.0.0.1**，可以使用redis服务所在主机上任何一个ip
+    - `port`：指定redis服务所使用的端口，默认使用 **6379**
+    - `bind`：配置客户端连接redis服务时所能使用的ip地址，默认为 **127.0.0.1**，可以使用redis服务所在主机上任何一个ip
     - `tcp-keepalive`：连接保活策略
 2. 常规配置：
-    - `loglevel`：日志级别，开发为`DEBUG`，生产为`NOTICE/WARNING`
+    - `loglevel`：日志级别，开发为 `DEBUG`，生产为 `NOTICE/WARNING`
 	- `logfile`：指定日志信息输出到的日志文件，默认输出到控制台
-    - `databases`：配置redis服务默认创建的数据库实例个数，默认为**16**
+    - `databases`：配置redis服务默认创建的数据库实例个数，默认为 **16**
 3. 安全配置：
     - `requirepass`：设置访问redis服务时使用的密码，默认无密码
-        1. 此参数必须在`protected-mode=yes`时才起作用
+        1. 此参数必须在 `protected-mode=yes` 时才起作用
         2. 设置该参数后，客户端连接redis服务时，必须使用密码连接：`redis-cli -h ip -p port -a pwd`
 
 ### 3.2 持久化策略
 0. 概念：在适当的时机，采用适当手段把内存中的数据持久化到磁盘中。每次redis服务启动后，都可以把磁盘上的数据再次加载到内存中去使用
-1. RDB（Redis DataBase）策略：【默认**开启**】在指定时间间隔内，redis服务执行指定次数的写操作，会自动触发一次持久化操作
+1. RDB（Redis DataBase）策略：【默认 **开启**】在指定时间间隔内，redis服务执行指定次数的写操作，会自动触发一次持久化操作
     - `save <seconds> <changes>`：指定时间间隔和指定次数
-    - `dbfilename`：配置redis RDB持久化数据存储的文件，默认命名为`dump.rdb`
+    - `dbfilename`：配置redis RDB持久化数据存储的文件，默认命名为 `dump.rdb`
     - `dir`：配置redis RDB持久化文件所在目录
-2. AOF（Append Only File）策略：【默认**不开启**】采用操作日志来记录进行每一次写操作，每次redis服务启动时，都会重新执行一遍操作日志中的指令
+2. AOF（Append Only File）策略：【默认 **不开启**】采用操作日志来记录进行每一次写操作，每次redis服务启动时，都会重新执行一遍操作日志中的指令
     - `appendonly`：配置是否开启AOF策略
     - `appendfilename`：配置操作日志文件
 
@@ -385,8 +385,8 @@ sidebar_label: 5. Redis7
     - redis：把一组redis命令放在一起，把命令进行序列化，然后一起执行，保证部分原子性
 1. `multi`：用来标记一个redis事务的开始
 2. `exec`：用来执行事务队列中的所有命令 &rarr; 只能保证部分原子性
-    - 如果在**压入**事务队列过程中发生错误的命令，则本事务队列中的所有命令都不执行 &rarr; 保证操作原子性
-    - 如果在**执行**事务队列中的命令时发生了错误，则只会影响到产生错误的命令（即不执行），不会影响其它命令 &rarr; 无法保证操作原子性
+    - 如果在 **压入** 事务队列过程中发生错误的命令，则本事务队列中的所有命令都不执行 &rarr; 保证操作原子性
+    - 如果在 **执行** 事务队列中的命令时发生了错误，则只会影响到产生错误的命令（即不执行），不会影响其它命令 &rarr; 无法保证操作原子性
 3. `discard`：清除事务队列中的所有命令，并结束整个事务
 4. `watch`：监控某一个键。当事务在执行过程中，若此键代码的值发生变化，则本事务放弃执行；否则，正常执行
 5. `unwatch`：放弃监控所有的键
@@ -400,7 +400,7 @@ sidebar_label: 5. Redis7
 ### 3.5 主从复制（以一主二从为例）
 0. 一台主机配置多台从机，一台从机又可以配置多台从机，从而形成一个庞大的Redis集群架构 &rarr; 可减轻一台主机的压力，但会增加服务间的延迟时间
 1. 查看主从角色`info replication`：默认情况下，所有redis服务都是主机
-2. 设置主从关系`slaveof ip port`：遵循**设从不设主**的原则
+2. 设置主从关系`slaveof ip port`：遵循 **设从不设主** 的原则
 3. 读写关系：
     1. 全量复制：一旦主从关系确定，就会自动把主库上已有的数据同步复制到从库上去
     2. 增量复制：主库写的数据会自动同步到从库
@@ -415,7 +415,7 @@ sidebar_label: 5. Redis7
     4. 之前的主机恢复，主机游离在集群之外
     5. 主机如果要加入到集群之中，则可做主机也可做从机
 6. **哨兵模式**：主机宕机的情况下，从机自动上位
-    1. 提供哨兵配置文件：自行创建`redis_sentinel.conf`，内容为`sentinel monitor dc-redis ip port poll`
+    1. 提供哨兵配置文件：自行创建 `redis_sentinel.conf`，内容为 `sentinel monitor dc-redis ip port poll`
     2. 启动哨兵服务：`redis-sentinel redis_sentinel.conf`
     3. 主机宕机：哨兵程序会自动投票选择从机上位
     4. 旧主机恢复，哨兵模式下自动从属于新主机

@@ -10,7 +10,7 @@ sidebar_label: 5. JVM
     - JDK（Java Development Kit）：JRE + Development/debugging tools
     - JRE（Java Runtime Environment）：JVM + Package Classes(Compact Profiles) + Runtime Libraries
     - JVM（Java Virtual Machine）：Class Loader System + Runtime Data Area + Execution Engine
-- 嵌入式JDK（Embedded JDK, EJDK）：EJDK配合compact profiles以裁剪生成合适的JRE
+- 嵌入式JDK（Embedded JDK）：EJDK配合compact profiles以裁剪生成合适的JRE
 - 虚拟机：虚拟的计算机，用来执行一系列虚拟的计算机指令
     - 系统虚拟机：对物理计算机的仿真，提供可运行完整操作系统的软件平台（如VMware）
     - 程序虚拟机：（如Java虚拟机）
@@ -85,8 +85,8 @@ sidebar_label: 5. JVM
     2. 主版本号（Major Version）：起始值为45，每个JDK的大版本（如JDK1.6、JDK1.8）就加1
 3. 常量池计数constant_pool_count（u2）：有效索引为1到n-1，0为保留索引
 4. 常量池constant_pool（cp_info）：
-    - 命令`javap -v xxx.class`：反编译字节码文件
-    - 初始化顺序：静态代码块`<clinit>` &rarr; 实例代码块`<init>` &rarr; 构造方法`<init>`
+    - 命令 `javap -v xxx.class`：反编译字节码文件
+    - 初始化顺序：静态代码块 `<clinit>` &rarr; 实例代码块 `<init>` &rarr; 构造方法 `<init>`
     - 数据结构：
         ```cpp showLineNumbers
         cp_info {
@@ -185,9 +185,9 @@ sidebar_label: 5. JVM
                             u2 descriptor_index;
                         }
                         ```
-                    - 构造方法的名称统一使用`<init>`
+                    - 构造方法的名称统一使用 `<init>`
                     - 和字段引用（Fieldref）、方法引用（Methodref）相对应
-                1. 字段描述符field descriptor：字符-类型-含义，如object类型的实例，其描述符为 `Ljava/lang/Object;`；double类型的二维数组实例，其描述符为`[[D`
+                1. 字段描述符field descriptor：字符-类型-含义，如object类型的实例，其描述符为 `Ljava/lang/Object;`；double类型的二维数组实例，其描述符为 `[[D`
                 2. 方法描述符method descriptor：
                     - 包含0个或多个参数描述符和返回值描述符，如 `Object method(int i, double d, Thread t) { … }`，其描述符为 `(IDLjava/lang/Thread;)Ljava/lang/Object;`
                     - 实例方法还需额外传递参数this，但该传递由jvm的指令实现
@@ -235,7 +235,7 @@ sidebar_label: 5. JVM
                         }
                         ```
                     - 所有类中被调用的方法
-                    - 默认调用父类的无参构造方法`<init>:()V`
+                    - 默认调用父类的无参构造方法 `<init>:()V`
                 2. 接口中方法：
                     - 数据结构：
                         ```cpp showLineNumbers
@@ -296,7 +296,7 @@ sidebar_label: 5. JVM
 7. 父类索引super_class（u2）：
     - 类：
         - 0：只能是Object类（它是唯一没有父类的类）
-        - `CONSTANT_Class_info`常量：表示该class文件所定义的类的直接父类
+        - `CONSTANT_Class_info` 常量：表示该class文件所定义的类的直接父类
     - 接口：必须是代表Object类的 `CONSTANT_Class_info` 常量
 8. 接口计数interfaces_count（u2）：表示类或接口的直接父接口
 9. 接口数组interfaces[interfaces_count]（u2）：必须是 `CONSTANT_Class_info` 常量
@@ -358,7 +358,7 @@ sidebar_label: 5. JVM
                 u4 attribute_length;
             }
             ```
-        5. RuntimeVisibleAnnotations：运行时可见注解（JVM能反射读取），保留策略为`RetentionPolicy.RUNTIME`
+        5. RuntimeVisibleAnnotations：运行时可见注解（JVM能反射读取），保留策略为 `RetentionPolicy.RUNTIME`
             - 保留策略RetentionPolicy：`SOURCE`（保留到.java文件中） &rarr; `CLASS`（保留到.class文件中） &rarr; `RUNTIME`（保留到JVM中，可反射读取）
             ```cpp showLineNumbers
             RuntimeVisibleAnnotations_attribute {

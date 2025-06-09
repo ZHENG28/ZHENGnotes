@@ -26,7 +26,7 @@ sidebar_label: 0. 小结
     - `mvnw`：命令行
     - `mvnw.cmd`：命令行代码
     - `pom.xml`：maven配置文件
-2. SpringBoot项目默认推荐使用的前端引擎是**thymeleaf**
+2. SpringBoot项目默认推荐使用的前端引擎是 **thymeleaf**
 3. 拦截器：
     1. 定义一个拦截器，并实现 `HandlerInterceptor` 接口
     2. 创建一个**配置类**（或在配置文件中使用 `<mvc:interceptors>` 标签）
@@ -41,25 +41,25 @@ sidebar_label: 0. 小结
 7. 打包部署：
     1. `jar`：
         1. `pom.xml` 中修改打包方式 `<packaging>jar</packaging>`
-        2. 使用内嵌的tomcat运行，`java -jar file.jar`进入，可通过 `ip:port/path` 访问
+        2. 使用内嵌的tomcat运行，`java -jar file.jar` 进入，可通过 `ip:port/path` 访问
     2. `war`：
         1. `pom.xml` 中修改打包方式 `<packaging>war</packaging>`
         2. 必须部署在tomcat服务器的webapps目录下，可通过 `ip:port/war_packagename/path` 访问
 
 ### 1.2 集成
-1. 集成**MyBatis**：
-    1. Mapper接口类上加`@Mapper`：会关联 `.xml` 映射文件和接口的关系
+1. 集成 **MyBatis**：
+    1. Mapper接口类上加 `@Mapper`：会关联 `.xml` 映射文件和接口的关系
     2. Application启动类上加 `@MapperScan(basePackages="mapper.packagename")`：扫描包下有 `@Mapper` 注解的类
-    3. 访问数据库的方法上加`@Transactional`：开启事务
-    4. Application启动类上加`@EnableTransactionManagement`：支持事务（SpringBoot2.x以后的版本已自动支持）
-2. 集成**SpringMVC**：
-    1. 控制层类上加`@RestController`：相当于控制层类上和方法上加 `@Controller`
-    2. 控制层类上加`@ResponseBody`：当前控制层类下所有方法的返回值均为JSON对象
+    3. 访问数据库的方法上加 `@Transactional`：开启事务
+    4. Application启动类上加 `@EnableTransactionManagement`：支持事务（SpringBoot2.x以后的版本已自动支持）
+2. 集成 **SpringMVC**：
+    1. 控制层类上加 `@RestController`：相当于控制层类上和方法上加 `@Controller`
+    2. 控制层类上加 `@ResponseBody`：当前控制层类下所有方法的返回值均为JSON对象
     3. REST（Representational State Transfer）Ful架构：一种互联网软件架构设计的风格
-3. 集成**Redis**：可使用 `RedisTemplate` 对象来操作Redis中的数据
-4. 集成**logback日志**：
+3. 集成 **Redis**：可使用 `RedisTemplate` 对象来操作Redis中的数据
+4. 集成 **logback日志**：
     1. 消息级别：`TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL`
-5. 集成**Thymeleaf模板**：
+5. 集成 **Thymeleaf模板**：
     1. 添加 `spring-boot-starter-thymeleaf` 依赖
     2. .html文件中必须包含 `<html xmlns:th="http://www.thymeleaf.org">`，用于识别thymeleaf标签
         1. `xmlns`：命名空间
@@ -67,9 +67,9 @@ sidebar_label: 0. 小结
         3. `http://www.thymeleaf.org`：一个约束使用thymeleaf表达式的规则文件
 
 ### 1.3 JDK动态代理
-1. 代理模式：为其他对象提供**静态/动态代理**以控制对这个对象的访问
+1. 代理模式：为其他对象提供 **静态/动态代理** 以控制对这个对象的访问
     - 静态代理：手工实现，且所要代理的目标类已确定 &rarr; 当接口中的功能增加或修改时，会影响大量的厂家类与代理类
-    - 动态代理：使用JDK的**反射机制**创建代理类对象 &rarr; 在不改变原来目标方法功能的前提下，在代理中增强自己的功能代码
+    - 动态代理：使用JDK的 **反射机制** 创建代理类对象 &rarr; 在不改变原来目标方法功能的前提下，在代理中增强自己的功能代码
         1. **JDK动态代理**：使用 `java.lang.reflect` 包来实现
         2. **cglib动态代理**：通过继承目标类，创建它的子类，并在子类中重写父类中同名的方法，以实现功能的修改
 2. 实现步骤：
@@ -115,7 +115,7 @@ sidebar_label: 0. 小结
 
 ## [5 Redis7](./05-Redis7.md)
 ### 5.1 基础知识
-1. 远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的**NoSQL数据库**
+1. 远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的 **NoSQL数据库**
 2. 启动命令：
     - 服务端：`redis-server`
     - 客户端启动：`redis-cli`
@@ -183,11 +183,11 @@ sidebar_label: 0. 小结
 ## [8 MyBatisPlus](./08-MyBatisPlus.md)
 ### 8.1 简介
 1. 增强MyBatis的功能，但不做改变
-2. 可通过注解指定表名`@TableName`、列名`@TableField`、主键`@TableId`等
+2. 可通过注解指定表名 `@TableName`、列名 `@TableField`、主键 `@TableId` 等
 3. **ActiveRecord**：表映射到记录，记录映射到对象，字段映射到对象属性（较适用于动态语言）
 4. 自定义sql，指定映射文件地址：`mybatis-plus.mapper-locations=classpath:xml/*Mapper.xml`
-5. 查询：使用构造器`Wrapper`
-6. 分页：配置分页插件`PaginationInterceptor`
+5. 查询：使用构造器 `Wrapper`
+6. 分页：配置分页插件 `PaginationInterceptor`
 
 ---
 
@@ -215,8 +215,8 @@ sidebar_label: 0. 小结
 1. 消息分发规则：
     1. 消费者组间：每组分发一份消息
     2. 消费者组内：支持广播模式和负载均衡模式
-        1. **负载均衡模式**：多个消费者**交替消费**同一个 `topic` 里的消息
-        2. **广播模式**：每个消费者**都消费一次** `topic` 里的消息
+        1. **负载均衡模式**：多个消费者 **交替消费** 同一个 `topic` 里的消息
+        2. **广播模式**：每个消费者 **都消费一次** `topic` 里的消息
 2. 生产者的消息发送方式：
     1. **同步**：适用于发送重要消息
     2. **异步**：适用于生产者端无法长时间等待broker响应的情况
@@ -275,12 +275,12 @@ sidebar_label: 0. 小结
 
 ## 16 Thymeleaf（选学）
 ### 16.1 简介
-1. 用户看到的结果页面是模板引擎用**数据**替换**模板中的特殊符号**而得到的
+1. 用户看到的结果页面是模板引擎用 **数据** 替换 **模板中的特殊符号** 而得到的
     - 表达式：
-        1. 变量表达式`${}`
-        2. 选择表达式`*{}`
-        3. 链接表达式`@{}`
-        4. 消息表达式`#{}`
+        1. 变量表达式 `${}`
+        2. 选择表达式 `*{}`
+        3. 链接表达式 `@{}`
+        4. 消息表达式 `#{}`
         5. 标准表达式
     - 属性：`th:property-name`
 2. 工具类对象：`#execInfo`、`#uris`、`#dates`、`#numbers`、`#strings` 等
@@ -310,20 +310,20 @@ sidebar_label: 0. 小结
 ### 17.2 框架分类
 1. **<font color="red">JUL（Java Util Logging）</font>**：java原生日志框架
     - 结构：![JUL Structure](./img/0.1.jul_structure.jpg)
-        - 记录器`Logger`：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
-        - 处理器`Handler`：一个 `Logger` 关联一个/一组 `Handler`，由 `Handler` 负责记录日志，并具体实现日志的输出位置
-        - 过滤器`Filter`：自定义哪些信息需要被记录，哪些信息要忽略
-        - 格式化组件`Formatter`：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式
-        - 输出级别`Level`：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志
+        - 记录器 `Logger`：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
+        - 处理器 `Handler`：一个 `Logger` 关联一个/一组 `Handler`，由 `Handler` 负责记录日志，并具体实现日志的输出位置
+        - 过滤器 `Filter`：自定义哪些信息需要被记录，哪些信息要忽略
+        - 格式化组件 `Formatter`：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式
+        - 输出级别 `Level`：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志
             - `ALL` &lt; `FINEST` &lt; `FINER` &lt; `FINE` &lt; `CONFIG` &lt; `INFO` &lt; `WARNING` &lt; `SEVERE` &lt; `OFF`
-    - 父子关系：通过树状结构储存；对**父**做的设置，同样能作用于**子**
+    - 父子关系：通过树状结构储存；对 **父** 做的设置，同样能作用于 **子**
 2. **<font color="red">Logback</font>**：开源日志框架
     - 依赖：
         - `logback-core`：基础核心模块
         - `logback-classic`：（包含 `logback-core`）`Log4j` 的改良版，完整实现了 `SLF4j` 的API &rarr; 方便更换成其他日志框架
         - `logback-access`：与Servlet容器集成，可通过http来访问日志的功能
     - 组件：
-        - 日志记录器`Logger`：存放日志对象，可定义日志类型、级别
+        - 日志记录器 `Logger`：存放日志对象，可定义日志类型、级别
             - 日志级别：`TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR`
         - `Appender`：指定日志的输出位置（如控制台、文件、数据库等）
         - `Layout`：格式化日志的输出，将事件转换成字符串；被封装在 `encoder` 中
@@ -338,15 +338,15 @@ sidebar_label: 0. 小结
         ```
 3. **<font color="red">Log4j（Log for java）</font>**：Apache的开源项目
     - 日志记录器`Loggers`：控制日志是否输出以及输出级别
-        - Logger的命名有继承机制，且所有的logger都直接或间接继承**根logger**
+        - Logger的命名有继承机制，且所有的logger都直接或间接继承 **根logger**
         - 日志级别：`ALL` &lt; `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL` &lt; `OFF`
-    - 输出控制器`Appenders`：指定日志的输出位置
+    - 输出控制器 `Appenders`：指定日志的输出位置
         - `ConsoleAppender`：将日志输出到控制台
         - `FileAppender`：将日志输出到文件中
         - `DailyRollingFileAppender`：将日志输出到一个日志文件中，且支持按照**天数**输出文件
         - `RollingFileAppender`：将日志信息输出到一个日志文件中，且支持按照**文件大小**输出文件
         - `JDBCAppender`：以流的形式，把日志信息保存到数据库中
-    - 日志格式化器`Layout`：控制日志的输出格式
+    - 日志格式化器 `Layout`：控制日志的输出格式
         - `SimpleLayout`：简单的格式化
         - `HTMLLayout`：格式化为HTML表格形式
         - `PatternLayout`：最强大的格式化组件，支持自定义格式

@@ -19,20 +19,20 @@ sidebar_label: 0. 小结
     6. 帮助打包文件，形成.jar/.war文件
     7. 帮助部署项目
 2. 生命周期：
-    1. 清理`clear`：将之前的编译内容清空，为新的编译做准备
-    2. 编译`complie`：将程序源代码编译为执行代码
-    3. 测试`test-complie`：执行测试部分的代码，验证功能是否正确
-    4. 报告`test`：生成测试部分的执行结果文件
-    5. 打包`package`：把项目中所有的.class文件、配置文件等所有资源放到.jar/.war压缩文件中
+    1. 清理 `clear`：将之前的编译内容清空，为新的编译做准备
+    2. 编译 `complie`：将程序源代码编译为执行代码
+    3. 测试 `test-complie`：执行测试部分的代码，验证功能是否正确
+    4. 报告 `test`：生成测试部分的执行结果文件
+    5. 打包 `package`：把项目中所有的.class文件、配置文件等所有资源放到.jar/.war压缩文件中
         - `.jar`：java程序
         - `.war`：web应用程序
-    6. 安装`install`：将生成的.jar/.war文件安装到本地仓库中
-    7. 部署`deploy`：将程序安装好并执行
+    6. 安装 `install`：将生成的.jar/.war文件安装到本地仓库中
+    7. 部署 `deploy`：将程序安装好并执行
 
 ### 2.2 核心概念
 1. **POM（Project Object Model）**：项目对象模型，通过pom.xml文件来控制maven构建项目的过程，管理jar依赖
     - 坐标gav：唯一标识一个项目
-        ```xml
+        ```xml showLineNumbers
         <groupId>公司域名的倒写</groupId>
         <artifactId>自定义项目名称</artifactId>
         <version>自定义版本号</version>
@@ -53,7 +53,7 @@ sidebar_label: 0. 小结
     2. 提供执行sql语句的能力
     3. 提供循环sql，将sql的结果转为java对象或对象集合的能力
     4. 提供关闭资源的能力
-3. mybatis默认是不自动提交事务的，因此需要**手动提交事务**
+3. mybatis默认是不自动提交事务的，因此需要 **手动提交事务**
 4. 动态代理机制：通过 `SqlSession.getMapper(xxxDao.class)` 这一方法，可以获取dao接口对应的实现类对象
 5. 传参：
     - 入参：从java代码中将参数传入到mapper文件的sql语句中去
@@ -63,7 +63,7 @@ sidebar_label: 0. 小结
         1. resultType：执行结果转换为指定数据类型
         2. resultMap：结果映射集，映射结果列名和java对象字段的对应关系
 6. 动态sql：可以根据条件（XML语言）动态拼接不同的sql语句，以实现动态查询
-7. 分页查询插件`PageHelper`
+7. 分页查询插件 `PageHelper`
 
 ---
 
@@ -73,8 +73,8 @@ sidebar_label: 0. 小结
 2. spring中的对象：单例对象，名称唯一 &rarr; 在创建spring容器时，默认调用对象的无参构造方法来创建对象
     - 自动放入到容器中：dao、service、controller、工具类
     - 手动放入到容器中：实体类对象、servlet、listener、filter
-3. 事务处理模型：spring提供一种处理事务的统一模型，它抽象了事务处理的各个方面，定义了事务的处理步骤，使用AOP的环绕通知`@Around`来实现
-    - 事务管理器`PlatformTransactionManager Interface`：在内部提交、回滚事务
+3. 事务处理模型：spring提供一种处理事务的统一模型，它抽象了事务处理的各个方面，定义了事务的处理步骤，使用AOP的环绕通知 `@Around` 来实现
+    - 事务管理器 `PlatformTransactionManager Interface`：在内部提交、回滚事务
     - 事务隔离级别：MySQL &rarr; `REPEATABLE_READ`；Oracle &rarr; `READ_COMMITTED`
         1. `READ_UNCOMMITTED`
         2. `READ_COMMITTED`
@@ -90,10 +90,10 @@ sidebar_label: 0. 小结
         6. `PROPAGATION_NEVER`
         7. `PROPAGATION_NOT_SUPPORTED`
     - 事务的结束时机：
-        1. 提交事务：业务方法执行成功且无异常抛出时，**自动**提交事务
+        1. 提交事务：业务方法执行成功且无异常抛出时，**自动** 提交事务
         2. 回滚事务：业务方法抛出异常时
-            1. `RuntimeException` / `ERROR`：**自动**回滚事务
-            2. 非运行时异常（受查异常，如IOException、SQLException）：**提交**事务
+            1. `RuntimeException` / `ERROR`：**自动** 回滚事务
+            2. 非运行时异常（受查异常，如IOException、SQLException）：**提交** 事务
 
 ### 4.2 控制反转IoC（Inversion of Control）
 1. 把对象的创建、赋值和管理工作都交给代码之外的容器实现，即对象的创建是由其他外部资源完成的 &rarr; 实现解耦合
@@ -107,16 +107,16 @@ sidebar_label: 0. 小结
     - **<font color="red">JDK动态代理</font>**：使用JDK中的Proxy、Method、InvocationHandler创建代理对象；要求目标类必须实现接口
     - **<font color="red">CGLIB动态代理</font>**：使用第三方的工具库创建代理对象；要求目标类必须继承目标类，创建子类（即代理对象）
 2. **切面Aspect**：表示增强的非业务功能，常见的切面功能有日志、事务、统计信息、参数检查、权限验证等
-3. **通知Adivce**：切面的执行时间，包含`@Before`、`@AfterReturning`、`@AfterThrowing`、`@After`、`@Around`
+3. **通知Adivce**：切面的执行时间，包含 `@Before`、`@AfterReturning`、`@AfterThrowing`、`@After`、`@Around`
 4. **连接点JoinPoint**：连接业务方法和切面的位置
 5. **切入点Pointcut**：多个连接点方法的集合
 
 ### 4.4 集成第三方库
-1. 集成**MyBatis**：MyBatis与spring集成时，事务会**自动提交**
+1. 集成 **MyBatis**：MyBatis与spring集成时，事务会 **自动提交**
     1. 声明数据源DataSource
     2. 声明工厂类SqlSessionFactoryBean
     3. 声明Dao对象
-2. 集成**Web**：容器对象只需要创建一次后即可一直使用 &rarr; 将容器对象放入到全局作用域 `ServletContext` 中
+2. 集成 **Web**：容器对象只需要创建一次后即可一直使用 &rarr; 将容器对象放入到全局作用域 `ServletContext` 中
     - 使用监听器：自己创建，或框架提供的 `ContextLoaderListener`
 
 ---
@@ -124,7 +124,7 @@ sidebar_label: 0. 小结
 ## 5 SpringMVC
 ### 5.1 概述
 1. 基于Spring的、web开发的框架，使用 `@Controller` 创建控制器对象，并将其放入到SpringMVC容器中
-2. 中央调度器`DispatcherServlet`：继承HttpServlet，负责接收请求，返回响应，以及调用其他控制器对象
+2. 中央调度器 `DispatcherServlet`：继承HttpServlet，负责接收请求，返回响应，以及调用其他控制器对象
 3. 执行流程：
     ```mermaid
     graph TB

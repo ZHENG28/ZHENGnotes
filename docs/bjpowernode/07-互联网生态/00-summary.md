@@ -17,7 +17,7 @@ sidebar_label: 0. 小结
 
 ### 1.2 常用工具和指令
 1. 文本编辑器：vi、vim（vi的增强版本）
-2. 用户`useradd`、用户组`groupadd`、权限`chmod`管理指令
+2. 用户 `useradd`、用户组 `groupadd`、权限 `chmod` 管理指令
 3. 常用指令：
     ```bash showLineNumbers
     # 查看当前所在目录
@@ -87,7 +87,7 @@ sidebar_label: 0. 小结
 ### 4.1 概述
 1. 项目对象模型POM（Project Object Module）：该文件可以被子工程继承
 2. maven多模块管理：
-    - 父工程：`<packaging>`设置为pom
+    - 父工程：`<packaging>` 设置为pom
     - 子工程：作为一个 `<module>` 添加到父工程里
 3. 父工程添加的依赖，所有子模块都会无条件地继承 &rarr; 使用 `<dependencyManagement>` 来加强管理子工程/子模块的所有依赖
 
@@ -168,7 +168,7 @@ sidebar_label: 0. 小结
     # 重启
     ./nginx -s reload
     ```
-3. 核心配置文件`nginx.conf`：
+3. 核心配置文件 `nginx.conf`：
     1. 基本配置
     2. events配置
     3. http配置
@@ -223,7 +223,7 @@ sidebar_label: 0. 小结
     2. 唯一索引
     3. 单值索引
     4. 复合索引
-3. `EXPLAIN` 执行计划（详见 [07-10 MySQL优化](./10-MySQL优化.md) 中的 `3 EXPLAIN执行计划`）
+3. [`EXPLAIN` 执行计划](./10-MySQL优化.md#3-explain-执行计划)
 4. 查询优化：排序优化、关联查询优化、分组优化
 5. 慢查询日志：用来记录在MySQL中响应时间超过阈值的SQL语句
 

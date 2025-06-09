@@ -38,7 +38,7 @@ sidebar_label: 6. SpringSession
         browser --sessionId=123--> server[Tomcat服务器] --查找对应的sessionId--> jvm --返回Session中的信息--> server
         server --响应--> browser
         ```
-    3. 正常请求（session失效）：服务器重新生成sessionId后， `Session容器` 和 `Cookie容器` 中都需要更新
+    3. 正常请求（session失效）：服务器重新生成sessionId后，`Session容器` 和 `Cookie容器` 中都需要更新
         ```mermaid
         graph RL
         subgraph browser
