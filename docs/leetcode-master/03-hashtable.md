@@ -142,7 +142,7 @@ public:
 ## 6 四数相加II
 
 > [【LC454】](https://leetcode.cn/problems/4sum-ii/description/)给你四个整数数组 nums1、nums2、nums3 和 nums4 ，数组长度都是 n ，请你计算有多少个元组 (i, j, k, l) 能满足：
-> - 0 &le; i, j, k, l &lt; n
+> - 0 &le; i, j, k, l < n
 > - nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 
 1. 自想解法：多层遍历
@@ -217,7 +217,7 @@ public:
 ## 9 四数之和
 
 > [【LC18】](https://leetcode.cn/problems/4sum/description/)给你一个由 n 个整数组成的数组 nums ，和一个目标值 target 。请你找出并返回满足下述全部条件且不重复的四元组 [nums[a], nums[b], nums[c], nums[d]] （若两个四元组元素一一对应，则认为两个四元组重复）：
-> - 0 <= a, b, c, d < n
+> - 0 &le; a, b, c, d < n
 > - a、b、c 和 d 互不相同
 > - nums[a] + nums[b] + nums[c] + nums[d] == target  
 > 你可以按 任意顺序 返回答案 。
