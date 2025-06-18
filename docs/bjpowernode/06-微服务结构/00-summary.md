@@ -232,7 +232,273 @@ sidebar_label: 0. 小结
 
 ---
 
-## 11 Docker
+## [11 Docker](./11-Docker.md)
+### 11.1 概述
+1. **<font color="red">Docker</font>**：开源的应用容器引擎
+2. 架构：
+    1. 守护进程 `Daemon`
+    2. 镜像 `Image`
+    3. 容器 `Container`
+    4. 仓库 `Repository`
+    5. 标签 `Tag`
+    6. 镜像中心 `Registry`
+
+### 11.2 Docker引擎
+1. **Docker引擎**：用来运行和管理容器的核心软件
+2. 架构：
+    1. 客户端 `Client`
+    2. Docker守护进程 `Dockerd`
+    3. Contain守护进程 `Containerd`
+    4. `Runc`（Run Container）/OCI（开放容器倡议基金会）层
+    5. `Shim`
+3. 常用命令：
+    1. `docker version`：查看Docker版本 &rarr; 验证是否安装成功
+    2. `systemctl start docker`：启动Docker
+    3. `docker run <image-name>`：运行镜像
+        1. 查找本地镜像（若本地不存在，则从仓库拉取）
+        2. 运行镜像
+    4. `systemctl restart docker`：重启Docker
+    5. `systemctl stop docker`：停止Docker
+    6. `systemctl status docker`：查看Docker状态
+    7. `systemctl enable docker`：开机自启动Docker
+
+### 11.3 Docker镜像
+1. **镜像**：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）
+2. 定位标识：`<repository>:<tag>`
+    1. `<repository>`：
+        1. `<software-name>`：官方的镜像名称
+        2. `<username>/<software-name>`：：已验证发布者的镜像名称
+        3. `<domain-name>/<username>/<software-name>`：第三方镜像中心（IP或域名）的镜像名称
+    2. `<tag>`：默认为最新版本 `latest`
+3. 常用命令：
+    1. `docker pull`：将指定镜像从Dockerhub拉取到本地
+    2. `docker images`：查看本地所有镜像资源信息
+    3. `docker search`：从Dockerhub上查看镜像
+    4. `docker rmi`（remove images）：删除本地镜像
+    5. `docker save`：将一个或多个镜像导出为 `.tar` 文件
+    6. `docker load`：将 `.tar` 文件导入并加载为一个或多个镜像
+    7. `docker inspect`：查看镜像的相关属性
+4. 分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成；对分层的修改以新分层的形式出现
+5. 摘要Digest/内容散列Content Hash：只要内容发生了变更，摘要值一定会变更；主要用于区分相同 `<repository>:<tag>` 的不同镜像
+
+### 11.4 Docker容器
+1. 常用命令：
+    1. `docker run`：创建并启动容器
+        - `--name`：指定当前容器名称
+        - `-it`：以 **交互模式（Interactive mode）** 来运行容器，并根据 `/bin/bash` 命令启动bash终端
+            - bash终端的命令行前缀：`root@<docker-id>:</path>#`
+        - `-p <宿主机端口>:<容器端口>`：指定端口映射
+        - `-d`：以 **分离模式（Detached mode）** 来运行容器，即命令在后台运行
+    2. `docker create`：创建容器
+    3. 退出容器：
+        1. 容器命令行中执行 `exit` 命令：退出并停止容器
+        2. `ctrl + p + q`：退出但不停止容器
+    4. `docker ps`：查看所有正在运行的容器
+    5. `docker exec`：对正在运行的容器进行操作
+        - `-it`：以交互模式（Interactive mode）来运行容器
+            - `/bin/bash`：进入容器内部进行操作，`exit` 命令可退出（`exec` 命令新建进程 &rarr; 不影响容器运行）
+            - `<command>`：要执行的命令，可在外部直接执行
+    6. `docker attach`：对正在运行的容器进行操作
+    7. `docker top`：查看正在运行的容器内正在运行的进程详情
+    8. `docker logs`：查看容器中应用的运行日志，无论容器是否处于运行状态
+        - `<contain-name>`：查看指定容器中应用的运行日志
+        - `-n <number>` / `--tail=<number>`：显示指定行数的尾部日志
+        - `-f`：查看运行容器中的动态日志
+    9. `docker start`：启动容器
+    10. `docker restart`：重启处于运行状态的容器
+    11. `docker stop`：停止容器，若有其它进程正在访问，则在访问结束后再停止
+    12. `docker kill`：强制停止容器
+    13. `docker pause`：暂停容器对外提供的服务
+    14. `docker unpause`：解除容器的暂停服务状态
+    15. `docker rm`：删除容器，默认情况下删除停止状态的容器
+        - `-f`：强制删除容器，无论容器是否处于停止状态
+    16. `docker cp`：完成宿主机与容器之间的文件或目录的相互复制，无论容器是否处于运行状态
+    17. `docker commit`：为容器的当前快照生成一个新镜像
+    18. `docker export`：将容器导出为 `.tar` 文件
+    19. `docker import`：将 `.tar` 文件导入并构建一个新的镜像
+    20. `docker system` 命令集：
+        1. `docker system df`：查看docker各部分的占用情况
+        2. `docker system events`：查看指定日期范围之间发生的所有事件
+        3. `docker system info`：查看当前docker的详情
+        4. `docker system prune`：删除docker中的无用数据
+            - 已经停止的容器
+            - 没有连接任何容器的网络、悬虚镜像（dangling image）
+            - 悬虚镜像的构建缓存（dangling build cache）
+
+### 11.5 Dockerfile
+1. `Dockerfile` 脚本文件：由一系列指令（由上到下依次执行；每条指令都会构建出一个镜像）构成的、用来构建Docker镜像
+2. 常用指令：
+    1. `FROM <image>[:<tag>]`：指定基础镜像，且 **必须是第一条** 指令
+    2. `LABEL <key>=<value> <key>=<value> …`：以键值对的方式包含镜像的元数据信息，修改镜像的json文件
+    3. `ENV <key> <value>`：指定环境变量
+    4. `WORKDIR <path>`：容器的默认目录，即后续指令的工作目录
+    5. `RUN`：`docker build` 命令执行过程中
+    6. `CMD`：容器启动后，即 **执行完 `docker run` 命令后**
+    7. `ENTRYPOINT`：容器启动过程中，即 `docker run` **命令执行过程中**
+    8. `ADD <src> <dest>`：复制宿主机中的指定文件 `src` 到容器中的指定目录 `dest` 中
+        - `<src>`：支持宿主机中的绝对路径、相对于 `docker build` 命令指定的路径下的相对路径、压缩文件（复制到容器后自动解压）、URL（相当于 `wget` 命令）
+        - `<dest>`：仅支持绝对路径，路径末尾必须加上斜杠（否则会被当成一个文件）
+    9. `VOLUME ["dir1", "dir2", …]`：在容器里创建可以挂载数据卷的 **挂载点**
+3. build cache机制：发现即将新构建出的镜像（层）与本地已存在的某镜像（层）重复时，默认复用
+    - 失效：从发生变化的指令层开始的镜像层的cache全部失效
+
+### 11.6 数据持久化
+1. 数据卷持久化：
+    1. **数据卷**：宿主机中的特殊文件/目录
+        1. 容器/挂载点的删除，不会级联删除数据卷
+        2. 若数据卷/挂载点中本来就有内容，容器启动后会自动同步到另一端
+    2. **挂载点**：容器中与数据卷相关联的文件/目录
+2. Dockerfile持久化：`VOLUME` 指令
+
+### 11.7 Docker网络
+1. **Network Namespace**：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）
+2. 网络类型：
+    1. `bridge` 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP
+    2. `none` 没有网络：具有独立的namespace，没有独立的网络接口、IP；只有一个回环地址lo
+    3. `host` 宿主机网络：没有独立的namespace、网络接口、IP，与宿主机共享
+3. 常用命令：
+    1. `docker network inspect bridge`：查看bridge网络的整体连接情况
+    2. `ip a`：查看宿主机的网络接口
+    3. `docker exec <container> ip a`：查看容器的网络接口
+    4. `docker inspect <container>`：查看容器的详情（网关Gateway的ip地址 = docker0网桥的地址）
+    5. `docker run … --network <network>`：指定连接的网络，默认连接到默认的bridge网络
+
+### 11.8 Docker Compose
+1. **Docker Compose**：Docker容器编排工具，通过一个 **声明式的配置文件** 描述整个应用，最终使用一条命令完成部署
+2. `compose.yml` / `docker-compose.yml`：
+    ```yml showLineNumbers
+    version: <version>
+    services:
+        <service-name>:
+            container_name: <service-real-name>
+            build:
+                context: <dockerfile-path>
+                dockerfile: <dockerfile-name>
+            image: <repository>:<tag>
+            ports:
+                - <host-port1>:<container-port1>
+                - <container-port2>
+                - …
+            command:
+                - "<command>"
+            depends_on:
+                - <depend-service-name>
+            deploy:
+                mode: replicated
+                replicas: <container-number>
+            networks: <network-name>
+            volumes:
+                - <host-path1>:<container-path1>
+                - <volume-name>:<container-path2>
+                - …
+    networks:
+        <network-name>:
+            name: <network-real-name>
+            driver: bridge
+            attachable: false
+    volumes:
+        <volume-name>:
+            …
+    configs:
+        …
+    secrets:
+        …
+    ```
+3. 常用命令：在命令后加上 `<service-name>`，即可对指定服务进行操作
+    1. `docker-compose pull`：拉取compose中需要的所有镜像
+    2. `docker-compose config`：检查 `docker-compose.yml` 文件是否正确
+    3. `docker-compose up`：启动compose中的所有服务
+    4. `docker-compose logs`：查看compose中所有服务的运行日志，不同服务的日志用不同颜色区分
+    5. `docker-compose ps`：查看compose中的所有服务
+    6. `docker-compose top`：查看compose中所有当前正在运行中的服务
+    7. `docker-compose images`：查看compose中所有服务对应的镜像
+    8. `docker-compose port`：查看指定服务的映射端口
+    9. `docker-compose run`：在指定服务上执行命令
+    10. `docker-compose exec`：进入指定服务的容器内
+    11. `docker-compose pause`：暂停compose中的所有服务的容器
+    12. `docker-compose unpause`：恢复compose中所有处于暂停状态的服务的容器
+    13. `docker-compose stop`：停止compose中的所有服务
+    14. `docker-compose restart`：重启compose中的所有服务
+    15. `docker-compose start`：启动compose中的所有服务
+    16. `docker-compose kill`：通过发送 `SIGKILL` 信号来停止指定服务的容器
+    17. `docker-compose rm`：删除compose中所有处于停止状态的服务的容器
+    18. `docker-compose down`：停止并删除compose中的所有服务容器、网络、镜像、数据卷
+
+### 11.9 镜像中心
+1. 发布镜像：
+    1. 登录：`docker login --username=<username> --password=<password>`
+    2. 对要发布的镜像进行命名（根据镜像仓库名称自动创建）：`docker tag <image-name> <username>/<respository-name>:<tag>`
+    3. 推送镜像：`docker push <username>/<respository-name>:<tag>`
+    4. 登出：`docker logout`
+2. HTTPS：通过SSL/TLS为数据加密，即与传输层的SSL/TLS进行通信，再由SSL/TLS与TCP进行通信
+    1. 数字证书（SSL/TLS证书）：由证书中心CA（Certificate Authority）颁发的一种身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名
+        - SSL（Secure Sockets Layer）：安全套接字协议
+        - TLS（Transport Layer Security）：传输层安全协议
+    2. 根证书：用来解密数字证书的CA公钥
+    3. 数字摘要：利用Hash函数的单向性，将任意长度的消息变成固定长度的短消息
+    4. 数字签名：由发送方产生的别人无法伪造的一段数字串
+3. 私有镜像中心：
+    1. 类型：distribution、registry、harbor
+    2. 操作：
+        1. 搭建（使用HTTPS协议，需要先申请证书、再保存至服务器本地）
+        2. docker客户端的推送、删除操作
+
+### 11.10 Docker Swarm
+1. **Docker Swarm**：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信
+    1. Swarm Node：采用Swarm模式运行的Docker Engine主机
+        - 一个node对应一个主机，一个主机可对应多个node
+        - 类型：Manager、Worker
+    2. `service` 通过 `task` 的形式部署在swarm的各个node中，而 `task` 又通过运行着应用进程的 `container` 对外提供服务
+        - 编排器 `orchestrator`：管理副本任务的创建和停止
+        - 分配器 `allocator`：调度、监听副本任务
+    3. 服务部署模式：
+        1. `replicated` 副本模式：（默认部署模式）指定 `task` 数量，为 `available node` 分配一个或多个 `task`
+        2. `global` 全局模式：不能指定 `task` 数量，默认为每个 `node` 分配一个 `task`
+            - `docker service create --name <service-name> --mode global <image-name>`
+2. 搭建集群：`docker swarm init` 初始化命令
+    1. `docker swarm join --token <worker/manager-token> <leader-manager-ip>:<leader-manager-port>`：添加节点
+    2. `docker swarm join-token worker/manager`：获取添加节点的 **token**
+    3. `docker node ls`：查看当前swarm集群的节点状态信息，仅manager节点可用
+3. 维护集群：
+    1. 节点退出集群：`docker swarm leave`
+    2. 自动锁定：`docker swarm update --autolock=true`
+    3. 节点角色转换：
+        1. `docker node promote/demote <node-id>`
+        2. `docker node update --role manager/worker <node-id/hostname>`
+    4. 节点标签：
+        1. `docker node update --label-add <key>=<value>`：添加/修改标签
+        2. `docker node update --label-rm <key>`：删除标签
+    5. 删除 `worker` 节点：`docker node rm <node-id>`
+4. 公钥基础设施PKI（Public Key Infrastructure）：保障节点的安全
+    1. TLS：保障节点间授权和通信的安全
+    2. CA数字证书轮转：`docker swarm ca`
+5. 集群容灾：**热备** 容灾方式、采用 **Raft算法** 来进行leader选举
+6. service操作：
+    1. 创建service：
+        1. `docker service create --name <service-name> --replicas <task-number> -p <host-port>:<container-port> <image-name>`：由manager执行
+        2. `docker service ls`：查看当前swarm集群中正在运行的service信息
+        3. `docker service inspect <service-id|service-name>`：查看指定service的详情
+        4. `docker service ps <service-id|service-name>`：查看指定service的各个task分配的节点信息
+        5. `docker node ps <node-name>`：查看指定节点中正在运行的task信息
+        6. `docker service logs <service-id|service-name|task-id>`：查看service/task日志
+    2. task伸缩：根据访问量，在不停止服务的前提下对服务的task进行扩容/缩容
+        1. 变更指定服务的task数量：
+            1. `docker service update --replicas <task-number> <service-name>`
+            2. `docker service scale <service-name>=<task-number>`
+        2. 暂停对节点分配task：`docker node update --availability pause <node-name>`
+        3. 清空task：`docker node update --availability drain <node-name>`
+    3. task容错：当task所在的容器出现问题时，编排器会自动新建同样的task，再由分配器分配到可用节点上
+    4. 删除服务：`docker service rm <service-id|service-name>`
+    5. 滚动更新
+7. **overlay网络/重叠网络/覆盖网络**：构建在underlay网络上的逻辑虚拟网络，即在物理网络的基础上，通过节点间的单播隧道机制将主机两两相连
+    1. `docker_gwbridge` 网络
+    2. `ingress` 网络
+    3. VXLAN隧道技术：重新封装不同协议的数据包后再发送
+
+### 11.11 CI/CD与Jenkins
+1. **CI（Continuous Integration）/CD（Continuous Delivery/Deployment）**：持续集成/持续交付/部署
+2. **DevOps（Development & Operations）**：一种管理模式、执行规范与标准
+3. 应用实现的系统结构图：![CI/CD Structure](./img/0.4.CICD_structure.jpg)
 
 ---
 
