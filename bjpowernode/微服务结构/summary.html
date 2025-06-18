@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
 <title data-rh="true">微服务结构 | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="微服务结构 | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1 SpringBoot2"><meta data-rh="true" property="og:description" content="1 SpringBoot2"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
-<script src="/ZHENGnotes/assets/js/runtime~main.b45c0244.js" defer="defer"></script>
-<script src="/ZHENGnotes/assets/js/main.dfb61975.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/runtime~main.1c2d805b.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/main.f835a209.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Collapse sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Expand sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/6-微服务结构"><span itemprop="name">6. 微服务结构</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">0. 小结</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>微服务结构</h1>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Collapse sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11. Docker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Expand sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/6-微服务结构"><span itemprop="name">6. 微服务结构</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">0. 小结</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>微服务结构</h1>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-springboot2">1 SpringBoot2<a class="hash-link" aria-label="Direct link to 1 SpringBoot2" title="Direct link to 1 SpringBoot2" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-入门介绍">1.1 入门介绍<a class="hash-link" aria-label="Direct link to 1.1 入门介绍" title="Direct link to 1.1 入门介绍" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">​</a></h3>
 <ol>
@@ -50,7 +50,7 @@
 <li><code>pom.xml</code>：maven配置文件</li>
 </ul>
 </li>
-<li>SpringBoot项目默认推荐使用的前端引擎是<strong>thymeleaf</strong></li>
+<li>SpringBoot项目默认推荐使用的前端引擎是 <strong>thymeleaf</strong></li>
 <li>拦截器：<!-- -->
 <ol>
 <li>定义一个拦截器，并实现 <code>HandlerInterceptor</code> 接口</li>
@@ -79,7 +79,7 @@
 <li><code>jar</code>：<!-- -->
 <ol>
 <li><code>pom.xml</code> 中修改打包方式 <code>&lt;packaging&gt;jar&lt;/packaging&gt;</code></li>
-<li>使用内嵌的tomcat运行，<code>java -jar file.jar</code>进入，可通过 <code>ip:port/path</code> 访问</li>
+<li>使用内嵌的tomcat运行，<code>java -jar file.jar</code> 进入，可通过 <code>ip:port/path</code> 访问</li>
 </ol>
 </li>
 <li><code>war</code>：<!-- -->
@@ -93,28 +93,28 @@
 </ol>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-集成">1.2 集成<a class="hash-link" aria-label="Direct link to 1.2 集成" title="Direct link to 1.2 集成" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">​</a></h3>
 <ol>
-<li>集成<strong>MyBatis</strong>：<!-- -->
+<li>集成 <strong>MyBatis</strong>：<!-- -->
 <ol>
-<li>Mapper接口类上加<code>@Mapper</code>：会关联 <code>.xml</code> 映射文件和接口的关系</li>
+<li>Mapper接口类上加 <code>@Mapper</code>：会关联 <code>.xml</code> 映射文件和接口的关系</li>
 <li>Application启动类上加 <code>@MapperScan(basePackages=&quot;mapper.packagename&quot;)</code>：扫描包下有 <code>@Mapper</code> 注解的类</li>
-<li>访问数据库的方法上加<code>@Transactional</code>：开启事务</li>
-<li>Application启动类上加<code>@EnableTransactionManagement</code>：支持事务（SpringBoot2.x以后的版本已自动支持）</li>
+<li>访问数据库的方法上加 <code>@Transactional</code>：开启事务</li>
+<li>Application启动类上加 <code>@EnableTransactionManagement</code>：支持事务（SpringBoot2.x以后的版本已自动支持）</li>
 </ol>
 </li>
-<li>集成<strong>SpringMVC</strong>：<!-- -->
+<li>集成 <strong>SpringMVC</strong>：<!-- -->
 <ol>
-<li>控制层类上加<code>@RestController</code>：相当于控制层类上和方法上加 <code>@Controller</code></li>
-<li>控制层类上加<code>@ResponseBody</code>：当前控制层类下所有方法的返回值均为JSON对象</li>
+<li>控制层类上加 <code>@RestController</code>：相当于控制层类上和方法上加 <code>@Controller</code></li>
+<li>控制层类上加 <code>@ResponseBody</code>：当前控制层类下所有方法的返回值均为JSON对象</li>
 <li>REST（Representational State Transfer）Ful架构：一种互联网软件架构设计的风格</li>
 </ol>
 </li>
-<li>集成<strong>Redis</strong>：可使用 <code>RedisTemplate</code> 对象来操作Redis中的数据</li>
-<li>集成<strong>logback日志</strong>：<!-- -->
+<li>集成 <strong>Redis</strong>：可使用 <code>RedisTemplate</code> 对象来操作Redis中的数据</li>
+<li>集成 <strong>logback日志</strong>：<!-- -->
 <ol>
 <li>消息级别：<code>TRACE</code> &lt; <code>DEBUG</code> &lt; <code>INFO</code> &lt; <code>WARN</code> &lt; <code>ERROR</code> &lt; <code>FATAL</code></li>
 </ol>
 </li>
-<li>集成<strong>Thymeleaf模板</strong>：<!-- -->
+<li>集成 <strong>Thymeleaf模板</strong>：<!-- -->
 <ol>
 <li>添加 <code>spring-boot-starter-thymeleaf</code> 依赖</li>
 <li>.html文件中必须包含 <code>&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;</code>，用于识别thymeleaf标签<!-- -->
@@ -129,10 +129,10 @@
 </ol>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-jdk动态代理">1.3 JDK动态代理<a class="hash-link" aria-label="Direct link to 1.3 JDK动态代理" title="Direct link to 1.3 JDK动态代理" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态代理">​</a></h3>
 <ol>
-<li>代理模式：为其他对象提供<strong>静态/动态代理</strong>以控制对这个对象的访问<!-- -->
+<li>代理模式：为其他对象提供 <strong>静态/动态代理</strong> 以控制对这个对象的访问<!-- -->
 <ul>
-<li>静态代理：手工实现，且所要代理的目标类已确定 → 当接口中的功能增加或修改时，会影响大 量的厂家类与代理类</li>
-<li>动态代理：使用JDK的<strong>反射机制</strong>创建代理类对象 → 在不改变原来目标方法功能的前提下，在代理中增强自己的功能代码<!-- -->
+<li>静态代理：手工实现，且所要代理的目标类已确定 → 当接口中的功能增加或修改时，会影响大量的厂家类与代理类</li>
+<li>动态代理：使用JDK的 <strong>反射机制</strong> 创建代理类对象 → 在不改变原来目标方法功能的前提下，在代理中增强自己的功能代码<!-- -->
 <ol>
 <li><strong>JDK动态代理</strong>：使用 <code>java.lang.reflect</code> 包来实现</li>
 <li><strong>cglib动态代理</strong>：通过继承目标类，创建它的子类，并在子类中重写父类中同名的方法，以实现功能的修改</li>
@@ -141,7 +141,7 @@
 </ul>
 </li>
 <li>实现步骤：<!-- -->
-<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token comment" style="color:rgb(0, 128, 0)">// 1. 创建目标对象</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">目标类接口target </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">new</span><span class="token plain"> 目标类</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">// 2. 创建InvocationHandler对象</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token class-name" style="color:rgb(38, 127, 153)">InvocationHandler</span><span class="token plain"> handler </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">new</span><span class="token plain"> 动态代理类</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">target</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">// 3. 使用Proxy创建代理对象</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">目标类接口proxy </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">目标类接口</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(38, 127, 153)">Proxy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">newProxyInstance</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">target</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getClass</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getClassLoader</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> target</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getClass</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getInterfaces</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> handler</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">// 4. 通过代理，执行方法</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token class-name" style="color:rgb(38, 127, 153)">Object</span><span class="token plain"> res </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> proxy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token plain">方法</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">参数</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token comment" style="color:rgb(0, 128, 0)">// 1. 创建目标对象</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">目标类接口target </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">new</span><span class="token plain"> 目标类</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">// 2. 创建InvocationHandler对象</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token class-name" style="color:rgb(38, 127, 153)">InvocationHandler</span><span class="token plain"> handler </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token keyword" style="color:rgb(0, 0, 255)">new</span><span class="token plain"> 动态代理类</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">target</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">// 3. 使用Proxy创建代理对象</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">目标类接口proxy </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">目标类接口</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(38, 127, 153)">Proxy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">newProxyInstance</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">target</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getClass</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getClassLoader</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> target</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getClass</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">getInterfaces</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> handler</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)">// 4. 通 过代理，执行方法</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token class-name" style="color:rgb(38, 127, 153)">Object</span><span class="token plain"> res </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> proxy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token plain">方法</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">参数</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 </li>
 </ol>
 <hr>
@@ -151,7 +151,7 @@
 <li>将bean对象/组件加入到SpringBoot容器中：多种注解方式，如 <code>@Configuration</code></li>
 <li>敏感配置信息加密：使用jasypt加解密</li>
 <li>默认采用 <code>HikariCP</code> 数据库连接池</li>
-<li><strong>跨域资源共享CORS（Cross-Origin Resource Sharing）</strong>：允许浏览器向跨源服务器发出XMLHttpRequest请 求</li>
+<li><strong>跨域资源共享CORS（Cross-Origin Resource Sharing）</strong>：允许浏览器向跨源服务器发出XMLHttpRequest请求</li>
 <li>默认静态资源目录位置在 <code>classpath</code> 下</li>
 <li>核心配置文件：<code>.properties</code> 或 <code>.yml</code> 格式，可通过多种方式读取值，如 <code>@Value</code></li>
 <li><code>@Async</code>：用于提交异步任务（框架自动配置线程池）</li>
@@ -177,7 +177,7 @@
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-redis7"><a href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5 Redis7</a><a class="hash-link" aria-label="Direct link to 5-redis7" title="Direct link to 5-redis7" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="51-基础知识">5.1 基础知识<a class="hash-link" aria-label="Direct link to 5.1 基础知识" title="Direct link to 5.1 基础知识" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">​</a></h3>
 <ol>
-<li>远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的<strong>NoSQL数据库</strong></li>
+<li>远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的 <strong>NoSQL数据库</strong></li>
 <li>启动命令：<!-- -->
 <ul>
 <li>服务端：<code>redis-server</code></li>
@@ -202,7 +202,7 @@
 <li>事务：一组redis命令一起执行<!-- -->
 <ul>
 <li><code>multi</code>：用来标记一个redis事务的开始</li>
-<li><code>exec</code>：用来执行事务队列中的所有命  令</li>
+<li><code>exec</code>：用来执行事务队列中的所有命令</li>
 <li><code>discard</code>：清除事务队列中的所有命令，并结束整个事务</li>
 </ul>
 </li>
@@ -250,11 +250,11 @@
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="81-简介">8.1 简介<a class="hash-link" aria-label="Direct link to 8.1 简介" title="Direct link to 8.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">​</a></h3>
 <ol>
 <li>增强MyBatis的功能，但不做改变</li>
-<li>可通过注解指定表名<code>@TableName</code>、列名<code>@TableField</code>、主键<code>@TableId</code>等</li>
+<li>可通过注解指定表名 <code>@TableName</code>、列名 <code>@TableField</code>、主键 <code>@TableId</code> 等</li>
 <li><strong>ActiveRecord</strong>：表映射到记录，记录映射到对象，字段映射到对象属性（较适用于动态语言）</li>
 <li>自定义sql，指定映射文件地址：<code>mybatis-plus.mapper-locations=classpath:xml/*Mapper.xml</code></li>
-<li>查询：使用构造器<code>Wrapper</code></li>
-<li>分页：配置分页插件<code>PaginationInterceptor</code></li>
+<li>查询：使用构造器 <code>Wrapper</code></li>
+<li>分页：配置分页插件 <code>PaginationInterceptor</code></li>
 </ol>
 <hr>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="9-springcloudalibaba">9 SpringCloudAlibaba<a class="hash-link" aria-label="Direct link to 9 SpringCloudAlibaba" title="Direct link to 9 SpringCloudAlibaba" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">​</a></h2>
@@ -284,8 +284,8 @@
 <li>消费者组间：每组分发一份消息</li>
 <li>消费者组内：支持广播模式和负载均衡模式<!-- -->
 <ol>
-<li><strong>负载均衡模式</strong>：多个消费者<strong>交替消费</strong>同一个 <code>topic</code> 里的消息</li>
-<li><strong>广播模式</strong>：每个消费者<strong>都消费一次</strong> <code>topic</code> 里的消息</li>
+<li><strong>负载均衡模式</strong>：多个消费者 <strong>交替消费</strong> 同一个 <code>topic</code> 里的消息</li>
+<li><strong>广播模式</strong>：每个消费者 <strong>都消费一次</strong> <code>topic</code> 里的消息</li>
 </ol>
 </li>
 </ol>
@@ -307,7 +307,384 @@
 <li><strong><font color="red">消息丢失问题</font></strong></li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-docker">11 Docker<a class="hash-link" aria-label="Direct link to 11 Docker" title="Direct link to 11 Docker" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-docker"><a href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11 Docker</a><a class="hash-link" aria-label="Direct link to 11-docker" title="Direct link to 11-docker" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-概述">11.1 概述<a class="hash-link" aria-label="Direct link to 11.1 概述" title="Direct link to 11.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#111-概述">​</a></h3>
+<ol>
+<li><strong><font color="red">Docker</font></strong>：开源的应用容器引擎</li>
+<li>架构：<!-- -->
+<ol>
+<li>守护进程 <code>Daemon</code></li>
+<li>镜像 <code>Image</code></li>
+<li>容器 <code>Container</code></li>
+<li>仓库 <code>Repository</code></li>
+<li>标签 <code>Tag</code></li>
+<li>镜像中心 <code>Registry</code></li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-docker引擎">11.2 Docker引擎<a class="hash-link" aria-label="Direct link to 11.2 Docker引擎" title="Direct link to 11.2 Docker引擎" href="/ZHENGnotes/bjpowernode/微服务结构/summary#112-docker引擎">​</a></h3>
+<ol>
+<li><strong>Docker引擎</strong>：用来运行和管理容器的核心软件</li>
+<li>架构：<!-- -->
+<ol>
+<li>客户端 <code>Client</code></li>
+<li>Docker守护进程 <code>Dockerd</code></li>
+<li>Contain守护进程 <code>Containerd</code></li>
+<li><code>Runc</code>（Run Container）/OCI（开放容器倡议基金会）层</li>
+<li><code>Shim</code></li>
+</ol>
+</li>
+<li>常用命令：<!-- -->
+<ol>
+<li><code>docker version</code>：查看Docker版本 → 验证是否安装成功</li>
+<li><code>systemctl start docker</code>：启动Docker</li>
+<li><code>docker run &lt;image-name&gt;</code>：运行镜像<!-- -->
+<ol>
+<li>查找本地镜像（若本地不存在，则从仓库拉取）</li>
+<li>运行镜像</li>
+</ol>
+</li>
+<li><code>systemctl restart docker</code>：重启Docker</li>
+<li><code>systemctl stop docker</code>：停止Docker</li>
+<li><code>systemctl status docker</code>：查看Docker状态</li>
+<li><code>systemctl enable docker</code>：开机自启动Docker</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-docker镜像">11.3 Docker镜像<a class="hash-link" aria-label="Direct link to 11.3 Docker镜像" title="Direct link to 11.3 Docker镜像" href="/ZHENGnotes/bjpowernode/微服务结构/summary#113-docker镜像">​</a></h3>
+<ol>
+<li><strong>镜像</strong>：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）</li>
+<li>定位标识：<code>&lt;repository&gt;:&lt;tag&gt;</code>
+<ol>
+<li><code>&lt;repository&gt;</code>：<!-- -->
+<ol>
+<li><code>&lt;software-name&gt;</code>：官方的镜像名称</li>
+<li><code>&lt;username&gt;/&lt;software-name&gt;</code>：：已验证发布者的镜像名称</li>
+<li><code>&lt;domain-name&gt;/&lt;username&gt;/&lt;software-name&gt;</code>：第三方镜像中心（IP或域名）的镜像名称</li>
+</ol>
+</li>
+<li><code>&lt;tag&gt;</code>：默认为最新版本 <code>latest</code></li>
+</ol>
+</li>
+<li>常用命令：<!-- -->
+<ol>
+<li><code>docker pull</code>：将指定镜像从Dockerhub拉取到本地</li>
+<li><code>docker images</code>：查看本地所有镜像资源信息</li>
+<li><code>docker search</code>：从Dockerhub上查看镜像</li>
+<li><code>docker rmi</code>（remove images）：删除本地镜像</li>
+<li><code>docker save</code>：将一个或多个镜像导出为 <code>.tar</code> 文件</li>
+<li><code>docker load</code>：将 <code>.tar</code> 文件导入并加载为一个或多个镜像</li>
+<li><code>docker inspect</code>：查看镜像的相关属性</li>
+</ol>
+</li>
+<li>分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成；对分层的修改以新分层的形式出现</li>
+<li>摘要Digest/内容散列Content Hash：只要内容发生了变更，摘要值一定会变更；主要用于区分相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的不同镜像</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-docker容器">11.4 Docker容器<a class="hash-link" aria-label="Direct link to 11.4 Docker容器" title="Direct link to 11.4 Docker容器" href="/ZHENGnotes/bjpowernode/微服务结构/summary#114-docker容器">​</a></h3>
+<ol>
+<li>常用命令：<!-- -->
+<ol>
+<li><code>docker run</code>：创建并启动容器<!-- -->
+<ul>
+<li><code>--name</code>：指定当前容器名称</li>
+<li><code>-it</code>：以 <strong>交互模式（Interactive mode）</strong> 来运行容器，并根据 <code>/bin/bash</code> 命令启动bash终端<!-- -->
+<ul>
+<li>bash终端的命令行前缀：<code>root@&lt;docker-id&gt;:&lt;/path&gt;#</code></li>
+</ul>
+</li>
+<li><code>-p &lt;宿主机端口&gt;:&lt;容器端口&gt;</code>：指定端口映射</li>
+<li><code>-d</code>：以 <strong>分离模式（Detached mode）</strong> 来运行容器，即命令在后台运行</li>
+</ul>
+</li>
+<li><code>docker create</code>：创建容器</li>
+<li>退出容器：<!-- -->
+<ol>
+<li>容器命令行中执行 <code>exit</code> 命令：退出并停止容器</li>
+<li><code>ctrl + p + q</code>：退出但不停止容器</li>
+</ol>
+</li>
+<li><code>docker ps</code>：查看所有正在运行的容器</li>
+<li><code>docker exec</code>：对正在运行的容器进行操作<!-- -->
+<ul>
+<li><code>-it</code>：以交互模式（Interactive mode）来运行容器<!-- -->
+<ul>
+<li><code>/bin/bash</code>：进入容器内部进行操作，<code>exit</code> 命令可退出（<code>exec</code> 命令新建进程 → 不影响容器运行）</li>
+<li><code>&lt;command&gt;</code>：要执行的命令，可在外部直接执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>docker attach</code>：对正在运行的容器进行操作</li>
+<li><code>docker top</code>：查看正在运行的容器内正在运行的进程详情</li>
+<li><code>docker logs</code>：查看容器中应用的运行日志，无论容器是否处于运行状态<!-- -->
+<ul>
+<li><code>&lt;contain-name&gt;</code>：查看指定容器中应用的运行日志</li>
+<li><code>-n &lt;number&gt;</code> / <code>--tail=&lt;number&gt;</code>：显示指定行数的尾部日志</li>
+<li><code>-f</code>：查看运行容器中的  动态日志</li>
+</ul>
+</li>
+<li><code>docker start</code>：启动容器</li>
+<li><code>docker restart</code>：重启处于运行状态的容器</li>
+<li><code>docker stop</code>：停止容器，若有其它进程正在访问，则在访问结束后再停止</li>
+<li><code>docker kill</code>：强制停止容器</li>
+<li><code>docker pause</code>：暂停容器对外提供的服务</li>
+<li><code>docker unpause</code>：解除容器的暂停服务状态</li>
+<li><code>docker rm</code>：删除容器，默认情况下删除停止状态的容器<!-- -->
+<ul>
+<li><code>-f</code>：强制删除容器，无论容器是否处于停止状态</li>
+</ul>
+</li>
+<li><code>docker cp</code>：完成宿主机与容器之间的文件或目录的相互复制，无论容器是否处于运行状态</li>
+<li><code>docker commit</code>：为容器的当前快照生成一个新镜像</li>
+<li><code>docker export</code>：将容器导出为 <code>.tar</code> 文件</li>
+<li><code>docker import</code>：将 <code>.tar</code> 文件导入并构建一个新的镜像</li>
+<li><code>docker system</code> 命令集：<!-- -->
+<ol>
+<li><code>docker system df</code>：查看docker各部分的占用情况</li>
+<li><code>docker system events</code>：查看指定日期范围之间发生的所有事件</li>
+<li><code>docker system info</code>：查看当前docker的详情</li>
+<li><code>docker system prune</code>：删除docker中的无用数据<!-- -->
+<ul>
+<li>已经停止的容器</li>
+<li>没有连接任何容器的网络、悬虚镜像（dangling image）</li>
+<li>悬虚镜像的构建缓存（dangling build cache）</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="115-dockerfile">11.5 Dockerfile<a class="hash-link" aria-label="Direct link to 11.5 Dockerfile" title="Direct link to 11.5 Dockerfile" href="/ZHENGnotes/bjpowernode/微服务结构/summary#115-dockerfile">​</a></h3>
+<ol>
+<li><code>Dockerfile</code> 脚本文件：由一系列指令（由上到下依次执行；每条指 令都会构建出一个镜像）构成的、用来构建Docker镜像</li>
+<li>常用指令：<!-- -->
+<ol>
+<li><code>FROM &lt;image&gt;[:&lt;tag&gt;]</code>：指定基础镜像，且 <strong>必须是第一条</strong> 指令</li>
+<li><code>LABEL &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; …</code>：以键值对的方式包含镜像的元数据信息，修改镜像的json文件</li>
+<li><code>ENV &lt;key&gt; &lt;value&gt;</code>：指定环境变量</li>
+<li><code>WORKDIR &lt;path&gt;</code>：容器的默认目录，即后续指令的工作目录</li>
+<li><code>RUN</code>：<code>docker build</code> 命令执行过程中</li>
+<li><code>CMD</code>：容器启动后，即 <strong>执行完 <code>docker run</code> 命令后</strong></li>
+<li><code>ENTRYPOINT</code>：容器启动过程中，即 <code>docker run</code> <strong>命令执行过程中</strong></li>
+<li><code>ADD &lt;src&gt; &lt;dest&gt;</code>：复制宿主机中的指定文件 <code>src</code> 到容器中的指定目录 <code>dest</code> 中<!-- -->
+<ul>
+<li><code>&lt;src&gt;</code>：支持宿主机中的绝对路径、相对于 <code>docker build</code> 命令指定的路径下的相对路径、压缩文件（复制到容器后自动解压）、URL（相当于 <code>wget</code> 命令）</li>
+<li><code>&lt;dest&gt;</code>：仅支持绝对路径，路径末尾必须加上斜杠（否则会被当成一个文件）</li>
+</ul>
+</li>
+<li><code>VOLUME [&quot;dir1&quot;, &quot;dir2&quot;, …]</code>：在容器里创建可以挂载数据卷的 <strong>挂载点</strong></li>
+</ol>
+</li>
+<li>build cache机制：发现即将新构建出的镜像（层）与本地已存在的某镜像（层）重复时，默认复用<!-- -->
+<ul>
+<li>失效：从发生变化的指令层开始的镜像层的cache全部失效</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="116-数据持久化">11.6 数据持久化<a class="hash-link" aria-label="Direct link to 11.6 数据持久化" title="Direct link to 11.6 数据持久化" href="/ZHENGnotes/bjpowernode/微服务结构/summary#116-数据持久化">​</a></h3>
+<ol>
+<li>数据卷持久化：<!-- -->
+<ol>
+<li><strong>数据卷</strong>：宿主机中的特殊文件/目录<!-- -->
+<ol>
+<li>容器/挂载点的删除，不会级联删除数据卷</li>
+<li>若数据卷/挂载点中本来就有内容，容器启动后会自动同步到另一端</li>
+</ol>
+</li>
+<li><strong>挂载点</strong>：容器中与数据卷相关联的文件/目录</li>
+</ol>
+</li>
+<li>Dockerfile持久化：<code>VOLUME</code> 指令</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="117-docker网络">11.7 Docker网络<a class="hash-link" aria-label="Direct link to 11.7 Docker网络" title="Direct link to 11.7 Docker网络" href="/ZHENGnotes/bjpowernode/微服务结构/summary#117-docker网络">​</a></h3>
+<ol>
+<li><strong>Network Namespace</strong>：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）</li>
+<li>网络类型：<!-- -->
+<ol>
+<li><code>bridge</code> 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP</li>
+<li><code>none</code> 没有网络：具有独立的namespace，没有独立的网络接口、IP；只有一个回环地址lo</li>
+<li><code>host</code> 宿主机网络：没有独立的namespace、网络接口、IP，与宿主机共享</li>
+</ol>
+</li>
+<li>常用命令：<!-- -->
+<ol>
+<li><code>docker network inspect bridge</code>：查看bridge网络的整体连接情况</li>
+<li><code>ip a</code>：查看宿主机的网络接口</li>
+<li><code>docker exec &lt;container&gt; ip a</code>：查看容器的网络接口</li>
+<li><code>docker inspect &lt;container&gt;</code>：查看容器的详情（网关Gateway的ip地址 = docker0网桥的地址）</li>
+<li><code>docker run … --network &lt;network&gt;</code>：指定连接的网络，默认连接到默认的bridge网络</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="118-docker-compose">11.8 Docker Compose<a class="hash-link" aria-label="Direct link to 11.8 Docker Compose" title="Direct link to 11.8 Docker Compose" href="/ZHENGnotes/bjpowernode/微服务结构/summary#118-docker-compose">​</a></h3>
+<ol>
+<li><strong>Docker Compose</strong>：Docker容器编排工具，通过一个 <strong>声明式的配置文件</strong> 描述整个应用，最终使用一条命令完成部署</li>
+<li><code>compose.yml</code> / <code>docker-compose.yml</code>：<!-- -->
+<div class="language-yml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yml codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token key atrule">version</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;version</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key atrule">services</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;service-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">container_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;service</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">real</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">build</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">context</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">image</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;repository</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;tag</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">ports</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;host</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port2</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> …</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">command</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;&lt;command&gt;&quot;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">depends_on</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;depend</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">service</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">deploy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">mode</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> replicated</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">replicas</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">number</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">networks</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;network</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">volumes</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;host</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;volume</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path2</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> …</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key atrule">networks</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;network-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;network</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">real</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">driver</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> bridge</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">attachable</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> </span><span class="token boolean important">false</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key atrule">volumes</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;volume-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        …</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key atrule">configs</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    …</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key atrule">secrets</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    …</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>常用命令：在命令后加上 <code>&lt;service-name&gt;</code>，即可对指定服务进行操作<!-- -->
+<ol>
+<li><code>docker-compose pull</code>：拉取compose中需要的所有镜像</li>
+<li><code>docker-compose config</code>：检查 <code>docker-compose.yml</code> 文件是否正确</li>
+<li><code>docker-compose up</code>：启动compose中的所有服务</li>
+<li><code>docker-compose logs</code>：查看compose中所有服务的运行日志，不同服务的日志用不同颜色区分</li>
+<li><code>docker-compose ps</code>：查看compose中的所有服务</li>
+<li><code>docker-compose top</code>：查看compose中所有当前正在运行中的服务</li>
+<li><code>docker-compose images</code>：查看compose中所有服务对应的镜像</li>
+<li><code>docker-compose port</code>：查看指定服务的映射端口</li>
+<li><code>docker-compose run</code>：在指定服务上执行命令</li>
+<li><code>docker-compose exec</code>：进入指定服务的容器内</li>
+<li><code>docker-compose pause</code>：暂停compose中的所有服务的容器</li>
+<li><code>docker-compose unpause</code>：恢复compose中所有处于暂停状态的服务的容器</li>
+<li><code>docker-compose stop</code>：停止compose中的所有服务</li>
+<li><code>docker-compose restart</code>：重启compose中的所有服务</li>
+<li><code>docker-compose start</code>：启动compose中的所有服务</li>
+<li><code>docker-compose kill</code>：通过发送 <code>SIGKILL</code> 信号来停止指定服务的容器</li>
+<li><code>docker-compose rm</code>：删除compose中所有处于停止状态的服务的容器</li>
+<li><code>docker-compose down</code>：停止并删除compose中的所有服务容器、网络、镜像、数据卷</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="119-镜像中心">11.9 镜像中心<a class="hash-link" aria-label="Direct link to 11.9 镜像中心" title="Direct link to 11.9 镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/summary#119-镜像中心">​</a></h3>
+<ol>
+<li>发布镜像：<!-- -->
+<ol>
+<li>登录：<code>docker login --username=&lt;username&gt; --password=&lt;password&gt;</code></li>
+<li>对要发布的镜像进行命名（根据镜像仓库名称自动创建）：<code>docker tag &lt;image-name&gt; &lt;username&gt;/&lt;respository-name&gt;:&lt;tag&gt;</code></li>
+<li>推送镜像：<code>docker push &lt;username&gt;/&lt;respository-name&gt;:&lt;tag&gt;</code></li>
+<li>登出：<code>docker logout</code></li>
+</ol>
+</li>
+<li>HTTPS：通过SSL/TLS为数据加密，即与传输层的SSL/TLS进行通信，再由SSL/TLS与TCP进行通信<!-- -->
+<ol>
+<li>数字证书（SSL/TLS证书）：由证书中心CA（Certificate Authority）颁发的一种身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名<!-- -->
+<ul>
+<li>SSL（Secure Sockets Layer）：安全套接字协议</li>
+<li>TLS（Transport Layer Security）：传输层安全协议</li>
+</ul>
+</li>
+<li>根证书：用来解密数字证书的CA公钥</li>
+<li>数字摘要：利用Hash函数的单向性，将任意长度的消息变成固定长度的短消息</li>
+<li>数字签名：由发送方产生的别人无法伪造的一段数字串</li>
+</ol>
+</li>
+<li>私有镜像中心：<!-- -->
+<ol>
+<li>类型：distribution、registry、harbor</li>
+<li>操作：<!-- -->
+<ol>
+<li>搭建（使用HTTPS协议，需要先申请证书、再保存至服务器本地）</li>
+<li>docker客户端的推送、删除操作</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1110-docker-swarm">11.10 Docker Swarm<a class="hash-link" aria-label="Direct link to 11.10 Docker Swarm" title="Direct link to 11.10 Docker Swarm" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1110-docker-swarm">​</a></h3>
+<ol>
+<li><strong>Docker Swarm</strong>：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信<!-- -->
+<ol>
+<li>Swarm Node：采用Swarm模式运行的Docker Engine主机<!-- -->
+<ul>
+<li>一个node对应一个主机，一个主机可对应多个node</li>
+<li>类型：Manager、Worker</li>
+</ul>
+</li>
+<li><code>service</code> 通过 <code>task</code> 的形式部署在swarm的各个node中，而 <code>task</code> 又通过运行着应用进程的 <code>container</code> 对外提供服务<!-- -->
+<ul>
+<li>编排器 <code>orchestrator</code>：管理副本任务的创建和停止</li>
+<li>分配器 <code>allocator</code>：调度、监听副本任务</li>
+</ul>
+</li>
+<li>服务部署模式：<!-- -->
+<ol>
+<li><code>replicated</code> 副本模式：（默认部署模式）指定 <code>task</code> 数量，为 <code>available node</code> 分配一个或多个 <code>task</code></li>
+<li><code>global</code> 全局模式：不能指定 <code>task</code> 数量，默认为每个 <code>node</code> 分配一个 <code>task</code>
+<ul>
+<li><code>docker service create --name &lt;service-name&gt; --mode global &lt;image-name&gt;</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>搭建集群：<code>docker swarm init</code> 初始化命令<!-- -->
+<ol>
+<li><code>docker swarm join --token &lt;worker/manager-token&gt; &lt;leader-manager-ip&gt;:&lt;leader-manager-port&gt;</code>：添加节点</li>
+<li><code>docker swarm join-token worker/manager</code>：获取添加节点的 <strong>token</strong></li>
+<li><code>docker node ls</code>：查看当前swarm集群的节点状态信息，仅manager节点可用</li>
+</ol>
+</li>
+<li>维护集群：<!-- -->
+<ol>
+<li>节点退出集群：<code>docker swarm leave</code></li>
+<li>自动锁定：<code>docker swarm update --autolock=true</code></li>
+<li>节点角色转换：<!-- -->
+<ol>
+<li><code>docker node promote/demote &lt;node-id&gt;</code></li>
+<li><code>docker node update --role manager/worker &lt;node-id/hostname&gt;</code></li>
+</ol>
+</li>
+<li>节点标签：<!-- -->
+<ol>
+<li><code>docker node update --label-add &lt;key&gt;=&lt;value&gt;</code>：添加/修改标签</li>
+<li><code>docker node update --label-rm &lt;key&gt;</code>：删除标签</li>
+</ol>
+</li>
+<li>删除 <code>worker</code> 节点：<code>docker node rm &lt;node-id&gt;</code></li>
+</ol>
+</li>
+<li>公钥基础设施PKI（Public Key Infrastructure）：保障节点的安全<!-- -->
+<ol>
+<li>TLS：保障节点间授权和通信的安全</li>
+<li>CA数字证书轮转：<code>docker swarm ca</code></li>
+</ol>
+</li>
+<li>集群容灾：<strong>热备</strong> 容灾方式、采用 <strong>Raft算法</strong> 来进行leader选举</li>
+<li>service操作：<!-- -->
+<ol>
+<li>创建service：<!-- -->
+<ol>
+<li><code>docker service create --name &lt;service-name&gt; --replicas &lt;task-number&gt; -p &lt;host-port&gt;:&lt;container-port&gt; &lt;image-name&gt;</code>：由manager执行</li>
+<li><code>docker service ls</code>：查看当前swarm集群中正在运行的service信息</li>
+<li><code>docker service inspect &lt;service-id|service-name&gt;</code>：查看指定service的详情</li>
+<li><code>docker service ps &lt;service-id|service-name&gt;</code>：查看指定service的各个task分配的节点信息</li>
+<li><code>docker node ps &lt;node-name&gt;</code>：查看指定节点中正在运行的task信息</li>
+<li><code>docker service logs &lt;service-id|service-name|task-id&gt;</code>：查看service/task日志</li>
+</ol>
+</li>
+<li>task伸缩：根据访问量，在不停止服务的前提下对服务的task进行扩容/缩容<!-- -->
+<ol>
+<li>变更指定服务的task数量：<!-- -->
+<ol>
+<li><code>docker service update --replicas &lt;task-number&gt; &lt;service-name&gt;</code></li>
+<li><code>docker service scale &lt;service-name&gt;=&lt;task-number&gt;</code></li>
+</ol>
+</li>
+<li>暂停对节点分配task：<code>docker node update --availability pause &lt;node-name&gt;</code></li>
+<li>清空task：<code>docker node update --availability drain &lt;node-name&gt;</code></li>
+</ol>
+</li>
+<li>task容错：当task所在的容器出现问题时，编排器会自动新建同样的task，再由分配器分配到可用节点上</li>
+<li>删除服务：<code>docker service rm &lt;service-id|service-name&gt;</code></li>
+<li>滚动更新</li>
+</ol>
+</li>
+<li><strong>overlay网络/重叠网络/覆盖网络</strong>：构建在underlay网络上的逻辑虚拟网络，即在物理网络的基础上，通过节点间的单播隧道机制将主机两两相连<!-- -->
+<ol>
+<li><code>docker_gwbridge</code> 网络</li>
+<li><code>ingress</code> 网络</li>
+<li>VXLAN隧道技术：重新封装不同协议的数据包后再发送</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1111-cicd与jenkins">11.11 CI/CD与Jenkins<a class="hash-link" aria-label="Direct link to 11.11 CI/CD与Jenkins" title="Direct link to 11.11 CI/CD与Jenkins" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1111-cicd与jenkins">​</a></h3>
+<ol>
+<li><strong>CI（Continuous Integration）/CD（Continuous Delivery/Deployment）</strong>：持续集成/持续交付/部署</li>
+<li><strong>DevOps（Development &amp; Operations）</strong>：一种管理模式、执行规范与标准</li>
+<li>应用实现的系统结构图：<img decoding="async" loading="lazy" alt="CI/CD Structure" src="/ZHENGnotes/assets/images/0.4.CICD_structure-f195b1340cfbf78371484d9649c968ac.jpg" width="883" height="352" class="img_ev3q"></li>
+</ol>
 <hr>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-kubernetes_k8s">12 Kubernetes_k8s<a class="hash-link" aria-label="Direct link to 12 Kubernetes_k8s" title="Direct link to 12 Kubernetes_k8s" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">​</a></h2>
 <hr>
@@ -344,14 +721,14 @@
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="16-thymeleaf选学">16 Thymeleaf（选学）<a class="hash-link" aria-label="Direct link to 16 Thymeleaf（选学）" title="Direct link to 16 Thymeleaf（选学）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="161-简介">16.1 简介<a class="hash-link" aria-label="Direct link to 16.1 简介" title="Direct link to 16.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">​</a></h3>
 <ol>
-<li>用户看到的结果页面是模板引擎用<strong>数据</strong>替换<strong>模板中的特殊符号</strong>而得到的<!-- -->
+<li>用户看到的结果页面是模板引擎用 <strong>数据</strong> 替换 <strong>模板中的特殊符号</strong> 而得到的<!-- -->
 <ul>
 <li>表达式：<!-- -->
 <ol>
-<li>变量表达式<code>${}</code></li>
-<li>选择表达式<code>*{}</code></li>
-<li>链接表达式<code>@{}</code></li>
-<li>消息表达式<code>#{}</code></li>
+<li>变量表达式 <code>${}</code></li>
+<li>选择表达式 <code>*{}</code></li>
+<li>链接表达式 <code>@{}</code></li>
+<li>消息表达式 <code>#{}</code></li>
 <li>标准表达式</li>
 </ol>
 </li>
@@ -403,18 +780,18 @@
 <ul>
 <li>结构：<img decoding="async" loading="lazy" alt="JUL Structure" src="/ZHENGnotes/assets/images/0.1.jul_structure-4daac7b0f04b78c45d19889b4f6ab0b4.jpg" width="1226" height="363" class="img_ev3q">
 <ul>
-<li>记录器<code>Logger</code>：访问日志系统的入口程序，可通过调用 <code>Logger对象</code> 的API来发布日志</li>
-<li>处理器<code>Handler</code>：一个 <code>Logger</code> 关联一个/一组 <code>Handler</code>，由 <code>Handler</code> 负责记录日志，并具体实现日志的输出位置</li>
-<li>过滤器<code>Filter</code>：自定义哪些信息需要被记录，哪些信息要忽略</li>
-<li>格式化组件<code>Formatter</code>：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式</li>
-<li>输出级别<code>Level</code>：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志<!-- -->
+<li>记录器 <code>Logger</code>：访问日志系统的入口程序，可通过调用 <code>Logger对象</code> 的API来发布日志</li>
+<li>处理器 <code>Handler</code>：一个 <code>Logger</code> 关联一个/一组 <code>Handler</code>，由 <code>Handler</code> 负责记录日志，并具体实现日志的输出位置</li>
+<li>过滤器 <code>Filter</code>：自定义哪些信息需要被记录，哪些信息要忽略</li>
+<li>格式化组件 <code>Formatter</code>：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式</li>
+<li>输出级别 <code>Level</code>：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志<!-- -->
 <ul>
 <li><code>ALL</code> &lt; <code>FINEST</code> &lt; <code>FINER</code> &lt; <code>FINE</code> &lt; <code>CONFIG</code> &lt; <code>INFO</code> &lt; <code>WARNING</code> &lt; <code>SEVERE</code> &lt; <code>OFF</code></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>父子关系：通过树状结构储存；对<strong>父</strong>做的设置，同样能作用于<strong>子</strong></li>
+<li>父子关系：通过树状结构储存；对 <strong>父</strong> 做的设置，同样能作用于 <strong>子</strong></li>
 </ul>
 </li>
 <li><strong><font color="red">Logback</font></strong>：开源日志框架<!-- -->
@@ -422,13 +799,13 @@
 <li>依赖：<!-- -->
 <ul>
 <li><code>logback-core</code>：基础核心模块</li>
-<li><code>logback-classic</code>：（包含 <code>logback-core</code>） <code>Log4j</code> 的改良版，完整实现了 <code>SLF4j</code> 的API → 方便更换成其他日志框架</li>
+<li><code>logback-classic</code>：（包含 <code>logback-core</code>）<code>Log4j</code> 的改良版，完整实现了 <code>SLF4j</code> 的API → 方便更换成其他日志框架</li>
 <li><code>logback-access</code>：与Servlet容器集成，可通过http来访问日志的功能</li>
 </ul>
 </li>
 <li>组件：<!-- -->
 <ul>
-<li>日志记录器<code>Logger</code>：存放日志对象，可定义日志类型、级别<!-- -->
+<li>日志记录器 <code>Logger</code>：存放日志对象，可定义日志类型、级别<!-- -->
 <ul>
 <li>日志级别：<code>TRACE</code> &lt; <code>DEBUG</code> &lt; <code>INFO</code> &lt; <code>WARN</code> &lt; <code>ERROR</code></li>
 </ul>
@@ -444,15 +821,15 @@
 </li>
 </ul>
 </li>
-<li><strong><font color="red">Log4j（Log for java）</font></strong>：Apache的开源项目<!-- -->
+<li><strong><font color="red">Log4j（Log for java ）</font></strong>：Apache的开源项目<!-- -->
 <ul>
 <li>日志记录器<code>Loggers</code>：控制日志是否输出以及输出级别<!-- -->
 <ul>
-<li>Logger的命名有继承机制，且所有的logger都直接或间接继承<strong>根logger</strong></li>
+<li>Logger的命名有继承机制，且所有的logger都直接或间接继承 <strong>根logger</strong></li>
 <li>日志级别：<code>ALL</code> &lt; <code>TRACE</code> &lt; <code>DEBUG</code> &lt; <code>INFO</code> &lt; <code>WARN</code> &lt; <code>ERROR</code> &lt; <code>FATAL</code> &lt; <code>OFF</code></li>
 </ul>
 </li>
-<li>输出控制器<code>Appenders</code>：指定日志的输出位置<!-- -->
+<li>输出控制器 <code>Appenders</code>：指定日志的输出位置<!-- -->
 <ul>
 <li><code>ConsoleAppender</code>：将日志输出到控制台</li>
 <li><code>FileAppender</code>：将日志输出到文件中</li>
@@ -461,7 +838,7 @@
 <li><code>JDBCAppender</code>：以流的形式，把日志信息保存到数据库中</li>
 </ul>
 </li>
-<li>日志格式化器<code>Layout</code>：控制日志的输出格式<!-- -->
+<li>日志格式化器 <code>Layout</code>：控制日志的输出格式<!-- -->
 <ul>
 <li><code>SimpleLayout</code>：简单的格式化</li>
 <li><code>HTMLLayout</code>：格式化为HTML表格形式</li>
@@ -478,7 +855,7 @@
 <li>自动重新加载配置</li>
 <li>高级过滤：支持基于Log事件中的上下文数据、标记、正则表达式和其他组件进行过滤</li>
 <li>插件架构：<code>Log4j2</code> 使用插件模式配置组件，即无需编写代码来创建和配置Appender、Layout、PatternConverter等</li>
-<li>无垃圾机制：稳态日志记录期间，在独立应用程序中是无垃圾，在Web应用程序中是低垃圾</li>
+<li>无垃圾机制：稳态日志记录 期间，在独立应用程序中是无垃圾，在Web应用程序中是低垃圾</li>
 </ul>
 </li>
 <li>异步日志：<!-- -->
@@ -490,7 +867,7 @@
 </li>
 <li><code>AsyncLogger</code>：使得调用 <code>Logger.log</code> 返回更快<!-- -->
 <ul>
-<li>全局异步  ：所有日志都异步的记录</li>
+<li>全局异步：所有日志都异步的记录</li>
 <li>混合异步：在应用中混合使用同步日志和异步日志</li>
 </ul>
 </li>
@@ -522,12 +899,12 @@
 <li>桥接技术：某些日志框架依赖 <code>SLF4j</code> 之外的日志API → <code>SLF4j</code> 附带桥接模块<!-- -->
 <ul>
 <li>重定向之前的日志框架的API调用，通过桥接转换到slf4j的实现</li>
-<li>桥接器解决的是项目中的日志重构问 题</li>
+<li>桥接器解决的是项目中的日志重构问题</li>
 </ul>
 </li>
 <li>默认使用的是 <code>slf4j-simple</code> 框架</li>
 </ul>
 </li>
-</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/category/6-微服务结构"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">6. 微服务结构</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">2. SpringBoot3</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">1 SpringBoot2</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">1.1 入门介绍</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">1.2 集成</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态代理">1.3 JDK动态代理</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#2-springboot3">2 SpringBoot3</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#3-动力恒合仓库略">3 《动力恒合仓库》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#4-大型前后端分离项目盈利宝略">4 大型前后端分离项目《盈利宝》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">5 Redis7</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">5.1 基础知识</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#52-进阶知识">5.2 进阶知识</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#6-springsecurity">6 SpringSecurity</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#61-简介">6.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#62-jwtjson-web-token">6.2 JWT（Json Web Token）</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#7-rabbitmq略">7 RabbitMQ（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#8-mybatisplus">8 MyBatisPlus</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">8.1 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">9 SpringCloudAlibaba</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#10-rocketmq">10 RocketMQ</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#101-简介">10.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#102-应用">10.2 应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">11 Docker</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">12 Kubernetes_k8s</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-微服务项目动力商城略">13 微服务项目《动力商城》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#14-activemq选学略">14 ActiveMQ（选学）（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#15-高并发解决方案选学">15 高并发解决方案（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#151-概述">15.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#152-解决方案">15.2 解决方案</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">16 Thymeleaf（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">16.1 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#17-java日志框架选学">17 Java日志框架（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#171-简介">17.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#172-框架分类">17.2 框架分类</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#173-门面分类">17.3 门面分类</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/category/6-微服务结构"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">6. 微服务结构</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">2. SpringBoot3</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">1 SpringBoot2</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">1.1 入门介绍</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">1.2 集成</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态代理">1.3 JDK动态代理</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#2-springboot3">2 SpringBoot3</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#3-动力恒合仓库略">3 《动力恒合仓库》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#4-大型前后端分离项目盈利宝略">4 大型前后端分离项目《盈利宝》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">5 Redis7</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">5.1 基础知识</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#52-进阶知识">5.2 进阶知识</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#6-springsecurity">6 SpringSecurity</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#61-简介">6.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#62-jwtjson-web-token">6.2 JWT（Json Web Token）</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#7-rabbitmq略">7 RabbitMQ（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#8-mybatisplus">8 MyBatisPlus</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">8.1 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">9 SpringCloudAlibaba</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#10-rocketmq">10 RocketMQ</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#101-简介">10.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#102-应用">10.2 应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">11 Docker</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#111-概述">11.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#112-docker引擎">11.2 Docker引擎</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#113-docker镜像">11.3 Docker镜像</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#114-docker容器">11.4 Docker容器</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#115-dockerfile">11.5 Dockerfile</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#116-数据持久化">11.6 数据持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#117-docker网络">11.7 Docker网络</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#118-docker-compose">11.8 Docker Compose</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#119-镜像中心">11.9 镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1110-docker-swarm">11.10 Docker Swarm</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服  务结构/summary#1111-cicd与jenkins">11.11 CI/CD与Jenkins</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">12 Kubernetes_k8s</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-微服务项目动力商城略">13 微服务项目《动力商城》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#14-activemq选学略">14 ActiveMQ（选学）（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#15-高并发解决方案选学">15 高并发解决方案（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#151-概述">15.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#152-解决方案">15.2 解决方案</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">16 Thymeleaf（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">16.1 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#17-java日志框架选学">17 Java日志框架（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#171-简介">17.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#172-框架分类">17.2 框架分类</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#173-门面分类">17.3 门面分类</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
 </body>
 </html>

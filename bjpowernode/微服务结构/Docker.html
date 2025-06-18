@@ -1,0 +1,1643 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-bjpowernode/微服务结构/Docker" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">Docker | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Docker | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1 概述"><meta data-rh="true" property="og:description" content="1 概述"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.1c2d805b.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/main.f835a209.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Collapse sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11. Docker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Expand sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/6-微服务结构"><span itemprop="name">6. 微服务结构</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">11. Docker</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>Docker</h1>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-概述">1 概述<a class="hash-link" aria-label="Direct link to 1 概述" title="Direct link to 1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1-概述">​</a></h2>
+<ol>
+<li><strong><font color="red">Docker</font></strong>：开源的应用容器引擎，可将应用及其运行环境打包到轻量级、可移植的镜像中，发布到任何流行的Linux、Windows机器上</li>
+<li>Docker的用途：<!-- -->
+<ol>
+<li>提供统一的运行环境：确保在任何宿主机上都输出相同的结果</li>
+<li>便捷的应用迁移：无需担心运行环境的变化导致应用无法正常运行</li>
+<li>超快的启动时间：由于直接运行在宿主机系统中，无需启动操作系统</li>
+<li>更轻松的维护和扩展：存在高质量的官方镜像，既可以直接使用，又可以作为基础镜像进一步定制</li>
+</ol>
+</li>
+<li>容器与虚拟机的区别：<img decoding="async" loading="lazy" alt="Different System" src="/ZHENGnotes/assets/images/11.2.apps_run_on_different_system-78652b896f3d49f8beedaf74f30cdeda.jpg" width="1538" height="574" class="img_ev3q">
+<ol>
+<li>宿主机系统：应用程序是一个对计算机硬件资源调度使用的指令序列</li>
+<li>虚拟机系统：若两个相同的应用运行在两台虚拟机上时，需要两套相同的资源 → 造成资源浪费</li>
+<li>容器：共享宿主 机的操作系统和硬件，且对系统资源的使用统一由Docker引擎进行管理</li>
+</ol>
+</li>
+<li>Windows系统：<img decoding="async" loading="lazy" alt="Windows" src="/ZHENGnotes/assets/images/11.3.windows-3b7353041781bdb5c46eb30a059d401f.jpg" width="419" height="328" class="img_ev3q">
+<ol>
+<li><code>Hypervisor</code> /虚拟机监视器VMM（Virtual Machine Monitor）：一种运行在基础物理服务器和操作系统之间的中间软件层，允许多个操作系统和应用共享硬件<!-- -->
+<ol>
+<li><code>Hyper-V</code>：Windows系统的 <code>Hypervisor</code></li>
+<li><code>KVM</code> 和 <code>Xen</code>：Linux系统的 <code>Hypervisor</code></li>
+</ol>
+</li>
+<li>启动过程：<!-- -->
+<!-- -->
+</li>
+<li>VMware使用15.5.5及以上的版本，Windows使用10及以上的版本，否则会出现VMware和Hyper-V不兼容的问题（VMware作为应用，无法直接访问CPU硬件虚拟化功能）</li>
+</ol>
+</li>
+<li>Docker的系统架构：<img decoding="async" loading="lazy" alt="Docker Structure" src="/ZHENGnotes/assets/images/11.4.docker_structure-9e263875703c804cd2ea34bd18618fd7.webp" width="1233" height="651" class="img_ev3q">
+<ol>
+<li>守护进程 <code>Daemon</code>：监听Docker的API请求并管理Docker对象（镜像、容器、网络、数据卷等）</li>
+<li>镜像 <code>Image</code>：用于创建Docker容器的 <strong>模板</strong></li>
+<li>容器 <code>Container</code>：包含一个或多个应用程序，且与其它容器之间相互隔离</li>
+<li>仓库 <code>Repository</code>：保存一组具有相同名称的镜像，且该名称与仓库名称相同</li>
+<li>标签 <code>Tag</code>：镜像的一种标识，通过 <code>&lt;repository&gt;:&lt;tag&gt;</code> 来定位</li>
+<li>镜像中心 <code>Registry</code>：存放着由官方、机构或个人创建的Docker仓库</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-docker引擎">2 Docker引擎<a class="hash-link" aria-label="Direct link to 2 Docker引擎" title="Direct link to 2 Docker引擎" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#2-docker引擎">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="21-版本发展历程">2.1 版本发展历程<a class="hash-link" aria-label="Direct link to 2.1 版本发展历程" title="Direct link to 2.1 版本发展历程" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#21-版本发展历程">​</a></h3>
+<ol>
+<li>发展历程：<!-- -->
+<ol>
+<li>首发版本：<!-- -->
+<ol>
+<li>由LXC（Linux Container）和Docker Daemon组成</li>
+<li>存在的问题：<!-- -->
+<ol>
+<li>依赖于LXC</li>
+<li>版本更新难，可扩展性查</li>
+<li>运行慢，存在性能问题</li>
+<li>Docker Daemon运行出现问题，直接影响容器的运行</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>0.9版本：用自研的Libcontainer工具替换LXC</li>
+<li>1.1版本：遵循OCI规范，将容器运行时代码独立出来</li>
+</ol>
+</li>
+<li>版本：<!-- -->
+<ol>
+<li>大版本：<!-- -->
+<ol>
+<li>Moby</li>
+<li>社区版Docker-CE（Community Edition）</li>
+<li>企业版Docker-EE（Enterprise Edition）</li>
+</ol>
+</li>
+<li>小版本：<!-- -->
+<ol>
+<li>Edge月版：一个月发布一次，维护期为一个月</li>
+<li>Stable季版：一个季度发布一次，维护期为四个月</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="22-概述">2.2 概述<a class="hash-link" aria-label="Direct link to 2.2 概述" title="Direct link to 2.2 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#22-概述">​</a></h3>
+<ol>
+<li><strong><font color="red">Docker引擎</font></strong>：用来运行和管理容器的核心软件</li>
+<li>架构：<img decoding="async" loading="lazy" alt="Docker Engine Structure" src="/ZHENGnotes/assets/images/11.5.docker_engine_structure-daa72cb6c6b9956e9d0aede7947f07f2.jpg" width="698" height="702" class="img_ev3q">
+<ol>
+<li>客户端 <code>Client</code>：用户向Docker提交命令请求</li>
+<li>Docker守护进程 <code>Dockerd</code>：镜像构建、镜像管理、REST API、核心网络、编排等，通过gRPC与 <code>Containerd</code> 通信</li>
+<li>Contain守护进程 <code>Containerd</code>：管理容器的生命周期，fork出 <code>Runc</code> 进程（创建容器）和 <code>Shim</code> 进程（容器的父进程）</li>
+<li><code>Runc</code>（Run Container）/OCI（开放容器倡议基金会）层：fork并启动容器子进程，容器子进程启动完毕后 <code>Runc</code> 进程自动退出</li>
+<li><code>Shim</code>：作为容器进程的新父进程，实现Daemonless Container（无Docker Daemon和Container Daemon容器），使得Runc和Dockerd解耦<!-- -->
+<ol>
+<li>保持所有STDIN和STDOUT流的开启状态（当Docker Daemon重启时，容器不会因为Pipe的关闭而终止）</li>
+<li>将容器的退出状态反馈给Docker Daemon</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="23-安装">2.3 安装<a class="hash-link" aria-label="Direct link to 2.3 安装" title="Direct link to 2.3 安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#23-安装">​</a></h3>
+<ol>
+<li>官方文档：<a href="https://docs.docker.com/engine/install/centos/#installation-methods" target="_blank" rel="noopener noreferrer">Install Docker Engine on CentOS - Installation methods</a>
+<ul>
+<li>Docker仓库的国内镜像源：<code>https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></li>
+</ul>
+</li>
+<li>常用命令：<!-- -->
+<ol>
+<li><code>docker version</code>：查看Docker版本 → 验证是否安装成功</li>
+<li><code>systemctl start docker</code>：启动Docker</li>
+<li><code>docker run &lt;image-name&gt;</code>：运行镜像<!-- -->
+<ol>
+<li>查找本地镜像（若本地不存在，则从仓库拉取）</li>
+<li>运行镜像</li>
+</ol>
+</li>
+<li><code>systemctl restart docker</code>：重启Docker</li>
+<li><code>systemctl stop docker</code>：停止Docker</li>
+<li><code>systemctl status docker</code>：查看Docker状态</li>
+<li><code>systemctl enable docker</code>：开机自启动Docker</li>
+</ol>
+</li>
+<li>配置国内镜像中心：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token comment" style="color:rgb(0, 128, 0)"># 创建Docker文件夹</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">mkdir</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-p</span><span class="token plain"> /etc/docker</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 在daemon.json中加上阿里云镜像中心的地址</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">tee</span><span class="token plain"> /etc/docker/daemon.json </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;&lt;-</span><span class="token string" style="color:rgb(163, 21, 21)">&#x27;EOF&#x27;</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">{</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">&quot;registry-mirrors&quot;: [&quot;https://fj48qfx2.mirror.aliyuncs.com&quot;]</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">}</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">EOF</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 重新加载服务文件</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> systemctl daemon-reload</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 重启Docker</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> systemctl restart </span><span class="token function" style="color:rgb(0, 0, 255)">docker</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="24-卸载">2.4 卸载<a class="hash-link" aria-label="Direct link to 2.4 卸载" title="Direct link to 2.4 卸载" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#24-卸载">​</a></h3>
+<ol>
+<li>官方文档：<a href="https://docs.docker.com/engine/install/centos/#uninstall-docker-engine" target="_blank" rel="noopener noreferrer">Install Docker Engine on CentOS - Uninstall Docker Engine</a></li>
+<li>手动删除自定义的配置文件</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-docker镜像">3 Docker镜像<a class="hash-link" aria-label="Direct link to 3 Docker镜像" title="Direct link to 3 Docker镜像" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#3-docker镜像">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="31-概述">3.1 概述<a class="hash-link" aria-label="Direct link to 3.1 概述" title="Direct link to 3.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#31-概述">​</a></h3>
+<ol>
+<li><strong><font color="red">镜像</font></strong>：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）</li>
+<li>镜像仓库的分类：<!-- -->
+<ol>
+<li><code>Docker Official Image</code>：Docker官方镜像仓库</li>
+<li><code>Verified Publisher</code>：已验证发布者的镜像仓库</li>
+<li><code>Sponsored OSS</code>：由Docker公司赞助开发的镜像仓库</li>
+<li>无认证标识</li>
+</ol>
+</li>
+<li>镜像定位标识：<code>&lt;repository&gt;:&lt;tag&gt;</code>
+<ol>
+<li><code>&lt;repository&gt;</code>：<!-- -->
+<ol>
+<li><code>&lt;software-name&gt;</code>：官方的镜像名称</li>
+<li><code>&lt;username&gt;/&lt;software-name&gt;</code>：：已验证发布者的镜像名称</li>
+<li><code>&lt;domain-name&gt;/&lt;username&gt;/&lt;software-name&gt;</code>：第三方镜像中心（IP或域名）的镜像名称</li>
+</ol>
+</li>
+<li><code>&lt;tag&gt;</code>：默认为最新版本 <code>latest</code></li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="32-命令">3.2 命令<a class="hash-link" aria-label="Direct link to 3.2 命令" title="Direct link to 3.2 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#32-命令">​</a></h3>
+<ol>
+<li><code>docker pull</code>：将指定镜像从Dockerhub拉取到本地<!-- -->
+<ul>
+<li><code>-q</code>：简化拉取  过程中的日志输出</li>
+<li><code>docker pull &lt;repository&gt;@&lt;digest&gt;</code>：通过镜像的 <code>digest</code>（镜像内容的Hash值）拉取到本地</li>
+</ul>
+</li>
+<li><code>docker images</code>：查看本地所有镜像资源信息<!-- -->
+<ul>
+<li><code>--no-trunc</code>：显示完整的镜像ID</li>
+<li><code>--digests</code>：显示digest信息</li>
+<li><code>-q</code>：仅显示镜像ID</li>
+<li><code>-f</code>：过滤不符合指定条件的镜像</li>
+</ul>
+</li>
+<li><code>docker search</code>：从Dockerhub上查看镜像<!-- -->
+<ul>
+<li><code>AUTOMATED</code>：<strong>自动化镜像</strong>，让Dockerhub连接一个包含 <code>Dockerfile</code> 文件的源码托管平台，会自动构建镜像<!-- -->
+<ol>
+<li><code>Dockerfile</code> 文件：专门构建镜像的文件</li>
+<li>受信构建（Trusted Build）：根据 <code>Dockerfile</code> 文件内容自动构建镜像</li>
+</ol>
+</li>
+<li><code>--filter</code>：过滤查询结果</li>
+<li><code>--limit</code>：指定显示的结果数量</li>
+</ul>
+</li>
+<li><code>docker rmi</code>（remove images）：删除本地镜像<!-- -->
+<ul>
+<li>空格分隔：一次删除多个镜像</li>
+<li><code>-f</code>：强制删除镜像（默认情况下，运行了容器的镜像不能被删除）</li>
+<li><code>$(docker images -q)</code>：引用命令获取镜像ID，通过镜像ID删除镜像</li>
+</ul>
+</li>
+<li><code>docker save</code>：将一个或多个镜像导出为 <code>.tar</code> 文件</li>
+<li><code>docker load</code>：将 <code>.tar</code> 文件导入并加载为一个或多个镜像</li>
+<li><code>docker inspect</code>：查看镜像的相关属性</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="33-镜像分层">3.3 镜像分层<a class="hash-link" aria-label="Direct link to 3.3 镜像分层" title="Direct link to 3.3 镜像分层" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#33-镜像分层">​</a></h3>
+<ol>
+<li>分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成<!-- -->
+<ol>
+<li>分层 <strong>只读</strong>，对分层的修改以新分层的形式出现</li>
+<li>在不同镜像间实现 <strong>资源共享</strong>，即不同镜像对相同下层镜像的复用</li>
+</ol>
+</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="Image Layer" src="/ZHENGnotes/assets/images/11.6.image_layer-2471f8cfaaab1dad09f0d779431e27ca.jpg" width="969" height="368" class="img_ev3q"></p>
+<ol start="2">
+<li><strong>镜像层</strong>：<!-- -->
+<ol>
+<li>镜像文件系统FS：对镜像占有的磁盘空间进行管理的文件系统，包含数据内容<!-- -->
+<ol>
+<li>基础镜像层：其文件系统为根文件系统 <code>rootfs</code>（建立在引导文件系统 <code>bootfs</code> 之上）</li>
+<li>扩展镜像层：对基础镜像层的扩展；在 <code>Dockerfile</code> 文件中的每一条指令都会生成一个扩展镜像层</li>
+</ol>
+</li>
+<li>镜像json文件：描述镜像的相关属性的集合</li>
+</ol>
+</li>
+<li><strong>容器层</strong>/联合文件系统Union File System：可读写，对文件的任何修改都 <strong>只存在于容器层</strong></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="34-镜像摘要">3.4 镜像摘要<a class="hash-link" aria-label="Direct link to 3.4 镜像摘要" title="Direct link to 3.4 镜像摘要" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#34-镜像摘要">​</a></h3>
+<ol>
+<li>摘要Digest：即内容散列Content Hash，只要内容发生了变更，摘要值一定会变更</li>
+<li>算法：SHA256，长度为256位的二进制字符串 = 长度为64位的16进制字符串</li>
+<li>主要作用：区分相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的不同镜像（版本相同，但内容不同）</li>
+<li>分发散列值Distribution Hash：<!-- -->
+<ul>
+<li>发送方：由于push或pull镜像时，网络会对镜像进行压缩，压缩后Docker立即计算分发散列值</li>
+<li>接收方：接收后立即计算分发散列值</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="35-多架构镜像">3.5 多架构镜像<a class="hash-link" aria-label="Direct link to 3.5 多架构镜像" title="Direct link to 3.5 多架构镜像" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#35-多架构镜像">​</a></h3>
+<ol>
+<li>多架构镜像Multi-architecture Image：相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的镜像适用于不同操作系统/系统架构</li>
+<li>原理：通过 <code>docker pull</code> 命令拉取到的是与当前操作系统/系统架构相匹配的镜像<!-- -->
+<ul>
+<li>镜像的多架构信息保存在 <code>Manifest</code> 文件中</li>
+<li>完整坐标定位 <code>&lt;os/arch&gt;:&lt;repository&gt;:&lt;tag&gt;</code></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="4-docker容器">4 Docker容器<a class="hash-link" aria-label="Direct link to 4 Docker容器" title="Direct link to 4 Docker容器" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#4-docker容器">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="41-概述">4.1 概述<a class="hash-link" aria-label="Direct link to 4.1 概述" title="Direct link to 4.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#41-概述">​</a></h3>
+<ol>
+<li>启动流程：<!-- -->
+<!-- -->
+</li>
+<li>容器运行，本质是为了启动并运行容器中的应用 → 应用运行完毕后，容器会自动终止<!-- -->
+<ul>
+<li>使应用处于与用户交互的状态或等待状态 → 避免容器终止</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="42-命令">4.2 命令<a class="hash-link" aria-label="Direct link to 4.2 命令" title="Direct link to 4.2 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#42-命令">​</a></h3>
+<ol>
+<li>
+<p><code>docker run</code>：创建并启动容器</p>
+<ul>
+<li><code>--name</code>：指定当前容器名称</li>
+<li><code>-it</code>：以 <strong>交互模式（Interactive mode）</strong> 来运行容器，并根据 <code>/bin/bash</code> 命令启动bash终端<!-- -->
+<ul>
+<li>bash终端的命令行前缀：<code>root@&lt;docker-id&gt;:&lt;/path&gt;#</code></li>
+</ul>
+</li>
+<li><code>-p &lt;宿主机端口&gt;:&lt;容器端口&gt;</code>：指定端口映射</li>
+<li><code>-d</code>：以 <strong>分离模式（Detached mode）</strong> 来运行容器，即命令在后台运行</li>
+</ul>
+</li>
+<li>
+<p><code>docker create</code>：创建容器</p>
+<ul>
+<li>用法与 <code>docker run</code> 类似，但没有 <code>-d</code> 选项</li>
+</ul>
+</li>
+<li>
+<p>退出容器：</p>
+<ol>
+<li>容器命令行中执行 <code>exit</code> 命令：退出并停止容器</li>
+<li><code>ctrl + p + q</code>：退出但不停止容器</li>
+</ol>
+</li>
+<li>
+<p><code>docker ps</code>：查看所有正在运行的容器</p>
+<ul>
+<li><code>-a</code>：查看所有容器，无论容器是否处于运行状态</li>
+<li><code>-q</code>：查看所有正在运行的容器ID</li>
+<li><code>-l</code>：查看最后创建的容器，无论容器是否处于运行状态</li>
+<li><code>-n &lt;number&gt;</code>：查看最后创建的指定个数的容器，无论容器是否处于运行状态</li>
+</ul>
+</li>
+<li>
+<p><code>docker exec</code>：对正在运行的容器进行操作</p>
+<ul>
+<li><code>-it</code>：以交互模式（Interactive mode）来运行容器<!-- -->
+<ul>
+<li><code>/bin/bash</code>：进入容器内部进行操作，<code>exit</code> 命令可退出（<code>exec</code> 命令新建进程 → 不影响容器运行）</li>
+<li><code>&lt;command&gt;</code>：要执行的命令，可在外部直接执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>docker attach</code>：对正在运行的容器进行操作</p>
+<ul>
+<li>交互模式：<code>exit</code> 命令退出容器（<code>attach</code> 命令不会新建进程 → 影响容器运行，使容器停止运行）</li>
+<li>分离模式：<code>ctrl + c</code> 退出并停止容器</li>
+</ul>
+</li>
+<li>
+<p><code>docker top</code>：查看正在运行的容器内正在运行的进程详情</p>
+</li>
+<li>
+<p><code>docker logs</code>：查看容器中应用的运行日志，无论容器是否处于运行状态</p>
+<ul>
+<li><code>&lt;contain-name&gt;</code>：查看指定容器中应用的运行日志</li>
+<li><code>-n &lt;number&gt;</code> / <code>--tail=&lt;number&gt;</code>：显示指定行数的尾部日志</li>
+<li><code>--since=</code>：从指定时间开始显示日志<!-- -->
+<ul>
+<li><code>&quot;&lt;yyyy-MM-dd&gt;&quot;</code>：<strong>绝对</strong> 时间（指定日期）</li>
+<li><code>&lt;number&gt;h/m/s</code>：<strong>相对</strong> 时间（指定小时/分钟/秒钟）</li>
+</ul>
+</li>
+<li><code>--until=</code>：显示到指定时间之前的日志<!-- -->
+<ul>
+<li><code>&quot;&lt;yyyy-MM-dd&gt;&quot;</code>：<strong>绝对</strong> 时间（指定日期）</li>
+<li><code>&lt;number&gt;h/m/s</code>：<strong>相对</strong> 时间（指定小时/分钟/秒钟）</li>
+</ul>
+</li>
+<li><code>-t</code>：查看日志的时间戳</li>
+<li><code>-f</code>：查看运行容器中的动态日志</li>
+</ul>
+</li>
+<li>
+<p><code>docker start</code>：启动容器</p>
+</li>
+<li>
+<p><code>docker restart</code>：重启处于运行状态的容器</p>
+</li>
+<li>
+<p><code>docker stop</code>：停止容器，若有其它进程正在访问，则在访问结束后再停止</p>
+</li>
+<li>
+<p><code>docker kill</code>：强制停止容器</p>
+</li>
+<li>
+<p><code>docker pause</code>：暂停容器对外提供的服务</p>
+</li>
+<li>
+<p><code>docker unpause</code>：解除容器的暂停服务状态</p>
+</li>
+<li>
+<p><code>docker rm</code>：删除容器，默认情况下删除停止状态的容器</p>
+<ul>
+<li><code>-f</code>：强制删除容器，无论容器是否处于停止状态</li>
+</ul>
+</li>
+<li>
+<p><code>docker cp</code>：完成宿主机与容器之间的文件或目录的相互复制，无论容器是否处于运行状态</p>
+<ul>
+<li><code>&lt;source&gt; &lt;destination&gt;</code>
+<ul>
+<li><code>&lt;宿主机的文件或目录路径&gt;</code></li>
+<li><code>&lt;contain-name&gt;:&lt;  容器的文件或目录路径&gt;</code></li>
+</ul>
+</li>
+<li>不支持容器间的相互复制</li>
+</ul>
+</li>
+<li>
+<p><code>docker commit</code>：为容器的当前快照生成一个新镜像</p>
+<ul>
+<li><code>-a</code>：提交者</li>
+<li><code>-m</code>：提交信息</li>
+</ul>
+<table><thead><tr><th style="text-align:center"></th><th style="text-align:center"><code>docker export</code> + <code>docker import</code></th><th style="text-align:center"><code>docker commit</code></th></tr></thead><tbody><tr><td style="text-align:center">相同点</td><td style="text-align:center">将一个容器变成一个镜像</td><td style="text-align:center">将一个容器变成一个镜像</td></tr><tr><td style="text-align:center">不同点</td><td style="text-align:center">新镜像仅包含原容器生成的一层分层</td><td style="text-align:center">新镜像包含原镜像中的所有分层</td></tr></tbody></table>
+</li>
+<li>
+<p><code>docker export</code>：将容器导出为 <code>.tar</code> 文件</p>
+<table><thead><tr><th style="text-align:center">对比字段</th><th style="text-align:center"><code>docker export</code></th><th style="text-align:center"><code>docker save</code></th></tr></thead><tbody><tr><td style="text-align:center">作用对象</td><td style="text-align:center">容器</td><td style="text-align:center">镜像</td></tr><tr><td style="text-align:center">导出数量</td><td style="text-align:center">一次只能对一个容器导出</td><td style="text-align:center">一次可以对多个镜像导出</td></tr><tr><td style="text-align:center">原镜像的信息</td><td style="text-align:center">会丢弃原镜像的部分记录（历史记录和元数据信息）</td><td style="text-align:center">保存了原镜像的完整记录</td></tr></tbody></table>
+</li>
+<li>
+<p><code>docker import</code>：将 <code>.tar</code> 文件导入并构建一个新的镜像</p>
+<table><thead><tr><th style="text-align:center">对比字段</th><th style="text-align:center"><code>docker import</code></th><th style="text-align:center"><code>docker load</code></th></tr></thead><tbody><tr><td style="text-align:center">作用对象</td><td style="text-align:center">容器</td><td style="text-align:center">镜像</td></tr><tr><td style="text-align:center">恢复的镜像</td><td style="text-align:center">只包含当前镜像层</td><td style="text-align:center">与原镜像的分层保持相同</td></tr><tr><td style="text-align:center">恢复的镜像</td><td style="text-align:center">新构建的镜像，与原镜像的imageID不同</td><td style="text-align:center">与原镜像的imageID保持相同</td></tr><tr><td style="text-align:center">定位</td><td style="text-align:center">可以指定 <code>&lt;repository&gt;:&lt;tag&gt;</code></td><td style="text-align:center">与原镜像的 <code>&lt;repository&gt;:&lt;tag&gt;</code> 保持相同</td></tr></tbody></table>
+</li>
+<li>
+<p><code>docker system</code> 命令集：</p>
+<ol>
+<li><code>docker system df</code>：查看docker各部分的占用情况<!-- -->
+<ul>
+<li><code>-v</code>：获取更详细的占用情况</li>
+</ul>
+</li>
+<li><code>docker system events</code>：查看指定日期范围之间发生的所有事件<!-- -->
+<ul>
+<li><code>--since</code></li>
+<li><code>--until</code></li>
+</ul>
+</li>
+<li><code>docker system info</code>：查看当前docker的详情<!-- -->
+<ul>
+<li>docker client的详情</li>
+<li>docker server的详情：镜像情况、容器情况、docker所在系统的软硬件情况</li>
+</ul>
+</li>
+<li><code>docker system prune</code>：删除docker中的无用数据<!-- -->
+<ul>
+<li>已经停止的容器</li>
+<li>没有连接任何容器的网络、悬虚镜像（dangling image）</li>
+<li>悬虚镜像的构建缓存（dangling build cache）</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-dockerfile">5 Dockerfile<a class="hash-link" aria-label="Direct link to 5 Dockerfile" title="Direct link to 5 Dockerfile" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#5-dockerfile">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="51-概述">5.1 概述<a class="hash-link" aria-label="Direct link to 5.1 概述" title="Direct link to 5.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#51-概述">​</a></h3>
+<ol>
+<li><code>Dockerfile</code>：由一系列指令构成的、用来构建Docker镜像的脚本文件<!-- -->
+<ul>
+<li>由上到下依次执行指令</li>
+<li>每条指令都会构建出一个镜像</li>
+</ul>
+</li>
+<li>指令：<!-- -->
+<ul>
+<li>大小写不敏感（惯例是全大写）</li>
+<li>指令后面至少会携带一个参数</li>
+<li>注释符号：<code>#</code></li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="52-指令">5.2 指令<a class="hash-link" aria-label="Direct link to 5.2 指令" title="Direct link to 5.2 指令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#52-指令">​</a></h3>
+<ol>
+<li><code>FROM &lt;image&gt;[:&lt;tag&gt;]</code>：指定基础镜像，且 <strong>必须是第一条</strong> 指令</li>
+<li><code>MAINTAINER &lt;name&gt;</code>：（已过时，用 <code>LABEL</code> 指令代替）填写维护者姓名和邮箱</li>
+<li><code>LABEL &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; …</code>：以键值对的方式包含镜像的元数据信息，修改镜像的json文件</li>
+<li><code>ENV</code>：指定环境变量<!-- -->
+<ul>
+<li><code>ENV &lt;key&gt; &lt;value&gt;</code></li>
+<li><code>ENV &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; …</code></li>
+</ul>
+</li>
+<li><code>WORKDIR &lt;path&gt;</code>：容器的默认目录，即后续指令的工作目录<!-- -->
+<ol>
+<li>设置多个 <code>WORKDIR</code> 指令时，若有用到相对路径，则会基于之前已经指定过的路径</li>
+</ol>
+</li>
+<li><code>RUN</code>：<code>docker build</code> 命令执行过程中<!-- -->
+<ul>
+<li><code>RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;, …]</code>：用指定的应用程序 <code>executable</code> 运行，并使用 <code>param1</code>、<code>param2</code> 等作为运行参数</li>
+<li><code>RUN &lt;command&gt;</code>：执行shell命令</li>
+</ul>
+</li>
+<li><code>CMD</code>：容器启动后，即 <strong>执行完 <code>docker run</code> 命令后</strong>
+<ul>
+<li><code>CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;, …]</code>：用指定的应用程序 <code>executable</code> 运行，并使用 <code>param1</code>、<code>param2</code> 等作为运行参数<!-- -->
+<ul>
+<li>命令 <strong>会被</strong> <code>docker run</code> 命令后的 <code>&lt;command&gt;</code> <strong>代替</strong></li>
+</ul>
+</li>
+<li><code>CMD &lt;command&gt; &lt;param1&gt; &lt;param2&gt; …</code>：执行shell命令<!-- -->
+<ul>
+<li>命令 <strong>会被</strong> <code>docker run</code> 命令后的 <code>&lt;command&gt;</code> <strong>代替</strong></li>
+</ul>
+</li>
+<li><code>CMD [&quot;param1&quot;, &quot;param2&quot;, …]</code>：提供给 <code>ENTRYPOINT</code> 指令的参数<!-- -->
+<ul>
+<li>搭配 <code>ENTRYPOINT</code> 指令使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>ENTRYPOINT</code>：容器启动过程中，即 <code>docker run</code> <strong>命令执行过程中</strong>
+<ul>
+<li><code>ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;, …]</code>：用指定的应用程序 <code>executable</code> 运行，并使用 <code>param1</code>、<code>param2</code> 等作为运行参数<!-- -->
+<ul>
+<li>命令 <strong>不会被</strong> <code>docker run</code> 命令后的 <code>&lt;command&gt;</code> <strong>代替</strong> → <code>docker run</code> 命令后的内容作为参数 <code>&lt;ARG&gt;</code> 使用</li>
+</ul>
+</li>
+<li><code>ENTRYPOINT &lt;command&gt; &lt;param1&gt; &lt;param2&gt; …</code>：执行shell命令<!-- -->
+<ul>
+<li><strong>不支持</strong> 将 <code>docker run</code> 命令后的内容作为参数 <code>&lt;ARG&gt;</code> 使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>EXPOSE &lt;port&gt; [&lt;port&gt; …]</code>：指定容器准备对外暴露的端口号<!-- -->
+<ul>
+<li>实际暴露的端口仍由 <code>-p</code> 指定</li>
+</ul>
+</li>
+<li><code>ARG &lt;varname&gt;[=&lt;default value&gt;]</code>：定义单个用于镜像构建运行时的变量<!-- -->
+<ul>
+<li>若要定义多个，则需要声明多个 <code>ARG</code> 指令</li>
+</ul>
+</li>
+<li><code>ADD</code>：复制宿主机中的指定文件 <code>src</code> 到容器中的指定目录 <code>dest</code> 中<!-- -->
+<ol>
+<li>语法：<!-- -->
+<ul>
+<li><code>ADD &lt;src&gt; &lt;dest&gt;</code></li>
+<li><code>ADD [&quot;&lt;src&gt;&quot;, &quot;&lt;dest&gt;&quot;]</code></li>
+</ul>
+</li>
+<li><code>&lt;src&gt;</code>：支持宿主机中的绝对路径、相对于 <code>docker build</code> 命令指定的路径下的相对路径、压缩文件（复制到容器后自动解压）、URL（相当于 <code>wget</code> 命令）</li>
+<li><code>&lt;dest&gt;</code>：仅支持绝对路径，路径末尾必须加上斜杠（否则会被当成一个文件）</li>
+</ol>
+</li>
+<li><code>COPY</code>：功能和 <code>ADD</code> 指令相同<!-- -->
+<ol>
+<li><code>&lt;src&gt;</code> 不支持URL</li>
+<li>若 <code>&lt;src&gt;</code> 是压缩文件，则复制到容器后不会自动解压</li>
+</ol>
+</li>
+<li><code>ONBUILD [INSTRUCTION]</code>：指定当前镜像的子镜像进行构建时要执行的指令</li>
+<li><code>VOLUME [&quot;dir1&quot;, &quot;dir2&quot;, …]</code>：在容器里创建可以挂载数据卷的 <strong>挂载点</strong></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="53-实际应用">5.3 实际应用<a class="hash-link" aria-label="Direct link to 5.3 实际应用" title="Direct link to 5.3 实际应用" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#53-实际应用">​</a></h3>
+<ol>
+<li>scratch镜像：空镜像，所有镜像的 <strong>Base Image</strong>
+<ol>
+<li>Docker的保留字，不能作为镜像名称</li>
+<li>只能在Dockerfile中被继承</li>
+</ol>
+</li>
+<li>悬虚镜像：既没有 <code>&lt;repository&gt;</code> 又没有 <code>&lt;tag&gt;</code> 的镜像<!-- -->
+<ul>
+<li><code>docker rmi &lt;imageId&gt;</code>：删除指定镜像ID的镜像</li>
+<li><code>docker image prune</code>：删除本地所有的悬虚镜像</li>
+<li><code>docker system prune</code>：删除docker中的无用数据</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="54-build-cache">5.4 build cache<a class="hash-link" aria-label="Direct link to 5.4 build cache" title="Direct link to 5.4 build cache" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#54-build-cache">​</a></h3>
+<ol>
+<li>镜像构建过程：下层镜像作为上层镜像的 <strong>父镜像/输入</strong> → <strong>镜像文件系统或json文件发生变更，就会生成一个新的镜像层</strong>
+<ol>
+<li><code>FROM centos:7</code>：只设定一个基础镜像，不会做任何操作</li>
+<li><code>LABEL auth=&quot;bjpowernode&quot;</code>：修改镜像json文件 → 生成一个新的镜像层</li>
+<li><code>COPY helloworld.log /var/log</code>：修改镜像文件系统 → 生成一个新的镜像层</li>
+<li><code>RUN yum -y install vim</code>：安装新工具 → 修改镜像文件系统 → 生成一个新的镜像层</li>
+<li><code>CMD /bin/bash</code>：启动后需要执行命令 → 修改镜像json文件 → 生成一个新的镜像层</li>
+</ol>
+</li>
+<li>build cache机制：发现即将新构建出的镜像（层）与本地已存在的某镜像（层）重复时，默认 <strong>复用</strong></li>
+<li>build cache失效：从 <strong>发生变化的指令层</strong> 开始的镜像层的cache全部失效<!-- -->
+<ol>
+<li>Dockerfile文件中的指令发生变化</li>
+<li><code>ADD</code> 或 <code>COPY</code> 指令操作的文件内容发生变化</li>
+<li><code>RUN</code> 指令的外部依赖发生变化</li>
+<li>build时指定 <code>--no-cache</code>：当前构建时均不使用cache</li>
+</ol>
+</li>
+<li>清理dangling build cache：<code>docker system prune</code></li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="6-数据持久化">6 数据  持久化<a class="hash-link" aria-label="Direct link to 6 数据持久化" title="Direct link to 6 数据持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#6-数据持久化">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="61-定制镜像持久化">6.1 定制镜像持久化<a class="hash-link" aria-label="Direct link to 6.1 定制镜像持久化" title="Direct link to 6.1 定制镜像持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#61-定制镜像持久化">​</a></h3>
+<ol>
+<li>对镜像进行操作后，执行 <code>docker commit</code> 命令，以当前运行的容器为 <strong>范本</strong> 生成镜像</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="62-数据卷持久化">6.2 数据卷持久化<a class="hash-link" aria-label="Direct link to 6.2 数据卷持久化" title="Direct link to 6.2 数据卷持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#62-数据卷持久化">​</a></h3>
+<ol>
+<li>docker提供的实时数据同步方式：<!-- -->
+<ol>
+<li>数据卷</li>
+<li>Bind mounts（绑定挂载）</li>
+<li>tmpfs（临时文件系统）</li>
+</ol>
+</li>
+<li><strong><font color="red">数据卷</font></strong>：宿主机中的特殊文件/目录<!-- -->
+<ol>
+<li>容器/挂载点的删除，不会级联删除数据卷</li>
+<li>若数据卷/挂载点中本来就有内容，容器启动后会自动同步到另一端</li>
+<li>可直接修改数据卷/挂载点中的内容</li>
+<li>数据卷可以在容器之间共享和重用</li>
+</ol>
+</li>
+<li><strong><font color="red">挂载点</font></strong>：容器中与数据卷相关联的文件/目录</li>
+<li>命令：指定目录不存在时，会自动创建<!-- -->
+<ol>
+<li><code>docker run -it -v /&lt;宿主机绝对路径目录&gt;:/&lt;容器内绝对路径目录&gt; image</code>：创建读写 <code>rw</code> 数据卷<!-- -->
+<ul>
+<li>容器 <strong>读写</strong> 挂载点</li>
+<li>宿主机 <strong>读写</strong> 数据卷</li>
+</ul>
+</li>
+<li><code>docker run -it -v /&lt;宿主机绝对路径目录&gt;:/&lt;容器内绝对路径目录&gt;:ro image</code>：创建只读 <code>ro</code> 数据卷<!-- -->
+<ul>
+<li>容器 <strong>只读</strong> 挂载点</li>
+<li>宿主机 <strong>读写</strong> 数据卷</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>数据卷共享：需要一个容器作为 <strong>数据卷容器</strong>，其它需要共享数据卷的容器在启动时指定 <code>--volumes-from [数据卷容器]</code> 即可</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="63-dockerfile持久化">6.3 Dockerfile持久化<a class="hash-link" aria-label="Direct link to 6.3 Dockerfile持久化" title="Direct link to 6.3 Dockerfile持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#63-dockerfile持久化">​</a></h3>
+<ol>
+<li>通过Dockerfile中的 <code>VOLUME</code> 指令来指定挂载点<!-- -->
+<ul>
+<li>宿主机中的数据卷由Docker Daemon自动分配名称与目录（docker目录下的 <code>/volumes/&lt;name&gt;/_data</code>）</li>
+<li>仍支持在容器启动时指定数据卷</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="7-docker网络">7 Docker网络<a class="hash-link" aria-label="Direct link to 7 Docker网络" title="Direct link to 7 Docker网络" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#7-docker网络">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="71-概述">7.1 概述<a class="hash-link" aria-label="Direct link to 7.1 概述" title="Direct link to 7.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#71-概述">​</a></h3>
+<ol>
+<li><strong><font color="red">Network Namespace</font></strong>：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）
+<img decoding="async" loading="lazy" alt="Network Namespace" src="/ZHENGnotes/assets/images/11.7.network_namespace-21c35ff280bb8e340e35cd31dad1347a.jpg" width="775" height="328" class="img_ev3q">
+<ol>
+<li><code>ip nets add &lt;namespace&gt;</code>：创建网络空间（默认有一个回环网络适配器lo）</li>
+<li><code>ip link add &lt;vethname1&gt; type veth peer name &lt;vethname2&gt;</code>：<strong>虚拟设备接口技术veth pair</strong>，创建一对相互连通的网络接口（具备MAC地址、DOWN状态、不具备IP）</li>
+<li><code>ip link set &lt;vethname1&gt; netns &lt;namespace1&gt;</code>：将网络接口分配给网络空间</li>
+<li><code>ip netns exec &lt;namespace1&gt; ip addr add &lt;ip&gt; dev &lt;vethname1&gt;</code>：给网络接口分配IP</li>
+<li><code>ip netns exec &lt;namespace1&gt; ip link set dev &lt;vethname1&gt; up</code>：启动网络接口</li>
+</ol>
+</li>
+<li>Docker网络架构：<!-- -->
+<ol>
+<li><strong><font color="red">容器网络模型CNM（Container Network Model）</font></strong>：一种网络连接的设计规范<!-- -->
+<ol>
+<li><strong>沙盒Sandbox</strong>：独立的网络栈，包含以太网接口、端口号、路由表、DNS配置等，如Linux Network Namespace</li>
+<li><strong>终端Endpoint</strong>：虚拟网络接口，用于将沙盒连接到网络上；一个终端只能接入一个网络</li>
+<li><strong>网络Network</strong>：需要交互的终端集合</li>
+</ol>
+</li>
+<li><strong><font color="red">Libnetwork</font></strong>：CNM的开源实现，并额外实现了本地服务发现、容器负载均衡、网络控制层与管理层等功能</li>
+<li><strong><font color="red">网络驱动Driver</font></strong>：<img decoding="async" loading="lazy" alt="Driver" src="/ZHENGnotes/assets/images/11.8.driver-3714e2ecf5c4467172bf7b1cf00d8120.jpg" width="756" height="313" class="img_ev3q">
+<ul>
+<li><code>docker network ls</code>：查看当前主机所连接的网络及网络类型</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="72-网络类型">7.2 网络类型<a class="hash-link" aria-label="Direct link to 7.2 网络类型" title="Direct link to 7.2 网络类型" href="/ZHENGnotes/bjpowernode/ 微服务结构/Docker#72-网络类型">​</a></h3>
+<ol>
+<li><code>bridge</code> 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP<!-- -->
+<ol>
+<li><strong>docker0网桥</strong>：默认的虚拟网桥
+<img decoding="async" loading="lazy" alt="docker0 Bridge" src="/ZHENGnotes/assets/images/11.9.docker0_bridge-e52045b00c9b8852bdc3feb8bdbd28c6.jpg" width="802" height="456" class="img_ev3q">
+<ul>
+<li>容器和网桥间通过 <strong>veth pair技术</strong> 实现连接</li>
+<li>网桥和外网间通过 <strong>网络地址转换NAT技术</strong> 实现连接</li>
+</ul>
+</li>
+<li>命令：<!-- -->
+<ol>
+<li><code>docker network inspect bridge</code>：查看bridge网络的整体连接情况</li>
+<li><code>ip a</code>：查看宿主机的网络接口</li>
+<li><code>docker exec &lt;container&gt; ip a</code>：查看容器的网络接口</li>
+<li><code>brctl show</code>：查看宿主机的所有网桥及其连接情况<!-- -->
+<ul>
+<li>需要安装 <code>bridge-utils</code></li>
+</ul>
+</li>
+<li><code>docker inspect &lt;container&gt;</code>：查看容器的详情（网关Gateway的ip地址 = docker0网桥的地址）</li>
+<li><code>docker network create</code>：创建指定名称与类型的网络<!-- -->
+<ul>
+<li><code>-d</code>：指定创建网络时使用的驱动，即网络类型</li>
+</ul>
+</li>
+<li><code>docker run … --network &lt;network&gt;</code>：指定连接的网络，默认连接到默认的bridge网络</li>
+<li><code>docker network connect &lt;network&gt; &lt;container&gt;</code>：将容器连接到指定网络上</li>
+<li><code>docker exec &lt;container1&gt; ping &lt;container2/ip&gt;</code>：建议使用容器名称 ← ip可能会变化，容器名固定不变<!-- -->
+<ul>
+<li>在默认的bridge网络上，不支持 <code>ping &lt;container2&gt;</code></li>
+</ul>
+</li>
+<li><code>docker run … --link &lt;container&gt;</code>：创建一个定向连接到指定容器的新容器 → 新容器只能ping通指定容器</li>
+<li><code>docker run … --network container:&lt;container&gt;</code>：指定新容器与已存在的容器共享网络空间（必须是bridge网络模式）<!-- -->
+<ul>
+<li>共享网络空间 → 新容器没有自身的网络设置</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code>none</code> 没有网络：具有独立的namespace，没有独立的网络接口、IP；只有一个回环地址lo<!-- -->
+<ol>
+<li><code>docker run … --network none</code>：指定新容器没有网络功能</li>
+</ol>
+</li>
+<li><code>host</code> 宿主机网络：没有独立的namespace、网络接口、IP，与宿主机共享<!-- -->
+<ol>
+<li><code>docker run … --network host</code>：指定新容器为host网络</li>
+<li>端口映射 <code>-p &lt;host-port&gt;:&lt;container-port&gt;</code> 不起作用</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="8-常用服务器安装">8 常用服务器安装<a class="hash-link" aria-label="Direct link to 8 常用服务器安装" title="Direct link to 8 常用服务器安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#8-常用服务器安装">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="81-mysql安装">8.1 MySQL安装<a class="hash-link" aria-label="Direct link to 8.1 MySQL安装" title="Direct link to 8.1 MySQL安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#81-mysql安装">​</a></h3>
+<ol>
+<li>单机安装命令：<code>docker run --name &lt;mysql-container-name&gt; -e MYSQL_ROOT_PASSWORD=&lt;password&gt; -d mysql:&lt;tag&gt;</code>
+<ol>
+<li>字符编码问题：<code>/etc/mysql/conf.d</code> 目录下新建 <code>&lt;name&gt;.cnf</code> 文件<!-- -->
+<div class="language-properties codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-properties codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">[client]</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key attr-name" style="color:rgb(255, 0, 0)">default_character_set</span><span class="token punctuation" style="color:rgb(4, 81, 165)">=</span><span class="token value attr-value">utf8</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">[mysql]</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key attr-name" style="color:rgb(255, 0, 0)">default_character_set</span><span class="token punctuation" style="color:rgb(4, 81, 165)">=</span><span class="token value attr-value">utf8</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">[mysqld]</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token key attr-name" style="color:rgb(255, 0, 0)">character_set_server</span><span class="token punctuation" style="color:rgb(4, 81, 165)">=</span><span class="token value attr-value">utf8</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>数据安全问题：指定数据卷</li>
+</ol>
+</li>
+<li>集群搭建：与普通集群搭建步骤一致</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="82-redis安装">8.2 Redis安装<a class="hash-link" aria-label="Direct link to 8.2 Redis安装" title="Direct link to 8.2 Redis安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#82-redis安装">​</a></h3>
+<ol>
+<li>单机安装命令：<code>docker run --name &lt;redis-container-name&gt; -d redis:&lt;tag&gt; redis-server</code>
+<ul>
+<li>修改 <code>redis.conf</code>：<!-- -->
+<ol>
+<li>注释 <code>bind 127.0.0.1 -::1</code>：解除IP绑定</li>
+<li><code>protected-mode no</code>：关闭保护模式（只允许本机访问）</li>
+<li><code>darmonize no</code>：关闭守护模式（docker以分离模式运行，若redis再以此模式运行，将无法启动）</li>
+<li><code>dir /data</code>：指定RDB或AOF的持久化目录，并指定该目录为数据卷</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>主从集群搭建：与普通集群搭建步骤一致，启动从机容器时需指定 <code>--slaveof &lt;master-ip&gt; &lt;master-port&gt;</code>
+<ul>
+<li>只支持冷处理的容灾方案</li>
+</ul>
+</li>
+<li>高可用集群搭建：在主从集群的基础上，再搭建哨兵sentinel集群<!-- -->
+<ul>
+<li>修改 <code>sentinel.conf</code>：<!-- -->
+<ol>
+<li><code>sentinel monitor &lt;master-name&gt; &lt;master-ip&gt; &lt;master-port&gt; &lt;quorum&gt;</code>：指定要监视的主机以及quorum<!-- -->
+<ul>
+<li><code>&lt;quorum&gt;</code>：认定主机master故障的最少哨兵 人数</li>
+</ul>
+</li>
+<li><code>sentinel announce-ip/port &lt;host-ip/port&gt;</code>：指定当前哨兵对外宣布的IP（即宿主机IP）和端口号（容器对外暴露的端口号）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>分布式搭建：请求数据写入时，分布式系统会采用虚拟槽分区算法将数据写入到相应节点中<!-- -->
+<ul>
+<li>与集群的区别：集群节点中保存 <strong>相同</strong> 的数据，分布式节点中保存 <strong>不同</strong> 的数据</li>
+<li>修改 <code>redis.conf</code>：<!-- -->
+<ol>
+<li><code>cluster-enabled yes</code>：开启分布式系统功能</li>
+<li><code>cluster-config-file &lt;file-name&gt;</code>：指定使用的配置文件</li>
+</ol>
+</li>
+<li>启动后执行 <code>redis-cli --cluster create --cluster-replicas &lt;slave-num&gt; &lt;ip1&gt; &lt;ip2&gt; …</code>
+<ul>
+<li><code>redis-cli cluster nodes</code>：查看系统中各节点的关系以及连接情况</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="9-docker-compose">9 Docker Compose<a class="hash-link" aria-label="Direct link to 9 Docker Compose" title="Direct link to 9 Docker Compose" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#9-docker-compose">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="91-概述">9.1 概述<a class="hash-link" aria-label="Direct link to 9.1 概述" title="Direct link to 9.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#91-概述">​</a></h3>
+<ol>
+<li>Docker Compose：Docker容器编排工具，通过一个 <strong>声明式的配置文件</strong> 描述整个应用，最终使用一条命令完成部署</li>
+<li><code>compose.yml</code> / <code>docker-compose.yml</code>：6大模块<!-- -->
+<ol>
+<li><code>version</code>：（已过时）版本号</li>
+<li><code>services</code>：定义和创建应用中时用到的 <strong>服务</strong>
+<div class="language-yml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yml codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token key atrule">services</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;service-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">container_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;service</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">real</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">build</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">context</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">image</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;repository</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;tag</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">ports</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;host</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port2</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> …</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">command</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;&lt;command&gt;&quot;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">depends_on</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;depend</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">service</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">deploy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">mode</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> replicated</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">replicas</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">number</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">networks</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;network</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">volumes</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;host</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;volume</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path2</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> …</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol>
+<li><code>&lt;service-name&gt;</code>：服务标识/名称</li>
+<li><code>container_name</code>：容器的真正名称，缺省生成为 <code>&lt;compose_dir&gt;-&lt;service-name&gt;</code></li>
+<li><code>build</code>：指定创建当前服务镜像的Dockerfile路径<!-- -->
+<ol>
+<li><code>context</code>：指定绝对/相对路径</li>
+<li><code>dockerfile</code>：指定文件名</li>
+</ol>
+</li>
+<li><code>image</code>：指定当前服务所需要使用的镜像（若设置了build属性，则image属性会设定构建出的镜像的名称与tag）</li>
+<li><code>ports</code>：映射端口列表（若只设置了容器端口，则暴露到宿主机的端口号会被随机分配）</li>
+<li><code>command</code>：启动容器后立即运行的命令（会覆盖dockerfile中的 <code>CMD</code> 指令）</li>
+<li><code>depends_on</code>：启动所依赖的应用列表</li>
+<li><code>deploy</code>：指定当前服务的部署设置<!-- -->
+<ol>
+<li><code>mode</code>：部署模式</li>
+<li><code>replicas</code>：指定服务启动的容器数量（指定该属性后，不能再设定 <code>container_name</code> 属性）</li>
+</ol>
+</li>
+<li><code>networks</code>：指定当前服务所要连接的网络</li>
+<li><code>volumes</code>：指定当前服务用到的数据卷，支持路径和数据卷标识两种形式</li>
+</ol>
+</li>
+<li><code>networks</code>：定义和创建应用中时用到的 <strong>网络</strong>
+<div class="language-yml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yml codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token key atrule">networks</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;network-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;network</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">real</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">driver</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> bridge</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">attachable</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> </span><span class="token boolean important">false</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol>
+<li><code>&lt;network-name&gt;</code>：网络标识/名称</li>
+<li><code>name</code>：网络的真正名称，缺省生成为 <code>&lt;compose_dir&gt;_&lt;network-name&gt;</code></li>
+<li><code>driver</code>：网络驱动，缺省为 <code>bridge</code></li>
+<li><code>attachable</code>：是否允许其它独立容器连接到此网络，缺省为 <code>false</code></li>
+</ol>
+</li>
+<li><code>volumes</code>：定义和创建应用中时用到的 <strong>数据卷</strong>
+<div class="language-yml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yml codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token key atrule">volumes</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;volume-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        …</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol>
+<li><code>&lt;volume-name&gt;</code>：数据卷标识/名称（系统会自动分配在docker容器中的具体位置）</li>
+</ol>
+</li>
+<li><code>configs</code></li>
+<li><code>secrets</code></li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="92-命令">9.2 命令<a class="hash-link" aria-label="Direct link to 9.2 命令" title="Direct link to 9.2 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#92-命令">​</a></h3>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>在命令后加上 <code>&lt;service-name&gt;</code>，即可对指定服务进行操作</p></div></div>
+<ol>
+<li><code>docker-compose pull</code>：拉取compose中需要的所有镜像</li>
+<li><code>docker-compose config</code>：检查 <code>docker-compose.yml</code> 文件是否正确<!-- -->
+<ul>
+<li><code>-q</code>：存在问题时才输出</li>
+</ul>
+</li>
+<li><code>docker-compose up</code>：启动compose中的所有服务<!-- -->
+<ul>
+<li><code>-d</code>：后台启动</li>
+</ul>
+</li>
+<li><code>docker-compose logs</code>：查看compose中所有服务的运行日志，不同服务的日志用不同颜色区分</li>
+<li><code>docker-compose ps</code>：查看compose中的所有服务</li>
+<li><code>docker-compose top</code>：查看compose中所有当前正在运行中的服务</li>
+<li><code>docker-compose images</code>：查看compose中所有服务对应的镜像</li>
+<li><code>docker-compose port</code>：查看指定服务的映射端口</li>
+<li><code>docker-compose run</code>：在指定服务上执行命令</li>
+<li><code>docker-compose exec</code>：进入指定服务的容器内</li>
+<li><code>docker-compose pause</code>：暂停compose中的所有服务的容器</li>
+<li><code>docker-compose unpause</code>：恢复compose中所有处于暂停状态的服务的容器</li>
+<li><code>docker-compose stop</code>：停止compose中的所有服务</li>
+<li><code>docker-compose restart</code>：重启compose中的所有服务</li>
+<li><code>docker-compose start</code>：启动compose中的所有服务</li>
+<li><code>docker-compose kill</code>：通过发送 <code>SIGKILL</code> 信号来停止指定服务的容器</li>
+<li><code>docker-compose rm</code>：删除compose中所有处于停止状态的服务的容器</li>
+<li><code>docker-compose down</code>：停止并删除compose中的所有服务容器、网络、镜像、数据卷</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="10-docker管理监控平台">10 Docker管理监控平台<a class="hash-link" aria-label="Direct link to 10 Docker管理监控平台" title="Direct link to 10 Docker管理监控平台" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#10-docker管理监控平台">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="101-概述">10.1 概述<a class="hash-link" aria-label="Direct link to 10.1 概述" title="Direct link to 10.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#101-概述">​</a></h3>
+<ol>
+<li>Docker UI：基于Docker API的开源可视化管理工具，支持容器管理、镜像管理、批量操作，不支持多集群管理<!-- -->
+<ul>
+<li>部署命令：<code>docker run -d uifd/ui-for-docker</code></li>
+</ul>
+</li>
+<li>Portainer：免费的可视化管理工具，基于容器化的安装方式，支持构建、管理和维护Docker环境<!-- -->
+<ul>
+<li>部署命令：<code>docker run -d portainer/portainer-ce</code></li>
+</ul>
+</li>
+<li>shipyard：建立在docker集群管理工具Citadel之上的可视化管理工具，支持镜像管理、容器管理、主机管理<!-- -->
+<ul>
+<li>版本：<!-- -->
+<ul>
+<li>core：统一管理多个docker host上的containers，支持跨host</li>
+<li>extension：新增了应用路由、负载均衡、集中化日志、部署等</li>
+</ul>
+</li>
+<li>部署：执行自动部署脚本，按照脚本运行结果中给出的访问地址和账密进行操作</li>
+</ul>
+</li>
+<li>CIG监控系统：包含CAdvisor（收集监控数据）、InfluxDB（存储数据）、Grafana（展示数据）三个应用<!-- -->
+<ol>
+<li>CAdvisor：用来分析运行中的Docker容器的资源占用以及性能特性的工具，监控容器的内容、CPU、网络、磁盘IO等，并有web页面展示监控数据</li>
+<li>InfluxDB：基于GO语言的、开源的高性能、时序型数据库，支持海量时序数据的高性能读写、高效存储、实时分析等</li>
+<li>Grafana：基于GO语言的、开源的时序数据监控分析可视化平台</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-镜像中心">11 镜像中心<a class="hash-link" aria-label="Direct link to 11 镜像中心" title="Direct link to 11 镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#11-镜像中心">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-概述">11.1 概述<a class="hash-link" aria-label="Direct link to 11.1 概述" title="Direct link to 11.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#111-概述">​</a></h3>
+<ol>
+<li>发布镜像到Docker Hub：<!-- -->
+<ol>
+<li>Docker Hub端操作：<!-- -->
+<ol>
+<li>注册账号</li>
+<li>手动创建镜像仓库（可跳过）</li>
+</ol>
+</li>
+<li>服务器端操作：<!-- -->
+<ol>
+<li>登录：<code>docker login --username=&lt;username&gt; --password=&lt;password&gt;</code></li>
+<li>对要发布的镜像进行命名（根据镜像仓库名称自动创建）：<code>docker tag &lt;image-name&gt; &lt;username&gt;/&lt;respository-name&gt;:&lt;tag&gt;</code></li>
+<li>推送镜像至Docker Hub：<code>docker push &lt;username&gt;/&lt;respository-name&gt;:&lt;tag&gt;</code></li>
+<li>登出：<code>docker logout</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>发布镜像到阿里云：<!-- -->
+<ol>
+<li>阿里云端操作：<!-- -->
+<ol>
+<li>注册账号</li>
+<li>手动创建 <strong>命名空间</strong>（对镜像仓库分类）</li>
+<li>手动创建镜像仓库（可跳过）</li>
+</ol>
+</li>
+<li>服务器端操作：同上</li>
+</ol>
+</li>
+<li>网络传输协议：<!-- -->
+<ul>
+<li>HTTP协议：默认使用 <strong>80</strong> 端口<!-- -->
+<ul>
+<li>明文传输：直接与传输层的TCP进行通信</li>
+</ul>
+</li>
+<li>HTTPS协议：默认使用 <strong>443</strong> 端口</li>
+</ul>
+</li>
+<li>通信加密的不同方式及其原理：<!-- -->
+<ol>
+<li><strong>数字签名</strong> 加密：<!-- -->
+<ul>
+<li>存在的问题：<code>1</code> 和 <code>3</code> 过程中信息可能会被窃取或篡改<!-- -->
+<!-- -->
+</li>
+<li>解决方案：<!-- -->
+<!-- -->
+</li>
+</ul>
+</li>
+<li><strong>数字证书</strong> 加密：<!-- -->
+<ul>
+<li>存在的问题：<!-- -->
+<!-- -->
+</li>
+<li>解决方案：<!-- -->
+<!-- -->
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><code>htpasswd</code> 命令：通过该命令来实现 <strong>Registry私有镜像中心</strong> 的用户认证<!-- -->
+<ol>
+<li>安装 <code>httpd-tools</code> 工具包：<code>yum install -y httpd-tools</code></li>
+<li>创建认证文件：<code>htpasswd -c htpasswd.user</code></li>
+<li>添加用户：<code>htpasswd -Bb &lt;filename&gt; &lt;username&gt; &lt;password&gt;</code></li>
+<li>删除用户：<code>htpasswd -D &lt;filename&gt; &lt;username&gt;</code></li>
+</ol>
+</li>
+<li>容器的 <strong>退出状态码</strong>：用来反馈容器中的应用的退出方式，使用 <code>docker ps -a</code> 或 <code>docker inspect</code> 命令来查看<!-- -->
+<ul>
+<li><strong>0</strong>：应用正常退出，如使用 <code>docker stop</code> 命令，或关闭docker引擎</li>
+<li>[1, 128]范围：<mark>容器内部运行错误或应用运行出错</mark>引发的容器无法启动的非正常退出状态<!-- -->
+<ul>
+<li><strong>1</strong>：应用程序内部错误；Dockerfile中的无效引用</li>
+<li><strong>125</strong>：Dockerfile中定义的 <code>command</code> 由于引用了未定义的变量、或者是执行了没有权限的命令而没有运行成功</li>
+<li><strong>126</strong>：Dockerfile中定义的 <code>command</code> 由于缺少依赖而没有运行成功</li>
+<li><strong>127</strong>：Dockerfile中定义的 <code>command</code> 由于引用了不存在的文件或目录而没有运行成功</li>
+<li><strong>128</strong>：自己开发的容器内触发了退出命令并给出了退出状态码，但状态码不在0-255范围内</li>
+</ul>
+</li>
+<li>[129, 255]范围：<mark>容器接收到终止信号</mark>的非正常退出状态<!-- -->
+<ul>
+<li><strong>130</strong>：来自操作系统的终止信号，如 <code>ctrl + c</code></li>
+<li><strong>137</strong>：来自dockerd的强制终止信号，如 <code>docker kill</code></li>
+<li><strong>143</strong>：来自dockerd的优雅终止信号，如 <code>docker stop</code>
+<ul>
+<li>若当前没有用户访问，则容器立即退出 → 143</li>
+<li>若当前有用户访问，则等待10秒后再kill容器 → 137</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>容器的重启策略：在创建容器时指定 <code>--restart &lt;policy&gt;</code>
+<ul>
+<li><code>no</code>：（默认）不重启</li>
+<li><code>on-failure[:n]</code>：在容器非正常退出时重启<!-- -->
+<ul>
+<li><code>n</code>：重启次数</li>
+</ul>
+</li>
+<li><code>always</code>：只要容器退出就重启</li>
+<li><code>unless-stopped</code>：除了通过 <code>docker stop</code> 或 <code>docker kill</code> 命令退出，其他情况只要容器退出就重启</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-https">11.2 HTTPS<a class="hash-link" aria-label="Direct link to 11.2 HTTPS" title="Direct link to 11.2 HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#112-https">​</a></h3>
+<ol>
+<li>通过SSL/TLS为数据加密：与传输层的SSL/TLS进行通信，再由SSL/TLS与TCP进行通信<!-- -->
+<ul>
+<li>SSL（Secure Sockets Layer）：安全套接字协议</li>
+<li>TLS（Transport Layer Security）：传输层安全协议</li>
+</ul>
+</li>
+<li>身份验证：<strong>非对称加密</strong> 验证方式（加密和解密的密钥不同，包含因子分解、离散对数、椭圆曲线三种算法）<!-- -->
+<ul>
+<li>一对密钥：一个用于加密，一个用于解密<!-- -->
+<ul>
+<li>公钥：可公开的密钥，发放给其他人</li>
+<li>私钥：非公开的密钥，只有加密者自己保存</li>
+</ul>
+</li>
+<li>用途：<!-- -->
+<ul>
+<li>信息加解密：公钥加密、私钥解密</li>
+<li>数字签名与认证：私钥加密、公钥解密</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>传输加密：<strong>对称加密</strong> 验证方式（加密和解密的密钥相同）</li>
+<li>原理图：<!-- -->
+<!-- -->
+</li>
+<li>重要概念：<!-- -->
+<ol>
+<li>数字证书（SSL/TLS证书）：由证书中心CA（Certificate Authority）颁发的一种身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名<!-- -->
+<ul>
+<li>可自己生成，但需要在通讯客户端安装数  字证书，并添加信任状态才可通讯</li>
+</ul>
+</li>
+<li>根证书：用来解密数字证书的CA公钥</li>
+<li>数字摘要：利用Hash函数的单向性，将任意长度的消息变成固定长度的短消息<!-- -->
+<ul>
+<li>不同明文的摘要一定不同，相同明文的摘要一定相同</li>
+<li>无法通过摘要计算出原始明文</li>
+</ul>
+</li>
+<li>数字签名：由发送方产生的别人无法伪造的一段数字串，通常使用非对称密钥和数字摘要技术</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-distribution私有镜像中心">11.3 distribution私有镜像中心<a class="hash-link" aria-label="Direct link to 11.3 distribution私有镜像中心" title="Direct link to 11.3 distribution私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution私有镜像中心">​</a></h3>
+<ol>
+<li>搭建私有镜像中心：<!-- -->
+<ol>
+<li>安装 <code>docker-distribution</code>：<code>yum install -y docker-distribution</code></li>
+<li>查看安装的文件：<code>rpm -ql docker-distribution</code>
+<ul>
+<li><code>/etc/docker-distribution/registry/config.yml</code>：核心配置文件</li>
+<li><code>/usr/bin/registry</code>：<code>registry</code> 命令</li>
+<li><code>/usr/lib/systemd/system/docker-distribution.service</code>：表示 <code>docker-distribution</code> 是服务</li>
+<li><code>/usr/share/doc/*</code>：所有文档</li>
+<li><code>/var/lib/registry</code>：镜像的保存目录</li>
+</ul>
+</li>
+<li>启动私有镜像中心：<code>systemctl start docker-distribution</code></li>
+</ol>
+</li>
+<li>docker客户端的 <strong>推送</strong> 操作：<!-- -->
+<ol>
+<li>修改 <code>daemon.json</code> 文件（← docker客户端采用HTTPS发送请求，而私有镜像中心默认不支持HTTPS协议）：添加 <code>&quot;insecure-registries&quot;: [&lt;ip&gt;:&lt;port&gt;]</code></li>
+<li>登录私有镜像中心：<code>docker login &lt;ip&gt;:&lt;port&gt;</code></li>
+<li>对镜像重命名，  并推送至私有镜像中心</li>
+<li>查看镜像中心：<!-- -->
+<ol>
+<li>查看仓库列表：<code>curl -XGET http://&lt;ip&gt;:&lt;port&gt;/v2/_catalog</code></li>
+<li>查看指定仓库的tag列表：<code>curl -XGET http://&lt;ip&gt;:&lt;port&gt;/v2/&lt;repository&gt;/tags/list</code></li>
+</ol>
+</li>
+<li>登出私有镜像中心：<code>docker logout &lt;ip&gt;:&lt;port&gt;</code></li>
+</ol>
+</li>
+<li>docker客户端的 <strong>删除</strong> 操作：<!-- -->
+<ol>
+<li>修改配置文件 <code>config.yml</code>：添加 <code>storage.delete.enabled=true</code></li>
+<li>获取镜像digest：<!-- -->
+<ol>
+<li>下载镜像到本地，再通过命令获取</li>
+<li>通过HTTP请求访问镜像中心获取：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">--header</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;Accept:application/vnd.docker.distribution.manifest.v2+json&quot;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-I</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-XGET</span><span class="token plain"> http://</span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">ip</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain">:</span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">port</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain">/v2/</span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">repository</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain">/manifests/</span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">tag</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>删除镜像：<code>curl -I -XDELETE http://&lt;ip&gt;:&lt;port&gt;/v2/&lt;repository&gt;/manifests/&lt;image-digest&gt;</code></li>
+<li>清理已被删除的镜像剩下的垃圾数据：<code>registry garbage-collect /etc/docker-distribution/registry/config.yml</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-registry私有镜像中心">11.4 registry私有镜像中心<a class="hash-link" aria-label="Direct link to 11.4 registry私有镜像中心" title="Direct link to 11.4 registry私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#114-registry私有镜像中心">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1141-http">11.4.1 HTTP<a class="hash-link" aria-label="Direct link to 11.4.1 HTTP" title="Direct link to 11.4.1 HTTP" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">​</a></h4>
+<ol>
+<li>搭建私有镜像中心：<!-- -->
+<ol>
+<li>拉取镜像：<code>docker pull registry</code></li>
+<li>使用 <code>htpasswd</code> 命令创建用户名与密码</li>
+<li>启动私有镜像中心：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">docker</span><span class="token plain"> run </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">--name</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">image-name</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">--restart</span><span class="token plain"> always </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-V</span><span class="token plain"> /var/lib/registry:/var/lib/registry </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-V</span><span class="token plain"> /usr/local/auth:/auth </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_AUTH=htpasswd&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd.user&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-dp</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">5000</span><span class="token plain">:5000 registry</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+</li>
+<li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution%E7%A7%81%E6%9C%89%E9%95%9C%E5%83%8F%E4%B8%AD%E5%BF%83">distribution私有镜像中心</a>
+<ol>
+<li>登录时需要输入用户名和密码</li>
+<li>发送HTTP请求：<!-- -->
+<ol>
+<li>浏览器访问：出现登录弹窗，输入用户名和密码即可</li>
+<li>curl请求：添加 <code>-u &lt;username&gt;:&lt;password&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1142-https">11.4.2 HTTPS<a class="hash-link" aria-label="Direct link to 11.4.2 HTTPS" title="Direct link to 11.4.2 HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1142-https">​</a></h4>
+<ol>
+<li>OpenSSL生成证书：<!-- -->
+<ol>
+<li>安装OpenSSL：<code>yum install -y openssl-devel</code></li>
+<li>创建证书目录</li>
+<li>创建证书中心的CA：<!-- -->
+<ol>
+<li>创建CA的 <strong>私钥</strong>：<code>openssl genrsa -out &lt;key-file&gt; &lt;rsa-bit&gt;</code></li>
+<li>创建CA的 <strong>证书</strong>：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">openssl req </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-x509</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-new</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-nodes</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-sha512</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-days</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">day</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-subj</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;/C=CN/ST=Beijing/L=Beijing/O=CA/OU=CAUnit/CN=cacn.com&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-key</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">key-file</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-out</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">crt-file</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li><code>-x509</code>：生成一个自签名的X.509证书</li>
+<li><code>-new</code>：生成一个新的证书请求</li>
+<li><code>-nodes</code>：在生成私钥时不加密</li>
+<li><code>-sha512</code>：使用 <code>SHA-512</code> 加密算法</li>
+<li><code>-days</code>：指定证书的有效期</li>
+<li><code>-subj</code>：指定证书的主题，包含国家Country（C）、省份State（ST）、城市Locality（L）、组织Organization（O）、组织单位Organizational Unit（OU）、通用名称Common Name（CN）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>创建申请者证书：<!-- -->
+<ol>
+<li>生成申请者证书的 <strong>私钥</strong></li>
+<li>生成请求文件（即证书中的申请者信息）：<code>openssl req -new -sha512 -key &lt;key-file&gt; -out &lt;csr-file&gt;</code></li>
+<li>生成 <code>v3.ext</code> 文件：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">cat</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> v3.ext </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;&lt;-</span><span class="token string" style="color:rgb(163, 21, 21)">EOF</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">authorityKeyIdentifier=keyid, issuer</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">basicConstraints=CA:FALSE</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">extendedKeyUsage=serverAuth</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">subjectAltName=IP: 192.168.192.111</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">[alt_names]</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">DNS.1=xxx.com</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">DNS.2=xxx.cn</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">EOF</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>生成申请者 <strong>证书</strong>：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">openssl x509 </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-req</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-sha512</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-days</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">day</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-extfile</span><span class="token plain"> v3.ext </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-CA</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">ca-crt-file</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-CAkey</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">ca-key-file</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-CAcreateserial</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-in</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">csr-file</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-out</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">cert-file</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>重命名申请者证书：<code>openssl x509 -inform PEM -in &lt;old-cert-file&gt; -out &lt;new-cert-file&gt;</code>
+<ul>
+<li>docker将 <code>.crt</code> 文件识别成CA证书</li>
+<li>docker将 <code>.cert</code> 文件识别成申请者证书</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>配置主机：<!-- -->
+<ol>
+<li>复制申请者证书和私钥：提前创建 <code>/etc/docker/certs.d/&lt;domain-name&gt;</code> 目录</li>
+<li>复制CA证书</li>
+</ol>
+</li>
+<li>重启docker</li>
+</ol>
+</li>
+<li>搭建私有镜像中心：<!-- -->
+<ol>
+<li>拉取镜像：<code>docker pull registry</code></li>
+<li>使用 <code>htpasswd</code> 命令创建用户名与密码</li>
+<li>启动私有镜像中心：<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">docker</span><span class="token plain"> run </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">--name</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">image-name</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">--restart</span><span class="token plain"> always </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-v</span><span class="token plain"> /etc/docker/certs.d/xxx.com:/cert </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-V</span><span class="token plain"> /var/lib/registry:/var/lib/registry </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-V</span><span class="token plain"> /usr/local/auth:/auth </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_HTTP_TLS_CERTIFICATE=/cert/xxx.com.cert&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_HTTP_TLS_KEY=/cert/xxx.com.key&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_AUTH=htpasswd&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-e</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd.user&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-dp</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">5000</span><span class="token plain">:5000 registry</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ol>
+</li>
+<li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">registry私有镜像中心的HTTP请求</a></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="115-harbor私有镜像中心">11.5 harbor私有镜像中心<a class="hash-link" aria-label="Direct link to 11.5 harbor私有镜像中心" title="Direct link to 11.5 harbor私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#115-harbor私有镜像中心">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1151-概述">11.5.1 概述<a class="hash-link" aria-label="Direct link to 11.5.1 概述" title="Direct link to 11.5.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1151-概述">​</a></h4>
+<ol>
+<li>Harbor：Registry Server开源项目，在Docker Registry的基础之上进行了二次封装<!-- -->
+<ol>
+<li>硬件要求：2核、4G内存、40G磁盘空间</li>
+<li>软件要求：Docker CE引擎、Docker Compose、OpenSSL</li>
+</ol>
+</li>
+<li>架构模块：<img decoding="async" loading="lazy" alt="Harbor Architecture" src="/ZHENGnotes/assets/images/11.10.harbor_architecture-1d1c12129815f93dcbae1f1b8c29b219.png" width="2312" height="1162" class="img_ev3q">
+<ol>
+<li>Proxy：反向代理服务器（采用Nginx），接收并将不同的请求转发至Core或Registry模块</li>
+<li>Core：核心模块<!-- -->
+<ol>
+<li>Notification Manager：通过webhook实现的消息管理，会将registry中的镜像变化通知到web页面</li>
+<li>API Server：接收来自Proxy模块的请求，并强制对请求进行权限控制<!-- -->
+<ol>
+<li>AUTH模块：通过token service实现用户认证，需要请求先从本模块获取到不同身份的有效token</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>GC Collector：垃圾回收管理</li>
+<li>Chart Museum：Helm的仓库</li>
+<li>Notary：数据权限控制器</li>
+<li>Log Collector：日志汇总</li>
+<li>Job Service：镜像复制（在Harbor集群中，将本地镜像同步到远程实例上）</li>
+<li>Distribution：镜像中心</li>
+<li>k-v storage：为Job Service模块提供缓存服务（采用Redis）</li>
+<li>Local/Remote Storage：将数据存放在内存块、文件或持久化对象中</li>
+<li>SQL Database：存放工程元数据、用户数据、角色数据、同步策略以及镜像元数据等（采用PostgreSQL）</li>
+</ol>
+</li>
+<li><code>docker login</code> 命令执行流程：<!-- -->
+<!-- -->
+</li>
+<li><code>docker push</code> 命令执行流程：<!-- -->
+<!-- -->
+</li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1152-http">11.5.2 HTTP<a class="hash-link" aria-label="Direct link to 11.5.2 HTTP" title="Direct link to 11.5.2 HTTP" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1152-http">​</a></h4>
+<ol>
+<li>搭建：<!-- -->
+<ol>
+<li>下载并解压</li>
+<li>修改 <code>harbor.yml</code> 配置文件：复制并重命名 <code>harbor.yml.tmpl</code> 文件<!-- -->
+<ol>
+<li><code>hostname: &lt;ip&gt;</code></li>
+<li>注释与 <code>https</code> 相关的所有配置</li>
+<li><code>harbor_admin_password: &lt;password&gt;</code>：记住或修改密码</li>
+<li><code>http.port: 80</code>：默认端口为80</li>
+</ol>
+</li>
+<li>运行 <code>./prepare</code> 命令：拉取prepare镜像并生成配置文件</li>
+<li>运行 <code>./install.sh</code> 命令：自动完成安装，并启动由docker-compose编排管理的容器（后续均用 <code>docker-compose</code> 命令来启停容器）</li>
+</ol>
+</li>
+<li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">registry私有镜像中心的HTTP请求</a></li>
+</ol>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1153-https">11.5.3 HTTPS<a class="hash-link" aria-label="Direct link to 11.5.3 HTTPS" title="Direct link to 11.5.3 HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1153-https">​</a></h4>
+<ol>
+<li>阿里云申请SSL证书：申请成功后，可根据服务器的类型进行下载证书压缩包（包含 <code>.pem</code> 证书文件和 <code>.key</code> 私钥文件）</li>
+<li>搭建：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1152-http">harbor私有镜像中心的搭建过程</a>
+<ol>
+<li>修改 <code>harbor.yml</code> 配置文件：修改 <code>https</code> 的相关配置<!-- -->
+<ol>
+<li><code>https.certificate: &lt;pem-file&gt;</code></li>
+<li><code>https.private_key: &lt;key-file&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">registry私有镜像中心的HTTP请求</a></li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-docker-swarm">12 Docker Swarm<a class="hash-link" aria-label="Direct link to 12 Docker Swarm" title="Direct link to 12 Docker Swarm" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#12-docker-swarm">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="121-概述">12.1 概述<a class="hash-link" aria-label="Direct link to 12.1 概述" title="Direct link to 12.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#121-概述">​</a></h3>
+<ol>
+<li>Docker Swarm：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信</li>
+<li>节点架构：<img decoding="async" loading="lazy" alt="How swarm node works" src="/ZHENGnotes/assets/images/11.11.how_swarm_node_works-5f567dd000e9aff31e560f32c695b6d9.webp" width="1527" height="560" class="img_ev3q">
+<ol>
+<li>Swarm Node：采用Swarm模式运行的Docker Engine主机<!-- -->
+<ul>
+<li>一个node对应一个主机，一个主机可对应 <strong>多个node</strong></li>
+<li>类型：<!-- -->
+<ol>
+<li>Manager：维护集群状态、调试service、处理  集群管理任务，通过Raft算法维护一致性</li>
+<li>Worker：对外提供服务</li>
+</ol>
+</li>
+<li>角色转换：<!-- -->
+<ol>
+<li>节点降级：Manager → Worker</li>
+<li>节点升级：Worker → Manager</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>服务架构：<code>service</code> 通过 <code>task</code> 的形式部署在swarm的各个node中，而 <code>task</code> 又通过运行着应用进程的 <code>container</code> 对外提供服务<br>
+<img decoding="async" loading="lazy" alt="How services work" src="/ZHENGnotes/assets/images/11.12.how_services_work-bc8a40b325a1bf259b2ec64c7347d291.webp" width="775" height="592" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Service Lifecycle" src="/ZHENGnotes/assets/images/11.13.service_lifecycle-12de11b4d9dec80867dec7171e8af373.webp" width="905" height="750" class="img_ev3q">
+<ul>
+<li>编排器 <code>orchestrator</code>：管理副本任务的创建和停止<!-- -->
+<ol>
+<li>创建 <code>task</code>：分配 <code>taskID</code>，并通过分配器来分配虚拟IP，再将其注册到内置DNS中</li>
+<li>停止 <code>task</code>：在内置DNS中注销</li>
+</ol>
+</li>
+<li>分配器 <code>allocator</code>：调度、监听副本任务；若容器处于不可用或终止状态，则由编排器先删后增，保持副本任务数量<!-- -->
+<ol>
+<li>调度：在集群的节点中找到 <code>available node</code>，并将 <code>task</code> 分配给 <code>node</code>，同时会给 <code>task</code> 分配一个容器</li>
+<li>监听：监测容器的运行状态</li>
+<li>对请求负载均衡</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>服务部署模式：<img decoding="async" loading="lazy" alt="Replicated VS Global" src="/ZHENGnotes/assets/images/11.14.replicated_vs_global-d5534a3dc5d1e6cbfe1af95d11ba940e.webp" width="775" height="552" class="img_ev3q">
+<ol>
+<li><code>replicated</code> 副本模式：（默认部署模式）指定 <code>task</code> 数量，为 <code>available node</code> 分配 <strong>一个或多个</strong> <code>task</code></li>
+<li><code>global</code> 全局模式：不能指定 <code>task</code> 数量，默认为每个 <code>node</code> 分配 <strong>一个</strong> <code>task</code></li>
+</ol>
+</li>
+<li>Raft算法：<a href="https://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener noreferrer">动画演示</a></li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="122-操作swarm集群">12.2 操作Swarm集群<a class="hash-link" aria-label="Direct link to 12.2 操作Swarm集群" title="Direct link to 12.2 操作Swarm集群" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#122-操作swarm集群">​</a></h3>
+<ol>
+<li>搭建集群：<!-- -->
+<ol>
+<li><code>Swarm: inactive/active</code>：用 <code>docker info</code> 命令查看docker的swarm激活状态</li>
+<li><code>docker swarm init</code>：初始化swarm集群，会提供添加worker/manager节点的命令<!-- -->
+<ol>
+<li><code>docker swarm join --token &lt;worker/manager-token&gt; &lt;leader-manager-ip&gt;:&lt;leader-manager-port&gt;</code>：添加节点</li>
+<li><code>docker swarm join-token worker/manager</code>：获取添加节点的 <strong>token</strong></li>
+<li><code>docker node ls</code>：查看当前swarm集群的节点状态信息，仅manager节点可用</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>维护集群：<!-- -->
+<ol>
+<li>节点退出集群：<!-- -->
+<ol>
+<li><code>worker</code> 节点：<code>docker swarm leave</code>
+<ul>
+<li>节点的状态 <code>STATUS</code> 会变为 <code>Down</code></li>
+<li>重新加入集群后，会新增一个新的 <code>worker</code> 节点，而原节点仍存在</li>
+<li>删除Down状态的 <code>worker</code> 节点：<code>docker node rm &lt;node-id&gt;</code></li>
+</ul>
+</li>
+<li><code>manager</code> 节点：<code>docker swarm leave --force</code>
+<ul>
+<li>退出集群会导致swarm集群的一致性受到损坏</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>自动锁定：<!-- -->
+<ol>
+<li><code>docker swarm update --autolock=true</code>：开启集群的自动锁定功能 → 启用TLS加密 <code>manager</code> 间的通信，避免维护 <code>manager</code> 数据一致性的Raft日志有被攻击的风险</li>
+<li><code>docker swarm unlock-key</code>：查看解锁密钥（密钥均维护在节点的docker缓存中；一旦节点的docker重启，则密钥会丢失）</li>
+<li><code>docker swarm unlock</code> 并输入解锁密钥：解锁swarm，重启的node才能重新加入swarm集群</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>维护节点：<!-- -->
+<ol>
+<li>角色转换：<!-- -->
+<ol>
+<li><code>worker</code> 升级为 <code>manager</code>：<!-- -->
+<ol>
+<li><code>docker node promote &lt;node-id&gt;</code></li>
+<li><code>docker node update --role manager &lt;node-id/hostname&gt;</code></li>
+</ol>
+</li>
+<li><code>manager</code> 降级为 <code>worker</code>：<!-- -->
+<ol>
+<li><code>docker node demote &lt;node-id&gt;</code></li>
+<li><code>docker node update --role worker &lt;node-id/hostname&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>节点标签：<!-- -->
+<ol>
+<li><code>docker node update --label-add &lt;key&gt;=&lt;value&gt;</code>：添加/修改标签</li>
+<li><code>docker node update --label-rm &lt;key&gt;</code>：删除标签</li>
+</ol>
+</li>
+<li>删除节点：<!-- -->
+<ol>
+<li>若为 <code>manager</code> 节点，则需先降级为 <code>worker</code> 节点</li>
+<li>关闭节点的docker → 节点变为 <code>Down</code>状态</li>
+<li>执行 <code>docker node rm &lt;node-id&gt;</code> 命令删除节点</li>
+</ol>
+</li>
+<li>删除节点和退出集群的区别：<!-- -->
+<ol>
+<li><code>docker node rm -f</code>：使节点强制退群</li>
+<li><code>docker swarm leave</code>：使docker主机关闭swarm模式</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>公钥基础设施PKI（Public Key Infrastructure）：保障节点的安全<!-- -->
+<ol>
+<li>TLS：保障节点间授权和通信的安全<!-- -->
+<ol>
+<li>节点加入swarm集群：<!-- -->
+<!-- -->
+</li>
+<li>节点通信：<!-- -->
+<!-- -->
+</li>
+</ol>
+</li>
+<li>CA数字证书轮转：<!-- -->
+<ol>
+<li><code>docker swarm ca --cert-expiry &lt;duration&gt;</code>：指定轮换周期，默认90天</li>
+<li><code>docker swarm ca --external-ca &lt;ca-file&gt;</code>：指定外部CA数字证书</li>
+<li><code>docker swarm ca --rotate</code>：<!-- -->
+<ol>
+<li>docker生成一个过渡性的 <strong>交叉签名（cross-signed）根证书</strong>，即新根证书由旧根证书签署生成</li>
+<li>docker通知所有节点更新根证书</li>
+<li>在所有节点均更新完根证书后，manager会通知所有节点仅信任新根证书（不再信任旧根证书和交叉签名根证书）</li>
+<li>所有节点用新根证书签发自己节点的数字证书</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>集群容灾：<!-- -->
+<ul>
+<li>采用 <strong>热备</strong> 容灾方式：即manager集群中只有一个 <code>leader</code> 节点，其它manager处于热备状态；若 <code>leader</code> 宕机，则manager集群中自动发起leader选举</li>
+<li>采用 <strong>Raft算法</strong> 来进行leader选举：所有可用的manager节点均具有选举权和被选举权，获得过半选票的manager节点成为新的 <code>leader</code>（推荐部署奇数个manager）</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="123-service">12.3 service<a class="hash-link" aria-label="Direct link to 12.3 service" title="Direct link to 12.3 service" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#123-service">​</a></h3>
+<ol>
+<li>service只能依附于swarm集群</li>
+<li>创建service：<!-- -->
+<ol>
+<li><code>docker service create --name &lt;service-name&gt; --replicas &lt;task-number&gt; -p &lt;host-port&gt;:&lt;container-port&gt; &lt;image-name&gt;</code>：由manager执行</li>
+<li><code>docker service ls</code>：查看当前swarm集群中正在运行的service信息</li>
+<li><code>docker service inspect &lt;service-id|service-name&gt;</code>：查看指定service的详情</li>
+<li><code>docker service ps &lt;service-id|service-name&gt;</code>：查看指定service的各个task分配的节点信息</li>
+<li><code>docker node ps &lt;node-name&gt;</code>：查看指定节点中正在运行的task信息</li>
+<li><code>docker service logs &lt;service-id|service-name|task-id&gt;</code>：查看service/task日志</li>
+</ol>
+</li>
+<li>负载均衡：service中包含多个task时，会通过 <strong>轮询</strong> 策略（可通过Nginx、HAProxy等变更）的负载均衡方式转发给各个task处理</li>
+<li>操作：<!-- -->
+<ol>
+<li>task伸缩：根据访问量，在不停止服务的前提下对服务的task进行扩容/缩容<!-- -->
+<ol>
+<li>变更指定服务的task数量：<!-- -->
+<ol>
+<li><code>docker service update --replicas &lt;task-number&gt; &lt;service-name&gt;</code></li>
+<li><code>docker service scale &lt;service-name&gt;=&lt;task-number&gt;</code></li>
+</ol>
+</li>
+<li>暂停对节点分配task：<!-- -->
+<ol>
+<li><code>docker node update --availability pause &lt;node-name&gt;</code>：修改节点的可用性 → 节点中的task数量保持不变</li>
+<li>扩容task数量</li>
+</ol>
+</li>
+<li>清空task：<!-- -->
+<ol>
+<li><code>docker node update --availability drain &lt;node-name&gt;</code>：修改节点的可用性 → 清空节点中的task</li>
+<li>不影响服务的task总数，被清空的task将被分配器分配到其他可用节点上</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>task容错：当task所在的容器出现问题时，编排器会自动新建同样的task，再由分配器分配到可用节点上</li>
+<li>删除服务：<code>docker service rm &lt;service-id|service-name&gt;</code>
+<ul>
+<li>删除所有关联的task</li>
+<li>删除task相关的容器</li>
+</ul>
+</li>
+<li>滚动更新：更新和回滚操作均会新建task，更新时task会分配回原节点、回滚时task会被重新分配<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">docker</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">service</span><span class="token plain"> create </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token punctuation" style="color:rgb(4, 81, 165)">..</span><span class="token plain">.</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-parallelism </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">parallelism-update-task-number</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-delay </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">update-delay-time</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-max-failure-ratio </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">max-failure-ratio</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-failure-action </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">update-failure-action</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-parallelism </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">parallelism-rollback-task-number</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-delay </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">rollback-delay-time</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-max-failure-ratio </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">max-failure-ratio</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-failure-action </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">rollback-failure-action</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ol>
+<li>升级镜像：<code>docker service update --image &lt;image-name&gt; &lt;service-name&gt;</code></li>
+<li>每次更新 <code>&lt;parallelism-update-task-number&gt;</code> 个task，更新间隔为 <code>&lt;update-delay-time&gt;</code>，更新失败时执行 <code>&lt;update-failure-action&gt;</code></li>
+<li>更新回滚：<!-- -->
+<ol>
+<li>按照设定的回滚策略自动回滚</li>
+<li>手动回滚：<code>docker service update --rollback &lt;service-name&gt;</code></li>
+</ol>
+</li>
+<li>每次回滚 <code>&lt;parallelism-rollback-task-number&gt;</code> 个task，回滚间隔为 <code>&lt;rollback-delay-time&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>全局部署模式：<!-- -->
+<ol>
+<li>创建服务：<code>docker service create --name &lt;service-name&gt; --mode global &lt;image-name&gt;</code></li>
+<li>task伸缩：改变service所依附的swarm集群中的节点数量 → 节点中的task数量会自动扩容/缩容</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="124-overlay网络">12.4 overlay网络<a class="hash-link" aria-label="Direct link to 12.4 overlay网络" title="Direct link to 12.4 overlay网络" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#124-overlay网络">​</a></h3>
+<ol>
+<li>overlay网络/重叠网络/覆盖网络：构建在underlay网络上的逻辑虚拟网络，即在物理网络的基础上，通过节点间的单播隧道机制将主机两两相连</li>
+<li>swarm集群的overlay网络模型：<img decoding="async" loading="lazy" alt="overlay" src="/ZHENGnotes/assets/images/11.15.overlay-53927bf8aa82df6f4ade8ed5ae8df983.jpg" width="1086" height="579" class="img_ev3q">
+<ol>
+<li>结构：<!-- -->
+<ol>
+<li><code>docker_gwbridge</code> 网络：<!-- -->
+<ol>
+<li>网关：位于宿主机上，且同名</li>
+<li>task容器</li>
+<li><code>ingress-sbox</code> 容器：由overlay网络虚拟出来的容器，无法通过 <code>docker ps</code> 命令查看<!-- -->
+<ul>
+<li><code>nsenter --net=/var/run/docker/netns/ingress_sbox ip a</code>：进入网络命名空间，查看 <code>ingress-sbox</code> 容器的接口情况</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><code>ingress</code> 网络：<!-- -->
+<ol>
+<li><code>br0</code> 网关：位于宿主机上<!-- -->
+<ul>
+<li><code>nsenter --net=/var/run/docker/netns/&lt;br0-network-name&gt; ip a</code>：进入网络命名空间，查看容器的接口情况</li>
+<li>与 <code>docker_gwbridge</code> 网关的接口情况相比，多出了 <code>vxlan0</code> 接口</li>
+</ul>
+</li>
+<li>task容器：和 <code>docker_gwbridge</code> 网络中的容器相同</li>
+<li><code>ingress-sbox</code> 容器：和 <code>docker_gwbridge</code> 网络中的容器相同</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>运行流程：<!-- -->
+<ol>
+<li>请求先到达 <strong>docker_gwbridge网关</strong>（宿主机的NAT）<!-- -->
+<ul>
+<li><code>ip route</code>：查看宿主机的静态路由信息</li>
+<li><code>iptables -nvL -t nat</code>：查看宿主机中的网络地址转发表（<strong>NAT</strong>：根据规则进行地址映射、端口映射 → 完成地址转换）中的转发规则</li>
+</ul>
+</li>
+<li>跳转至 <strong>ingress-sbox容器</strong>（具有当前service下的所有容器IP），通过轮询策略的负载均衡方式选择一个容器IP作为目标地址<!-- -->
+<ul>
+<li><code>nsenter --net=/var/run/docker/netns/ingress_sbox iptables -nvL -t mangle</code>：查看 <code>ingress-sbox</code> 容器的mangle表（根据规则修改数据包的标志位）</li>
+<li><code>nsenter --net=/var/run/docker/netns/ingress_sbox ipvsadm</code>：查看 <code>ingress-sbox</code> 容器的负载均衡规则<!-- -->
+<ul>
+<li><code>FWM &lt;symbol&gt; rr</code>：防火墙标识（Fire Wall Mark），并采取轮询策略（Round Robin）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>跳转至 <strong>br0网关</strong>，判断目标地址的所在主机<!-- -->
+<ol>
+<li>若目标地址为本地容器IP，则直接将请求转发给目标容器处理即可</li>
+<li>若目标地址为远程容器IP，则将请求经由 <strong>vxlan接口</strong> 、通过vxlan隧道技术转发至目标主机的 <strong>br0网关</strong>
+<ul>
+<li><code>tcpdump -i &lt;interface&gt; port &lt;host-port&gt;</code>：监听指定接口</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>VXLAN隧道技术：重新封装不同协议的数据包后再发送<!-- -->
+<ul>
+<li>隧道：被封装的数据包在公共互联网上传递时经过的逻辑路径</li>
+<li>被封装的数据包包含路由信 息，通过隧道到达终点后，会对数据解包并转发到最终目的地</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-cicd与jenkins">13 CI/CD与Jenkins<a class="hash-link" aria-label="Direct link to 13 CI/CD与Jenkins" title="Direct link to 13 CI/CD与Jenkins" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#13-cicd与jenkins">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="131-概述">13.1 概述<a class="hash-link" aria-label="Direct link to 13.1 概述" title="Direct link to 13.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#131-概述">​</a></h3>
+<ol>
+<li>CI/CD：<img decoding="async" loading="lazy" alt="CI/CD" src="/ZHENGnotes/assets/images/11.16.CICD-73f6a9c25336d7ec7bd2e00a60d96c0a.jpg" width="582" height="283" class="img_ev3q">
+<ol>
+<li><strong>CI（Continuous Integration）</strong>：持续集成，即持续不断地将更新的代码经构建、测试后集成到项目主线</li>
+<li><strong>CD（Continuous Delivery/Deployment）</strong>：持续交付/部署，即持续不断地将新版本交付到类生产环境/部署至生产环境</li>
+</ol>
+</li>
+<li><strong>DevOps（Development &amp; Operations）</strong>：一种管理模式、执行规范与标准，主要用于促进开发、测试与运维部门间的沟通、协作与整合
+<img decoding="async" loading="lazy" alt="Devops" src="/ZHENGnotes/assets/images/11.1.devops-1f1cc34d4e6b357f89f6919c8ea3da25.webp" width="1242" height="639" class="img_ev3q"></li>
+<li>CI/CD与DevOps的关系：CI/CD是目标，DevOps是手段</li>
+</ol>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="132-应用实现">13.2 应用实现<a class="hash-link" aria-label="Direct link to 13.2 应用实现" title="Direct link to 13.2 应用实现" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#132-应用实现">​</a></h3>
+<ol>
+<li>系统结构图：<img decoding="async" loading="lazy" alt="CI/CD Structure" src="/ZHENGnotes/assets/images/11.17.CICD_structure-f195b1340cfbf78371484d9649c968ac.jpg" width="883" height="352" class="img_ev3q"></li>
+<li>工具：<!-- -->
+<ol>
+<li>Git：开源的分布式版本控制系统</li>
+<li>GitLab：开源的源码托管工具</li>
+<li>SonarQube：开源的代码扫描与分析平台</li>
+<li>Harbor：开源的镜像仓库</li>
+<li>Jenkins：开源的持续集成工具</li>
+</ol>
+</li>
+<li>集成：<!-- -->
+<ol>
+<li>SonarScanner：SonarQube的代码扫描工具，用于Jenkins集成SonarQube</li>
+<li>配置 <code>SSH Server</code>：用于Jenkins集成目标服务器</li>
+<li>修改服务器的 <code>daemon.json</code> 文件：支持镜像中心与客户端的HTTP通信</li>
+<li>Jenkins容器化：→ 能在Jenkins中构建镜像<!-- -->
+<ol>
+<li>DinD（Docker-in-Docker）：容器内安装Docker引擎</li>
+<li>DooD（Docker-outside-of-Docker）：与宿主机共享Docker引擎 ← 修改 <code>docker.sock</code> 文件的读写权限，并映射到宿主机上</li>
+</ol>
+</li>
+<li>钉钉：配置webhook地址，用于Jenkins集成钉钉机器人</li>
+</ol>
+</li>
+<li>任务：<!-- -->
+<ol>
+<li>自由风格的软件项目：结合Jenkins功能的基础版任务<!-- -->
+<ol>
+<li>CI操作步骤：<!-- -->
+<ol>
+<li>开发者提交代码到远程的GitLab仓库时，触发Jenkins任务</li>
+<li>从GitLab仓库拉取代码</li>
+<li>调用mvn命令打jar包</li>
+<li>调用SonarScanner进行代码质量检测</li>
+<li>构建镜像，推送到Harbor镜像中心</li>
+<li>执行目标服务器的部署脚本，启动容器</li>
+<li>通知钉钉</li>
+</ol>
+</li>
+<li>CD操作：根据tag构建对应的项目</li>
+</ol>
+</li>
+<li>流水线：组织多个节点的进阶版任务<!-- -->
+<ol>
+<li>维护脚本的方式：<!-- -->
+<ol>
+<li>本地方式：在Jenkins中维护脚本</li>
+<li>SCM（Source Code Management）方式：<!-- -->
+<ol>
+<li>在项目根目录下追加 <code>Jenkinsfile</code> 文件</li>
+<li>Jenkins中配置SCM方式的流水线脚本</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>流水线语法：脚本语法特殊，可通过Jenkins提供  的工具自动生成脚本语句</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">10. RocketMQ</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">15. 高并发解决方案</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1-概述">1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#2-docker引擎">2 Docker引擎</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#21-版本发展历程">2.1 版本发展历程</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#22-概述">2.2 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#23-安装">2.3 安装</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#24-卸载">2.4 卸载</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#3-docker镜像">3 Docker镜像</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#31-概述">3.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#32-命令">3.2 命令</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#33-镜像分层">3.3 镜像分层</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#34-镜像摘要">3.4 镜像摘要</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#35-多架构镜像">3.5 多架构镜像</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#4-docker容器">4 Docker容器</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#41-概述">4.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#42-命令">4.2 命令</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#5-dockerfile">5 Dockerfile</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#51-概述">5.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#52-指令">5.2 指令</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#53-实际应用">5.3 实际应用</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#54-build-cache">5.4 build cache</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#6-数据持久化">6 数据持久化</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#61-定制镜像持久化">6.1 定制镜像持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#62-数据卷持久化">6.2 数据卷持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#63-dockerfile持久化">6.3 Dockerfile持久化</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#7-docker网络">7 Docker网络</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#71-概述">7.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#72-网络类型">7.2 网络类型</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#8-常用服务器安装">8 常用服务器安装</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#81-mysql安装">8.1 MySQL安装</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#82-redis安装">8.2 Redis安装</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#9-docker-compose">9 Docker Compose</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#91-概述">9.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#92-命令">9.2 命令</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#10-docker管理监控平台">10 Docker管理监控平台</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#101-概述">10.1 概述</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#11-镜像中心">11 镜像中心</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#111-概述">11.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#112-https">11.2 HTTPS</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution私有镜像中心">11.3 distribution私有镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#114-registry私有镜像中心">11.4 registry私有镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#115-harbor私有镜像中心">11.5 harbor私有镜像中心</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#12-docker-swarm">12 Docker Swarm</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#121-概述">12.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#122-操作swarm集群">12.2 操作Swarm集群</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#123-service">12.3 service</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#124-overlay网络">12.4 overlay网络</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#13-cicd与jenkins">13 CI/CD与Jenkins</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#131-概述">13.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#132-应用实现">13.2 应用实现</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
