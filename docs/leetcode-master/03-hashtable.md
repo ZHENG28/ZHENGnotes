@@ -142,7 +142,7 @@ public:
 ## 6 四数相加II
 
 > [【LC454】](https://leetcode.cn/problems/4sum-ii/description/)给你四个整数数组 nums1、nums2、nums3 和 nums4 ，数组长度都是 n ，请你计算有多少个元组 (i, j, k, l) 能满足：
-> - 0 <= i, j, k, l < n
+> - 0 &le; i, j, k, l &lt; n
 > - nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
 
 1. 自想解法：多层遍历
