@@ -502,7 +502,54 @@ sidebar_label: 0. 小结
 
 ---
 
-## 12 Kubernetes_k8s
+## [12 Kubernetes_k8s](./12-Kubernetes_k8s.md)
+### 12.1 概述
+1. **<font color="red">Kubernetes（k8s）</font>**：容器编排引擎，用于自动化、容器化应用程序的部署、规划、扩展和管理
+2. 架构图：
+    - `Master`：
+        1. `kube-api-server`
+        2. `etcd`
+        3. `scheduler`
+        4. `controller-manager`
+    - `Node`：
+        1. `kubelet`
+        2. `kube-proxy`
+        3. `pod`（Container Runtime）
+
+### 12.2 部署
+1. 搭建集群：
+    1. 安装 `19.03.13` 版本的docker：`yum install docker-ce-19.03.13 -y`
+    2. 安装kubeadm、kubelet、kubectl：`yum install kubelet-1.19.4 kubeadm-1.19.4 kubectl-1.19.4 -y`
+    3. 创建 `Master` 节点：
+        ```bash showLineNumbers
+        kubeadm init \
+        --apiserver-advertise-address=<master-ip> \
+        --image-repository registry.aliyuncs.com/google_containers \
+        --kubernetes-version v1.19.4 \
+        --service-cidr=10.96.0.0/12 --pod-network-cidr=10.244.0.0/16
+        ```
+    4.  在集群中加入 `Worker Node` 节点：
+        ```bash showLineNumbers
+        kubeadm join <master-ip>:<master-port> \
+        --token <token> \
+        --discovery-token-ca-cert-hash <hash>
+        ```
+2. 部署容器化应用：如Nginx、Tomcat、Spring Boot应用、Kubernetes Dashbaord等
+    1. 获取镜像
+    2. 启动镜像
+    3. 暴露服务
+
+### 12.3 Ingress暴露应用
+1. NodePort：让外部请求直接访问服务的最原始方式
+2. LoadBalancer：外部请求通过负载均衡器 `LoadBlancer` 转发到服务中的Pod里，但需要向云平台申请负载均衡器
+3. **Ingress**：外部请求访问k8s集群的必经之口，相当于集群网关可自定义路由规则来转发、管理、暴露服务（一组pod）
+    1. 部署Ingress Nginx：
+        ```bash showLineNumbers
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/baremetal/deploy.yaml
+        ```
+    2. 配置Ingress Nginx规则：
+        - 应用：`kubectl apply -f ingress-nginx-rule.yaml`
+        - 查看：`kubectl get ing(ress)`
 
 ---
 
