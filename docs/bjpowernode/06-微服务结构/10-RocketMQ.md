@@ -22,7 +22,7 @@ sidebar_label: 10. RocketMQ
     - 消息中间件：mq
 
 ### 1.2 RocketMQ结构
-1. 组成结构：![RocketMQ Structure](./img/10.1.rocketmq_structure.jpg)
+1. 组成结构：![RocketMQ Structure](./img/10.1.1.rocketmq-structure.jpg)
     - Producer：消息的发送者、生产者 &rarr; ProducerGroup：生产者组
     - Consumer：消息的接收者、消费者 &rarr; ConsumerGroup：消费者组（多个消费者组可同时消费同一个topic的消息）
     - NameServer：注册路由中心，管理Broker
@@ -30,7 +30,7 @@ sidebar_label: 10. RocketMQ
     - Topic：（虚拟结构）主题，分类消息，含多个Queue
     - Queue：（真实结构）队列，存放消息，含多个Message
 2. 流程：
-    ![RocketMQ Process](./img/10.2.rocketmq_process.jpg)
+    ![RocketMQ Process](./img/10.1.2.rocketmq-process.jpg)
 
 ### 1.3 安装步骤与命令（Linux）
 1. 解压文件

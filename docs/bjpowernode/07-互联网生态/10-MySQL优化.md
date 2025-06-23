@@ -117,7 +117,7 @@ sidebar_label: 10. MySQL优化
 
 ## 3 `EXPLAIN` 执行计划
 ### 3.1 基本结构
-![Explain Structure](./img/10.1.explain_structure.jpg)
+![Explain Structure](./img/10.3.1.explain-structure.jpg)
 1. `id`：查看表的加载顺序
     1. `id` 相同：自上而下地顺序加载表文件
     2. `id` 不同：`id` 从大到小地加载表文件

@@ -8,7 +8,7 @@ sidebar_label: 9. FastDFS
 ### 1.1 相关概念
 1. 分布式文件系统（Distributed File System）：一个软件/软件服务器，用来存储文件资源和管理文件
     - 常见的有：FastDFS、GFS、HDFS、Lustre、Ceph、GridFS、mogileFS、TFS等
-2. 传统和分布式文件系统的区别：![Tradition vs Distribute](./img/9.1.tradition_vs_distribute.jpg)
+2. 传统和分布式文件系统的区别：![Tradition vs Distribute](./img/9.1.1.tradition-vs-distribute.jpg)
     1. 传统方式的缺点：
         1. 若文件服务器宕机，服务不可用，所有文件均不可上传和下载
         2. 若文件服务器磁盘损坏，会丢失所有的文件
@@ -146,7 +146,7 @@ sidebar_label: 9. FastDFS
 
 ### 2.3 搭建FastDFS分布式文件系统集群
 1. 架构图：至少需要部署6个服务器节点  
-    ![FastDFS Cluster](./img/9.2.fastdfs_cluster.jpg)
+    ![FastDFS Cluster](./img/9.2.1.fastdfs-cluster.jpg)
 2. 搭建步骤：
     1. 安装6个Linux，准备好工具库，安装好FastDFS和nginx
     2. 部署2个 `tracker` 服务器

@@ -220,9 +220,8 @@ sidebar_label: 12. MyCAT2
         ```
 
 ### 2.4 其他
-1. 全局ID：MyCAT2中，默认使用雪花算法生成全局ID
-
-    ![snowflake](./img/12.1.snowflake.jpg)
+1. 全局ID：MyCAT2中，默认使用 **<font color="red">雪花算法</font>** 生成全局ID
+    ![snowflake](./img/12.2.1.snowflake.jpg)
     - 符号位 `1bit`：0表示正数（ID不可能为负数）
     - 时间戳 `41bit`：最大约69年（$2^{41}$）
     - 工作机器ID `10bit`：由 **n** 位 `datacenterId` 和 **(10-n)** 位 `workerId` 组成

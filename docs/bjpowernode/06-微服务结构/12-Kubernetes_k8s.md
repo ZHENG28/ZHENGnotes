@@ -6,7 +6,7 @@ sidebar_label: 12. Kubernetes_k8s
 
 ## 1 概述
 1. **<font color="red">Kubernetes（k8s）</font>**：容器编排引擎，用于自动化、容器化应用程序的部署、规划、扩展和管理
-2. 架构图：![Kubernetes Cluster Architecture](./img/12.1.kubernetes_cluster_architecture.svg)
+2. 架构图：![Kubernetes Cluster Architecture](./img/12.1.1.kubernetes-cluster-architecture.svg)
     - `Master`：集群控制节点
         - 组件：
             1. `kube-api-server`：集群接收请求的统一入口，管理所有对象资源的增删改查和监听操作，将信息存储到etcd数据库中
@@ -21,7 +21,7 @@ sidebar_label: 12. Kubernetes_k8s
             3. `pod`（Container Runtime）：一般一个pod中 **只包含一个** 容器（一般是docker）
         - 作用：运行用户业务应用容器
 
-:::danger[核心概念]
+:::tip[核心概念]
 ```mermaid
 graph TD
 subgraph service
@@ -192,7 +192,7 @@ end
     - NodePort在所有的节点上开放指定的端口，发送到这个端口的所有请求都会直接转发到服务中的pod里
     - `nodePort`：未指定端口时，会随机选择30000–32767之间的端口
 
-:::note[服务端口说明]
+:::tip[服务端口说明]
 ```yml showLineNumbers
 ports:  
   - port: 80

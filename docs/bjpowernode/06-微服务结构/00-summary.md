@@ -498,7 +498,7 @@ sidebar_label: 0. 小结
 ### 11.11 CI/CD与Jenkins
 1. **CI（Continuous Integration）/CD（Continuous Delivery/Deployment）**：持续集成/持续交付/部署
 2. **DevOps（Development & Operations）**：一种管理模式、执行规范与标准
-3. 应用实现的系统结构图：![CI/CD Structure](./img/0.4.CICD_structure.jpg)
+3. 应用实现的系统结构图：![CI/CD Structure](./img/0.11.1.CICD-structure.jpg)
 
 ---
 
@@ -622,7 +622,7 @@ sidebar_label: 0. 小结
 
 ### 17.2 框架分类
 1. **<font color="red">JUL（Java Util Logging）</font>**：java原生日志框架
-    - 结构：![JUL Structure](./img/0.1.jul_structure.jpg)
+    - 结构：![JUL Structure](./img/0.17.1.jul-structure.jpg)
         - 记录器 `Logger`：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
         - 处理器 `Handler`：一个 `Logger` 关联一个/一组 `Handler`，由 `Handler` 负责记录日志，并具体实现日志的输出位置
         - 过滤器 `Filter`：自定义哪些信息需要被记录，哪些信息要忽略
@@ -682,13 +682,13 @@ sidebar_label: 0. 小结
 1. **<font color="red">JCL（Jakarta Commons Logging）</font>**：java原生日志门面
     - 本身不具有记录日志的功能，但会提供通用的接口
     - 优先使用导入的第三方日志框架（如 `Log4j`、`Logback` 等）；若没有导入，则默认使用 `JUL`
-    - 结构：![JCL Structure](./img/0.2.jcl_structure.jpg)
+    - 结构：![JCL Structure](./img/0.17.2.jcl-structure.jpg)
         - `Jdk13LumberjackLogger`：旧版JUL
         - `Jdk14Logger`：目前使用的JUL
         - `Log4JLogger`：集成使用的Log4j
         - `SimpleLog`：JCL自带的实现类
 2. **<font color="red">SLF4j（Simple Logging Facade For Java）</font>**：绑定、桥接日志框架
-    ![SLF4j Bound](./img/0.3.slf4j_bound.jpg)
+    ![SLF4j Bound](./img/0.17.3.slf4j-bound.jpg)
     - 桥接技术：某些日志框架依赖 `SLF4j` 之外的日志API &rarr; `SLF4j` 附带桥接模块
         - 重定向之前的日志框架的API调用，通过桥接转换到slf4j的实现
         - 桥接器解决的是项目中的日志重构问题

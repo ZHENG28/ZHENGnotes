@@ -71,7 +71,7 @@ sidebar_label: 0. 小结
 ## 2 Git
 ### 2.1 概述
 1. 开源的分布式版本控制管理工具，高效处理版本管理
-    ![Git Process](./img/0.1.git_process.jpg)
+    ![Git Process](./img/0.2.1.git-process.jpg)
 2. `git init`：生成.git目录（即本地库的生成）
     - 工作目录：任何目录均可，但要包含.git目录
     - 暂存区域：.git目录下（可撤销操作）
@@ -105,7 +105,7 @@ sidebar_label: 0. 小结
 2. 远程过程调用RPC（Remote Procedure Call）：即调用接口，如Dubbo、gRPC、Thrift、HSF
 
 ### 5.2 概述
-1. 基本结构：![Dubbo Process](./img/0.2.dubbo_process.jpg)
+1. 基本结构：![Dubbo Process](./img/0.5.1.dubbo-process.jpg)
     - **容器Container**：和Spring容器无缝连接
     - **服务提供者Provider**：暴露服务的服务提供者
     - **服务消费者Consumer**：调用远程服务的服务消费者

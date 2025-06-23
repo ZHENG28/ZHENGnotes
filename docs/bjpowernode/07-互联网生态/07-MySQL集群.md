@@ -10,10 +10,10 @@ sidebar_label: 7. MySQL集群
     - 可以实现对数据库的备份和读写分离
     - 避免服务的不可用，保障数据的安全可靠性
 2. 架构：
-    1. 一主多从：![1 Master and n Slave](./img/7.1.1_master_n_slave.jpg)
-    2. 双主双从：![2 Master and 2 Slave](./img/7.2.2_master_2_slave.jpg)
+    1. 一主多从：![1 Master and n Slave](./img/7.1.1.1-master-n-slave.jpg)
+    2. 双主双从：![2 Master and 2 Slave](./img/7.1.2.2-master-2-slave.jpg)
         - 从机依赖于主机，一旦主机宕机，从机也无法使用
-3. 流程：![Master-Slave Process](./img/7.3.master_slave_process.jpg)
+3. 流程：![Master-Slave Process](./img/7.1.3.master-slave-process.jpg)
     ```mermaid
     graph TB
     detect[Slave 探测 Master 的二进制日志文件] --> if{日志文件是否更新} --偏移量相同--> detect

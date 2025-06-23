@@ -11,11 +11,11 @@ sidebar_label: 11. Docker
     2. 便捷的应用迁移：无需担心运行环境的变化导致应用无法正常运行
     3. 超快的启动时间：由于直接运行在宿主机系统中，无需启动操作系统
     4. 更轻松的维护和扩展：存在高质量的官方镜像，既可以直接使用，又可以作为基础镜像进一步定制
-3. 容器与虚拟机的区别：![Different System](./img/11.2.apps_run_on_different_system.jpg)
+3. 容器与虚拟机的区别：![Different System](./img/11.1.1.apps-run-on-different-system.jpg)
     1. 宿主机系统：应用程序是一个对计算机硬件资源调度使用的指令序列
     2. 虚拟机系统：若两个相同的应用运行在两台虚拟机上时，需要两套相同的资源 &rarr; 造成资源浪费
     3. 容器：共享宿主机的操作系统和硬件，且对系统资源的使用统一由Docker引擎进行管理
-4. Windows系统：![Windows](./img/11.3.windows.jpg)
+4. Windows系统：![Windows](./img/11.1.2.windows.jpg)
     1. `Hypervisor` /虚拟机监视器VMM（Virtual Machine Monitor）：一种运行在基础物理服务器和操作系统之间的中间软件层，允许多个操作系统和应用共享硬件
         1. `Hyper-V`：Windows系统的 `Hypervisor`
         2. `KVM` 和 `Xen`：Linux系统的 `Hypervisor`
@@ -25,7 +25,7 @@ sidebar_label: 11. Docker
         开启物理机的同时启动Hyper-V服务 --> Hyper-V获取到主机中的全部物理资源的控制权 --> 操作系统虚拟机开始启动 --> 应用层虚拟机开始启动 --> Hyper-V根据虚拟机的配置对物理资源虚拟化 --> Hyper-V将对应的虚拟化资源打包分配给虚拟机 --> 操作系统虚拟机与应用层虚拟机启动完毕 --> Windows系统启动完毕
         ```
     3. VMware使用15.5.5及以上的版本，Windows使用10及以上的版本，否则会出现VMware和Hyper-V不兼容的问题（VMware作为应用，无法直接访问CPU硬件虚拟化功能）
-5. Docker的系统架构：![Docker Structure](./img/11.4.docker_structure.webp)
+5. Docker的系统架构：![Docker Structure](./img/11.1.3.docker-structure.webp)
     1. 守护进程 `Daemon`：监听Docker的API请求并管理Docker对象（镜像、容器、网络、数据卷等）
     2. 镜像 `Image`：用于创建Docker容器的 **模板**
     3. 容器 `Container`：包含一个或多个应用程序，且与其它容器之间相互隔离
@@ -58,7 +58,7 @@ sidebar_label: 11. Docker
 
 ### 2.2 概述
 1. **<font color="red">Docker引擎</font>**：用来运行和管理容器的核心软件
-2. 架构：![Docker Engine Structure](./img/11.5.docker_engine_structure.jpg)
+2. 架构：![Docker Engine Structure](./img/11.2.1.docker-engine-structure.jpg)
     1. 客户端 `Client`：用户向Docker提交命令请求
     2. Docker守护进程 `Dockerd`：镜像构建、镜像管理、REST API、核心网络、编排等，通过gRPC与 `Containerd` 通信
     3. Contain守护进程 `Containerd`：管理容器的生命周期，fork出 `Runc` 进程（创建容器）和 `Shim` 进程（容器的父进程）
@@ -148,7 +148,7 @@ sidebar_label: 11. Docker
     1. 分层 **只读**，对分层的修改以新分层的形式出现
     2. 在不同镜像间实现 **资源共享**，即不同镜像对相同下层镜像的复用
 
-![Image Layer](./img/11.6.image_layer.jpg)
+![Image Layer](./img/11.3.1.image-layer.jpg)
 
 2. **镜像层**：
     1. 镜像文件系统FS：对镜像占有的磁盘空间进行管理的文件系统，包含数据内容
@@ -383,7 +383,7 @@ sidebar_label: 11. Docker
 ## 7 Docker网络
 ### 7.1 概述
 1. **<font color="red">Network Namespace</font>**：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）
-    ![Network Namespace](./img/11.7.network_namespace.jpg)
+    ![Network Namespace](./img/11.7.1.network-namespace.jpg)
     1. `ip nets add <namespace>`：创建网络空间（默认有一个回环网络适配器lo）
     2. `ip link add <vethname1> type veth peer name <vethname2>`：**虚拟设备接口技术veth pair**，创建一对相互连通的网络接口（具备MAC地址、DOWN状态、不具备IP）
     3. `ip link set <vethname1> netns <namespace1>`：将网络接口分配给网络空间
@@ -395,13 +395,13 @@ sidebar_label: 11. Docker
         2. **终端Endpoint**：虚拟网络接口，用于将沙盒连接到网络上；一个终端只能接入一个网络
         3. **网络Network**：需要交互的终端集合
     2. **<font color="red">Libnetwork</font>**：CNM的开源实现，并额外实现了本地服务发现、容器负载均衡、网络控制层与管理层等功能
-    3. **<font color="red">网络驱动Driver</font>**：![Driver](./img/11.8.driver.jpg)
+    3. **<font color="red">网络驱动Driver</font>**：![driver](./img/11.7.2.driver.jpg)
         - `docker network ls`：查看当前主机所连接的网络及网络类型
 
 ### 7.2 网络类型
 1. `bridge` 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP
     1. **docker0网桥**：默认的虚拟网桥
-        ![docker0 Bridge](./img/11.9.docker0_bridge.jpg)
+        ![docker0 bridge](./img/11.7.3.docker0-bridge.jpg)
         - 容器和网桥间通过 **veth pair技术** 实现连接
         - 网桥和外网间通过 **网络地址转换NAT技术** 实现连接
     2. 命令：
@@ -905,7 +905,7 @@ sidebar_label: 11. Docker
 1. Harbor：Registry Server开源项目，在Docker Registry的基础之上进行了二次封装
     1. 硬件要求：2核、4G内存、40G磁盘空间
     2. 软件要求：Docker CE引擎、Docker Compose、OpenSSL
-2. 架构模块：![Harbor Architecture](./img/11.10.harbor_architecture.png)
+2. 架构模块：![Harbor Architecture](./img/11.11.1.harbor-architecture.png)
     1. Proxy：反向代理服务器（采用Nginx），接收并将不同的请求转发至Core或Registry模块
     2. Core：核心模块
         1. Notification Manager：通过webhook实现的消息管理，会将registry中的镜像变化通知到web页面
@@ -999,7 +999,7 @@ sidebar_label: 11. Docker
 ## 12 Docker Swarm
 ### 12.1 概述
 1. Docker Swarm：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信
-2. 节点架构：![How swarm node works](./img/11.11.how_swarm_node_works.webp)
+2. 节点架构：![How swarm node works](./img/11.12.1.how-swarm-node-works.webp)
     1. Swarm Node：采用Swarm模式运行的Docker Engine主机
         - 一个node对应一个主机，一个主机可对应 **多个node**
         - 类型：
@@ -1009,8 +1009,8 @@ sidebar_label: 11. Docker
             1. 节点降级：Manager &rarr; Worker
             2. 节点升级：Worker &rarr; Manager
 3. 服务架构：`service` 通过 `task` 的形式部署在swarm的各个node中，而 `task` 又通过运行着应用进程的 `container` 对外提供服务  
-    ![How services work](./img/11.12.how_services_work.webp)
-    ![Service Lifecycle](./img/11.13.service_lifecycle.webp)
+    ![How services work](./img/11.12.2.how-services-work.webp)
+    ![Service Lifecycle](./img/11.12.3.service-lifecycle.webp)
     - 编排器 `orchestrator`：管理副本任务的创建和停止
         1. 创建 `task`：分配 `taskID`，并通过分配器来分配虚拟IP，再将其注册到内置DNS中
         2. 停止 `task`：在内置DNS中注销
@@ -1018,7 +1018,7 @@ sidebar_label: 11. Docker
         1. 调度：在集群的节点中找到 `available node`，并将 `task` 分配给 `node`，同时会给 `task` 分配一个容器
         2. 监听：监测容器的运行状态
         3. 对请求负载均衡
-4. 服务部署模式：![Replicated VS Global](./img/11.14.replicated_vs_global.webp)
+4. 服务部署模式：![Replicated vs Global](./img/11.12.4.replicated-vs-global.webp)
     1. `replicated` 副本模式：（默认部署模式）指定 `task` 数量，为 `available node` 分配 **一个或多个** `task`
     2. `global` 全局模式：不能指定 `task` 数量，默认为每个 `node` 分配 **一个** `task`
 5. Raft算法：[动画演示](https://thesecretlivesofdata.com/raft/)
@@ -1164,7 +1164,7 @@ sidebar_label: 11. Docker
 
 ### 12.4 overlay网络
 1. overlay网络/重叠网络/覆盖网络：构建在underlay网络上的逻辑虚拟网络，即在物理网络的基础上，通过节点间的单播隧道机制将主机两两相连
-2. swarm集群的overlay网络模型：![overlay](./img/11.15.overlay.jpg)
+2. swarm集群的overlay网络模型：![overlay](./img/11.12.5.overlay.jpg)
     1. 结构：
         1. `docker_gwbridge` 网络：
             1. 网关：位于宿主机上，且同名
@@ -1197,15 +1197,15 @@ sidebar_label: 11. Docker
 
 ## 13 CI/CD与Jenkins
 ### 13.1 概述
-1. CI/CD：![CI/CD](./img/11.16.CICD.jpg)
+1. CI/CD：![CI/CD](./img/11.13.1.CICD.jpg)
     1. **CI（Continuous Integration）**：持续集成，即持续不断地将更新的代码经构建、测试后集成到项目主线
     2. **CD（Continuous Delivery/Deployment）**：持续交付/部署，即持续不断地将新版本交付到类生产环境/部署至生产环境
 2. **DevOps（Development & Operations）**：一种管理模式、执行规范与标准，主要用于促进开发、测试与运维部门间的沟通、协作与整合
-    ![Devops](./img/11.1.devops.webp)
+    ![Devops](./img/11.13.2.devops.webp)
 3. CI/CD与DevOps的关系：CI/CD是目标，DevOps是手段
 
 ### 13.2 应用实现
-1. 系统结构图：![CI/CD Structure](./img/11.17.CICD_structure.jpg)
+1. 系统结构图：![CI/CD Structure](./img/11.13.3.CICD-structure.jpg)
 2. 工具：
     1. Git：开源的分布式版本控制系统
     2. GitLab：开源的源码托管工具
