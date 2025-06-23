@@ -14,6 +14,4 @@
         - 预览地址：http://localhost:3000/
     3. [部署到Github Pages](https://docusaurus.io/docs/deployment#deploying-to-github-pages)
 
-:::danger
-不能删除 `/static/.nojekyll` 文件！！！
-:::
+<mark>注意</mark>：**<font color="red">不能删除 `/static/.nojekyll` 文件！！！</font>**
