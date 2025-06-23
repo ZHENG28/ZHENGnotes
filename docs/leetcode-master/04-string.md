@@ -39,7 +39,56 @@ public:
 
 ## 3 替换数字
 
-> [【LC】]
+> [【KC54】](https://kamacoder.com/problempage.php?pid=1064)给定一个字符串 s，它包含小写字母和数字字符，请编写一个函数，将字符串中的字母字符保持不变，而将每个数字字符替换为number。 例如，对于输入字符串 "a1b2c3"，函数应该将其转换为 "anumberbnumbercnumber"。
+
+1. 自想解法：遍历字符串，找到为数字的字符时，替换为 `number`，然后下标+5
+2. 数组填充类问题的通解：&rarr; 既不用申请新的数组空间，又避免了从前向后填充元素时，要将元素后移的问题
+    1. 给数组扩容到填充后的大小
+    2. 从后向前进行操作：![double-index](./img/4.string/3.1.double_index.png)
+    <details>
+    <summary>代码</summary>
+    <div>
+
+    ```cpp showLineNumbers
+    #include <iostream>
+    using namespace std;
+    int main() {
+        string s;
+        while (cin >> s) {
+
+            int oldIndex = s.size() - 1;
+            // 1. 给数组扩容到填充后的大小
+            int count = 0;
+            for (int i = 0; i < s.size(); i++) {
+                if (s[i] >= '0' && s[i] <= '9') {
+                    count++;
+                }
+            }
+            s.resize(s.size() + count * 5);
+
+            // 2. 从后往前将数字替换为number
+            int newIndex = s.size() - 1;
+            while (oldIndex >= 0) {
+                if (s[oldIndex] >= '0' && s[oldIndex] <= '9') {
+                    s[newIndex--] = 'r';
+                    s[newIndex--] = 'e';
+                    s[newIndex--] = 'b';
+                    s[newIndex--] = 'm';
+                    s[newIndex--] = 'u';
+                    s[newIndex--] = 'n';
+                } else {
+                    s[newIndex--] = s[oldIndex];
+                }
+                oldIndex--;
+            }
+
+            cout << s << endl;       
+        }
+    }
+    ```
+
+    </div>
+    </details>
 
 ---
 
@@ -99,7 +148,11 @@ public:
 
 ## 5 右旋转字符串
 
-> [【LC】]
+> [【KC55】](https://kamacoder.com/problempage.php?pid=1065)字符串的右旋转操作是把字符串尾部的若干个字符转移到字符串的前面。给定一个字符串 s 和一个正整数 k，请编写一个函数，将字符串中的后面 k 个字符移到字符串的前面，实现字符串的右旋转操作。   
+> 例如，对于输入字符串 "abcdefg" 和整数 2，函数应该将其转换为 "fgabcde"。
+
+1. 自想解法：根据k将字符串分成两个子串分别反转，最后再将整个字符串进行反转
+    ![reverse](./img/4.string/5.1.reverse.png)
 
 ---
 
@@ -125,8 +178,12 @@ public:
 };
 ```
 2. **<font color="red">KMP</font>**：当出现字符串不匹配时，可以 **记录之前已匹配的那部分文本** &rarr; 避免从头去做匹配
+    - 时间复杂度：`O(m+n)`
+        - 其中，n为文本串长度，m为模式串长度
+        - `O(m)`：单独生成next数组
+        - `O(n)`：根据前缀表不断调整匹配的位置
 3. **<font color="red">前缀表（prefix table）</font>**：用来记录当模式串与主串不匹配时，模式串应该回退到哪个位置开始重新匹配
-    - 记录下标i之前（包括i）的字符串中 **相同前后缀的长度**
+    - 记录下标i及i之前的字符串中 **相同前后缀的长度**
         - **前缀**：不包含最后一个字符的所有 <mark>以第一个字符开头</mark> 的连续子串
         - **后缀**：不包含第一个字符的所有 <mark>以最后一个字符结尾</mark> 的连续子串
     - 计算过程：![prefix-table](./img/4.string/6.1.prefix_table.png)
@@ -151,12 +208,57 @@ public:
     - 若匹配失败的位置是后缀子串的后面，那么从与其相同的前缀子串的后面重新匹配即可
         ![prefix-table-match](./img/4.string/6.2.prefix_table_match.gif)
         - 从匹配失败的位置开始，找往前一位字符所记录的长度length &rarr; 将下标移动到length的位置，继续匹配
+4. **<font color="red">next数组</font>**：根据具体实现选择数组形式 &rarr; 前缀表或者是前缀表减一（右移一位，初始位置为-1）
+5. 代码具体实现：
+    1. 构造next数组：![get-next](./img/4.string/6.3.get_next.gif)
+        ```cpp showLineNumbers
+        void getNext(int* next, const string& s) {
+            // 1. 初始化
+            int prefixEnd = -1;
+            next[0] = prefixEnd;
+            // prefixEnd初始化为-1，则suffixEnd初始化为1
+            for (int suffixEnd = 1; suffixEnd < s.size(); suffixEnd++) {
+                // 2. 前后缀不相同
+                while (prefixEnd >= 0 && s[suffixEnd] != s[prefixEnd + 1]) {
+                    // 回退至 prefixEnd+1 前一个元素（即prefixEnd）在next数组里的值（即next[prefixEnd]）
+                    prefixEnd = next[prefixEnd];
+                }
+                // 3. 前后缀相同
+                if (s[suffixEnd] == s[prefixEnd + 1]) {
+                    prefixEnd++;
+                }
+                // 记录相同前后缀的长度（同时后移prefixEnd和suffixEnd指针）
+                next[suffixEnd] = prefixEnd;
+            }
+        }
+        ```
+    2. 使用next数组来做匹配：
+        ```cpp showLineNumbers
+        // next数组初始化为-1
+        int ti = -1;
+        for (int si = 0; si < s.size(); si++) {
+            // 字符不匹配时，指针回退
+            while (ti >= 0 && s[si] != t[ti + 1]) {
+                ti = next[ti];
+            }
+            // 字符匹配时，指针后移
+            if (s[si] == t[ti + 1]) {
+                ti++;
+            }
+            // 文本串s里匹配到整个模式串t
+            if (ti == (t.size() - 1)) {
+                // 做相关操作
+            }
+        }
+        ```
 
 ---
 
 ## 7 重复的子字符串
 
-> [【LC】]
+> [【LC459】](https://leetcode.cn/problems/repeated-substring-pattern/description/)给定一个非空的字符串 s ，检查是否可以通过由它的一个子串重复多次构成。
+
+1. 
 
 ---
 
