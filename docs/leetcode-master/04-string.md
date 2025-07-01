@@ -258,7 +258,79 @@ public:
 
 > [【LC459】](https://leetcode.cn/problems/repeated-substring-pattern/description/)给定一个非空的字符串 s ，检查是否可以通过由它的一个子串重复多次构成。
 
-1. 
+1. 自想解法：遍历字符串；使用KMP，但是不知道怎么实现
+2. 解法：
+    1. <mark>移动匹配</mark>：将字符串s重复拼接成 `s + s` 后，去除首尾字符能凑成字符串s &harr; 字符串s是由重复子串组成
+        <details>
+        <summary>推导过程</summary>
+        <div>
+
+        1. **充分性**：s是由重复子串组成 &rarr; 将s重复拼接成 `s + s` 后，去除首尾字符能凑成s
+            - 前面和后面都有相同的子串，用 `s + s` 这样组成的字符串中，后面的子串做前串，前面的子串做后串，就一定还能组成一个s
+                ![move match sufficient](./img/4.string/7.1.move-match-sufficient.png)
+            - 在判断 `s + s` 拼接的字符串里是否出现一个s的的时候，要去除 `s + s` 的首尾字符 &rarr; 避免在 `s + s` 中搜索出原来的s，搜索目标是中间拼接出来的s
+        2. **必要性**：将s重复拼接成 `s + s` 后，去除首尾字符能凑成s &rarr; s是由重复子串组成
+            ![move match necessary](./img/4.string/7.2.move-match-necessary.png)
+            - 根据拼接结果和上下字符串的相等关系，以及变换s的组成方式 &rarr; 字符串是由其中的几个字符重复组成的
+        
+        </div>
+        </details>
+
+        ```cpp showLineNumbers
+        class Solution {
+        public:
+            bool repeatedSubstringPattern(string s) {
+                // 1. 重复拼接s
+                string t = s + s;
+                // 2. 去除首尾字符
+                t.erase(t.begin());
+                t.erase(t.end() - 1);
+
+                // 3. 查找t中是否存在s
+                return t.find(s) != std::string::npos;
+            }
+        };
+        ```
+
+        :::warning[时间复杂度]
+        判断字符串（s + s）中是否出现过s，可能直接用 `contains`、`find` 之类的库函数，但这类库函数的时间复杂度为 $O(m + n)$
+        :::
+    2. <mark>KMP</mark>：最长相等前后缀不包含的子串是字符串s的最小重复子串 &harr; s是由重复子串组成
+        <details>
+        <summary>推导过程</summary>
+        <div>
+
+        1. **充分性**：s是由重复子串组成 &rarr; 最长相等前后缀不包含的子串是字符串s的最小重复子串
+            ![kmp sufficient](./img/4.string/7.3.kmp-sufficient.png)
+            - 最长相等前后缀更长一些，重复子串就会变短，与定义的条件相冲突
+        2. **必要性**：最长相等前后缀不包含的子串是字符串s的最小重复子串 &rarr; s是由重复子串组成
+            :::tips[最长相等前后缀不包含的子串什么时候才是字符串s的最小重复子串？]
+            1. 最长相等前后缀不包含的子串的长度 &gt; 字符串s的长度的一半 &rarr; 最长相等前后缀不包含的子串 **不是** 字符串s的重复子串
+            2. 字符串s的长度 能整除 最长相等前后缀不包含的子串的长度 &rarr; 最长相等前后缀不包含的子串 **就是** 字符串s的重复子串
+                ![kmp necessary](./img/4.string/7.4.kmp-necessary.png)
+            3. 字符串s的长度 不能整除 最长相等前后缀不包含的子串的长度 &rarr; 最长相等前后缀不包含的子串 **不是** 字符串s的重复子串
+            :::
+        
+        </div>
+        </details>
+
+        ```cpp showLineNumbers
+        class Solution {
+        public:
+            bool repeatedSubstringPattern(string s) {
+                int len = s.size();
+                if (len <= 0) {
+                    return false;
+                }
+
+                // 获取next数组
+                int next[len];
+                getNext(next, s);
+
+                // 字符串中存在最长的相同前后缀 且 字符串长度能整除最长相等前后缀不包含的子串的长度
+                return next[len - 1] != -1 && len % (len - next[len - 1] - 1) == 0;
+            }
+        ```
 
 ---
 
