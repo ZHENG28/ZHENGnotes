@@ -4,7 +4,7 @@ sidebar_label: 12. Kubernetes_k8s
 
 # Kubernetes（k8s）
 
-## 1 概述
+## 1. 概述
 1. **<font color="red">Kubernetes（k8s）</font>**：容器编排引擎，用于自动化、容器化应用程序的部署、规划、扩展和管理
 2. 架构图：![Kubernetes Cluster Architecture](./img/12.1.1.kubernetes-cluster-architecture.svg)
     - `Master`：集群控制节点
@@ -61,8 +61,8 @@ end
 
 ---
 
-## 2 部署
-### 2.1 Kubeadm部署集群
+## 2. 部署
+### 2.1. Kubeadm部署集群
 1. 准备环境：
     1. 关闭防火墙：
         ```bash showLineNumbers
@@ -147,7 +147,7 @@ end
         --discovery-token-ca-cert-hash <hash>
         ```
 
-### 2.2 部署容器化应用
+### 2.2. 部署容器化应用
 1. 容器化应用：放在docker里部署的应用程序
 2. 部署步骤：
     1. 获取镜像：`Dockerfile` 文件制作镜像，或从仓库拉取镜像
@@ -187,7 +187,7 @@ end
 
 ---
 
-## 3 Ingress暴露应用
+## 3. Ingress暴露应用
 1. NodePort：让外部请求直接访问服务的最原始方式，但一个端口只能供一个服务使用，且发生变化的IP需要人工处理 &rarr; 不推荐在生产环境中使用这种方式
     - NodePort在所有的节点上开放指定的端口，发送到这个端口的所有请求都会直接转发到服务中的pod里
     - `nodePort`：未指定端口时，会随机选择30000–32767之间的端口

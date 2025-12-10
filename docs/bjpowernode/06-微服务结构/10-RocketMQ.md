@@ -4,8 +4,8 @@ sidebar_label: 10. RocketMQ
 
 # RocketMQ
 
-## 1 简介
-### 1.1 消息队列MQ（Message Queue）
+## 1. 简介
+### 1.1. 消息队列MQ（Message Queue）
 - MQ：面向消息的中间件
     - 组成：队列存储消息，生产者Producer生产消息，消费者Consumer消费消息
     - 特性：异步、削峰限流、解耦合
@@ -21,7 +21,7 @@ sidebar_label: 10. RocketMQ
     - 数据库中间件：mycat、canal
     - 消息中间件：mq
 
-### 1.2 RocketMQ结构
+### 1.2. RocketMQ结构
 1. 组成结构：![RocketMQ Structure](./img/10.1.1.rocketmq-structure.jpg)
     - Producer：消息的发送者、生产者 &rarr; ProducerGroup：生产者组
     - Consumer：消息的接收者、消费者 &rarr; ConsumerGroup：消费者组（多个消费者组可同时消费同一个topic的消息）
@@ -32,7 +32,7 @@ sidebar_label: 10. RocketMQ
 2. 流程：
     ![RocketMQ Process](./img/10.1.2.rocketmq-process.jpg)
 
-### 1.3 安装步骤与命令（Linux）
+### 1.3. 安装步骤与命令（Linux）
 1. 解压文件
 2. 配置系统环境变量：在 `/etc/profile` 文件末尾添加 `export NAMESRV_ADDR=ip:9876`（默认端口）
 3. 配置RocketMQ相关参数：`runserver.sh`、`runbroker.sh`、`broker.conf`（配置nameserver和broker的ip地址）
@@ -46,8 +46,8 @@ sidebar_label: 10. RocketMQ
 
 ---
 
-## 2 应用
-### 2.1 快速入门
+## 2. 应用
+### 2.1. 快速入门
 1. 见 `priv.zj.rocketmq.test.ProducerMain` 和 `priv.zj.rocketmq.test.ConsumerMain`
 2. 同一消费者组内的消费者的订阅关系必须保持一致
 3. 消息分发规则：`brokerOffset` &gt; `consumerOffset` 时开始分发，直至两者相等
@@ -98,7 +98,7 @@ sidebar_label: 10. RocketMQ
     2. 消费者重试：返回 `RECONSUME_LATER` 后，开始重试，默认重试次数为16次，重试时间间隔为 `10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h`
 10. 死信消息：消费重试的次数超过最大次数后，消息进入 **死信队列Dead-Letter Queue**，成为死信消息Dead-Letter Message；产生死信消息的消费者组对应的死信Topic为 `%DLQ%ConsumerGroupName`
 
-### 2.2 集成SpringBoot
+### 2.2. 集成SpringBoot
 1. 消费模式：
     1. 负载均衡模式：多个消费者 **交替消费** 同一个 `topic` 里的消息
         - 队列会被消费者均摊 &rarr; 队列数量 &ge; 消费者数量
@@ -123,7 +123,7 @@ sidebar_label: 10. RocketMQ
     2. `plain_acl.yml` 文件中配置账号密码：`accessKey` 和 `secretKey`
     3. 修改控制面板的配置文件：`rocketmq.config.accessKey/secretKey`
 
-### 2.3 秒杀（见代码 `priv.zj.rocketmq.seckill` 包）
+### 2.3. 秒杀（见代码 `priv.zj.rocketmq.seckill` 包）
 1. 秒杀/大促/抢购等类似问题，本质上是短时间内处理大量请求，即 **高并发** 问题
     - 并发：多个任务在同一个时间段内执行
     - 并行：多个任务在多核CPU上于同一时刻执行

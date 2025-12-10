@@ -4,7 +4,7 @@ sidebar_label: 11. Docker
 
 # Docker
 
-## 1 概述
+## 1. 概述
 1. **<font color="red">Docker</font>**：开源的应用容器引擎，可将应用及其运行环境打包到轻量级、可移植的镜像中，发布到任何流行的Linux、Windows机器上
 2. Docker的用途：
     1. 提供统一的运行环境：确保在任何宿主机上都输出相同的结果
@@ -35,8 +35,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 2 Docker引擎
-### 2.1 版本发展历程
+## 2. Docker引擎
+### 2.1. 版本发展历程
 1. 发展历程：
     1. 首发版本：
         1. 由LXC（Linux Container）和Docker Daemon组成
@@ -56,7 +56,7 @@ sidebar_label: 11. Docker
         1. Edge月版：一个月发布一次，维护期为一个月
         2. Stable季版：一个季度发布一次，维护期为四个月
 
-### 2.2 概述
+### 2.2. 概述
 1. **<font color="red">Docker引擎</font>**：用来运行和管理容器的核心软件
 2. 架构：![Docker Engine Structure](./img/11.2.1.docker-engine-structure.jpg)
     1. 客户端 `Client`：用户向Docker提交命令请求
@@ -67,7 +67,7 @@ sidebar_label: 11. Docker
         1. 保持所有STDIN和STDOUT流的开启状态（当Docker Daemon重启时，容器不会因为Pipe的关闭而终止）
         2. 将容器的退出状态反馈给Docker Daemon
 
-### 2.3 安装
+### 2.3. 安装
 1. 官方文档：[Install Docker Engine on CentOS - Installation methods](https://docs.docker.com/engine/install/centos/#installation-methods)
     - Docker仓库的国内镜像源：`https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo`
 2. 常用命令：
@@ -99,14 +99,14 @@ sidebar_label: 11. Docker
     sudo systemctl restart docker
     ```
 
-### 2.4 卸载
+### 2.4. 卸载
 1. 官方文档：[Install Docker Engine on CentOS - Uninstall Docker Engine](https://docs.docker.com/engine/install/centos/#uninstall-docker-engine)
 2. 手动删除自定义的配置文件
 
 ---
 
-## 3 Docker镜像
-### 3.1 概述
+## 3. Docker镜像
+### 3.1. 概述
 1. **<font color="red">镜像</font>**：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）
 2. 镜像仓库的分类：
     1. `Docker Official Image`：Docker官方镜像仓库
@@ -120,7 +120,7 @@ sidebar_label: 11. Docker
         3. `<domain-name>/<username>/<software-name>`：第三方镜像中心（IP或域名）的镜像名称
     2. `<tag>`：默认为最新版本 `latest`
 
-### 3.2 命令
+### 3.2. 命令
 1. `docker pull`：将指定镜像从Dockerhub拉取到本地
     - `-q`：简化拉取过程中的日志输出
     - `docker pull <repository>@<digest>`：通过镜像的 `digest`（镜像内容的Hash值）拉取到本地
@@ -143,7 +143,7 @@ sidebar_label: 11. Docker
 6. `docker load`：将 `.tar` 文件导入并加载为一个或多个镜像
 7. `docker inspect`：查看镜像的相关属性
 
-### 3.3 镜像分层
+### 3.3. 镜像分层
 1. 分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成
     1. 分层 **只读**，对分层的修改以新分层的形式出现
     2. 在不同镜像间实现 **资源共享**，即不同镜像对相同下层镜像的复用
@@ -157,7 +157,7 @@ sidebar_label: 11. Docker
     2. 镜像json文件：描述镜像的相关属性的集合
 3. **容器层**/联合文件系统Union File System：可读写，对文件的任何修改都 **只存在于容器层**
 
-### 3.4 镜像摘要
+### 3.4. 镜像摘要
 1. 摘要Digest：即内容散列Content Hash，只要内容发生了变更，摘要值一定会变更
 2. 算法：SHA256，长度为256位的二进制字符串 = 长度为64位的16进制字符串
 3. 主要作用：区分相同 `<repository>:<tag>` 的不同镜像（版本相同，但内容不同）
@@ -165,7 +165,7 @@ sidebar_label: 11. Docker
     - 发送方：由于push或pull镜像时，网络会对镜像进行压缩，压缩后Docker立即计算分发散列值
     - 接收方：接收后立即计算分发散列值
 
-### 3.5 多架构镜像
+### 3.5. 多架构镜像
 1. 多架构镜像Multi-architecture Image：相同 `<repository>:<tag>` 的镜像适用于不同操作系统/系统架构
 2. 原理：通过 `docker pull` 命令拉取到的是与当前操作系统/系统架构相匹配的镜像
     - 镜像的多架构信息保存在 `Manifest` 文件中
@@ -173,8 +173,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 4 Docker容器
-### 4.1 概述
+## 4. Docker容器
+### 4.1. 概述
 1. 启动流程：
     ```mermaid
     graph TB
@@ -187,7 +187,7 @@ sidebar_label: 11. Docker
 2. 容器运行，本质是为了启动并运行容器中的应用 &rarr; 应用运行完毕后，容器会自动终止
     - 使应用处于与用户交互的状态或等待状态 &rarr; 避免容器终止
 
-### 4.2 命令
+### 4.2. 命令
 1. `docker run`：创建并启动容器
     - `--name`：指定当前容器名称
     - `-it`：以 **交互模式（Interactive mode）** 来运行容器，并根据 `/bin/bash` 命令启动bash终端
@@ -273,8 +273,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 5 Dockerfile
-### 5.1 概述
+## 5. Dockerfile
+### 5.1. 概述
 1. `Dockerfile`：由一系列指令构成的、用来构建Docker镜像的脚本文件
     - 由上到下依次执行指令
     - 每条指令都会构建出一个镜像
@@ -283,7 +283,7 @@ sidebar_label: 11. Docker
     - 指令后面至少会携带一个参数
     - 注释符号：`#`
 
-### 5.2 指令
+### 5.2. 指令
 1. `FROM <image>[:<tag>]`：指定基础镜像，且 **必须是第一条** 指令
 2. `MAINTAINER <name>`：（已过时，用 `LABEL` 指令代替）填写维护者姓名和邮箱
 3. `LABEL <key>=<value> <key>=<value> …`：以键值对的方式包含镜像的元数据信息，修改镜像的json文件
@@ -323,7 +323,7 @@ sidebar_label: 11. Docker
 13. `ONBUILD [INSTRUCTION]`：指定当前镜像的子镜像进行构建时要执行的指令
 14. `VOLUME ["dir1", "dir2", …]`：在容器里创建可以挂载数据卷的 **挂载点**
 
-### 5.3 实际应用
+### 5.3. 实际应用
 1. scratch镜像：空镜像，所有镜像的 **Base Image**
     1. Docker的保留字，不能作为镜像名称
     2. 只能在Dockerfile中被继承
@@ -332,7 +332,7 @@ sidebar_label: 11. Docker
     - `docker image prune`：删除本地所有的悬虚镜像
     - `docker system prune`：删除docker中的无用数据
 
-### 5.4 build cache
+### 5.4. build cache
 1. 镜像构建过程：下层镜像作为上层镜像的 **父镜像/输入** &rarr; **镜像文件系统或json文件发生变更，就会生成一个新的镜像层**
     1. `FROM centos:7`：只设定一个基础镜像，不会做任何操作
     2. `LABEL auth="bjpowernode"`：修改镜像json文件 &rarr; 生成一个新的镜像层
@@ -349,11 +349,11 @@ sidebar_label: 11. Docker
 
 ---
 
-## 6 数据持久化
-### 6.1 定制镜像持久化
+## 6. 数据持久化
+### 6.1. 定制镜像持久化
 1. 对镜像进行操作后，执行 `docker commit` 命令，以当前运行的容器为 **范本** 生成镜像
 
-### 6.2 数据卷持久化
+### 6.2. 数据卷持久化
 1. docker提供的实时数据同步方式：
     1. 数据卷
     2. Bind mounts（绑定挂载）
@@ -373,15 +373,15 @@ sidebar_label: 11. Docker
         - 宿主机 **读写** 数据卷
 5. 数据卷共享：需要一个容器作为 **数据卷容器**，其它需要共享数据卷的容器在启动时指定 `--volumes-from [数据卷容器]` 即可
 
-### 6.3 Dockerfile持久化
+### 6.3. Dockerfile持久化
 1. 通过Dockerfile中的 `VOLUME` 指令来指定挂载点
     - 宿主机中的数据卷由Docker Daemon自动分配名称与目录（docker目录下的 `/volumes/<name>/_data`）
     - 仍支持在容器启动时指定数据卷
 
 ---
 
-## 7 Docker网络
-### 7.1 概述
+## 7. Docker网络
+### 7.1. 概述
 1. **<font color="red">Network Namespace</font>**：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）
     ![Network Namespace](./img/11.7.1.network-namespace.jpg)
     1. `ip nets add <namespace>`：创建网络空间（默认有一个回环网络适配器lo）
@@ -398,7 +398,7 @@ sidebar_label: 11. Docker
     3. **<font color="red">网络驱动Driver</font>**：![driver](./img/11.7.2.driver.jpg)
         - `docker network ls`：查看当前主机所连接的网络及网络类型
 
-### 7.2 网络类型
+### 7.2. 网络类型
 1. `bridge` 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP
     1. **docker0网桥**：默认的虚拟网桥
         ![docker0 bridge](./img/11.7.3.docker0-bridge.jpg)
@@ -428,8 +428,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 8 常用服务器安装
-### 8.1 MySQL安装
+## 8. 常用服务器安装
+### 8.1. MySQL安装
 1. 单机安装命令：`docker run --name <mysql-container-name> -e MYSQL_ROOT_PASSWORD=<password> -d mysql:<tag>`
     1. 字符编码问题：`/etc/mysql/conf.d` 目录下新建 `<name>.cnf` 文件
         ```properties showLineNumbers
@@ -443,7 +443,7 @@ sidebar_label: 11. Docker
     2. 数据安全问题：指定数据卷
 2. 集群搭建：与普通集群搭建步骤一致
 
-### 8.2 Redis安装
+### 8.2. Redis安装
 1. 单机安装命令：`docker run --name <redis-container-name> -d redis:<tag> redis-server`
     - 修改 `redis.conf`：
         1. 注释 `bind 127.0.0.1 -::1`：解除IP绑定
@@ -467,8 +467,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 9 Docker Compose
-### 9.1 概述
+## 9. Docker Compose
+### 9.1. 概述
 1. Docker Compose：Docker容器编排工具，通过一个 **声明式的配置文件** 描述整个应用，最终使用一条命令完成部署
 2. `compose.yml` / `docker-compose.yml`：6大模块
     1. `version`：（已过时）版本号
@@ -534,7 +534,7 @@ sidebar_label: 11. Docker
     5. `configs`
     6. `secrets`
 
-### 9.2 命令
+### 9.2. 命令
 :::tip
 在命令后加上 `<service-name>`，即可对指定服务进行操作
 :::
@@ -561,8 +561,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 10 Docker管理监控平台
-### 10.1 概述
+## 10. Docker管理监控平台
+### 10.1. 概述
 1. Docker UI：基于Docker API的开源可视化管理工具，支持容器管理、镜像管理、批量操作，不支持多集群管理
     - 部署命令：`docker run -d uifd/ui-for-docker`
 2. Portainer：免费的可视化管理工具，基于容器化的安装方式，支持构建、管理和维护Docker环境
@@ -579,8 +579,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 11 镜像中心
-### 11.1 概述
+## 11. 镜像中心
+### 11.1. 概述
 1. 发布镜像到Docker Hub：
     1. Docker Hub端操作：
         1. 注册账号
@@ -712,7 +712,7 @@ sidebar_label: 11. Docker
     - `always`：只要容器退出就重启
     - `unless-stopped`：除了通过 `docker stop` 或 `docker kill` 命令退出，其他情况只要容器退出就重启
 
-### 11.2 HTTPS
+### 11.2. HTTPS
 1. 通过SSL/TLS为数据加密：与传输层的SSL/TLS进行通信，再由SSL/TLS与TCP进行通信
     - SSL（Secure Sockets Layer）：安全套接字协议
     - TLS（Transport Layer Security）：传输层安全协议
@@ -778,7 +778,7 @@ sidebar_label: 11. Docker
         - 无法通过摘要计算出原始明文
     4. 数字签名：由发送方产生的别人无法伪造的一段数字串，通常使用非对称密钥和数字摘要技术
 
-### 11.3 distribution私有镜像中心
+### 11.3. distribution私有镜像中心
 1. 搭建私有镜像中心：
     1. 安装 `docker-distribution`：`yum install -y docker-distribution`
     2. 查看安装的文件：`rpm -ql docker-distribution`
@@ -808,8 +808,8 @@ sidebar_label: 11. Docker
         3. 删除镜像：`curl -I -XDELETE http://<ip>:<port>/v2/<repository>/manifests/<image-digest>`
         4. 清理已被删除的镜像剩下的垃圾数据：`registry garbage-collect /etc/docker-distribution/registry/config.yml`
 
-### 11.4 registry私有镜像中心
-#### 11.4.1 HTTP
+### 11.4. registry私有镜像中心
+#### 11.4.1. HTTP
 1. 搭建私有镜像中心：
     1. 拉取镜像：`docker pull registry`
     2. 使用 `htpasswd` 命令创建用户名与密码
@@ -830,7 +830,7 @@ sidebar_label: 11. Docker
         1. 浏览器访问：出现登录弹窗，输入用户名和密码即可
         2. curl请求：添加 `-u <username>:<password>`
 
-#### 11.4.2 HTTPS
+#### 11.4.2. HTTPS
 1. OpenSSL生成证书：
     1. 安装OpenSSL：`yum install -y openssl-devel`
     2. 创建证书目录
@@ -900,8 +900,8 @@ sidebar_label: 11. Docker
         ```
 2. docker客户端的推送、删除操作：同 [registry私有镜像中心的HTTP请求](#1141-http)
 
-### 11.5 harbor私有镜像中心
-#### 11.5.1 概述
+### 11.5. harbor私有镜像中心
+#### 11.5.1. 概述
 1. Harbor：Registry Server开源项目，在Docker Registry的基础之上进行了二次封装
     1. 硬件要求：2核、4G内存、40G磁盘空间
     2. 软件要求：Docker CE引擎、Docker Compose、OpenSSL
@@ -974,7 +974,7 @@ sidebar_label: 11. Docker
     end
     ```
 
-#### 11.5.2 HTTP
+#### 11.5.2. HTTP
 1. 搭建：
     1. 下载并解压
     2. 修改 `harbor.yml` 配置文件：复制并重命名 `harbor.yml.tmpl` 文件
@@ -986,7 +986,7 @@ sidebar_label: 11. Docker
     4. 运行 `./install.sh` 命令：自动完成安装，并启动由docker-compose编排管理的容器（后续均用 `docker-compose` 命令来启停容器）
 2. docker客户端的推送、删除操作：同 [registry私有镜像中心的HTTP请求](#1141-http)
 
-#### 11.5.3 HTTPS
+#### 11.5.3. HTTPS
 1. 阿里云申请SSL证书：申请成功后，可根据服务器的类型进行下载证书压缩包（包含 `.pem` 证书文件和 `.key` 私钥文件）
 2. 搭建：同 [harbor私有镜像中心的搭建过程](#1152-http)
     1. 修改 `harbor.yml` 配置文件：修改 `https` 的相关配置
@@ -996,8 +996,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 12 Docker Swarm
-### 12.1 概述
+## 12. Docker Swarm
+### 12.1. 概述
 1. Docker Swarm：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信
 2. 节点架构：![How swarm node works](./img/11.12.1.how-swarm-node-works.webp)
     1. Swarm Node：采用Swarm模式运行的Docker Engine主机
@@ -1023,7 +1023,7 @@ sidebar_label: 11. Docker
     2. `global` 全局模式：不能指定 `task` 数量，默认为每个 `node` 分配 **一个** `task`
 5. Raft算法：[动画演示](https://thesecretlivesofdata.com/raft/)
 
-### 12.2 操作Swarm集群
+### 12.2. 操作Swarm集群
 1. 搭建集群：
     1. `Swarm: inactive/active`：用 `docker info` 命令查看docker的swarm激活状态
     2. `docker swarm init`：初始化swarm集群，会提供添加worker/manager节点的命令
@@ -1114,7 +1114,7 @@ sidebar_label: 11. Docker
     - 采用 **热备** 容灾方式：即manager集群中只有一个 `leader` 节点，其它manager处于热备状态；若 `leader` 宕机，则manager集群中自动发起leader选举
     - 采用 **Raft算法** 来进行leader选举：所有可用的manager节点均具有选举权和被选举权，获得过半选票的manager节点成为新的 `leader`（推荐部署奇数个manager）
 
-### 12.3 service
+### 12.3. service
 1. service只能依附于swarm集群
 2. 创建service：
     1. `docker service create --name <service-name> --replicas <task-number> -p <host-port>:<container-port> <image-name>`：由manager执行
@@ -1162,7 +1162,7 @@ sidebar_label: 11. Docker
     1. 创建服务：`docker service create --name <service-name> --mode global <image-name>`
     2. task伸缩：改变service所依附的swarm集群中的节点数量 &rarr; 节点中的task数量会自动扩容/缩容
 
-### 12.4 overlay网络
+### 12.4. overlay网络
 1. overlay网络/重叠网络/覆盖网络：构建在underlay网络上的逻辑虚拟网络，即在物理网络的基础上，通过节点间的单播隧道机制将主机两两相连
 2. swarm集群的overlay网络模型：![overlay](./img/11.12.5.overlay.jpg)
     1. 结构：
@@ -1195,8 +1195,8 @@ sidebar_label: 11. Docker
 
 ---
 
-## 13 CI/CD与Jenkins
-### 13.1 概述
+## 13. CI/CD与Jenkins
+### 13.1. 概述
 1. CI/CD：![CI/CD](./img/11.13.1.CICD.jpg)
     1. **CI（Continuous Integration）**：持续集成，即持续不断地将更新的代码经构建、测试后集成到项目主线
     2. **CD（Continuous Delivery/Deployment）**：持续交付/部署，即持续不断地将新版本交付到类生产环境/部署至生产环境
@@ -1204,7 +1204,7 @@ sidebar_label: 11. Docker
     ![Devops](./img/11.13.2.devops.webp)
 3. CI/CD与DevOps的关系：CI/CD是目标，DevOps是手段
 
-### 13.2 应用实现
+### 13.2. 应用实现
 1. 系统结构图：![CI/CD Structure](./img/11.13.3.CICD-structure.jpg)
 2. 工具：
     1. Git：开源的分布式版本控制系统

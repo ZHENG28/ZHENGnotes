@@ -4,12 +4,12 @@ sidebar_label: 0. 小结
 
 # 主流框架
 
-## 1 [SSM源码分析（略，未看完！）](./01-SSM源码分析.md)
+## 1. [SSM源码分析（略，未看完！）](./01-SSM源码分析.md)
 
 ---
 
-## 2 Maven入门
-### 2.1 简介
+## 2. Maven入门
+### 2.1. 简介
 1. 作用：
     1. 自动下载jar文件及其API文档、源代码
     2. 管理jar包版本
@@ -29,7 +29,7 @@ sidebar_label: 0. 小结
     6. 安装 `install`：将生成的.jar/.war文件安装到本地仓库中
     7. 部署 `deploy`：将程序安装好并执行
 
-### 2.2 核心概念
+### 2.2. 核心概念
 1. **POM（Project Object Model）**：项目对象模型，通过pom.xml文件来控制maven构建项目的过程，管理jar依赖
     - 坐标gav：唯一标识一个项目
         ```xml showLineNumbers
@@ -43,7 +43,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## 3 老杜Mybatis
+## 3. 老杜Mybatis
 1. 三层架构：
     1. 界面层 `Controller` &rarr; SpringMVC：接收请求，返回响应
     2. 业务逻辑层 `Service` &rarr; Spring：处理逻辑，调用数据库，获取数据等
@@ -67,8 +67,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 4 Spring6
-### 4.1 概述
+## 4. Spring6
+### 4.1. 概述
 1. 减轻对项目模块之间的、类与类之间的管理，帮助开发人员创建对象，管理对象之间的关系；其核心技术IOC、AOP可实现模块之间、类之间的解耦合
 2. spring中的对象：单例对象，名称唯一 &rarr; 在创建spring容器时，默认调用对象的无参构造方法来创建对象
     - 自动放入到容器中：dao、service、controller、工具类
@@ -95,14 +95,14 @@ sidebar_label: 0. 小结
             1. `RuntimeException` / `ERROR`：**自动** 回滚事务
             2. 非运行时异常（受查异常，如IOException、SQLException）：**提交** 事务
 
-### 4.2 控制反转IoC（Inversion of Control）
+### 4.2. 控制反转IoC（Inversion of Control）
 1. 把对象的创建、赋值和管理工作都交给代码之外的容器实现，即对象的创建是由其他外部资源完成的 &rarr; 实现解耦合
 2. **依赖注入DI（Dependency Injection）**：只需要在程序中提供对象名称即可，至于如何创建对象、赋值、查找等都由容器内部实现
     - 基于XML的DI实现：在spring的配置文件中，使用标签 `<bean>` 完成赋值
     - 基于注解的DI实现：使用spring中的注解 `@Component`，完成赋值
 3. 组件扫描器component-scan：spring会遍历扫描base-package指定的包，把包中和子包中的所有类，找到类中的注解，按照注解的功能进行创建对象或赋值等操作
 
-### 4.3 面向切面编程AOP（Aspect oriented Programming）
+### 4.3. 面向切面编程AOP（Aspect oriented Programming）
 1. 基于动态代理，可以使用JDK、CGLIB两种代理方式 &rarr; 规范化动态代理
     - **<font color="red">JDK动态代理</font>**：使用JDK中的Proxy、Method、InvocationHandler创建代理对象；要求目标类必须实现接口
     - **<font color="red">CGLIB动态代理</font>**：使用第三方的工具库创建代理对象；要求目标类必须继承目标类，创建子类（即代理对象）
@@ -111,7 +111,7 @@ sidebar_label: 0. 小结
 4. **连接点JoinPoint**：连接业务方法和切面的位置
 5. **切入点Pointcut**：多个连接点方法的集合
 
-### 4.4 集成第三方库
+### 4.4. 集成第三方库
 1. 集成 **MyBatis**：MyBatis与spring集成时，事务会 **自动提交**
     1. 声明数据源DataSource
     2. 声明工厂类SqlSessionFactoryBean
@@ -121,8 +121,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 5 SpringMVC
-### 5.1 概述
+## 5. SpringMVC
+### 5.1. 概述
 1. 基于Spring的、web开发的框架，使用 `@Controller` 创建控制器对象，并将其放入到SpringMVC容器中
 2. 中央调度器 `DispatcherServlet`：继承HttpServlet，负责接收请求，返回响应，以及调用其他控制器对象
 3. 执行流程：
@@ -140,7 +140,7 @@ sidebar_label: 0. 小结
     - `@Controller`：创建能处理请求的控制器对象
     - `@RequestMapping`：请求映射，将请求地址和方法绑定在一起
 
-### 5.2 SSM/SSI（SpringMVC + Spring + MyBatis/IBatis）
+### 5.2. SSM/SSI（SpringMVC + Spring + MyBatis/IBatis）
 1. 框架结构：
     - SpringMVC：**视图层/界面层**，负责接收请求、返回响应
     - Spring：**业务层**，管理service、dao以及工具类对象
@@ -151,7 +151,7 @@ sidebar_label: 0. 小结
     用户发起请求 --> SpringMVC接收 --> service对象处理业务 --> MyBatis处理数据
     ```
 
-### 5.3 核心技术
+### 5.3. 核心技术
 1. 请求转发：
     - 转发forward：`setViewName("forward:视图文件完整路径")`
     - 重定向redirect：`setViewName("redirect:视图文件完整路径")`
@@ -160,4 +160,4 @@ sidebar_label: 0. 小结
 
 ---
 
-## 6 SSH框架【选学】（略）
+## 6. SSH框架【选学】（略）

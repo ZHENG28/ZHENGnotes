@@ -4,8 +4,8 @@ sidebar_label: 8. Nginx
 
 # Nginx
 
-## 1 简介
-### 1.1 相关概念
+## 1. 简介
+### 1.1. 相关概念
 1. Nginx（engine x）：一个代理服务器，高性能、低消耗、并发处理能力强
 2. 反向代理（Reverse Proxy）：代理对象是服务端
     ```mermaid
@@ -20,7 +20,7 @@ sidebar_label: 8. Nginx
     intranet --发送响应--> nginx --转发--> extranet
     ```
 
-### 1.2 安装与命令
+### 1.2. 安装与命令
 1. 检查相关库是否安装（否则配置和编译会出现错误）：
     ```bash showLineNumbers
     # gcc编译器
@@ -59,7 +59,7 @@ sidebar_label: 8. Nginx
     ```
 3. 启动时会启动**一个** `master` 主进程和**多个** `worker` 子进程
 
-### 1.3 核心配置文件`nginx.conf`
+### 1.3. 核心配置文件`nginx.conf`
 1. 基本配置：
     ```nginx showLineNumbers
     user nobody;
@@ -142,11 +142,11 @@ sidebar_label: 8. Nginx
 
 ---
 
-## 2 应用
-### 2.1 静态网站部署
+## 2. 应用
+### 2.1. 静态网站部署
 1. 访问路径和根目录的关系：访问路径的 `/` 对应根目录，如 `location /bar` 和 `root /opt/foo` &rarr; 映射到服务器的 `/opt/foo/bar/file-name`
 
-### 2.2 负载均衡
+### 2.2. 负载均衡
 1. 负载均衡：将请求**均匀分摊到**集群中的多个服务器节点上执行
 2. 实现方式：
     1. 硬件负载均衡：性能稳定，但费用昂贵，如 `F5`、深信服、`Array` 等
@@ -212,13 +212,13 @@ sidebar_label: 8. Nginx
         }
         ```
 
-### 2.3 静态代理
+### 2.3. 静态代理
 1. 静态代理：将所有**静态资源**的访问由访问tomcat改为访问nginx
 2. 实现方式：
     1. 配置静态资源文件的后缀：`location ~.*\.(js|css|html|jpg|…)$ { }`
     2. 配置静态资源文件的目录：`location ~.*/(css/js/imgs) { }`
 
-### 2.4 动静分离
+### 2.4. 动静分离
 1. 动静分离：负载均衡和静态代理结合，即动态资源由web服务器完成，静态资源由nginx服务器完成
     ```mermaid
     graph LR
@@ -226,7 +226,7 @@ sidebar_label: 8. Nginx
     nginx --转发\n【静态资源】--> Nginx
     ```
 
-### 2.5 虚拟主机
+### 2.5. 虚拟主机
 1. 虚拟主机：把一台物理服务器划分成多个虚拟的服务器
     - 通过 `nginx.conf` 文件中的 `server` 节点指定的
 2. 配置方法：

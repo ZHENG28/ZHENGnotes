@@ -4,7 +4,7 @@ sidebar_label: 8. MyBatisPlus
 
 # MyBatisPlus
 
-## 1 快速开始
+## 1. 快速开始
 1. 增强MyBatis的功能，但不做改变
 2. 基础知识：
     1. 表对象：主键列属性要用 `@TableId` 注解
@@ -15,8 +15,8 @@ sidebar_label: 8. MyBatisPlus
 
 ---
 
-## 2 基础使用
-### 2.1 CRUD基本用法
+## 2. 基础使用
+### 2.1. CRUD基本用法
 1. `CREATE`
 2. `UPDATE`：
     - 只更新非null的属性
@@ -34,7 +34,7 @@ sidebar_label: 8. MyBatisPlus
     2. `selectByMap(map)`
     3. `selectBatchIds(ids)`：批量查询
 
-### 2.2 表和列
+### 2.2. 表和列
 1. 主键类型：
     1. `none`：无主键
     2. `auto`：自动增长
@@ -46,7 +46,7 @@ sidebar_label: 8. MyBatisPlus
 3. 指定列名：`@TableField`
 4. 驼峰命名：实体类属性-驼峰命名，列-下划线隔开
 
-### 2.3 ActiveRecord
+### 2.3. ActiveRecord
 0. 每一张表对应一个类，AR可以持久化自身，并在其中已经封装了对数据库的访问，可以直接通过对象实现CRUD（不使用mapper）
 1. 实体类：继承Model（其中提供了对数据库的CRUD操作）
 2. Dao接口：这里不需要，但是MP框架需要通过这个接口来获取对应表的信息
@@ -57,11 +57,11 @@ sidebar_label: 8. MyBatisPlus
     4. select：存在记录，返回实体对象；不存在记录，则返回null
 
 
-### 2.4 自定义sql
+### 2.4. 自定义sql
 1. resources文件夹下创建xml文件夹，新建映射文件
 2. 配置文件中指明地址：`mybatis-plus.mapper-locations=classpath:xml/*Mapper.xml`
 
-### 2.5 查询和分页
+### 2.5. 查询和分页
 1. 查询：构造器 `Wrapper`
     - `allEq(map, boolean)`：
         - true：处理map中的null值，where条件中加入 `field IS NULL`

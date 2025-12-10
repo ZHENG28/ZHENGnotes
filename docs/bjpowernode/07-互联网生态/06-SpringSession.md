@@ -4,8 +4,8 @@ sidebar_label: 6. SpringSession
 
 # SpringSession
 
-## 1 会话
-### 1.1 概述
+## 1. 会话
+### 1.1. 概述
 1. 会话 `Session`：记录用户状态，从而使服务端能识别用户
 2. `Cookie`：用来存储相关客户端信息（如 `sessionId`），HTTP请求时会发送对应的 `Cookie` 信息到服务端
 3. 客户端禁用 `Cookie` 时，可以采用**URL重写**来进行会话追踪，即在URL后附上 `sessionId=xxx` 参数
@@ -53,7 +53,7 @@ sidebar_label: 6. SpringSession
         server --重新生成新sessionId（234）--> browser
         ```
 
-### 1.2 集群模式存在的问题及解决方案
+### 1.2. 集群模式存在的问题及解决方案
 1. 问题：集群模式下，tomcat服务器之间无法共享session
 2. 解决方案：
     ```mermaid
@@ -79,8 +79,8 @@ sidebar_label: 6. SpringSession
 
 ---
 
-## 2 应用
-### 2.1 同域名下相同项目（即集群环境）
+## 2. 应用
+### 2.1. 同域名下相同项目（即集群环境）
 1. `Spring Session`：会将servlet容器中实现的 `javax.servlet.http.HttpSession` 替换成 `spring-session`，将session信息存储在redis中
 2. 实现步骤：
     1. 添加依赖：
@@ -93,25 +93,25 @@ sidebar_label: 6. SpringSession
     2. 添加过滤器 `org.springframework.web.filter.DelegatingFilterProxy`
     3. 添加bean对象 `org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration`
 
-### 2.2 同域名下不同项目
+### 2.2. 同域名下不同项目
 1. `Cookie` 不允许跨路径访问 &rarr; session失效
 2. 实现步骤：
     1. `RedisHttpSessionConfiguration` 对象中添加 `Cookie` 序列化规则接口对象
     2. 实现一个 `Cookie` 序列化规则对象 `org.springframework.session.web.http.DefaultCookieSerializer`：
         - `cookiePath` 指定 `sessionId` 存放在**同一根路径**下
 
-### 2.3 同根域名不同二级子域名下的项目
+### 2.3. 同根域名不同二级子域名下的项目
 1. `Cookie` 不允许跨域名访问 &rarr; session失效
 2. 实现步骤：
     1. `RedisHttpSessionConfiguration` 对象中添加 `Cookie` 序列化规则接口对象
     2. 实现一个 `Cookie` 序列化规则对象 `org.springframework.session.web.http.DefaultCookieSerializer`：
         - `domainName` 指定 `sessionId` 存放在**同一根域名**下
 
-### 2.4 不同根域名下的项目（即单点登录）
+### 2.4. 不同根域名下的项目（即单点登录）
 1. `Spring Session` 不支持
 2. **<font color="red">单点登录SSO（Single Sign On）</font>**：用户只需登录**一次**即可访问**所有**相互信任的应用系统
 
-### 2.5 集成SpringBoot
+### 2.5. 集成SpringBoot
 1. 添加依赖：
     ```xml showLineNumbers
     <dependency>

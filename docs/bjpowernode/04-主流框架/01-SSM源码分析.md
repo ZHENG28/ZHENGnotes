@@ -8,11 +8,11 @@ sidebar_label: 1. SSM源码分析
 未看完！看到第 **22** 个视频！！！
 :::
 
-## 1 MyBatis源码构建
+## 1. MyBatis源码构建
 
-## 2 MyBatis动态代理
+## 2. MyBatis动态代理
 
-## 3 MyBatis核心SQL映射
+## 3. MyBatis核心SQL映射
 0. 以 `userMapper.selectById(1)` 执行为例，解析源码
 1. 进入 `MapperProxy.invoke()`：step 1包含序号2-5，step 1包含序号6
     ```java showLineNumbers

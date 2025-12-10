@@ -4,28 +4,28 @@ sidebar_label: 1. Linux
 
 # Linux
 
-## 1 Linux的介绍
-### 1.1 Linux是什么？
+## 1. Linux的介绍
+### 1.1. Linux是什么？
 - 开源、免费的OS，注重安全性、稳定性、高并发处理能力，但没有优异的可视化界面
 - 一般来说，windows用于个人PC机上，linux用于企业服务器上
 
-### 1.2 Linux主要的发行版本
+### 1.2. Linux主要的发行版本
 - 最早版本：**Linux的内核程序**，1991年开发、发行
 - 在内核程序的基础之上推出的不同版本的Linux OS：Ubuntu（乌班图）、RedHat（红帽）、CentOS
 
 ---
 
-## 2 Linux的安装
-### 2.1 安装虚拟机VM
+## 2. Linux的安装
+### 2.1. 安装虚拟机VM
 - 虚拟机：可以用软件模拟出一套具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统
 
-### 2.2 安装CentOS
+### 2.2. 安装CentOS
 - linux的镜像，版本之一
 
 ---
 
-## 3 Linux的目录结构
-### 3.1 Linux目录结构概述
+## 3. Linux的目录结构
+### 3.1. Linux目录结构概述
 - 只有一个根目录/
 - 层级式的目录结构
     ```mermaid
@@ -47,7 +47,7 @@ sidebar_label: 1. Linux
     / --> other[…]
     ```
 
-### 3.2 Linux具体目录结构
+### 3.2. Linux具体目录结构
 1. `/usr/bin`：存放系统的可执行文件，使得其可在任何目录下执行
 2. `/usr/local/bin`：存放本地用户的可执行文件，使得其可在任何目录下执行
 3. `/etc`：存放配置文件
@@ -57,15 +57,15 @@ sidebar_label: 1. Linux
 
 ---
 
-## 4 Linux的远程操作工具
+## 4. Linux的远程操作工具
 1. Xshell：linux的终端模拟软件，可连接远程linux系统（在Xshell中创建会话）
     - 查看linux系统的ip地址：`ifconfig`
 2. Xftp：文件传输软件，可连接远程linux系统（创建会话）
 
 ---
 
-## 5 Linux系统管理
-### 5.1 vi和vim的使用
+## 5. Linux系统管理
+### 5.1. vi和vim的使用
 两者都是linux中的文本编辑器，可用于创建、查看、编辑文本文件，但vim是vi的增强版本
 - 模式：
     ```mermaid
@@ -98,7 +98,7 @@ sidebar_label: 1. Linux
     6. 撤销上次编辑的内容：【一般模式】`u`
     7. 显示行号：【命令行模式】`set nu`，设置文件的行号；`set nonu`，取消显示文件的行号
 
-### 5.2 用户管理
+### 5.2. 用户管理
 1. 用户简介：只有用户才能使用linux的系统资源；root为默认创建的系统管理员账号，拥有最高权限
 2. 添加用户：`useradd [-d /dir] username`
     - 默认情况下，创建一个用户及在/home下创建一个同用户名相同的目录
@@ -110,7 +110,7 @@ sidebar_label: 1. Linux
     - 高 &rarr; 低：不需要密码验证
     - 低 &rarr; 高：需要密码验证
 
-### 5.3 组管理
+### 5.3. 组管理
 1. 组简介：组相当于角色的概念，可将具有共性的用户进行统一管理；每个用户至少属于一个组，也可属于多个组
 2. 命令：
     ```bash showLineNumbers
@@ -130,7 +130,7 @@ sidebar_label: 1. Linux
     gpasswd -d username group
     ```
 
-### 5.4 系统操作
+### 5.4. 系统操作
 ```bash showLineNumbers
 # 立即关机
 shutdown now
@@ -148,8 +148,8 @@ sync
 
 ---
 
-## 6 Linux实操指令
-### 6.1 帮助指令
+## 6. Linux实操指令
+### 6.1. 帮助指令
 1. 用来查看linux系统手册上的帮助信息：`man 命令`
     - 信息分屏显示
     - 翻一行：`回车`
@@ -157,7 +157,7 @@ sync
     - 退出查看：`q`
 2. 用来查看命名的内置帮助信息：`help 命令`
 
-### 6.2 文件目录指令
+### 6.2. 文件目录指令
 ```bash showLineNumbers
 # 查看当前所在目录
 pwd
@@ -222,7 +222,7 @@ command >> file
     - 按回车翻一行
     - 按空格翻一页
 
-### 6.3 时间日期指令
+### 6.3. 时间日期指令
 ```bash showLineNumbers
 # 查看系统当前的完整的日期和时间
 date
@@ -243,7 +243,7 @@ cal
 cal yyyy
 ```
 
-### 6.4 搜索查找指令
+### 6.4. 搜索查找指令
 1. 普通搜索：`find [range] [standard] keyword`
     - `-name`：默认按名称搜索（文件或者目录所在的路径也在搜索范围之内）
     - `-size`：按文件大小搜索
@@ -252,7 +252,7 @@ cal yyyy
     - `updatedb`：更新数据库
 3. 搜索过滤命令（即在前一个搜索命令的结果中按名称进一步过滤）：`搜索/查看命令 |grep [option] condition`
 
-### 6.5 压缩和解压缩指令
+### 6.5. 压缩和解压缩指令
 1. 压缩/解压单个文件：
     ```bash showLineNumbers
     # 压缩单个文件，生成一个.gz的压缩包，并会把原来的文件删除
@@ -275,7 +275,7 @@ cal yyyy
     tar -zxvf xxx.tar.gz -C file/dir_list
     ```
 
-### 6.6 组管理指令
+### 6.6. 组管理指令
 1. linux系统的用户分类：文件或目录通过组来控制用户的访问权限
     1. 所有者：默认情况下，文件或者目录的所有者都是创建者，可以修改
     2. 同组用户：和文件或者目录属于同一个组的用户
@@ -292,7 +292,7 @@ cal yyyy
     chgrp new_group file/dir
     ```
 
-### 6.7 权限管理指令
+### 6.7. 权限管理指令
 1. 文件或者目录的三种权限：
     1. 读Read：可以读取、查看文件的内容
     2. 写Write：可以修改文件的内容
@@ -313,7 +313,7 @@ cal yyyy
 
 ---
 
-## 7 网络配置
+## 7. 网络配置
 1. 查看和配置网络
 2. 配置Linux网络：`vi /etc/sysconfig/network-scripts/ifcfg-ens33`
     ```properties showLineNumbers
@@ -331,7 +331,7 @@ cal yyyy
 
 ---
 
-## 8 进程管理
+## 8. 进程管理
 1. 进程介绍
     1. 线程：一个程序的线路
     2. 进程：一个程序的执行，一个进程占用一个端口
@@ -353,8 +353,8 @@ cal yyyy
 
 ---
 
-## 9 Linux软件包管理
-### 9.1 RPM包的管理
+## 9. Linux软件包管理
+### 9.1. RPM包的管理
 1. 简介：一种Linux的软件包的打包和安装工具，它操作的软件包都是.rpm结尾
 2. 命令：
     ```bash showLineNumbers
@@ -368,7 +368,7 @@ cal yyyy
     rpm -ivh xxx.rpm
     ```
 
-### 9.2 YUM包的管理
+### 9.2. YUM包的管理
 1. 简介：一种基于RPM的软件包管理工具，它能够从指定服务器上自动下载RPM包并且自动安装，可以自动处理软件包之间的依赖关系
 2. 命令：
     ```bash showLineNumbers
@@ -384,4 +384,4 @@ cal yyyy
 
 ---
 
-## 10 搭建JAVA EE开发环境（略）
+## 10. 搭建JAVA EE开发环境（略）

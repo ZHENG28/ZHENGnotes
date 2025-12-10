@@ -4,19 +4,19 @@ sidebar_label: 0. 小结
 
 # Java Web
 
-## 1 HTML+CSS+JavaScript(JS)
-### 1.1 超文本标记语言HTML（Hyper Text Markup Language）
+## 1. HTML+CSS+JavaScript(JS)
+### 1.1. 超文本标记语言HTML（Hyper Text Markup Language）
 1. 由大量的标签组成，每一个标签都有开始标签和结束标签
 2. **搜索引擎优化SEO（Search Engine Optimization）**：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名
 
-### 1.2 层叠样式表语言CSS（Cascading Style Sheet）
+### 1.2. 层叠样式表语言CSS（Cascading Style Sheet）
 1. 用于修饰HTML页面，设置HTML页面中的某些元素的样式
 2. 定位元素：
     - id选择器：`#id`
     - 类名选择器：`.class`
     - 标签选择器：`tag`
 
-### 1.3 JS（JavaScript）
+### 1.3. JS（JavaScript）
 1. 一门事件驱动型的编程语言，依靠事件去驱动，然后执行对应的程序
 2. 数据类型的“决定权”：
     - 由赋值等号 **左边** 来决定：Java是 **强类型** 语言，编译期强行固定变量的数据类型
@@ -26,7 +26,7 @@ sidebar_label: 0. 小结
 5. **正则表达式RegularExpression**：是由普通字符（例如字符a到z）以及特殊字符（称为“元字符”）组成的文字模式，其组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合，主要用在字符串格式匹配方面
 6. **<font color="red">JS对象标记JSON（JavaScript Object Notation）</font>**：一种标准的数据交换格式，在JS中以JS对象的形式存在
 
-### 1.4 《Web前端开发最佳实践》
+### 1.4. 《Web前端开发最佳实践》
 1. HTML、CSS、JS命名规范和格式规范
 2. 标签：自闭合标签、`<meta>` 标签、功能分类等
 3. script两个属性的区别：
@@ -69,12 +69,12 @@ sidebar_label: 0. 小结
 
 ---
 
-## 2 JavaScript高级（略）
+## 2. JavaScript高级（略）
 
 ---
 
-## 3 JavaWeb
-### 3.1 JSP
+## 3. JavaWeb
+### 3.1. JSP
 1. 制定了Http服务器应该如何调用管理JSP文件，代替响应对象将处理结果写入到响应体中
 2. Servlet与JSP的联系：Servlet处理结束后，通过请求转发的方式向Tomcat服务器申请调用JSP文件
 3. Http服务器调用JSP文件的步骤：
@@ -87,7 +87,7 @@ sidebar_label: 0. 小结
     - 负责在JSP文件上，从某个作用域对象读取指定的共享数据并将其输出到响应体中
 5. **JSTL（Jsp Standard Tag Library）**：JSP标准的标签库，可以使用标签代替java代码
 
-### 3.2 Servlet
+### 3.2. Servlet
 1. 可指定动态资源文件的开发步骤、指定Http服务器调用动态资源文件的规则、指定Http服务器管理动态资源文件的实例对象的规则
 2. Http状态码：
     1. 100：通知浏览器本次返回的资源文件不是一个完整独立的资源文件，即需要浏览器在接收到响应包之后，继续向Http服务器索要依赖的其他资源文件
@@ -120,7 +120,7 @@ sidebar_label: 0. 小结
     - 对请求进行增强操作：既对请求过滤，也对响应过滤
     - 检测当前请求的合法性：在Http服务器调用资源文件之前，对Http服务器进行拦截
 
-### 3.3 网络通信
+### 3.3. 网络通信
 1. 通信模型：
     1. **<font color="red">C/S通信模型</font>**：服务器软件C（Client software）和服务器软件S（Server software）
     2. **<font color="red">B/S通信模型</font>**：浏览器B（Browser）和服务器软件S（Server software）
@@ -141,30 +141,30 @@ sidebar_label: 0. 小结
 
 ---
 
-## 4 MVC架构（略，仅代码）
+## 4. MVC架构（略，仅代码）
 
 ---
 
-## 5 快速搞定AJAX
+## 5. 快速搞定AJAX
 1. **AJAX（Asynchronous JavaScript and XML）**：用于局部刷新，其核心对象为异步对象XMLHttpRequest，该对象可启动一个线程和服务器交互，代替UI线程
     - javascript：负责创建异步对象、发送请求、更新页面的dom对象
     - xml：网络中传输的数据格式（目前用json代替xml）
 
 ---
 
-## 6 jQuery
+## 6. jQuery
 1. 一个JS库，封装了JS的相关方法的调用，简化了JS对HTML、DOM的操作
     - dom对象：使用js语法创建的对象
     - jquery对象：使用jquery语法表示的对象，是一个数组
 
 ---
 
-## 7 老杜Vue（略）
+## 7. 老杜Vue（略）
 
 ---
 
-## 8 CRM项目（略，仅部署至Linux）
+## 8. CRM项目（略，仅部署至Linux）
 
 ---
 
-## 9 Java生成二维码（略，仅代码）
+## 9. Java生成二维码（略，仅代码）

@@ -4,8 +4,8 @@ sidebar_label: 9. FastDFS
 
 # FastDFS
 
-## 1 简介
-### 1.1 相关概念
+## 1. 简介
+### 1.1. 相关概念
 1. 分布式文件系统（Distributed File System）：一个软件/软件服务器，用来存储文件资源和管理文件
     - 常见的有：FastDFS、GFS、HDFS、Lustre、Ceph、GridFS、mogileFS、TFS等
 2. 传统和分布式文件系统的区别：![Tradition vs Distribute](./img/9.1.1.tradition-vs-distribute.jpg)
@@ -25,7 +25,7 @@ sidebar_label: 9. FastDFS
             1. **<font color="red">跟踪器tracker</font>**：用于 **调度**，在 **内存** 中记录集群中存储节点storage的状态信息，性能高
             2. **<font color="red">存储节点storage</font>**：用于 **存储** 文件，文件本身以及属性（meta data）都保存在服务器磁盘上
 
-### 1.2 安装、启动及相关命令
+### 1.2. 安装、启动及相关命令
 1. 依赖库：
     ```bash showLineNumbers
     # 检查相关库是否安装
@@ -75,7 +75,7 @@ sidebar_label: 9. FastDFS
         2. 下载：`fdfs_test <config_file> download <group_name> <remote_filename>`
         3. 删除：`fdfs_test <config_file> delete <group_name> <remote_filename>`
 
-### 1.3 HTTP访问
+### 1.3. HTTP访问
 1. Nginx扩展模块：通过Nginx访问已经上传到FastDFS服务器上的文件
 2. 访问过程：
     ```mermaid
@@ -87,8 +87,8 @@ sidebar_label: 9. FastDFS
 
 ---
 
-## 2 实践
-### 2.1 在java中的应用
+## 2. 实践
+### 2.1. 在java中的应用
 1. 由于maven仓库中未录入，需要自行本地打包安装
 2. 上传文件：
     ```java showLineNumbers
@@ -142,9 +142,9 @@ sidebar_label: 9. FastDFS
     }
     ```
 
-### 2.2 在web项目中的应用（略）
+### 2.2. 在web项目中的应用（略）
 
-### 2.3 搭建FastDFS分布式文件系统集群
+### 2.3. 搭建FastDFS分布式文件系统集群
 1. 架构图：至少需要部署6个服务器节点  
     ![FastDFS Cluster](./img/9.2.1.fastdfs-cluster.jpg)
 2. 搭建步骤：

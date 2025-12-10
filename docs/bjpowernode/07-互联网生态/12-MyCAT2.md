@@ -4,8 +4,8 @@ sidebar_label: 12. MyCAT2
 
 # MyCAT2
 
-## 1 简介
-### 1.1 相关概念
+## 1. 简介
+### 1.1. 相关概念
 1. MyCAT：一个分布式数据库中间插件，核心功能是 **分表分库**，即将一张大表水平分割成N张小表
     - 支持MySQL、SQL Server、Oracle、DB2、PostgreSQL等主流数据库，也支持MongoDB这种新型NoSQL方式的存储
     - 仍是传统的数据库表，支持标准的SQL语句对数据进行操作
@@ -20,7 +20,7 @@ sidebar_label: 12. MyCAT2
     拦截请求的SQL语句 --> analysis[对SQL语句做分析（分片、路由、读写分离、缓存分析等）] --> 将SQL语句发送到数据库 --> 返回结果
     ```
 
-### 1.2 相关名词
+### 1.2. 相关名词
 1. 分库分表：按照一定规则把数据库中的表拆分为多个带有数据库实例、物理库、物理表访问路径的分表
 2. **逻辑库**：数据库代理中的数据库，包含多个逻辑表
 3. 逻辑表：数据库代理中的表，用来映射代理连接的数据库中的物理表
@@ -36,7 +36,7 @@ sidebar_label: 12. MyCAT2
 13. 数据源：数据库代理中连接后端数据库的客户端
 14. 库schema：用于配置表逻辑、视图等
 
-### 1.3 安装
+### 1.3. 安装
 1. 安装命令：
     ```bash showLineNumbers
     # 安装JDK
@@ -70,7 +70,7 @@ sidebar_label: 12. MyCAT2
     ./mycat status
     ```
 
-### 1.4 配置文件
+### 1.4. 配置文件
 1. 用户（user）：`mycat/conf/user/{username}.user.json`
     ```json showLineNumbers
     {
@@ -140,8 +140,8 @@ sidebar_label: 12. MyCAT2
 
 ---
 
-## 2 实践
-### 2.1 一主一从
+## 2. 实践
+### 2.1. 一主一从
 1. MyCAT只支持路由、分发，但不能同步数据 &rarr; 用MySQL的读写分离和主从复制来实现数据同步
 2. 实现步骤：
     1. 搭建MySQL的一主一从架构
@@ -151,13 +151,13 @@ sidebar_label: 12. MyCAT2
         3. 创建逻辑库：`CREATE DATABASE databaseName DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;`
         4. 通过注释生成物理库和物理表：`/*+ mycat:repairPhysicalTable{} */;`
 
-### 2.2 双主双从
+### 2.2. 双主双从
 1. 集群（Cluster）：在付出较低成本的情况下，获得在性能、可靠性、灵活性方面的相对较高的收益，其核心技术是 **任务调度**
     - 优点：高可伸缩性、高可用性
     - 缺点：出故障时切换需要一定时间
 2. 实现步骤类似 `2.1 一主一从` 的实现步骤
 
-### 2.3 分库分表
+### 2.3. 分库分表
 1. 切分维度：
     - 垂直切分：基于表或字段划分，表结构不同 &rarr; 分库
     - 水平切分：基于数据划分，表结构相同，数据不同 &rarr; 分表
@@ -219,7 +219,7 @@ sidebar_label: 12. MyCAT2
         tbpartition by YYYYDD(field) tbpartitions tbnum;
         ```
 
-### 2.4 其他
+### 2.4. 其他
 1. 全局ID：MyCAT2中，默认使用 **<font color="red">雪花算法</font>** 生成全局ID
     ![snowflake](./img/12.2.1.snowflake.jpg)
     - 符号位 `1bit`：0表示正数（ID不可能为负数）

@@ -4,8 +4,8 @@ sidebar_label: 0. 小结
 
 # 微服务结构
 
-## 1 SpringBoot2
-### 1.1 入门介绍
+## 1. SpringBoot2
+### 1.1. 入门介绍
 1. 目录结构：
     - `.mvn`：使用脚本操作maven相关命令
     - `src`：源代码
@@ -46,7 +46,7 @@ sidebar_label: 0. 小结
         1. `pom.xml` 中修改打包方式 `<packaging>war</packaging>`
         2. 必须部署在tomcat服务器的webapps目录下，可通过 `ip:port/war_packagename/path` 访问
 
-### 1.2 集成
+### 1.2. 集成
 1. 集成 **MyBatis**：
     1. Mapper接口类上加 `@Mapper`：会关联 `.xml` 映射文件和接口的关系
     2. Application启动类上加 `@MapperScan(basePackages="mapper.packagename")`：扫描包下有 `@Mapper` 注解的类
@@ -66,7 +66,7 @@ sidebar_label: 0. 小结
         2. `th`：使用thymeleaf表达式的缩写
         3. `http://www.thymeleaf.org`：一个约束使用thymeleaf表达式的规则文件
 
-### 1.3 JDK动态代理
+### 1.3. JDK动态代理
 1. 代理模式：为其他对象提供 **静态/动态代理** 以控制对这个对象的访问
     - 静态代理：手工实现，且所要代理的目标类已确定 &rarr; 当接口中的功能增加或修改时，会影响大量的厂家类与代理类
     - 动态代理：使用JDK的 **反射机制** 创建代理类对象 &rarr; 在不改变原来目标方法功能的前提下，在代理中增强自己的功能代码
@@ -86,7 +86,7 @@ sidebar_label: 0. 小结
 
 ---
 
-## [2 SpringBoot3](./02-SpringBoot3.md)
+## [2. SpringBoot3](./02-SpringBoot3.md)
 1. `main` 方法分析：配置项、流式开发 `Builder()`
 2. 将bean对象/组件加入到SpringBoot容器中：多种注解方式，如 `@Configuration`
 3. 敏感配置信息加密：使用jasypt加解密
@@ -105,16 +105,16 @@ sidebar_label: 0. 小结
 
 ---
 
-## 3 《动力恒合仓库》（略）
+## 3. 《动力恒合仓库》（略）
 
 ---
 
-## 4 大型前后端分离项目《盈利宝》（略）
+## 4. 大型前后端分离项目《盈利宝》（略）
 
 ---
 
-## [5 Redis7](./05-Redis7.md)
-### 5.1 基础知识
+## [5. Redis7](./05-Redis7.md)
+### 5.1. 基础知识
 1. 远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的 **NoSQL数据库**
 2. 启动命令：
     - 服务端：`redis-server`
@@ -127,7 +127,7 @@ sidebar_label: 0. 小结
     4. 哈希类型hash：`单key:对象(属性:值)`
     5. 有序集合类型zset（sorted set）：`单key:多有序value`
 
-### 5.2 进阶知识
+### 5.2. 进阶知识
 1. 使用配置文件：`redis-server redis.conf &`
 2. 持久化策略：RDB（Redis DataBase）策略、AOF（Append Only File）策略
 3. 事务：一组redis命令一起执行
@@ -141,14 +141,14 @@ sidebar_label: 0. 小结
 
 ---
 
-## 6 SpringSecurity
-### 6.1 简介
+## 6. SpringSecurity
+### 6.1. 简介
 1. 主要功能：认证authentication、授权authorization
     1. 基于角色Role的身份认证：`@PreAuthorize("hasAnyRole("role1", "role2", …)")`
     2. 基于JDBC的用户认证：重写 `UserDetails loadUserByUsername(String username)` 方法
 2. 基于角色的访问控制RBAC（Role-Based Access Control）：用户有对应的角色，而角色拥有权限的集合
 
-### 6.2 JWT（Json Web Token）
+### 6.2. JWT（Json Web Token）
 1. 数据格式：`Header.Payload.Signature`
     1. `Header`：头部
     2. `Payload`：载荷，即有效数据
@@ -176,12 +176,12 @@ sidebar_label: 0. 小结
 
 ---
 
-## 7 RabbitMQ（略）
+## 7. RabbitMQ（略）
 
 ---
 
-## [8 MyBatisPlus](./08-MyBatisPlus.md)
-### 8.1 简介
+## [8. MyBatisPlus](./08-MyBatisPlus.md)
+### 8.1. 简介
 1. 增强MyBatis的功能，但不做改变
 2. 可通过注解指定表名 `@TableName`、列名 `@TableField`、主键 `@TableId` 等
 3. **ActiveRecord**：表映射到记录，记录映射到对象，字段映射到对象属性（较适用于动态语言）
@@ -191,12 +191,12 @@ sidebar_label: 0. 小结
 
 ---
 
-## 9 SpringCloudAlibaba
+## 9. SpringCloudAlibaba
 
 ---
 
-## [10 RocketMQ](./10-RocketMQ.md)
-### 10.1 简介
+## [10. RocketMQ](./10-RocketMQ.md)
+### 10.1. 简介
 1. 消息队列MQ（Message Queue）：面向消息的中间件
 2. 组成结构：
     - Producer：消息的发送者、生产者 &rarr; ProducerGroup：生产者组
@@ -211,7 +211,7 @@ sidebar_label: 0. 小结
     nohup sh mqbroker > log-path &
     ```
 
-### 10.2 应用
+### 10.2. 应用
 1. 消息分发规则：
     1. 消费者组间：每组分发一份消息
     2. 消费者组内：支持广播模式和负载均衡模式
@@ -232,8 +232,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [11 Docker](./11-Docker.md)
-### 11.1 概述
+## [11. Docker](./11-Docker.md)
+### 11.1. 概述
 1. **<font color="red">Docker</font>**：开源的应用容器引擎
 2. 架构：
     1. 守护进程 `Daemon`
@@ -243,7 +243,7 @@ sidebar_label: 0. 小结
     5. 标签 `Tag`
     6. 镜像中心 `Registry`
 
-### 11.2 Docker引擎
+### 11.2. Docker引擎
 1. **Docker引擎**：用来运行和管理容器的核心软件
 2. 架构：
     1. 客户端 `Client`
@@ -262,7 +262,7 @@ sidebar_label: 0. 小结
     6. `systemctl status docker`：查看Docker状态
     7. `systemctl enable docker`：开机自启动Docker
 
-### 11.3 Docker镜像
+### 11.3. Docker镜像
 1. **镜像**：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）
 2. 定位标识：`<repository>:<tag>`
     1. `<repository>`：
@@ -281,7 +281,7 @@ sidebar_label: 0. 小结
 4. 分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成；对分层的修改以新分层的形式出现
 5. 摘要Digest/内容散列Content Hash：只要内容发生了变更，摘要值一定会变更；主要用于区分相同 `<repository>:<tag>` 的不同镜像
 
-### 11.4 Docker容器
+### 11.4. Docker容器
 1. 常用命令：
     1. `docker run`：创建并启动容器
         - `--name`：指定当前容器名称
@@ -325,7 +325,7 @@ sidebar_label: 0. 小结
             - 没有连接任何容器的网络、悬虚镜像（dangling image）
             - 悬虚镜像的构建缓存（dangling build cache）
 
-### 11.5 Dockerfile
+### 11.5. Dockerfile
 1. `Dockerfile` 脚本文件：由一系列指令（由上到下依次执行；每条指令都会构建出一个镜像）构成的、用来构建Docker镜像
 2. 常用指令：
     1. `FROM <image>[:<tag>]`：指定基础镜像，且 **必须是第一条** 指令
@@ -342,7 +342,7 @@ sidebar_label: 0. 小结
 3. build cache机制：发现即将新构建出的镜像（层）与本地已存在的某镜像（层）重复时，默认复用
     - 失效：从发生变化的指令层开始的镜像层的cache全部失效
 
-### 11.6 数据持久化
+### 11.6. 数据持久化
 1. 数据卷持久化：
     1. **数据卷**：宿主机中的特殊文件/目录
         1. 容器/挂载点的删除，不会级联删除数据卷
@@ -350,7 +350,7 @@ sidebar_label: 0. 小结
     2. **挂载点**：容器中与数据卷相关联的文件/目录
 2. Dockerfile持久化：`VOLUME` 指令
 
-### 11.7 Docker网络
+### 11.7. Docker网络
 1. **Network Namespace**：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）
 2. 网络类型：
     1. `bridge` 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP
@@ -363,7 +363,7 @@ sidebar_label: 0. 小结
     4. `docker inspect <container>`：查看容器的详情（网关Gateway的ip地址 = docker0网桥的地址）
     5. `docker run … --network <network>`：指定连接的网络，默认连接到默认的bridge网络
 
-### 11.8 Docker Compose
+### 11.8. Docker Compose
 1. **Docker Compose**：Docker容器编排工具，通过一个 **声明式的配置文件** 描述整个应用，最终使用一条命令完成部署
 2. `compose.yml` / `docker-compose.yml`：
     ```yml showLineNumbers
@@ -424,7 +424,7 @@ sidebar_label: 0. 小结
     17. `docker-compose rm`：删除compose中所有处于停止状态的服务的容器
     18. `docker-compose down`：停止并删除compose中的所有服务容器、网络、镜像、数据卷
 
-### 11.9 镜像中心
+### 11.9. 镜像中心
 1. 发布镜像：
     1. 登录：`docker login --username=<username> --password=<password>`
     2. 对要发布的镜像进行命名（根据镜像仓库名称自动创建）：`docker tag <image-name> <username>/<respository-name>:<tag>`
@@ -443,7 +443,7 @@ sidebar_label: 0. 小结
         1. 搭建（使用HTTPS协议，需要先申请证书、再保存至服务器本地）
         2. docker客户端的推送、删除操作
 
-### 11.10 Docker Swarm
+### 11.10. Docker Swarm
 1. **Docker Swarm**：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信
     1. Swarm Node：采用Swarm模式运行的Docker Engine主机
         - 一个node对应一个主机，一个主机可对应多个node
@@ -495,15 +495,15 @@ sidebar_label: 0. 小结
     2. `ingress` 网络
     3. VXLAN隧道技术：重新封装不同协议的数据包后再发送
 
-### 11.11 CI/CD与Jenkins
+### 11.11. CI/CD与Jenkins
 1. **CI（Continuous Integration）/CD（Continuous Delivery/Deployment）**：持续集成/持续交付/部署
 2. **DevOps（Development & Operations）**：一种管理模式、执行规范与标准
 3. 应用实现的系统结构图：![CI/CD Structure](./img/0.11.1.CICD-structure.jpg)
 
 ---
 
-## [12 Kubernetes_k8s](./12-Kubernetes_k8s.md)
-### 12.1 概述
+## [12. Kubernetes_k8s](./12-Kubernetes_k8s.md)
+### 12.1. 概述
 1. **<font color="red">Kubernetes（k8s）</font>**：容器编排引擎，用于自动化、容器化应用程序的部署、规划、扩展和管理
 2. 架构图：
     - `Master`：
@@ -516,7 +516,7 @@ sidebar_label: 0. 小结
         2. `kube-proxy`
         3. `pod`（Container Runtime）
 
-### 12.2 部署
+### 12.2. 部署
 1. 搭建集群：
     1. 安装 `19.03.13` 版本的docker：`yum install docker-ce-19.03.13 -y`
     2. 安装kubeadm、kubelet、kubectl：`yum install kubelet-1.19.4 kubeadm-1.19.4 kubectl-1.19.4 -y`
@@ -539,7 +539,7 @@ sidebar_label: 0. 小结
     2. 启动镜像
     3. 暴露服务
 
-### 12.3 Ingress暴露应用
+### 12.3. Ingress暴露应用
 1. NodePort：让外部请求直接访问服务的最原始方式
 2. LoadBalancer：外部请求通过负载均衡器 `LoadBlancer` 转发到服务中的Pod里，但需要向云平台申请负载均衡器
 3. **Ingress**：外部请求访问k8s集群的必经之口，相当于集群网关可自定义路由规则来转发、管理、暴露服务（一组pod）
@@ -553,20 +553,20 @@ sidebar_label: 0. 小结
 
 ---
 
-## 13 微服务项目《动力商城》（略）
+## 13. 微服务项目《动力商城》（略）
 
 ---
 
-## 14 ActiveMQ（选学）（略）
+## 14. ActiveMQ（选学）（略）
 
 ---
 
-## [15 高并发解决方案（选学）](./15-高并发解决方案（选学）.md)
-### 15.1 概述
+## [15. 高并发解决方案（选学）](./15-高并发解决方案（选学）.md)
+### 15.1. 概述
 - 高并发：大量并发访问，即某个时间点有大量请求同时来访问系统
 - 衡量指标：响应时间、吞吐量、QPS、并发用户数
 
-### 15.2 解决方案
+### 15.2. 解决方案
 1. 硬件：单体应用垂直扩容方案
 2. 缓存：HTTP（浏览器、Nginx、CDN）、应用（内存、磁盘）、多级缓存
 3. 集群：单体应用水平扩容方案
@@ -586,8 +586,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 16 Thymeleaf（选学）
-### 16.1 简介
+## 16. Thymeleaf（选学）
+### 16.1. 简介
 1. 用户看到的结果页面是模板引擎用 **数据** 替换 **模板中的特殊符号** 而得到的
     - 表达式：
         1. 变量表达式 `${}`
@@ -605,8 +605,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 17 Java日志框架（选学）
-### 17.1 简介
+## 17. Java日志框架（选学）
+### 17.1. 简介
 1. 日志文件：用于记录系统操作事件的文件集合；可处理历史数据、诊断问题的追踪以及理解系统的活动等重要作用
 2. 日志框架的作用：
     - 控制日志输出的内容和格式
@@ -620,7 +620,7 @@ sidebar_label: 0. 小结
     - 输出级别：默认为 `INFO` 级别
     - 若要使用其他日志框架或日志门面，需要在 `spring-boot-starter-web` 中排除 `spring-boot-starter-logging` 部分
 
-### 17.2 框架分类
+### 17.2. 框架分类
 1. **<font color="red">JUL（Java Util Logging）</font>**：java原生日志框架
     - 结构：![JUL Structure](./img/0.17.1.jul-structure.jpg)
         - 记录器 `Logger`：访问日志系统的入口程序，可通过调用 `Logger对象` 的API来发布日志
@@ -678,7 +678,7 @@ sidebar_label: 0. 小结
             - 混合异步：在应用中混合使用同步日志和异步日志
     - 日志级别：`ALL` &lt; `TRACE` &lt; `DEBUG` &lt; `INFO` &lt; `WARN` &lt; `ERROR` &lt; `FATAL` &lt; `OFF`
 
-### 17.3 门面分类
+### 17.3. 门面分类
 1. **<font color="red">JCL（Jakarta Commons Logging）</font>**：java原生日志门面
     - 本身不具有记录日志的功能，但会提供通用的接口
     - 优先使用导入的第三方日志框架（如 `Log4j`、`Logback` 等）；若没有导入，则默认使用 `JUL`

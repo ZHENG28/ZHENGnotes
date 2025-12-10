@@ -4,8 +4,8 @@ sidebar_label: 11. MySQL索引优化
 
 # MySQL索引优化
 
-## 1 简介
-### 1.1 概述
+## 1. 简介
+### 1.1. 概述
 1. 索引，是帮助MySQL高效获取数据的一种数据结构，即排好序的、可以快速查找数据的数据结构
     ```mermaid
     graph TB
@@ -57,7 +57,7 @@ sidebar_label: 11. MySQL索引优化
         DROP INDEX index_name ON table_name;
         ```
 
-### 1.2 `EXPLAIN` 执行计划
+### 1.2. `EXPLAIN` 执行计划
 0. 语法：`EXPLAIN SQL`
 1. `id`：`SELECT` 查询的序列号，表示操作表的顺序
 2. `select_type`：查询类型
@@ -77,7 +77,7 @@ sidebar_label: 11. MySQL索引优化
     3. `Using index`：使用索引查找，避免了访问表数据
     4. `Using where`：使用 `WHERE` 过滤
 
-### 1.3 查询优化
+### 1.3. 查询优化
 1. 索引是否生效：
     1. 最佳左前缀法则：查询从联合索引的最左前列开始，并且不跳过索引中的列 &rarr; 生效
     2. 在索引列上做计算、函数操作 &rarr; 失效

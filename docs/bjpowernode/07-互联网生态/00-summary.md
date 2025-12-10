@@ -4,8 +4,8 @@ sidebar_label: 0. 小结
 
 # 互联网生态
 
-## [1 Linux](./01-Linux.md)
-### 1.1 简介
+## [1. Linux](./01-Linux.md)
+### 1.1. 简介
 1. 开源、免费的OS，注重安全性、稳定性、高并发处理能力，但没有优异的可视化界面
 2. 版本：Ubuntu（乌班图）、RedHat（红帽）、CentOS
 3. 目录结构：
@@ -15,7 +15,7 @@ sidebar_label: 0. 小结
     4. `/home`：用户的根目录
     5. `/opt`：存放额外安装的软件
 
-### 1.2 常用工具和指令
+### 1.2. 常用工具和指令
 1. 文本编辑器：vi、vim（vi的增强版本）
 2. 用户 `useradd`、用户组 `groupadd`、权限 `chmod` 管理指令
 3. 常用指令：
@@ -68,8 +68,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 2 Git
-### 2.1 概述
+## 2. Git
+### 2.1. 概述
 1. 开源的分布式版本控制管理工具，高效处理版本管理
     ![Git Process](./img/0.2.1.git-process.jpg)
 2. `git init`：生成.git目录（即本地库的生成）
@@ -79,12 +79,12 @@ sidebar_label: 0. 小结
 
 ---
 
-## 3 SVN（略）
+## 3. SVN（略）
 
 ---
 
-## 4 Maven进阶
-### 4.1 概述
+## 4. Maven进阶
+### 4.1. 概述
 1. 项目对象模型POM（Project Object Module）：该文件可以被子工程继承
 2. maven多模块管理：
     - 父工程：`<packaging>` 设置为pom
@@ -93,8 +93,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 5 Dubbo
-### 5.1 RPC基础知识
+## 5. Dubbo
+### 5.1. RPC基础知识
 1. 应用架构的发展演变：
     ```mermaid
     graph TB
@@ -104,7 +104,7 @@ sidebar_label: 0. 小结
     ```
 2. 远程过程调用RPC（Remote Procedure Call）：即调用接口，如Dubbo、gRPC、Thrift、HSF
 
-### 5.2 概述
+### 5.2. 概述
 1. 基本结构：![Dubbo Process](./img/0.5.1.dubbo-process.jpg)
     - **容器Container**：和Spring容器无缝连接
     - **服务提供者Provider**：暴露服务的服务提供者
@@ -124,13 +124,13 @@ sidebar_label: 0. 小结
 
 ---
 
-## [6 SpringSession](./06-SpringSession.md)
-### 6.1 概述
+## [6. SpringSession](./06-SpringSession.md)
+### 6.1. 概述
 1. 会话 `Session`：记录用户状态，从而使服务端能识别用户
 2. `Cookie`：用来存储相关客户端信息（如 `sessionId`），HTTP请求时会发送对应的 `Cookie` 信息到服务端
 3. 集群模式下，tomcat服务器之间无法共享session &rarr; 采用 `Spring Session`
 
-### 6.2 应用
+### 6.2. 应用
 1. 同域名下相同项目（即集群环境）
 2. 同域名下不同项目：配置 `Cookie` 的存放路径
 3. 同根域名不同二级子域名下的项目：配置 `Cookie` 的存放域名
@@ -139,8 +139,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [7 MySQL集群](./07-MySQL集群.md)
-### 7.1 概述
+## [7. MySQL集群](./07-MySQL集群.md)
+### 7.1. 概述
 1. 主从复制：服务器分为主服务器和从服务器，主服务器负责读和写，从服务器只负责读
     1. 一主多从
     2. 双主双从
@@ -152,8 +152,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [8 Nginx](./08-Nginx.md)
-### 8.1 简介
+## [8. Nginx](./08-Nginx.md)
+### 8.1. 简介
 1. Nginx（engine x）：一个代理服务器，高性能、低消耗、并发处理能力强
     1. **反向代理**（Reverse Proxy）：代理对象是服务端
     2. **正向代理**（Reverse Proxy）：代理对象是客户端
@@ -173,7 +173,7 @@ sidebar_label: 0. 小结
     2. events配置
     3. http配置
 
-### 8.2 应用
+### 8.2. 应用
 1. 静态网站部署
 2. 负载均衡：将请求均匀分摊到集群中的多个服务器节点上执行
     - 策略：轮询（默认）、权重 `weight`、ip绑定 `ip_hash`、最少连接 `least_conn`
@@ -183,8 +183,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [9 FastDFS](./09-FastDFS.md)
-### 9.1 概述
+## [9. FastDFS](./09-FastDFS.md)
+### 9.1. 概述
 1. FastDFS：开源的轻量级分布式文件系统，具备文件存储、文件同步、文件访问（文件上传、文件下载、文件删除）等功能，具有冗余备份、线性扩容等机制
     1. 客户端
     2. 服务端：
@@ -195,14 +195,14 @@ sidebar_label: 0. 小结
     2. `fdfs_storaged <config_file> [start | stop | restart]`
 3. 通过Nginx扩展模块，达到HTTP访问FastDFS服务器上的文件的效果
 
-### 9.2 应用
+### 9.2. 应用
 1. 在java中的应用
 2. 搭建FastDFS分布式文件系统集群
 
 ---
 
-## [10 MySQL优化](./10-MySQL优化.md)
-### 10.1 概述
+## [10. MySQL优化](./10-MySQL优化.md)
+### 10.1. 概述
 1. 查询语句关键词：`FROM` &rarr; `WHERE` &rarr; `GROUP BY` &rarr; `HAVING` &rarr; `SELECT` &rarr; `ORDER BY` &rarr; `LIMIT`
 2. 索引：一组排好顺序的数据，主要使用 `B-TREE` 索引算法
     1. 聚簇索引和非聚簇索引
@@ -212,8 +212,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [11 MySQL索引优化](./11-MySQL索引优化.md)
-### 11.1 概述
+## [11. MySQL索引优化](./11-MySQL索引优化.md)
+### 11.1. 概述
 1. 索引，是排好序的、可以快速查找数据的数据结构
     - `INNODB` 存储引擎：`B+ Tree` 索引
     - `MYISAM` 存储引擎：`B Tree` 索引
@@ -229,8 +229,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [12 MyCAT2](./12-MyCAT2.md)
-### 12.1 概述
+## [12. MyCAT2](./12-MyCAT2.md)
+### 12.1. 概述
 1. MyCAT：一个分布式数据库中间插件，核心功能是 **分表分库**
 2. 重要的配置文件：
     1. 用户（user）：`mycat/conf/user/{username}.user.json`
@@ -250,8 +250,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## 13 短信验证
-### 13.1 概述
+## 13. 短信验证
+### 13.1. 概述
 1. 程序（整理短信内容） --> 短信平台 --> 运营商
 2. 短信内容模板：由国家工信部制定
     1. 短信签名：`【xxx】`
@@ -259,8 +259,8 @@ sidebar_label: 0. 小结
 
 ---
 
-## [14 MQ解决重复消费问题](./14-MQ解决重复消费问题.md)
-### 14.1 概述
+## [14. MQ解决重复消费问题](./14-MQ解决重复消费问题.md)
+### 14.1. 概述
 1. 幂等性：任意多次执行所产生的影响均与一次执行产生的影响相同
     1. 接口调用重试
     2. 消息重复消费

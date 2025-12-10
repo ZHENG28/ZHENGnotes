@@ -4,8 +4,8 @@ sidebar_label: 5. JVM
 
 # JVM（Java Virtual Machine）
 
-## 1 JVM概述
-### 1.1 JVM简介
+## 1. JVM概述
+### 1.1. JVM简介
 - JDK、JRE、JVM三者关系：![Java Conceptual Diagram](./img/5.1.1.java-conceptual-diagram.jpg)
     - JDK（Java Development Kit）：JRE + Development/debugging tools
     - JRE（Java Runtime Environment）：JVM + Package Classes(Compact Profiles) + Runtime Libraries
@@ -16,11 +16,11 @@ sidebar_label: 5. JVM
     - 程序虚拟机：（如Java虚拟机）
 - JVM：Java语言生成编译代码的运行平台，有自己的指令集和各种运行时内存区域；但只与特定的二进制文件格式class文件格式有关联
 
-### 1.2 JVM规范
+### 1.2. JVM规范
 - 语言规范（The Java Language Specification）
 - 虚拟机规范（The Java Virtual Machine Specification）
 
-### 1.3 JVM整体结构
+### 1.3. JVM整体结构
 ![JVM structure](./img/5.1.2.jvm-structure.png)
 - **<font color="red">类加载子系统Class Loader SubSystem</font>**：在运行时，首次引用类的时候加载、链接、并初始化类文件
     - **加载Loading**：类通过该组件进行加载 &larr; 双亲委托机制
@@ -65,20 +65,20 @@ sidebar_label: 5. JVM
 
 ---
 
-## 2 class字节码文件结构
-### 2.1 class文件的理解
+## 2. class字节码文件结构
+### 2.1. class文件的理解
 - Java虚拟机不与任何程序语言相关，只与class文件相关，它并不关心来源语言是什么
 - class文件包含了Java虚拟机指令集、符号表以及其他信息
 - 每一个class文件对应唯一的一个类/抽象类/接口，但一个类/抽象类/接口不一定只能是class文件（如通过动态代理、类加载器等生成）
 - class文件格式：由字节流组成，每个字节含8b；以大端在前的顺序存储
 
-### 2.2 数据结构
+### 2.2. 数据结构
 - 无符号数：用于描述数字、索引引用、数量值、UTF-8编码的字符串值；连续存放，没有使用填充或对齐等调整方式
     - 如：u1表示1个字节的无符号数，u2表示2个字节的无符号数
 - 表：用于描述有层次关系的复合结构的数据，由多个无符号数或其他表作为数据项构成
     - 命名以“_info”结尾
 
-### 2.3 基本信息
+### 2.3. 基本信息
 1. 魔数magic（u4）：固定字节的内容，用于区分文件类型，如class文件中固定为 `CAFEBABE`
 2. 版本号version（u2+u2）：
     1. 次版本号（Minor Version）：起始值为0

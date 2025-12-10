@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # vim语法
 
-## 1 正常模式（Normal Mode）
+## 1. 正常模式（Normal Mode）
 1. `i`（**i**nsert）：切换至插入模式
 2. 移动方向：
     - 横向移动：
@@ -47,7 +47,7 @@ sidebar_position: 4
 15. ``：
 16. ``：
 
-## 2 插入模式（Insert Mode）
+## 2. 插入模式（Insert Mode）
 1. `ESC`：返回至正常模式
 
-## 3 可视模式（Visual Mode）
+## 3. 可视模式（Visual Mode）
