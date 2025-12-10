@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
-<title data-rh="true">Docker | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Docker | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1 概述"><meta data-rh="true" property="og:description" content="1 概述"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
-<script src="/ZHENGnotes/assets/js/runtime~main.7d845a4b.js" defer="defer"></script>
+<title data-rh="true">Docker | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Docker | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1. 概述"><meta data-rh="true" property="og:description" content="1. 概述"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/Docker" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.75d3d48e.js" defer="defer"></script>
 <script src="/ZHENGnotes/assets/js/main.650a7257.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Collapse sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11. Docker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Kubernetes_k8s">12. Kubernetes_k8s</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Expand sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/6-微服务结构"><span itemprop="name">6. 微服务结构</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">11. Docker</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>Docker</h1>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-概述">1 概述<a class="hash-link" aria-label="Direct link to 1 概述" title="Direct link to 1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1-概述">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-概述">1. 概述<a class="hash-link" aria-label="Direct link to 1. 概述" title="Direct link to 1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1-概述">​</a></h2>
 <ol>
 <li><strong><font color="red">Docker</font></strong>：开源的应用容器引擎，可将应用及其运行环境打包到轻量级、可移植的镜像中，发布到任何流行的Linux、Windows机器上</li>
 <li>Docker的用途：<!-- -->
@@ -48,13 +48,13 @@
 <li>容器 <code>Container</code>：包含一个或多个应用程序，且与其它容器之间相互隔离</li>
 <li>仓库 <code>Repository</code>：保存一组具有相同名称的镜像，且该名称与仓库名称相同</li>
 <li>标签 <code>Tag</code>：镜像的一种标识，通过 <code>&lt;repository&gt;:&lt;tag&gt;</code> 来定位</li>
-<li>镜像中心 <code>Registry</code>：存放着由官方  、机构或个人创建的Docker仓库</li>
+<li>镜像中心 <code>Registry</code>：存放着由官  方、机构或个人创建的Docker仓库</li>
 </ol>
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-docker引擎">2 Docker引擎<a class="hash-link" aria-label="Direct link to 2 Docker引擎" title="Direct link to 2 Docker引擎" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#2-docker引擎">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="21-版本发展历程">2.1 版本发展历程<a class="hash-link" aria-label="Direct link to 2.1 版本发展历程" title="Direct link to 2.1 版本发展历程" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#21-版本发展历程">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-docker引擎">2. Docker引擎<a class="hash-link" aria-label="Direct link to 2. Docker引擎" title="Direct link to 2. Docker引擎" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#2-docker引擎">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="21-版本发展历程">2.1. 版本发展历程<a class="hash-link" aria-label="Direct link to 2.1. 版本发展历程" title="Direct link to 2.1. 版本发展历程" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#21-版本发展历程">​</a></h3>
 <ol>
 <li>发展历程：<!-- -->
 <ol>
@@ -93,7 +93,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="22-概述">2.2 概述<a class="hash-link" aria-label="Direct link to 2.2 概述" title="Direct link to 2.2 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#22-概述">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="22-概述">2.2. 概述<a class="hash-link" aria-label="Direct link to 2.2. 概述" title="Direct link to 2.2. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#22-概述">​</a></h3>
 <ol>
 <li><strong><font color="red">Docker引擎</font></strong>：用来运行和管理容器的核心软件</li>
 <li>架构：<img decoding="async" loading="lazy" alt="Docker Engine Structure" src="/ZHENGnotes/assets/images/11.2.1.docker-engine-structure-daa72cb6c6b9956e9d0aede7947f07f2.jpg" width="698" height="702" class="img_ev3q">
@@ -111,7 +111,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="23-安装">2.3 安装<a class="hash-link" aria-label="Direct link to 2.3 安装" title="Direct link to 2.3 安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#23-安装">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="23-安装">2.3. 安装<a class="hash-link" aria-label="Direct link to 2.3. 安装" title="Direct link to 2.3. 安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#23-安装">​</a></h3>
 <ol>
 <li>官方文档：<a href="https://docs.docker.com/engine/install/centos/#installation-methods" target="_blank" rel="noopener noreferrer">Install Docker Engine on CentOS - Installation methods</a>
 <ul>
@@ -138,14 +138,14 @@
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token comment" style="color:rgb(0, 128, 0)"># 创建Docker文件夹</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">mkdir</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(9, 134, 88)">-p</span><span class="token plain"> /etc/docker</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 在daemon.json中加上阿里云镜像中心的地址</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">tee</span><span class="token plain"> /etc/docker/daemon.json </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;&lt;-</span><span class="token string" style="color:rgb(163, 21, 21)">&#x27;EOF&#x27;</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">{</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">&quot;registry-mirrors&quot;: [&quot;https://fj48qfx2.mirror.aliyuncs.com&quot;]</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">}</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token string" style="color:rgb(163, 21, 21)">EOF</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 重新加载服务文件</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> systemctl daemon-reload</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token comment" style="color:rgb(0, 128, 0)"># 重启Docker</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">sudo</span><span class="token plain"> systemctl restart </span><span class="token function" style="color:rgb(0, 0, 255)">docker</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="24-卸载">2.4 卸载<a class="hash-link" aria-label="Direct link to 2.4 卸载" title="Direct link to 2.4 卸载" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#24-卸载">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="24-卸载">2.4. 卸载<a class="hash-link" aria-label="Direct link to 2.4. 卸载" title="Direct link to 2.4. 卸载" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#24-卸载">​</a></h3>
 <ol>
 <li>官方文档：<a href="https://docs.docker.com/engine/install/centos/#uninstall-docker-engine" target="_blank" rel="noopener noreferrer">Install Docker Engine on CentOS - Uninstall Docker Engine</a></li>
 <li>手动删除自定义的配置文件</li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-docker镜像">3 Docker镜像<a class="hash-link" aria-label="Direct link to 3 Docker镜像" title="Direct link to 3 Docker镜像" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#3-docker镜像">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="31-概述">3.1 概述<a class="hash-link" aria-label="Direct link to 3.1 概述" title="Direct link to 3.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#31-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-docker镜像">3. Docker镜像<a class="hash-link" aria-label="Direct link to 3. Docker镜像" title="Direct link to 3. Docker镜像" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#3-docker镜像">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="31-概述">3.1. 概述<a class="hash-link" aria-label="Direct link to 3.1. 概述" title="Direct link to 3.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#31-概述">​</a></h3>
 <ol>
 <li><strong><font color="red">镜像</font></strong>：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）</li>
 <li>镜像仓库的分类：<!-- -->
@@ -169,7 +169,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="32-命令">3.2 命令<a class="hash-link" aria-label="Direct link to 3.2 命令" title="Direct link to 3.2 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#32-命令">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="32-命令">3.2. 命令<a class="hash-link" aria-label="Direct link to 3.2. 命令" title="Direct link to 3.2. 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#32-命令">​</a></h3>
 <ol>
 <li><code>docker pull</code>：将指定镜像从Dockerhub拉取到本地<!-- -->
 <ul>
@@ -208,7 +208,7 @@
 <li><code>docker load</code>：将 <code>.tar</code> 文件导入并加载为一个或多个镜像</li>
 <li><code>docker inspect</code>：查看镜像的相关属性</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="33-镜像分层">3.3 镜像分层<a class="hash-link" aria-label="Direct link to 3.3 镜像分层" title="Direct link to 3.3 镜像分层" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#33-镜像分层">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="33-镜像分层">3.3. 镜像分层<a class="hash-link" aria-label="Direct link to 3.3. 镜像分层" title="Direct link to 3.3. 镜像分层" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#33-镜像分层">​</a></h3>
 <ol>
 <li>分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成<!-- -->
 <ol>
@@ -232,19 +232,19 @@
 </li>
 <li><strong>容器层</strong>/联合文件系统Union File System：可读写，对文件的任何修改都 <strong>只存在于容器层</strong></li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="34-镜像摘要">3.4 镜像摘要<a class="hash-link" aria-label="Direct link to 3.4 镜像摘要" title="Direct link to 3.4 镜像摘要" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#34-镜像摘要">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="34-镜像摘要">3.4. 镜像摘要<a class="hash-link" aria-label="Direct link to 3.4. 镜像摘要" title="Direct link to 3.4. 镜像摘要" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#34-镜像摘要">​</a></h3>
 <ol>
 <li>摘要Digest：即内容散列Content Hash，只要内容发生了变更，摘要值一定会变更</li>
 <li>算法：SHA256，长度为256位的二进制字符串 = 长度为64位的16进制字符串</li>
 <li>主要作用：区分相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的不同镜像（版本相同，但内容不同）</li>
-<li>分发散列值Distribution Hash：<!-- -->
+<li>分 发散列值Distribution Hash：<!-- -->
 <ul>
 <li>发送方：由于push或pull镜像时，网络会对镜像进行压缩，压缩后Docker立即计算分发散列值</li>
 <li>接收方：接收后立即计算分发散列值</li>
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="35-多架构镜像">3.5 多架构镜像<a class="hash-link" aria-label="Direct link to 3.5 多架构镜像" title="Direct link to 3.5 多架构镜像" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#35-多架构镜像">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="35-多架构镜像">3.5. 多架构镜像<a class="hash-link" aria-label="Direct link to 3.5. 多架构镜像" title="Direct link to 3.5. 多架构镜像" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#35-多架构镜像">​</a></h3>
 <ol>
 <li>多架构镜像Multi-architecture Image：相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的镜像适用于不同操作系统/系统架构</li>
 <li>原理：通过 <code>docker pull</code> 命令拉取到的是与当前操作系统/系统架构相匹配的镜像<!-- -->
@@ -255,8 +255,8 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="4-docker容器">4 Docker容器<a class="hash-link" aria-label="Direct link to 4 Docker容器" title="Direct link to 4 Docker容器" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#4-docker容器">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="41-概述">4.1 概述<a class="hash-link" aria-label="Direct link to 4.1 概述" title="Direct link to 4.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#41-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="4-docker容器">4. Docker容器<a class="hash-link" aria-label="Direct link to 4. Docker容器" title="Direct link to 4. Docker容器" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#4-docker容器">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="41-概述">4.1. 概述<a class="hash-link" aria-label="Direct link to 4.1. 概述" title="Direct link to 4.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#41-概述">​</a></h3>
 <ol>
 <li>启动流程：<!-- -->
 <!-- -->
@@ -267,7 +267,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="42-命令">4.2 命令<a class="hash-link" aria-label="Direct link to 4.2 命令" title="Direct link to 4.2 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#42-命令">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="42-命令">4.2. 命令<a class="hash-link" aria-label="Direct link to 4.2. 命令" title="Direct link to 4.2. 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#42-命令">​</a></h3>
 <ol>
 <li>
 <p><code>docker run</code>：创建并启动容器</p>
@@ -371,7 +371,7 @@
 </ul>
 </li>
 <li>
-<p><code>docker cp</code>：完成宿主机与容器之间的文件或目录的相互复制，无论容器是否处于运行状态</p>
+<p><code>docker cp</code>  ：完成宿主机与容器之间的文件或目录的相互复制，无论容器是否处于运行状态</p>
 <ul>
 <li><code>&lt;source&gt; &lt;destination&gt;</code>
 <ul>
@@ -392,7 +392,7 @@
 </li>
 <li>
 <p><code>docker export</code>：将容器导出为 <code>.tar</code> 文件</p>
-<table><thead><tr><th style="text-align:center">对比字段</th><th style="text-align:center"><code>docker export</code></th><th style="text-align:center"><code>docker save</code></th></tr></thead><tbody><tr><td style="text-align:center">作用对象</td><td style="text-align:center">容器</td><td style="text-align:center">镜像</td></tr><tr><td style="text-align:center">导出数量</td><td style="text-align:center">一次只能对一个容器导出</td><td style="text-align:center">一次可以对多个镜像导出</td></tr><tr><td style="text-align:center">原镜像的信息</td><td style="text-align:center">会丢弃原镜像的部分记录（历史记录和元数据信息）</td><td style="text-align:center">保存了原镜像的完整记录</td></tr></tbody></table>
+<table><thead><tr><th style="text-align:center">对比字段</th><th style="text-align:center"><code>docker export</code></th><th style="text-align:center"><code>docker save</code></th></tr></thead><tbody><tr><td style="text-align:center">作用对象</td><td style="text-align:center">容器</td><td style="text-align:center">镜像</td></tr><tr><td style="text-align:center">导出数量</td><td style="text-align:center">一次只能对一个容器导出</td><td style="text-align:center">一次可以对多个镜像导出</td></tr><tr><td style="text-align:center">原镜像的信息</td><td style="text-align:center">会丢弃原镜像的部分记录（历史记录和元数据信息）</td><td style="text-align:center">保存了原镜像的完整 记录</td></tr></tbody></table>
 </li>
 <li>
 <p><code>docker import</code>：将 <code>.tar</code> 文件导入并构建一个新的镜像</p>
@@ -429,8 +429,8 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-dockerfile">5 Dockerfile<a class="hash-link" aria-label="Direct link to 5 Dockerfile" title="Direct link to 5 Dockerfile" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#5-dockerfile">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="51-概述">5.1 概述<a class="hash-link" aria-label="Direct link to 5.1 概述" title="Direct link to 5.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#51-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-dockerfile">5. Dockerfile<a class="hash-link" aria-label="Direct link to 5. Dockerfile" title="Direct link to 5. Dockerfile" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#5-dockerfile">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="51-概述">5.1. 概述<a class="hash-link" aria-label="Direct link to 5.1. 概述" title="Direct link to 5.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#51-概述">​</a></h3>
 <ol>
 <li><code>Dockerfile</code>：由一系列指令构成的、用来构建Docker镜像的脚本文件<!-- -->
 <ul>
@@ -446,7 +446,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="52-指令">5.2 指令<a class="hash-link" aria-label="Direct link to 5.2 指令" title="Direct link to 5.2 指令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#52-指令">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="52-指令">5.2. 指令<a class="hash-link" aria-label="Direct link to 5.2. 指令" title="Direct link to 5.2. 指令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#52-指令">​</a></h3>
 <ol>
 <li><code>FROM &lt;image&gt;[:&lt;tag&gt;]</code>：指定基础镜像，且 <strong>必须是第一条</strong> 指令</li>
 <li><code>MAINTAINER &lt;name&gt;</code>：（已过时，用 <code>LABEL</code> 指令代替）填写维护者姓名和邮箱</li>
@@ -532,7 +532,7 @@
 <li><code>ONBUILD [INSTRUCTION]</code>：指定当前镜像的子镜像进行构建时要执行的指令</li>
 <li><code>VOLUME [&quot;dir1&quot;, &quot;dir2&quot;, …]</code>：在容器里创建可以挂载数据卷的 <strong>挂载点</strong></li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="53-实际应用">5.3 实际应用<a class="hash-link" aria-label="Direct link to 5.3 实际应用" title="Direct link to 5.3 实际应用" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#53-实际应用">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="53-实际应用">5.3. 实际应用<a class="hash-link" aria-label="Direct link to 5.3. 实际应用" title="Direct link to 5.3. 实际应用" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#53-实际应用">​</a></h3>
 <ol>
 <li>scratch镜像：空镜像，所有镜像的 <strong>Base Image</strong>
 <ol>
@@ -548,7 +548,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="54-build-cache">5.4 build cache<a class="hash-link" aria-label="Direct link to 5.4 build cache" title="Direct link to 5.4 build cache" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#54-build-cache">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="54-build-cache">5.4. build cache<a class="hash-link" aria-label="Direct link to 5.4. build cache" title="Direct link to 5.4. build cache" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#54-build-cache">​</a></h3>
 <ol>
 <li>镜像构建过程：下层镜像作为上层镜像的 <strong>父镜像/输入</strong> → <strong>镜像文件系统或json文件发生变更，就会生成一个新的镜像层</strong>
 <ol>
@@ -564,19 +564,19 @@
 <ol>
 <li>Dockerfile文件中的指令发生变化</li>
 <li><code>ADD</code> 或 <code>COPY</code> 指令操作的文件内容发生变化</li>
-<li><code>RUN</code> 指令的外部依赖发生变化</li>
+<li><code>RUN</code> 指令的外部 依赖发生变化</li>
 <li>build时指定 <code>--no-cache</code>：当前构建时均不使用cache</li>
 </ol>
 </li>
 <li>清理dangling build cache：<code>docker system prune</code></li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="6-数据持久化">6 数据持久化<a class="hash-link" aria-label="Direct link to 6 数据持久化" title="Direct link to 6 数据持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#6-数据持久化">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="61-定制镜像持久化">6.1 定制镜像持久化<a class="hash-link" aria-label="Direct link to 6.1 定制镜像持久化" title="Direct link to 6.1 定制镜像持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#61-定制镜像持久化">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="6-数据持久化">6. 数据持久化<a class="hash-link" aria-label="Direct link to 6. 数据持久化" title="Direct link to 6. 数据持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#6-数据持久化">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="61-定制镜像持久化">6.1. 定制镜像持久化<a class="hash-link" aria-label="Direct link to 6.1. 定制镜像持久化" title="Direct link to 6.1. 定制镜像持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#61-定制镜像持久化">​</a></h3>
 <ol>
 <li>对镜像进行操作后，执行 <code>docker commit</code> 命令，以当前运行的容器为 <strong>范本</strong> 生成镜像</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="62-数据卷持久化">6.2 数据卷持久化<a class="hash-link" aria-label="Direct link to 6.2 数据卷持久化" title="Direct link to 6.2 数据卷持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#62-数据卷持久化">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="62-数据卷持久化">6.2. 数据卷持久化<a class="hash-link" aria-label="Direct link to 6.2. 数据卷持久化" title="Direct link to 6.2. 数据卷持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#62-数据卷持久化">​</a></h3>
 <ol>
 <li>docker提供的实时数据同步方式：<!-- -->
 <ol>
@@ -596,7 +596,7 @@
 <li><strong><font color="red">挂载点</font></strong>：容器中与数据卷相关联的文件/目录</li>
 <li>命令：指定目录不存在时，会自动创建<!-- -->
 <ol>
-<li><code>docker run -it -v /&lt;宿主机绝对路径目录&gt;:/&lt;容器内绝对路径 目录&gt; image</code>：创建读写 <code>rw</code> 数据卷<!-- -->
+<li><code>docker run -it -v /&lt;宿主机绝对路径目录&gt;:/&lt;容器内绝对路径目录&gt; image</code>：创建读写 <code>rw</code> 数据卷<!-- -->
 <ul>
 <li>容器 <strong>读写</strong> 挂载点</li>
 <li>宿主机 <strong>读写</strong> 数据卷</li>
@@ -612,7 +612,7 @@
 </li>
 <li>数据卷共享：需要一个容器作为 <strong>数据卷容器</strong>，其它需要共享数据卷的容器在启动时指定 <code>--volumes-from [数据卷容器]</code> 即可</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="63-dockerfile持久化">6.3 Dockerfile持久化<a class="hash-link" aria-label="Direct link to 6.3 Dockerfile持久化" title="Direct link to 6.3 Dockerfile持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#63-dockerfile持久化">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="63-dockerfile持久化">6.3. Dockerfile持久化<a class="hash-link" aria-label="Direct link to 6.3. Dockerfile持久化" title="Direct link to 6.3. Dockerfile持久化" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#63-dockerfile持久化">​</a></h3>
 <ol>
 <li>通过Dockerfile中的 <code>VOLUME</code> 指令来指定挂载点<!-- -->
 <ul>
@@ -622,10 +622,10 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="7-docker网络">7 Docker网络<a class="hash-link" aria-label="Direct link to 7 Docker网络" title="Direct link to 7 Docker网络" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#7-docker网络">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="71-概述">7.1 概述<a class="hash-link" aria-label="Direct link to 7.1 概述" title="Direct link to 7.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#71-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="7-docker网络">7. Docker网络<a class="hash-link" aria-label="Direct link to 7. Docker网络" title="Direct link to 7. Docker网络" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#7-docker网络">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="71-概述">7.1. 概述<a class="hash-link" aria-label="Direct link to 7.1. 概述" title="Direct link to 7.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#71-概述">​</a></h3>
 <ol>
-<li><strong><font color="red">Network Namespace</font></strong>：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表  、协议栈）
+<li><strong><font color="red">Network Namespace</font></strong>：Linux提供的用于实现网络虚拟化的功能，创建 多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）
 <img decoding="async" loading="lazy" alt="Network Namespace" src="/ZHENGnotes/assets/images/11.7.1.network-namespace-21c35ff280bb8e340e35cd31dad1347a.jpg" width="775" height="328" class="img_ev3q">
 <ol>
 <li><code>ip nets add &lt;namespace&gt;</code>：创建网络空间（默认有一个回环网络适配器lo）</li>
@@ -647,13 +647,13 @@
 <li><strong><font color="red">Libnetwork</font></strong>：CNM的开源实现，并额外实现了本地服务发现、容器负载均衡、网络控制层与管理层等功能</li>
 <li><strong><font color="red">网络驱动Driver</font></strong>：<img decoding="async" loading="lazy" alt="driver" src="/ZHENGnotes/assets/images/11.7.2.driver-3714e2ecf5c4467172bf7b1cf00d8120.jpg" width="756" height="313" class="img_ev3q">
 <ul>
-<li><code>docker network ls</code>：查看当前主机所连接的网络及网络类型</li>
+<li><code>docker network ls</code>：查  看当前主机所连接的网络及网络类型</li>
 </ul>
 </li>
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="72-网络类型">7.2 网络类型<a class="hash-link" aria-label="Direct link to 7.2 网络类型" title="Direct link to 7.2 网络类型" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#72-网络类型">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="72-网络类型">7.2. 网络类型<a class="hash-link" aria-label="Direct link to 7.2. 网络类型" title="Direct link to 7.2. 网络类型" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#72-网络类型">​</a></h3>
 <ol>
 <li><code>bridge</code> 桥接网络：docker的默认网络模式，只能用于连接所在docker宿主机上的容器；具有独立的namespace、网络接口、IP<!-- -->
 <ol>
@@ -682,7 +682,7 @@
 </li>
 <li><code>docker run … --network &lt;network&gt;</code>：指定连接的网络，默认连接到默认的bridge网络</li>
 <li><code>docker network connect &lt;network&gt; &lt;container&gt;</code>：将容器连接到指定网络上</li>
-<li><code>docker exec &lt;container1&gt; ping &lt;container2/ip&gt;</code>：建议使用容器名称 ← ip可能会变化，容器名固定不变<!-- -->
+<li><code>docker exec &lt;container1&gt; ping &lt;container2/ip&gt;</code> ：建议使用容器名称 ← ip可能会变化，容器名固定不变<!-- -->
 <ul>
 <li>在默认的bridge网络上，不支持 <code>ping &lt;container2&gt;</code></li>
 </ul>
@@ -710,8 +710,8 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="8-常用服务器安装">8 常用服务器安装<a class="hash-link" aria-label="Direct link to 8 常用服务器安装" title="Direct link to 8 常用服务器安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#8-常用服务器安装">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="81-mysql安装">8.1 MySQL安装<a class="hash-link" aria-label="Direct link to 8.1 MySQL安装" title="Direct link to 8.1 MySQL安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#81-mysql安装">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="8-常用服务器安装">8. 常用服务器安装<a class="hash-link" aria-label="Direct link to 8. 常用服务器安装" title="Direct link to 8. 常用服务器安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#8-常用服务器安装">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="81-mysql安装">8.1. MySQL安装<a class="hash-link" aria-label="Direct link to 8.1. MySQL安装" title="Direct link to 8.1. MySQL安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#81-mysql安装">​</a></h3>
 <ol>
 <li>单机安装命令：<code>docker run --name &lt;mysql-container-name&gt; -e MYSQL_ROOT_PASSWORD=&lt;password&gt; -d mysql:&lt;tag&gt;</code>
 <ol>
@@ -723,7 +723,7 @@
 </li>
 <li>集群搭建：与普通集群搭建步骤一致</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="82-redis安装">8.2 Redis安装<a class="hash-link" aria-label="Direct link to 8.2 Redis安装" title="Direct link to 8.2 Redis安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#82-redis安装">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="82-redis安装">8.2. Redis安装<a class="hash-link" aria-label="Direct link to 8.2. Redis安装" title="Direct link to 8.2. Redis安装" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#82-redis安装">​</a></h3>
 <ol>
 <li>单机安装命令：<code>docker run --name &lt;redis-container-name&gt; -d redis:&lt;tag&gt; redis-server</code>
 <ul>
@@ -742,7 +742,7 @@
 <li>只支持冷处理的容灾方案</li>
 </ul>
 </li>
-<li>高可用集群搭建：在主从集群的基础上，再搭建哨兵sentinel集群<!-- -->
+<li>高可用集群搭建：在主从集群的基础上，再  搭建哨兵sentinel集群<!-- -->
 <ul>
 <li>修改 <code>sentinel.conf</code>：<!-- -->
 <ol>
@@ -774,13 +774,13 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="9-docker-compose">9 Docker Compose<a class="hash-link" aria-label="Direct link to 9 Docker Compose" title="Direct link to 9 Docker Compose" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#9-docker-compose">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="91-概述">9.1 概述<a class="hash-link" aria-label="Direct link to 9.1 概述" title="Direct link to 9.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#91-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="9-docker-compose">9. Docker Compose<a class="hash-link" aria-label="Direct link to 9. Docker Compose" title="Direct link to 9. Docker Compose" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#9-docker-compose">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="91-概述">9.1. 概述<a class="hash-link" aria-label="Direct link to 9.1. 概述" title="Direct link to 9.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#91-概述">​</a></h3>
 <ol>
 <li>Docker Compose：Docker容器编排工具，通过一个 <strong>声明式的配置文件</strong> 描述整个应用，最终使用一条命令完成部署</li>
 <li><code>compose.yml</code> / <code>docker-compose.yml</code>：6大模块<!-- -->
 <ol>
-<li><code>version</code>：（ 已过时）版本号</li>
+<li><code>version</code>：（已过时）版本号</li>
 <li><code>services</code>：定义和创建应用中时用到的 <strong>服务</strong>
 <div class="language-yml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yml codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token key atrule">services</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token key atrule">&lt;service-name&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">container_name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;service</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">real</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">build</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">context</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;dockerfile</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">image</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;repository</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;tag</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">ports</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;host</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">port2</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> …</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">command</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(163, 21, 21)">&quot;&lt;command&gt;&quot;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">depends_on</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;depend</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">service</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">deploy</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">mode</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> replicated</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token key atrule">replicas</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">number</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">networks</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"> &lt;network</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token key atrule">volumes</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;host</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> &lt;volume</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">name</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token punctuation" style="color:rgb(4, 81, 165)">:</span><span class="token plain">&lt;container</span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain">path2</span><span class="token punctuation" style="color:rgb(4, 81, 165)">&gt;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">-</span><span class="token plain"> …</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <ol>
@@ -826,7 +826,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="92-命令">9.2 命令<a class="hash-link" aria-label="Direct link to 9.2 命令" title="Direct link to 9.2 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#92-命令">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="92-命令">9.2. 命令<a class="hash-link" aria-label="Direct link to 9.2. 命令" title="Direct link to 9.2. 命令" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#92-命令">​</a></h3>
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>在命令后加上 <code>&lt;service-name&gt;</code>，即可对指定服务进行操作</p></div></div>
 <ol>
 <li><code>docker-compose pull</code>：拉取compose中需要的所有镜像</li>
@@ -857,8 +857,8 @@
 <li><code>docker-compose down</code>：停止并删除compose中的所有服务容器、网络、镜像、数据卷</li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="10-docker管理监控平台">10 Docker管理监控平台<a class="hash-link" aria-label="Direct link to 10 Docker管理监控平台" title="Direct link to 10 Docker管理监控平台" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#10-docker管理监控平台">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="101-概述">10.1 概述<a class="hash-link" aria-label="Direct link to 10.1 概述" title="Direct link to 10.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#101-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="10-docker管理监控平台">10. Docker管理监控平台<a class="hash-link" aria-label="Direct link to 10. Docker管理监控平台" title="Direct link to 10. Docker管理监控平台" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#10-docker管理监控平台">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="101-概述">10.1. 概述<a class="hash-link" aria-label="Direct link to 10.1. 概述" title="Direct link to 10.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#101-概述">​</a></h3>
 <ol>
 <li>Docker UI：基于Docker API的开源可视化管理工具，支持容器管理、镜像管理、批量操作，不支持多集群管理<!-- -->
 <ul>
@@ -885,13 +885,13 @@
 <ol>
 <li>CAdvisor：用来分析运行中的Docker容器的资源占用以及性能特性的工具，监控容器的内容、CPU、网络、磁盘IO等，并有web页面展示监控数据</li>
 <li>InfluxDB：基于GO语言的、开源的高性能、时序型数据库，支持海量时序数据的高性能读写、高效存储、实时分析等</li>
-<li>Grafana：基于GO语言的、开源的时序数据监控分析可视化平台</li>
+<li>Grafana：基于GO语言的、开源的时序数  据监控分析可视化平台</li>
 </ol>
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-镜像中心">11 镜像中心<a class="hash-link" aria-label="Direct link to 11 镜像中心" title="Direct link to 11 镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#11-镜像中心">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-概述">11.1 概述<a class="hash-link" aria-label="Direct link to 11.1 概述" title="Direct link to 11.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#111-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-镜像中心">11. 镜像中心<a class="hash-link" aria-label="Direct link to 11. 镜像中心" title="Direct link to 11. 镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#11-镜像中心">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-概述">11.1. 概述<a class="hash-link" aria-label="Direct link to 11.1. 概述" title="Direct link to 11.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#111-概述">​</a></h3>
 <ol>
 <li>发布镜像到Docker Hub：<!-- -->
 <ol>
@@ -1004,7 +1004,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-https">11.2 HTTPS<a class="hash-link" aria-label="Direct link to 11.2 HTTPS" title="Direct link to 11.2 HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#112-https">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-https">11.2. HTTPS<a class="hash-link" aria-label="Direct link to 11.2. HTTPS" title="Direct link to 11.2. HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#112-https">​</a></h3>
 <ol>
 <li>通过SSL/TLS为数据加密：与传输层的SSL/TLS进行通信，再由SSL/TLS与TCP进行通信<!-- -->
 <ul>
@@ -1028,13 +1028,13 @@
 </li>
 </ul>
 </li>
-<li>传输加密：<strong>对称加密</strong> 验证方式（加密和解密的密钥相同）</li>
+<li>传输加密：<strong>对称加密</strong> 验证方式（加密和解密的  密钥相同）</li>
 <li>原理图：<!-- -->
 <!-- -->
 </li>
 <li>重要概念：<!-- -->
 <ol>
-<li>数字证书（SSL/TLS证  书）：由证书中心CA（Certificate Authority）颁发的一种身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名<!-- -->
+<li>数字证书（SSL/TLS证书）：由证书中心CA（Certificate Authority）颁发的一种身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名<!-- -->
 <ul>
 <li>可自己生成，但需要在通讯客户端安装数字证书，并添加信任状态才可通讯</li>
 </ul>
@@ -1050,7 +1050,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-distribution私有镜像中心">11.3 distribution私有镜像中心<a class="hash-link" aria-label="Direct link to 11.3 distribution私有镜像中心" title="Direct link to 11.3 distribution私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution私有镜像中心">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-distribution私有镜像中心">11.3. distribution私有镜像中心<a class="hash-link" aria-label="Direct link to 11.3. distribution私有镜像中心" title="Direct link to 11.3. distribution私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution私有镜像中心">​</a></h3>
 <ol>
 <li>搭建私有镜像中心：<!-- -->
 <ol>
@@ -1067,7 +1067,7 @@
 <li>启动私有镜像中心：<code>systemctl start docker-distribution</code></li>
 </ol>
 </li>
-<li>docker客户端的 <strong>推送</strong> 操作：<!-- -->
+<li>docker客户端的 <strong>推送</strong> 操作  ：<!-- -->
 <ol>
 <li>修改 <code>daemon.json</code> 文件（← docker客户端采用HTTPS发送请求，而私有镜像中心默认不支持HTTPS协议）：添加 <code>&quot;insecure-registries&quot;: [&lt;ip&gt;:&lt;port&gt;]</code></li>
 <li>登录私有镜像中心：<code>docker login &lt;ip&gt;:&lt;port&gt;</code></li>
@@ -1097,8 +1097,8 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-registry私有镜像中心">11.4 registry私有镜像中心<a class="hash-link" aria-label="Direct link to 11.4 registry私有镜像中心" title="Direct link to 11.4 registry私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#114-registry私有镜像中心">​</a></h3>
-<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1141-http">11.4.1 HTTP<a class="hash-link" aria-label="Direct link to 11.4.1 HTTP" title="Direct link to 11.4.1 HTTP" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">​</a></h4>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-registry私有镜像中心">11.4. registry私有镜像中心<a class="hash-link" aria-label="Direct link to 11.4. registry私有镜像中心" title="Direct link to 11.4. registry私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#114-registry私有镜像中心">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1141-http">11.4.1. HTTP<a class="hash-link" aria-label="Direct link to 11.4.1. HTTP" title="Direct link to 11.4.1. HTTP" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">​</a></h4>
 <ol>
 <li>搭建私有镜像中心：<!-- -->
 <ol>
@@ -1121,7 +1121,7 @@
 </ol>
 </li>
 </ol>
-<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1142-https">11.4.2 HTTPS<a class="hash-link" aria-label="Direct link to 11.4.2 HTTPS" title="Direct link to 11.4.2 HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1142-https">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1142-https">11.4.2. HTTPS<a class="hash-link" aria-label="Direct link to 11.4.2. HTTPS" title="Direct link to 11.4.2. HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1142-https">​</a></h4>
 <ol>
 <li>OpenSSL生成证书：<!-- -->
 <ol>
@@ -1170,7 +1170,7 @@
 <li>重启docker</li>
 </ol>
 </li>
-<li>搭建私有镜像中心：<!-- -->
+<li>搭建私有镜像中 心：<!-- -->
 <ol>
 <li>拉取镜像：<code>docker pull registry</code></li>
 <li>使用 <code>htpasswd</code> 命令创建用户名与密码</li>
@@ -1181,8 +1181,8 @@
 </li>
 <li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">registry私有镜像中心的HTTP请求</a></li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="115-harbor私有镜像中心">11.5 harbor私有镜像中心<a class="hash-link" aria-label="Direct link to 11.5 harbor私有镜像中心" title="Direct link to 11.5 harbor私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#115-harbor私有镜像中心">​</a></h3>
-<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1151-概述">11.5.1 概述<a class="hash-link" aria-label="Direct link to 11.5.1 概述" title="Direct link to 11.5.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1151-概述">​</a></h4>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="115-harbor私有镜像中心">11.5. harbor私有镜像中心<a class="hash-link" aria-label="Direct link to 11.5. harbor私有镜像中心" title="Direct link to 11.5. harbor私有镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#115-harbor私有镜像中心">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1151-概述">11.5.1. 概述<a class="hash-link" aria-label="Direct link to 11.5.1. 概述" title="Direct link to 11.5.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1151-概述">​</a></h4>
 <ol>
 <li>Harbor：Registry Server开源项目，在Docker Registry的基础之上进行了二次封装<!-- -->
 <ol>
@@ -1221,7 +1221,7 @@
 <!-- -->
 </li>
 </ol>
-<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1152-http">11.5.2 HTTP<a class="hash-link" aria-label="Direct link to 11.5.2 HTTP" title="Direct link to 11.5.2 HTTP" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1152-http">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1152-http">11.5.2. HTTP<a class="hash-link" aria-label="Direct link to 11.5.2. HTTP" title="Direct link to 11.5.2. HTTP" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1152-http">​</a></h4>
 <ol>
 <li>搭建：<!-- -->
 <ol>
@@ -1240,7 +1240,7 @@
 </li>
 <li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">registry私有镜像中心的HTTP请求</a></li>
 </ol>
-<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1153-https">11.5.3 HTTPS<a class="hash-link" aria-label="Direct link to 11.5.3 HTTPS" title="Direct link to 11.5.3 HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1153-https">​</a></h4>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1153-https">11.5.3. HTTPS<a class="hash-link" aria-label="Direct link to 11.5.3. HTTPS" title="Direct link to 11.5.3. HTTPS" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1153-https">​</a></h4>
 <ol>
 <li>阿里云申请SSL证书：申请成功后，可根据服务器的类型进行下载证书压缩包（包含 <code>.pem</code> 证书文件和 <code>.key</code> 私钥文件）</li>
 <li>搭建：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1152-http">harbor私有镜像中心的搭建过程</a>
@@ -1256,13 +1256,13 @@
 <li>docker客户端的推送、删除操作：同 <a href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1141-http">registry私有镜像中心的HTTP请求</a></li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-docker-swarm">12 Docker Swarm<a class="hash-link" aria-label="Direct link to 12 Docker Swarm" title="Direct link to 12 Docker Swarm" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#12-docker-swarm">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="121-概述">12.1 概述<a class="hash-link" aria-label="Direct link to 12.1 概述" title="Direct link to 12.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#121-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-docker-swarm">12. Docker Swarm<a class="hash-link" aria-label="Direct link to 12. Docker Swarm" title="Direct link to 12. Docker Swarm" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#12-docker-swarm">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="121-概述">12.1. 概述<a class="hash-link" aria-label="Direct link to 12.1. 概述" title="Direct link to 12.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#121-概述">​</a></h3>
 <ol>
 <li>Docker Swarm：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信</li>
 <li>节点架构：<img decoding="async" loading="lazy" alt="How swarm node works" src="/ZHENGnotes/assets/images/11.12.1.how-swarm-node-works-5f567dd000e9aff31e560f32c695b6d9.webp" width="1527" height="560" class="img_ev3q">
 <ol>
-<li>Swarm Node：采 用Swarm模式运行的Docker Engine主机<!-- -->
+<li>Swarm Node：采用Swarm模式运行的Docker Engine主机<!-- -->
 <ul>
 <li>一个node对应一个主机，一个主机可对应 <strong>多个node</strong></li>
 <li>类型：<!-- -->
@@ -1308,7 +1308,7 @@
 </li>
 <li>Raft算法：<a href="https://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener noreferrer">动画演示</a></li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="122-操作swarm集群">12.2 操作Swarm集群<a class="hash-link" aria-label="Direct link to 12.2 操作Swarm集群" title="Direct link to 12.2 操作Swarm集群" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#122-操作swarm集群">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="122-操作swarm集群">12.2. 操作Swarm集群<a class="hash-link" aria-label="Direct link to 12.2. 操作Swarm集群" title="Direct link to 12.2. 操作Swarm集群" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#122-操作swarm集群">​</a></h3>
 <ol>
 <li>搭建集群：<!-- -->
 <ol>
@@ -1423,7 +1423,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="123-service">12.3 service<a class="hash-link" aria-label="Direct link to 12.3 service" title="Direct link to 12.3 service" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#123-service">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="123-service">12.3. service<a class="hash-link" aria-label="Direct link to 12.3. service" title="Direct link to 12.3. service" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#123-service">​</a></h3>
 <ol>
 <li>service只能依附于swarm集群</li>
 <li>创建service：<!-- -->
@@ -1468,7 +1468,7 @@
 <li>删除task相关的容器</li>
 </ul>
 </li>
-<li>滚动更新：更新和回滚操作均会新建task，更新时task会分配回原节点、回滚时task会被重新分配<!-- -->
+<li>滚动更新：更新和回滚操作均会  新建task，更新时task会分配回原节点、回滚时task会被重新分配<!-- -->
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">docker</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">service</span><span class="token plain"> create </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token punctuation" style="color:rgb(4, 81, 165)">..</span><span class="token plain">.</span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-parallelism </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">parallelism-update-task-number</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-delay </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">update-delay-time</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-max-failure-ratio </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">max-failure-ratio</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--update-failure-action </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">update-failure-action</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-parallelism </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">parallelism-rollback-task-number</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-delay </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">rollback-delay-time</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-max-failure-ratio </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">max-failure-ratio</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">--rollback-failure-action </span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token plain">rollback-failure-action</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">\</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <ol>
 <li>升级镜像：<code>docker service update --image &lt;image-name&gt; &lt;service-name&gt;</code></li>
@@ -1491,7 +1491,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="124-overlay网络">12.4 overlay网络<a class="hash-link" aria-label="Direct link to 12.4 overlay网络" title="Direct link to 12.4 overlay网络" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#124-overlay网络">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="124-overlay网络">12.4. overlay网络<a class="hash-link" aria-label="Direct link to 12.4. overlay网络" title="Direct link to 12.4. overlay网络" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#124-overlay网络">​</a></h3>
 <ol>
 <li>overlay网络/重叠网络/覆盖网络：构建在underlay网络上的逻辑虚拟网络，即在物理网络的基础上，通过节点间的单播隧道机制将主机两两相连</li>
 <li>swarm集群的overlay网络模型：<img decoding="async" loading="lazy" alt="overlay" src="/ZHENGnotes/assets/images/11.12.5.overlay-53927bf8aa82df6f4ade8ed5ae8df983.jpg" width="1086" height="579" class="img_ev3q">
@@ -1544,7 +1544,7 @@
 <li>跳转至 <strong>br0网关</strong>，判断目标地址的所在主机<!-- -->
 <ol>
 <li>若目标地址为本地容器IP，则直接将请求转发给目标容器处理即可</li>
-<li>若目标地址为远程容器IP，则将请求经由 <strong>vxlan接口</strong> 、通过vxlan隧道技术转发至目标主机的 <strong>br0网关</strong>
+<li>若目标地址为远程容器IP，则将请求经由 <strong>vxlan接口</strong> 、通过vxlan隧道技术转发至目  标主机的 <strong>br0网关</strong>
 <ul>
 <li><code>tcpdump -i &lt;interface&gt; port &lt;host-port&gt;</code>：监听指定接口</li>
 </ul>
@@ -1563,8 +1563,8 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-cicd与jenkins">13 CI/CD与Jenkins<a class="hash-link" aria-label="Direct link to 13 CI/CD与Jenkins" title="Direct link to 13 CI/CD与Jenkins" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#13-cicd与jenkins">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="131-概述">13.1 概述<a class="hash-link" aria-label="Direct link to 13.1 概述" title="Direct link to 13.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#131-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-cicd与jenkins">13. CI/CD与Jenkins<a class="hash-link" aria-label="Direct link to 13. CI/CD与Jenkins" title="Direct link to 13. CI/CD与Jenkins" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#13-cicd与jenkins">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="131-概述">13.1. 概述<a class="hash-link" aria-label="Direct link to 13.1. 概述" title="Direct link to 13.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#131-概述">​</a></h3>
 <ol>
 <li>CI/CD：<img decoding="async" loading="lazy" alt="CI/CD" src="/ZHENGnotes/assets/images/11.13.1.CICD-73f6a9c25336d7ec7bd2e00a60d96c0a.jpg" width="582" height="283" class="img_ev3q">
 <ol>
@@ -1576,7 +1576,7 @@
 <img decoding="async" loading="lazy" alt="Devops" src="/ZHENGnotes/assets/images/11.13.2.devops-1f1cc34d4e6b357f89f6919c8ea3da25.webp" width="1242" height="639" class="img_ev3q"></li>
 <li>CI/CD与DevOps的关系：CI/CD是目标，DevOps是手段</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="132-应用实现">13.2 应用实现<a class="hash-link" aria-label="Direct link to 13.2 应用实现" title="Direct link to 13.2 应用实现" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#132-应用实现">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="132-应用实现">13.2. 应用实现<a class="hash-link" aria-label="Direct link to 13.2. 应用实现" title="Direct link to 13.2. 应用实现" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#132-应用实现">​</a></h3>
 <ol>
 <li>系统结构图：<img decoding="async" loading="lazy" alt="CI/CD Structure" src="/ZHENGnotes/assets/images/11.13.3.CICD-structure-f195b1340cfbf78371484d9649c968ac.jpg" width="883" height="352" class="img_ev3q"></li>
 <li>工具：<!-- -->
@@ -1620,7 +1620,7 @@
 <li>CD操作：根据tag构建对应的项目</li>
 </ol>
 </li>
-<li>流水线：组织多个节点的进阶版任务<!-- -->
+<li>流 水线：组织多个节点的进阶版任务<!-- -->
 <ol>
 <li>维护脚本的方式：<!-- -->
 <ol>
@@ -1638,6 +1638,6 @@
 </li>
 </ol>
 </li>
-</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">10. RocketMQ</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/Kubernetes_k8s"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">12. Kubernetes_k8s</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1-概述">1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#2-docker引擎">2 Docker引擎</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#21-版本发展历程">2.1 版本发展历程</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#22-概述">2.2 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#23-安装">2.3 安装</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#24-卸载">2.4 卸载</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#3-docker镜像">3 Docker镜像</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#31-概述">3.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#32-命令">3.2 命令</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#33-镜像分层">3.3 镜像分层</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#34-镜像摘要">3.4 镜像摘要</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#35-多架构镜像">3.5 多架构镜像</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#4-docker容器">4 Docker容器</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#41-概述">4.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#42-命令">4.2 命令</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#5-dockerfile">5 Dockerfile</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#51-概述">5.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#52-指令">5.2 指令</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#53-实际应用">5.3 实际应用</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#54-build-cache">5.4 build cache</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#6-数据持久化">6 数据持久化</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#61-定制镜像持久化">6.1 定制镜像持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#62-数据卷持久化">6.2 数据卷持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#63-dockerfile持久化">6.3 Dockerfile持久化</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#7-docker网络">7 Docker网络</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#71-概述">7.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#72-网络类型">7.2 网络类型</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#8-常用服务器安装">8 常用服务器安装</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#81-mysql安装">8.1 MySQL安装</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#82-redis安装">8.2 Redis安装</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#9-docker-compose">9 Docker Compose</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#91-概述">9.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#92-命令">9.2 命令</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#10-docker管理监控平台">10 Docker管理监控平台</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结 构/Docker#101-概述">10.1 概述</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#11-镜像中心">11 镜像中心</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#111-概述">11.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#112-https">11.2 HTTPS</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution私有镜像中心">11.3 distribution私有镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#114-registry私有镜像中心">11.4 registry私有镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#115-harbor私有镜像中心">11.5 harbor私有镜像中心</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#12-docker-swarm">12 Docker Swarm</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#121-概述">12.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#122-操作swarm集群">12.2 操作Swarm集群</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#123-service">12.3 service</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#124-overlay网络">12.4 overlay网络</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#13-cicd与jenkins">13 CI/CD与Jenkins</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#131-概述">13.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#132-应用实现">13.2 应用实现</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">10. RocketMQ</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/Kubernetes_k8s"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">12. Kubernetes_k8s</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#1-概述">1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#2-docker引擎">2. Docker引擎</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#21-版本发展历程">2.1. 版本发展历程</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#22-概述">2.2. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#23-安装">2.3. 安装</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#24-卸载">2.4. 卸载</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#3-docker镜像">3. Docker镜像</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#31-概述">3.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#32-命令">3.2. 命令</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#33-镜像分层">3.3. 镜像分层</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#34-镜像摘要">3.4. 镜像摘要</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#35-多架构镜像">3.5. 多架构镜像</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#4-docker容器">4. Docker容器</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#41-概述">4.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#42-命令">4.2. 命令</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#5-dockerfile">5. Dockerfile</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#51-概述">5.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#52-指令">5.2. 指令</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#53-实际应用">5.3. 实际应用</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#54-build-cache">5.4. build cache</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#6-数据持久化">6. 数据持久化</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#61-定制镜像持久化">6.1. 定制镜像持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#62-数据卷持久化">6.2. 数据卷持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#63-dockerfile持久化">6.3. Dockerfile持久化</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#7-docker网络">7. Docker网络</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#71-概述">7.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#72-网络类型">7.2. 网络类型</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#8-常用服务器安装">8. 常用服务器安装</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#81-mysql安装">8.1. MySQL安装</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#82-redis安装">8.2. Redis安装</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#9-docker-compose">9. Docker Compose</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#91-概述">9.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#92-命令">9.2. 命令</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#10-docker管理监控平台">10. Docker管理监控平台</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#101-概述">10.1. 概述</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#11-镜像中心">11. 镜像中心</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#111-概述">11.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#112-https">11.2. HTTPS</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#113-distribution私有镜像中心">11.3. distribution私有镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#114-registry私有镜像中心">11.4. registry私有镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#115-harbor私有镜像中心">11.5. harbor私有镜像中心</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#12-docker-swarm">12. Docker Swarm</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#121-概述">12.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#122-操作swarm集群">12.2. 操作Swarm集群</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#123-service">12.3. service</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#124-overlay网络">12.4. overlay网络</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#13-cicd与jenkins">13. CI/CD与Jenkins</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#131-概述">13.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/Docker#132-应用实现">13.2. 应用实现</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
 </body>
 </html>

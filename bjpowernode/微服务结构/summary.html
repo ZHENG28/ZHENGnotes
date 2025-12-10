@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
-<title data-rh="true">微服务结构 | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="微服务结构 | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1 SpringBoot2"><meta data-rh="true" property="og:description" content="1 SpringBoot2"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
-<script src="/ZHENGnotes/assets/js/runtime~main.7d845a4b.js" defer="defer"></script>
+<title data-rh="true">微服务结构 | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="微服务结构 | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1. SpringBoot2"><meta data-rh="true" property="og:description" content="1. SpringBoot2"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/bjpowernode/微服务结构/summary" hreflang="x-default"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.126232b9.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.75d3d48e.js" defer="defer"></script>
 <script src="/ZHENGnotes/assets/js/main.650a7257.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/">首页</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识">琐碎知识</a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/ZHENGnotes/category/代码随想录">代码随想录</a><button aria-label="Expand sidebar category &#x27;代码随想录&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/动力节点">动力节点</a><button aria-label="Collapse sidebar category &#x27;动力节点&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/1-java基础">1. Java基础</a><button aria-label="Expand sidebar category &#x27;1. Java基础&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/Java零基础项目（略）">2. Java零基础项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/3-java-web">3. Java Web</a><button aria-label="Expand sidebar category &#x27;3. Java Web&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/4-主流框架">4. 主流  框架</a><button aria-label="Expand sidebar category &#x27;4. 主流框架&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/框架项目（略）">5. 框架项目（略）</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/ZHENGnotes/category/6-微服务结构">6. 微服务结构</a><button aria-label="Collapse sidebar category &#x27;6. 微服务结构&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/summary">0. 小结</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11. Docker</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/Kubernetes_k8s">12. Kubernetes_k8s</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/ZHENGnotes/category/7-互联网生态">7. 互联网生态</a><button aria-label="Expand sidebar category &#x27;7. 互联网生态&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/动力节点"><span itemprop="name">动力节点</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/ZHENGnotes/category/6-微服务结构"><span itemprop="name">6. 微服务结构</span></a><meta itemprop="position" content="2"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">0. 小结</span><meta itemprop="position" content="3"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>微服务结构</h1>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-springboot2">1 SpringBoot2<a class="hash-link" aria-label="Direct link to 1 SpringBoot2" title="Direct link to 1 SpringBoot2" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-入门介绍">1.1 入门介绍<a class="hash-link" aria-label="Direct link to 1.1 入门介绍" title="Direct link to 1.1 入门介绍" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-springboot2">1. SpringBoot2<a class="hash-link" aria-label="Direct link to 1. SpringBoot2" title="Direct link to 1. SpringBoot2" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-入门介绍">1.1. 入门介绍<a class="hash-link" aria-label="Direct link to 1.1. 入门介绍" title="Direct link to 1.1. 入门介绍" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">​</a></h3>
 <ol>
 <li>目录结构：<!-- -->
 <ul>
@@ -91,7 +91,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-集成">1.2 集成<a class="hash-link" aria-label="Direct link to 1.2 集成" title="Direct link to 1.2 集成" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-集成">1.2. 集成<a class="hash-link" aria-label="Direct link to 1.2. 集成" title="Direct link to 1.2. 集成" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">​</a></h3>
 <ol>
 <li>集成 <strong>MyBatis</strong>：<!-- -->
 <ol>
@@ -127,7 +127,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-jdk动态代理">1.3 JDK动态代理<a class="hash-link" aria-label="Direct link to 1.3 JDK动态代理" title="Direct link to 1.3 JDK动态代理" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态代理">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-jdk动态代理">1.3. JDK动态代理<a class="hash-link" aria-label="Direct link to 1.3. JDK动态代理" title="Direct link to 1.3. JDK动态代理" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态代理">​</a></h3>
 <ol>
 <li>代理模式：为其他对象提供 <strong>静态/动态代理</strong> 以控制对这个对象的访问<!-- -->
 <ul>
@@ -145,7 +145,7 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-springboot3"><a href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2 SpringBoot3</a><a class="hash-link" aria-label="Direct link to 2-springboot3" title="Direct link to 2-springboot3" href="/ZHENGnotes/bjpowernode/微服务结构/summary#2-springboot3">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-springboot3"><a href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3">2. SpringBoot3</a><a class="hash-link" aria-label="Direct link to 2-springboot3" title="Direct link to 2-springboot3" href="/ZHENGnotes/bjpowernode/微服务结构/summary#2-springboot3">​</a></h2>
 <ol>
 <li><code>main</code> 方法分析：配置项、流式开发 <code>Builder()</code></li>
 <li>将bean对象/组件加入到SpringBoot容器中：多种注解方式，如 <code>@Configuration</code></li>
@@ -170,12 +170,12 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-动力恒合仓库略">3 《动力恒合仓库》（略）<a class="hash-link" aria-label="Direct link to 3 《动力恒合仓库》（略）" title="Direct link to 3 《动力恒合仓库》（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#3- 动力恒合仓库略">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-动力恒合仓库略">3. 《动力恒合仓库》（略）<a class="hash-link" aria-label="Direct link to 3. 《动力恒合仓库》（略）" title="Direct link to 3. 《动力恒合仓库》（略）" href="/ZHENGnotes/bjpowernode/微服务  结构/summary#3-动力恒合仓库略">​</a></h2>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="4-大型前后端分离项目盈利宝略">4 大型前后端分离项目《盈利宝》（略）<a class="hash-link" aria-label="Direct link to 4 大型前后端分离项目《盈利宝》（略）" title="Direct link to 4 大型前后端分离项目《盈利宝》（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#4-大型前后端分离项目盈利宝略">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="4-大型前后端分离项目盈利宝略">4. 大型前后端分离项目《盈利宝》（略）<a class="hash-link" aria-label="Direct link to 4. 大型前后端分离项目《盈利宝》（略）" title="Direct link to 4. 大型前后端分离项目《盈利宝》（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#4-大型前后端分离项目盈利宝略">​</a></h2>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-redis7"><a href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5 Redis7</a><a class="hash-link" aria-label="Direct link to 5-redis7" title="Direct link to 5-redis7" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="51-基础知识">5.1 基础知识<a class="hash-link" aria-label="Direct link to 5.1 基础知识" title="Direct link to 5.1 基础知识" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-redis7"><a href="/ZHENGnotes/bjpowernode/微服务结构/Redis7">5. Redis7</a><a class="hash-link" aria-label="Direct link to 5-redis7" title="Direct link to 5-redis7" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="51-基础知识">5.1. 基础知识<a class="hash-link" aria-label="Direct link to 5.1. 基础知识" title="Direct link to 5.1. 基础知识" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">​</a></h3>
 <ol>
 <li>远程字典服务器Redis（Remote Dictionary Server），是一个基于内存运行并支持持久化的、高性能的 <strong>NoSQL数据库</strong></li>
 <li>启动命令：<!-- -->
@@ -195,7 +195,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="52-进阶知识">5.2 进阶知识<a class="hash-link" aria-label="Direct link to 5.2 进阶知识" title="Direct link to 5.2 进阶知识" href="/ZHENGnotes/bjpowernode/微服务结构/summary#52-进阶知识">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="52-进阶知识">5.2. 进阶知识<a class="hash-link" aria-label="Direct link to 5.2. 进阶知识" title="Direct link to 5.2. 进阶知识" href="/ZHENGnotes/bjpowernode/微服务结构/summary#52-进阶知识">​</a></h3>
 <ol>
 <li>使用配置文件：<code>redis-server redis.conf &amp;</code></li>
 <li>持久化策略：RDB（Redis DataBase）策略、AOF（Append Only File）策略</li>
@@ -212,8 +212,8 @@
 <li>Jedis：允许在java中操作Redis</li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="6-springsecurity">6 SpringSecurity<a class="hash-link" aria-label="Direct link to 6 SpringSecurity" title="Direct link to 6 SpringSecurity" href="/ZHENGnotes/bjpowernode/微服务结构/summary#6-springsecurity">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="61-简介">6.1 简介<a class="hash-link" aria-label="Direct link to 6.1 简介" title="Direct link to 6.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#61-简介">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="6-springsecurity">6. SpringSecurity<a class="hash-link" aria-label="Direct link to 6. SpringSecurity" title="Direct link to 6. SpringSecurity" href="/ZHENGnotes/bjpowernode/微服务结构/summary#6-springsecurity">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="61-简介">6.1. 简介<a class="hash-link" aria-label="Direct link to 6.1. 简介" title="Direct link to 6.1. 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#61-简介">​</a></h3>
 <ol>
 <li>主要功能：认证authentication、授权authorization<!-- -->
 <ol>
@@ -221,9 +221,9 @@
 <li>基于JDBC的用户认证：重写 <code>UserDetails loadUserByUsername(String username)</code> 方法</li>
 </ol>
 </li>
-<li>基于角色的访问控制RBAC（Role-Based Access Control）：用户有对应的角色，而角色拥有权限的集合</li>
+<li>基于角色的访问控制RBAC（Role-Based Access Control）：用户有对应的角色，而角色拥有权  限的集合</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="62-jwtjson-web-token">6.2 JWT（Json Web Token）<a class="hash-link" aria-label="Direct link to 6.2 JWT（Json Web Token）" title="Direct link to 6.2 JWT（Json Web Token）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#62-jwtjson-web-token">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="62-jwtjson-web-token">6.2. JWT（Json Web Token）<a class="hash-link" aria-label="Direct link to 6.2. JWT（Json Web Token）" title="Direct link to 6.2. JWT（Json Web Token）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#62-jwtjson-web-token">​</a></h3>
 <ol>
 <li>数据格式：<code>Header.Payload.Signature</code>
 <ol>
@@ -244,10 +244,10 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="7-rabbitmq略">7 RabbitMQ（略）<a class="hash-link" aria-label="Direct link to 7 RabbitMQ（略）" title="Direct link to 7 RabbitMQ（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#7-rabbitmq略">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="7-rabbitmq略">7. RabbitMQ（略）<a class="hash-link" aria-label="Direct link to 7. RabbitMQ（略）" title="Direct link to 7. RabbitMQ（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#7-rabbitmq略">​</a></h2>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="8-mybatisplus"><a href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8 MyBatisPlus</a><a class="hash-link" aria-label="Direct link to 8-mybatisplus" title="Direct link to 8-mybatisplus" href="/ZHENGnotes/bjpowernode/微服务结构/summary#8-mybatisplus">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="81-简介">8.1 简介<a class="hash-link" aria-label="Direct link to 8.1 简介" title="Direct link to 8.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="8-mybatisplus"><a href="/ZHENGnotes/bjpowernode/微服务结构/MyBatisPlus">8. MyBatisPlus</a><a class="hash-link" aria-label="Direct link to 8-mybatisplus" title="Direct link to 8-mybatisplus" href="/ZHENGnotes/bjpowernode/微服务结构/summary#8-mybatisplus">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="81-简介">8.1. 简介<a class="hash-link" aria-label="Direct link to 8.1. 简介" title="Direct link to 8.1. 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">​</a></h3>
 <ol>
 <li>增强MyBatis的功能，但不做改变</li>
 <li>可通过注解指定表名 <code>@TableName</code>、列名 <code>@TableField</code>、主键 <code>@TableId</code> 等</li>
@@ -257,10 +257,10 @@
 <li>分页：配置分页插件 <code>PaginationInterceptor</code></li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="9-springcloudalibaba">9 SpringCloudAlibaba<a class="hash-link" aria-label="Direct link to 9 SpringCloudAlibaba" title="Direct link to 9 SpringCloudAlibaba" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="9-springcloudalibaba">9. SpringCloudAlibaba<a class="hash-link" aria-label="Direct link to 9. SpringCloudAlibaba" title="Direct link to 9. SpringCloudAlibaba" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">​</a></h2>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="10-rocketmq"><a href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10 RocketMQ</a><a class="hash-link" aria-label="Direct link to 10-rocketmq" title="Direct link to 10-rocketmq" href="/ZHENGnotes/bjpowernode/微服务结构/summary#10-rocketmq">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="101-简介">10.1 简介<a class="hash-link" aria-label="Direct link to 10.1 简介" title="Direct link to 10.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#101-简介">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="10-rocketmq"><a href="/ZHENGnotes/bjpowernode/微服务结构/RocketMQ">10. RocketMQ</a><a class="hash-link" aria-label="Direct link to 10-rocketmq" title="Direct link to 10-rocketmq" href="/ZHENGnotes/bjpowernode/微服务结构/summary#10-rocketmq">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="101-简介">10.1. 简介<a class="hash-link" aria-label="Direct link to 10.1. 简介" title="Direct link to 10.1. 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#101-简介">​</a></h3>
 <ol>
 <li>消息队列MQ（Message Queue）：面向消息的中间件</li>
 <li>组成结构：<!-- -->
@@ -277,7 +277,7 @@
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token function" style="color:rgb(0, 0, 255)">nohup</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">sh</span><span class="token plain"> mqnamesrv </span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> log-path </span><span class="token operator" style="color:rgb(0, 0, 0)">&amp;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token function" style="color:rgb(0, 0, 255)">nohup</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">sh</span><span class="token plain"> mqbroker </span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token plain"> log-path </span><span class="token operator" style="color:rgb(0, 0, 0)">&amp;</span></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="102-应用">10.2 应用<a class="hash-link" aria-label="Direct link to 10.2 应用" title="Direct link to 10.2 应用" href="/ZHENGnotes/bjpowernode/微服务结构/summary#102-应用">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="102-应用">10.2. 应用<a class="hash-link" aria-label="Direct link to 10.2. 应用" title="Direct link to 10.2. 应用" href="/ZHENGnotes/bjpowernode/微服务结构/summary#102-应用">​</a></h3>
 <ol>
 <li>消息分发规则：<!-- -->
 <ol>
@@ -307,8 +307,8 @@
 <li><strong><font color="red">消息丢失问题</font></strong></li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-docker"><a href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11 Docker</a><a class="hash-link" aria-label="Direct link to 11-docker" title="Direct link to 11-docker" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-概述">11.1 概述<a class="hash-link" aria-label="Direct link to 11.1 概述" title="Direct link to 11.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#111-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="11-docker"><a href="/ZHENGnotes/bjpowernode/微服务结构/Docker">11. Docker</a><a class="hash-link" aria-label="Direct link to 11-docker" title="Direct link to 11-docker" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="111-概述">11.1. 概述<a class="hash-link" aria-label="Direct link to 11.1. 概述" title="Direct link to 11.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#111-概述">​</a></h3>
 <ol>
 <li><strong><font color="red">Docker</font></strong>：开源的应用容器引擎</li>
 <li>架构：<!-- -->
@@ -322,7 +322,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-docker引擎">11.2 Docker引擎<a class="hash-link" aria-label="Direct link to 11.2 Docker引擎" title="Direct link to 11.2 Docker引擎" href="/ZHENGnotes/bjpowernode/微服务结构/summary#112-docker引擎">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="112-docker引擎">11.2. Docker引擎<a class="hash-link" aria-label="Direct link to 11.2. Docker引擎" title="Direct link to 11.2. Docker引擎" href="/ZHENGnotes/bjpowernode/微服务结构/summary#112-docker引擎">​</a></h3>
 <ol>
 <li><strong>Docker引擎</strong>：用来运行和管理容器的核心软件</li>
 <li>架构：<!-- -->
@@ -351,7 +351,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-docker镜像">11.3 Docker镜像<a class="hash-link" aria-label="Direct link to 11.3 Docker镜像" title="Direct link to 11.3 Docker镜像" href="/ZHENGnotes/bjpowernode/微服务结构/summary#113-docker镜像">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="113-docker镜像">11.3. Docker镜像<a class="hash-link" aria-label="Direct link to 11.3. Docker镜像" title="Direct link to 11.3. Docker镜像" href="/ZHENGnotes/bjpowernode/微服务结构/summary#113-docker镜像">​</a></h3>
 <ol>
 <li><strong>镜像</strong>：轻量级、可执行的独立软件包，包含运行软件需要的所有内容（代码、库、环境变量、配置文件等）</li>
 <li>定位标识：<code>&lt;repository&gt;:&lt;tag&gt;</code>
@@ -378,9 +378,9 @@
 </ol>
 </li>
 <li>分层：镜像中松耦合的只读镜像层，由Docker Daemon堆叠而成；对分层的修改以新分层的形式出现</li>
-<li>摘要Digest/内容散列Content Hash：只要内容发生了变更，摘要值一定会变更；主要用于区分相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的不同镜像</li>
+<li>摘要Digest/内容散列Content Hash：只要内容发生了变更，摘要值一定会变更； 主要用于区分相同 <code>&lt;repository&gt;:&lt;tag&gt;</code> 的不同镜像</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-docker容器">11.4 Docker容器<a class="hash-link" aria-label="Direct link to 11.4 Docker容器" title="Direct link to 11.4 Docker容器" href="/ZHENGnotes/bjpowernode/微服务结构/summary#114-docker容器">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="114-docker容器">11.4. Docker容器<a class="hash-link" aria-label="Direct link to 11.4. Docker容器" title="Direct link to 11.4. Docker容器" href="/ZHENGnotes/bjpowernode/微服务结构/summary#114-docker容器">​</a></h3>
 <ol>
 <li>常用命令：<!-- -->
 <ol>
@@ -416,7 +416,7 @@
 </li>
 <li><code>docker attach</code>：对正在运行的容器进行操作</li>
 <li><code>docker top</code>：查看正在运行的容器内正在运行的进程详情</li>
-<li><code>docker logs</code>：查看容器中应用的运行日志，无论容器是否处于运行状态<!-- -->
+<li><code>docker logs</code>：查看容器中应用的运行日志，无论容器  是否处于运行状态<!-- -->
 <ul>
 <li><code>&lt;contain-name&gt;</code>：查看指定容器中应用的运行日志</li>
 <li><code>-n &lt;number&gt;</code> / <code>--tail=&lt;number&gt;</code>：显示指定行数的尾部日志</li>
@@ -455,7 +455,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="115-dockerfile">11.5 Dockerfile<a class="hash-link" aria-label="Direct link to 11.5 Dockerfile" title="Direct link to 11.5 Dockerfile" href="/ZHENGnotes/bjpowernode/微服务结构/summary#115-dockerfile">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="115-dockerfile">11.5. Dockerfile<a class="hash-link" aria-label="Direct link to 11.5. Dockerfile" title="Direct link to 11.5. Dockerfile" href="/ZHENGnotes/bjpowernode/微服务结构/summary#115-dockerfile">​</a></h3>
 <ol>
 <li><code>Dockerfile</code> 脚本文件：由一系列指令（由上到下依次执行；每条指令都会构建出一个镜像）构成的、用来构建Docker镜像</li>
 <li>常用指令：<!-- -->
@@ -482,7 +482,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="116-数据持久化">11.6 数据持久化<a class="hash-link" aria-label="Direct link to 11.6 数据持久化" title="Direct link to 11.6 数据持久化" href="/ZHENGnotes/bjpowernode/微服务结构/summary#116-数据持久化">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="116-数据持久化">11.6. 数据持久化<a class="hash-link" aria-label="Direct link to 11.6. 数据持久化" title="Direct link to 11.6. 数据持久化" href="/ZHENGnotes/bjpowernode/微服务结构/summary#116-数据持久化">​</a></h3>
 <ol>
 <li>数据卷持久化：<!-- -->
 <ol>
@@ -497,7 +497,7 @@
 </li>
 <li>Dockerfile持久化：<code>VOLUME</code> 指令</li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="117-docker网络">11.7 Docker网络<a class="hash-link" aria-label="Direct link to 11.7 Docker网络" title="Direct link to 11.7 Docker网络" href="/ZHENGnotes/bjpowernode/微服务结构/summary#117-docker网络">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="117-docker网络">11.7. Docker网络<a class="hash-link" aria-label="Direct link to 11.7. Docker网络" title="Direct link to 11.7. Docker网络" href="/ZHENGnotes/bjpowernode/微服务结构/summary#117-docker网络">​</a></h3>
 <ol>
 <li><strong>Network Namespace</strong>：Linux提供的用于实现网络虚拟化的功能，创建多个隔离的网络空间（独立的防火墙、网卡、路由表、邻居表、协议栈）</li>
 <li>网络类型：<!-- -->
@@ -511,13 +511,13 @@
 <ol>
 <li><code>docker network inspect bridge</code>：查看bridge网络的整体连接情况</li>
 <li><code>ip a</code>：查看宿主机的网络接口</li>
-<li><code>docker exec &lt;container&gt; ip a</code>：查看容器的网络接口</li>
+<li><code>docker exec &lt;container&gt; ip a</code>：查看容器的  网络接口</li>
 <li><code>docker inspect &lt;container&gt;</code>：查看容器的详情（网关Gateway的ip地址 = docker0网桥的地址）</li>
 <li><code>docker run … --network &lt;network&gt;</code>：指定连接的网络，默认连接到默认的bridge网络</li>
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="118-docker-compose">11.8 Docker Compose<a class="hash-link" aria-label="Direct link to 11.8 Docker Compose" title="Direct link to 11.8 Docker Compose" href="/ZHENGnotes/bjpowernode/微服务结构/summary#118-docker-compose">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="118-docker-compose">11.8. Docker Compose<a class="hash-link" aria-label="Direct link to 11.8. Docker Compose" title="Direct link to 11.8. Docker Compose" href="/ZHENGnotes/bjpowernode/微服务结构/summary#118-docker-compose">​</a></h3>
 <ol>
 <li><strong>Docker Compose</strong>：Docker容器编排工具，通过一个 <strong>声明式的配置文件</strong> 描述整个应用，最终使用一条命令完成部署</li>
 <li><code>compose.yml</code> / <code>docker-compose.yml</code>：<!-- -->
@@ -530,8 +530,8 @@
 <li><code>docker-compose up</code>：启动compose中的所有服务</li>
 <li><code>docker-compose logs</code>：查看compose中所有服务的运行日志，不同服务的日志用不同颜色区分</li>
 <li><code>docker-compose ps</code>：查看compose中的所有服务</li>
-<li><code>docker-compose top</code>：查看compose中所有当前正在运行中的服务</li>
-<li><code>docker-compose images</code>： 查看compose中所有服务对应的镜像</li>
+<li><code>docker-compose top</code>：查看compose  中所有当前正在运行中的服务</li>
+<li><code>docker-compose images</code>：查看compose中所有服务对应的镜像</li>
 <li><code>docker-compose port</code>：查看指定服务的映射端口</li>
 <li><code>docker-compose run</code>：在指定服务上执行命令</li>
 <li><code>docker-compose exec</code>：进入指定服务的容器内</li>
@@ -546,7 +546,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="119-镜像中心">11.9 镜像中心<a class="hash-link" aria-label="Direct link to 11.9 镜像中心" title="Direct link to 11.9 镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/summary#119-镜像中心">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="119-镜像中心">11.9. 镜像中心<a class="hash-link" aria-label="Direct link to 11.9. 镜像中心" title="Direct link to 11.9. 镜像中心" href="/ZHENGnotes/bjpowernode/微服务结构/summary#119-镜像中心">​</a></h3>
 <ol>
 <li>发布镜像：<!-- -->
 <ol>
@@ -558,7 +558,7 @@
 </li>
 <li>HTTPS：通过SSL/TLS为数据加密，即与传输层的SSL/TLS进行通信，再由SSL/TLS与TCP进行通信<!-- -->
 <ol>
-<li>数字证书（SSL/TLS证书）：由证书中心CA（Certificate Authority）颁发的一种 身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名<!-- -->
+<li>数  字证书（SSL/TLS证书）：由证书中心CA（Certificate Authority）颁发的一种身份证明，包含通讯方的公钥、证书有效期、域名以及CA的数字签名<!-- -->
 <ul>
 <li>SSL（Secure Sockets Layer）：安全套接字协议</li>
 <li>TLS（Transport Layer Security）：传输层安全协议</li>
@@ -581,7 +581,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1110-docker-swarm">11.10 Docker Swarm<a class="hash-link" aria-label="Direct link to 11.10 Docker Swarm" title="Direct link to 11.10 Docker Swarm" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1110-docker-swarm">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1110-docker-swarm">11.10. Docker Swarm<a class="hash-link" aria-label="Direct link to 11.10. Docker Swarm" title="Direct link to 11.10. Docker Swarm" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1110-docker-swarm">​</a></h3>
 <ol>
 <li><strong>Docker Swarm</strong>：Docker原生集群管理系统，会将多个Docker主机（物理）组织成一个Docker主机（虚拟），通过API与集群通信<!-- -->
 <ol>
@@ -679,15 +679,15 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1111-cicd与jenkins">11.11 CI/CD与Jenkins<a class="hash-link" aria-label="Direct link to 11.11 CI/CD与Jenkins" title="Direct link to 11.11 CI/CD与Jenkins" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1111-cicd与jenkins">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1111-cicd与jenkins">11.11. CI/CD与Jenkins<a class="hash-link" aria-label="Direct link to 11.11. CI/CD与Jenkins" title="Direct link to 11.11. CI/CD与Jenkins" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1111-cicd与jenkins">​</a></h3>
 <ol>
 <li><strong>CI（Continuous Integration）/CD（Continuous Delivery/Deployment）</strong>：持续集成/持续交付/部署</li>
 <li><strong>DevOps（Development &amp; Operations）</strong>：一种管理模式、执行规范与标准</li>
 <li>应用实现的系统结构图：<img decoding="async" loading="lazy" alt="CI/CD Structure" src="/ZHENGnotes/assets/images/0.11.1.CICD-structure-f195b1340cfbf78371484d9649c968ac.jpg" width="883" height="352" class="img_ev3q"></li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-kubernetes_k8s"><a href="/ZHENGnotes/bjpowernode/微服务结构/Kubernetes_k8s">12 Kubernetes_k8s</a><a class="hash-link" aria-label="Direct link to 12-kubernetes_k8s" title="Direct link to 12-kubernetes_k8s" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="121-概述">12.1 概述<a class="hash-link" aria-label="Direct link to 12.1 概述" title="Direct link to 12.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#121-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="12-kubernetes_k8s"><a href="/ZHENGnotes/bjpowernode/微服务结构/Kubernetes_k8s">12. Kubernetes_k8s</a><a class="hash-link" aria-label="Direct link to 12-kubernetes_k8s" title="Direct link to 12-kubernetes_k8s" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="121-概述">12.1. 概述<a class="hash-link" aria-label="Direct link to 12.1. 概述" title="Direct link to 12.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#121-概述">​</a></h3>
 <ol>
 <li><strong><font color="red">Kubernetes（k8s）</font></strong>：容器编排引擎，用于自动化、容器化应用程序的部署、规划、扩展和管理</li>
 <li>架构图：<!-- -->
@@ -710,7 +710,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="122-部署">12.2 部署<a class="hash-link" aria-label="Direct link to 12.2 部署" title="Direct link to 12.2 部署" href="/ZHENGnotes/bjpowernode/微服务结构/summary#122-部署">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="122-部署">12.2. 部署<a class="hash-link" aria-label="Direct link to 12.2. 部署" title="Direct link to 12.2. 部署" href="/ZHENGnotes/bjpowernode/微服务结构/summary#122-部署">​</a></h3>
 <ol>
 <li>搭建集群：<!-- -->
 <ol>
@@ -732,7 +732,7 @@
 </ol>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="123-ingress暴露应用">12.3 Ingress暴露应用<a class="hash-link" aria-label="Direct link to 12.3 Ingress暴露应用" title="Direct link to 12.3 Ingress暴露应用" href="/ZHENGnotes/bjpowernode/微服务结构/summary#123-ingress暴露应用">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="123-ingress暴露应用">12.3. Ingress暴露应用<a class="hash-link" aria-label="Direct link to 12.3. Ingress暴露应用" title="Direct link to 12.3. Ingress暴露应用" href="/ZHENGnotes/bjpowernode/微服务结构/summary#123-ingress暴露应用">​</a></h3>
 <ol>
 <li>NodePort：让外部请求直接访问服务的最原始方式</li>
 <li>LoadBalancer：外部请求通过负载均衡器 <code>LoadBlancer</code> 转发到服务中的Pod里，但需要向云平台申请负载均衡器</li>
@@ -751,17 +751,17 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-微服务项目动力商城略">13 微服务项目《动力商城》（略）<a class="hash-link" aria-label="Direct link to 13 微服务项目《动力商城》（略）" title="Direct link to 13 微服务项目《动力商城》（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-微服务项目动力商城略">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="13-微服务项目动力商城略">13. 微服务项目《动力商城》（略）<a class="hash-link" aria-label="Direct link to 13. 微服务项目《动力商城》（略）" title="Direct link to 13. 微服务项目《动力商城》（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-微服务项目动力商城略">​</a></h2>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="14-activemq选学略">14 ActiveMQ（选学）（略）<a class="hash-link" aria-label="Direct link to 14 ActiveMQ（选学）（略）" title="Direct link to 14 ActiveMQ（选学）（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#14-activemq选学略">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="14-activemq选学略">14. ActiveMQ（选学）（略）<a class="hash-link" aria-label="Direct link to 14. ActiveMQ（选学）（略）" title="Direct link to 14. ActiveMQ（选学）（略）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#14-activemq选学略">​</a></h2>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="15-高并发解决方案选学"><a href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15 高并发解决方案（选学）</a><a class="hash-link" aria-label="Direct link to 15-高并发解决方案选学" title="Direct link to 15-高并发解决方案选学" href="/ZHENGnotes/bjpowernode/微服务结构/summary#15-高并发解决方案选学">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="151-概述">15.1 概述<a class="hash-link" aria-label="Direct link to 15.1 概述" title="Direct link to 15.1 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#151-概述">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="15-高并发解决方案选学"><a href="/ZHENGnotes/bjpowernode/微服务结构/高并发解决方案（选学）">15. 高并发解决方案（选学）</a><a class="hash-link" aria-label="Direct link to 15-高并发解决方案选学" title="Direct link to 15-高并发解决方案选学" href="/ZHENGnotes/bjpowernode/微服务结构/summary#15-高并发解决方案选学">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="151-概述">15.1. 概述<a class="hash-link" aria-label="Direct link to 15.1. 概述" title="Direct link to 15.1. 概述" href="/ZHENGnotes/bjpowernode/微服务结构/summary#151-概述">​</a></h3>
 <ul>
 <li>高并发：大量并发访问，即某个时间点有大量请求同时来访问系统</li>
 <li>衡量指标：响应时间、吞吐量、QPS、并发用户数</li>
 </ul>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="152-解决方案">15.2 解决方案<a class="hash-link" aria-label="Direct link to 15.2 解决方案" title="Direct link to 15.2 解决方案" href="/ZHENGnotes/bjpowernode/微服务结构/summary#152-解决方案">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="152-解决方案">15.2. 解决方案<a class="hash-link" aria-label="Direct link to 15.2. 解决方案" title="Direct link to 15.2. 解决方案" href="/ZHENGnotes/bjpowernode/微服务结构/summary#152-解决方案">​</a></h3>
 <ol>
 <li>硬件：单体应用垂直扩容方案</li>
 <li>缓存：HTTP（浏览器、Nginx、CDN）、应用（内存、磁盘）、多级缓存</li>
@@ -781,15 +781,15 @@
 <li>压力测试</li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="16-thymeleaf选学">16 Thymeleaf（选学）<a class="hash-link" aria-label="Direct link to 16 Thymeleaf（选学）" title="Direct link to 16 Thymeleaf（选学）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="161-简介">16.1 简介<a class="hash-link" aria-label="Direct link to 16.1 简介" title="Direct link to 16.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="16-thymeleaf选学">16. Thymeleaf（选学）<a class="hash-link" aria-label="Direct link to 16. Thymeleaf（选学）" title="Direct link to 16. Thymeleaf（选学）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="161-简介">16.1. 简介<a class="hash-link" aria-label="Direct link to 16.1. 简介" title="Direct link to 16.1. 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">​</a></h3>
 <ol>
-<li>用户看到的结果页面是模板引擎用 <strong>数据</strong> 替换 <strong>模板中的特殊符号</strong> 而得到的<!-- -->
+<li>用户看到的结果页面是模板引擎用 <strong>数据</strong> 替换 <strong>模板中的特殊 符号</strong> 而得到的<!-- -->
 <ul>
 <li>表达式：<!-- -->
 <ol>
 <li>变量表达式 <code>${}</code></li>
-<li>选择  表达式 <code>*{}</code></li>
+<li>选择表达式 <code>*{}</code></li>
 <li>链接表达式 <code>@{}</code></li>
 <li>消息表达式 <code>#{}</code></li>
 <li>标准表达式</li>
@@ -812,8 +812,8 @@
 </li>
 </ol>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="17-java日志框架选学">17 Java日志框架（选学）<a class="hash-link" aria-label="Direct link to 17 Java日志框架（选学）" title="Direct link to 17 Java日志框架（选学）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#17-java日志框架选学">​</a></h2>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="171-简介">17.1 简介<a class="hash-link" aria-label="Direct link to 17.1 简介" title="Direct link to 17.1 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#171-简介">​</a></h3>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="17-java日志框架选学">17. Java日志框架（选学）<a class="hash-link" aria-label="Direct link to 17. Java日志框架（选学）" title="Direct link to 17. Java日志框架（选学）" href="/ZHENGnotes/bjpowernode/微服务结构/summary#17-java日志框架选学">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="171-简介">17.1. 简介<a class="hash-link" aria-label="Direct link to 17.1. 简介" title="Direct link to 17.1. 简介" href="/ZHENGnotes/bjpowernode/微服务结构/summary#171-简介">​</a></h3>
 <ol>
 <li>日志文件：用于记录系统操作事件的文件集合；可处理历史数据、诊断问题的追踪以及理解系统的活动等重要作用</li>
 <li>日志框架的作用：<!-- -->
@@ -824,7 +824,7 @@
 <li>日志系统的维护</li>
 </ul>
 </li>
-<li>日志门面和日志框架：每一种日志框架都有自己对应的API（高耦合），使用日志门面技术后，无论底层的日志框架如何改变，都不会影响到程序的代码，提高日志框架的兼容性<!-- -->
+<li>日志门面和日志框架：每一种日志框架都有自己对应的API（高耦合），使用日志门面技术后，无论底层的日志框架如何改变，  都不会影响到程序的代码，提高日志框架的兼容性<!-- -->
 <ul>
 <li>日志框架技术：用来方便有效地记录日志信息</li>
 <li>日志门面技术：抽取日志框架中共有的特征行为，形成接口；使用时可直接调用该接口方法，而日志框架在执行时仍然调用自身的方法</li>
@@ -837,7 +837,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="172-框架分类">17.2 框架分类<a class="hash-link" aria-label="Direct link to 17.2 框架分类" title="Direct link to 17.2 框架分类" href="/ZHENGnotes/bjpowernode/微服务结构/summary#172-框架分类">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="172-框架分类">17.2. 框架分类<a class="hash-link" aria-label="Direct link to 17.2. 框架分类" title="Direct link to 17.2. 框架分类" href="/ZHENGnotes/bjpowernode/微服务结构/summary#172-框架分类">​</a></h3>
 <ol>
 <li><strong><font color="red">JUL（Java Util Logging）</font></strong>：java原生日志框架<!-- -->
 <ul>
@@ -847,7 +847,7 @@
 <li>处理器 <code>Handler</code>：一个 <code>Logger</code> 关联一个/一组 <code>Handler</code>，由 <code>Handler</code> 负责记录日志，并具体实现日志的输出位置</li>
 <li>过滤器 <code>Filter</code>：自定义哪些信息需要被记录，哪些信息要忽略</li>
 <li>格式化组件 <code>Formatter</code>：负责对日志中的数据和信息进行转换和格式化，即决定输出日志最终的形式</li>
-<li>输出级别 <code>Level</code>：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级别之上的日志<!-- -->
+<li>输出级别 <code>Level</code>：每条日志消息都有自己的级别，Logger会根据输出级别自动输出级 别之上的日志<!-- -->
 <ul>
 <li><code>ALL</code> &lt; <code>FINEST</code> &lt; <code>FINER</code> &lt; <code>FINE</code> &lt; <code>CONFIG</code> &lt; <code>INFO</code> &lt; <code>WARNING</code> &lt; <code>SEVERE</code> &lt; <code>OFF</code></li>
 </ul>
@@ -917,8 +917,8 @@
 <li>性能提升：<code>Log4j2</code> 包含基于 <code>LMAX Disruptor</code> 库的下一代异步记录器</li>
 <li>自动重新加载配置</li>
 <li>高级过滤：支持基于Log事件中的上下文数据、标记、正则表达式和其他组件进行过滤</li>
-<li>插件架构：<code>Log4j2</code> 使用插件模式配置组件，即无需编写代码来创建和配置Appender、Layout、PatternConverter等</li>
-<li>无垃圾机制：稳态日志记录期间，  在独立应用程序中是无垃圾，在Web应用程序中是低垃圾</li>
+<li>插件架构：<code>Log4j2</code> 使用插件模式配置组件  ，即无需编写代码来创建和配置Appender、Layout、PatternConverter等</li>
+<li>无垃圾机制：稳态日志记录期间，在独立应用程序中是无垃圾，在Web应用程序中是低垃圾</li>
 </ul>
 </li>
 <li>异步日志：<!-- -->
@@ -940,7 +940,7 @@
 </ul>
 </li>
 </ol>
-<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="173-门面分类">17.3 门面分类<a class="hash-link" aria-label="Direct link to 17.3 门面分类" title="Direct link to 17.3 门面分类" href="/ZHENGnotes/bjpowernode/微服务结构/summary#173-门面分类">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="173-门面分类">17.3. 门面分类<a class="hash-link" aria-label="Direct link to 17.3. 门面分类" title="Direct link to 17.3. 门面分类" href="/ZHENGnotes/bjpowernode/微服务结构/summary#173-门面分类">​</a></h3>
 <ol>
 <li><strong><font color="red">JCL（Jakarta Commons Logging）</font></strong>：java原生日志门面<!-- -->
 <ul>
@@ -950,13 +950,13 @@
 <ul>
 <li><code>Jdk13LumberjackLogger</code>：旧版JUL</li>
 <li><code>Jdk14Logger</code>：目前使用的JUL</li>
-<li><code>Log4JLogger</code>：集成使用的Log4j</li>
+<li><code>Log4JLogger</code>：集 成使用的Log4j</li>
 <li><code>SimpleLog</code>：JCL自带的实现类</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong><font color="red">SLF4j  （Simple Logging Facade For Java）</font></strong>：绑定、桥接日志框架
+<li><strong><font color="red">SLF4j（Simple Logging Facade For Java）</font></strong>：绑定、桥接日志框架
 <img decoding="async" loading="lazy" alt="SLF4j Bound" src="/ZHENGnotes/assets/images/0.17.3.slf4j-bound-b7bd0e42ee7f1d990291ab059864576c.jpg" width="1498" height="827" class="img_ev3q">
 <ul>
 <li>桥接技术：某些日志框架依赖 <code>SLF4j</code> 之外的日志API → <code>SLF4j</code> 附带桥接模块<!-- -->
@@ -968,6 +968,6 @@
 <li>默认使用的是 <code>slf4j-simple</code> 框架</li>
 </ul>
 </li>
-</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/category/6-微服务结构"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">6. 微服务结构</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">2. SpringBoot3</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">1 SpringBoot2</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">1.1 入门介绍</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">1.2 集成</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态代理">1.3 JDK动态代理</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结 构/summary#2-springboot3">2 SpringBoot3</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#3-动力恒合仓库略">3 《动力恒合仓库》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#4-大型前后端分离项目盈利宝略">4 大型前后端分离项目《盈利宝》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">5 Redis7</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">5.1 基础知识</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#52-进阶知识">5.2 进阶知识</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#6-springsecurity">6 SpringSecurity</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#61-简介">6.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#62-jwtjson-web-token">6.2 JWT（Json Web Token）</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#7-rabbitmq略">7 RabbitMQ（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#8-mybatisplus">8 MyBatisPlus</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">8.1 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">9 SpringCloudAlibaba</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#10-rocketmq">10 RocketMQ</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#101-简介">10.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#102-应用">10.2 应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">11 Docker</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#111-概述">11.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#112-docker引擎">11.2 Docker引擎</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#113-docker镜像">11.3 Docker镜像</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#114-docker容器">11.4 Docker容器</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#115-dockerfile">11.5 Dockerfile</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#116-数据持久化">11.6 数据持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#117-docker网络">11.7 Docker网络</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#118-docker-compose">11.8 Docker Compose</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#119-镜像中心">11.9 镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1110-docker-swarm">11.10 Docker Swarm</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服  务结构/summary#1111-cicd与jenkins">11.11 CI/CD与Jenkins</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">12 Kubernetes_k8s</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#121-概述">12.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#122-部署">12.2 部署</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#123-ingress暴露应用">12.3 Ingress暴露应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-微服务项目动力商城略">13 微服务项目《动力商城》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#14-activemq选学略">14 ActiveMQ（选学）（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#15-高并发解决方案选学">15 高并发解决方案（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#151-概述">15.1 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#152-解决方案">15.2 解决方案</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">16 Thymeleaf（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">16.1 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#17-java日志框架选学">17 Java日志框架（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#171-简介">17.1 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#172-框架分类">17.2 框架分类</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#173-门面分类">17.3 门面分类</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+</ol></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/category/6-微服务结构"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">6. 微服务结构</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/bjpowernode/微服务结构/SpringBoot3"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">2. SpringBoot3</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1-springboot2">1. SpringBoot2</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-入门介绍">1.1. 入门介绍</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-集成">1.2. 集成</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-jdk动态 代理">1.3. JDK动态代理</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#2-springboot3">2. SpringBoot3</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#3-动力恒合仓库略">3. 《动力恒合仓库》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#4-大型前后端分离项目盈利宝略">4. 大型前后端分离项目《盈利宝》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#5-redis7">5. Redis7</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#51-基础知识">5.1. 基础知识</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#52-进阶知识">5.2. 进阶知识</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#6-springsecurity">6. SpringSecurity</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#61-简介">6.1. 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#62-jwtjson-web-token">6.2. JWT（Json Web Token）</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#7-rabbitmq略">7. RabbitMQ（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#8-mybatisplus">8. MyBatisPlus</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#81-简介">8.1. 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#9-springcloudalibaba">9. SpringCloudAlibaba</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#10-rocketmq">10. RocketMQ</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#101-简介">10.1. 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#102-应用">10.2. 应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#11-docker">11. Docker</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#111-概述">11.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#112-docker引擎">11.2. Docker引擎</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#113-docker镜像">11.3. Docker镜像</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#114-docker容器">11.4. Docker容器</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#115-dockerfile">11.5. Dockerfile</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#116-数据持久化">11.6. 数据持久化</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#117-docker网络">11.7. Docker网络</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#118-docker-compose">11.8. Docker Compose</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#119-镜像中心">11.9. 镜像中心</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1110-docker-swarm">11.10. Docker Swarm</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#1111-cicd与jenkins">11.11. CI/CD与Jenkins</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#12-kubernetes_k8s">12. Kubernetes_k8s</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#121-概述">12.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#122-部署">12.2. 部署</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#123-ingress暴露应用">12.3. Ingress暴露应用</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#13-微服务项目动力商城略">13. 微服务项目《动力商城》（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#14-activemq选学略">14. ActiveMQ（选学）（略）</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#15-高并发解决方案选学">15. 高并发解决方案（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#151-概述">15.1. 概述</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#152-解决方案">15.2. 解决方案</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#16-thymeleaf选学">16. Thymeleaf（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#161-简介">16.1. 简介</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#17-java日志框架选学">17. Java日志框架（选学）</a><ul><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#171-简介">17.1. 简介</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#172-框架分类">17.2. 框架分类</a></li><li><a class="table-of-contents__link toc-highlight" href="/ZHENGnotes/bjpowernode/微服务结构/summary#173-门面分类">17.3. 门面分类</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
 </body>
 </html>
