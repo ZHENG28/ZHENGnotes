@@ -9,6 +9,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ katex)
 /* harmony export */ });
+/* unused harmony exports ParseError, SETTINGS_SCHEMA, __defineFunction, __defineMacro, __defineSymbol, __domTree, __parse, __renderToDomTree, __renderToHTMLTree, __setFontMetrics, render, renderToString, version */
 /**
  * Lexing or parsing positional information for error reporting.
  * This object is immutable.
@@ -180,17 +181,9 @@ ParseError.prototype.__proto__ = Error.prototype;
  */
 
 /**
- * Return whether an element is contained in a list
- */
-var contains = function contains(list, elem) {
-  return list.indexOf(elem) !== -1;
-};
-/**
  * Provide a default value if a setting is undefined
  * NOTE: Couldn't use `T` as the output type due to facebook/flow#5022.
  */
-
-
 var deflt = function deflt(setting, defaultIfUndefined) {
   return setting === undefined ? defaultIfUndefined : setting;
 }; // hyphenate and escape adapted from Facebook's React under Apache 2 license
@@ -295,7 +288,6 @@ var protocolFromUrl = function protocolFromUrl(url) {
   return protocol[1].toLowerCase();
 };
 var utils = {
-  contains,
   deflt,
   escape,
   hyphenate,
@@ -1030,13 +1022,14 @@ var tallDelim = function tallDelim(label, midHeight) {
   }
 };
 
+// To ensure that all nodes have compatible signatures for these methods.
+
 /**
  * This node represents a document fragment, which contains elements, but when
  * placed into the DOM doesn't have any representation itself. It only contains
  * children and doesn't have any DOM node properties.
  */
 class DocumentFragment {
-  // HtmlDomNode
   // Never used; needed for satisfying interface.
   constructor(children) {
     this.children = void 0;
@@ -1054,7 +1047,7 @@ class DocumentFragment {
   }
 
   hasClass(className) {
-    return utils.contains(this.classes, className);
+    return this.classes.includes(className);
   }
   /** Convert the fragment into a node. */
 
@@ -3271,7 +3264,7 @@ var sigmasAndXis = {
   sqrtRuleThickness: [0.04, 0.04, 0.04],
   // This value determines how large a pt is, for metrics which are defined
   // in terms of pts.
-  // This value is also used in katex.less; if you change it make sure the
+  // This value is also used in katex.scss; if you change it make sure the
   // values match.
   ptPerEm: [10.0, 10.0, 10.0],
   // The space between adjacent `|` columns in an array definition. From
@@ -3953,9 +3946,19 @@ var toNode = function toNode(tagName) {
   return node;
 };
 /**
- * Convert into an HTML markup string
+ * https://w3c.github.io/html-reference/syntax.html#syntax-attributes
+ *
+ * > Attribute Names must consist of one or more characters
+ * other than the space characters, U+0000 NULL,
+ * '"', "'", ">", "/", "=", the control characters,
+ * and any characters that are not defined by Unicode.
  */
 
+
+var invalidAttributeNameRegex = /[\s"'>/=\x00-\x1f]/;
+/**
+ * Convert into an HTML markup string
+ */
 
 var toMarkup = function toMarkup(tagName) {
   var markup = "<" + tagName; // Add the class
@@ -3979,6 +3982,10 @@ var toMarkup = function toMarkup(tagName) {
 
   for (var attr in this.attributes) {
     if (this.attributes.hasOwnProperty(attr)) {
+      if (invalidAttributeNameRegex.test(attr)) {
+        throw new ParseError("Invalid attribute name '" + attr + "'");
+      }
+
       markup += " " + attr + "=\"" + utils.escape(this.attributes[attr]) + "\"";
     }
   }
@@ -4034,7 +4041,7 @@ class Span {
   }
 
   hasClass(className) {
-    return utils.contains(this.classes, className);
+    return this.classes.includes(className);
   }
 
   toNode() {
@@ -4070,7 +4077,7 @@ class Anchor {
   }
 
   hasClass(className) {
-    return utils.contains(this.classes, className);
+    return this.classes.includes(className);
   }
 
   toNode() {
@@ -4102,7 +4109,7 @@ class Img {
   }
 
   hasClass(className) {
-    return utils.contains(this.classes, className);
+    return this.classes.includes(className);
   }
 
   toNode() {
@@ -4194,7 +4201,7 @@ class SymbolNode {
   }
 
   hasClass(className) {
-    return utils.contains(this.classes, className);
+    return this.classes.includes(className);
   }
   /**
    * Creates a text node or span from a symbol node. Note that a span is only
@@ -5049,9 +5056,10 @@ defineSymbol(math, main, inner, "\u2026", "\\mathellipsis");
 defineSymbol(text, main, inner, "\u2026", "\\ldots", true);
 defineSymbol(math, main, inner, "\u2026", "\\ldots", true);
 defineSymbol(math, main, inner, "\u22ef", "\\@cdots", true);
-defineSymbol(math, main, inner, "\u22f1", "\\ddots", true);
-defineSymbol(math, main, textord, "\u22ee", "\\varvdots"); // \vdots is a macro
+defineSymbol(math, main, inner, "\u22f1", "\\ddots", true); // \vdots is a macro that uses one of these two symbols (with made-up names):
 
+defineSymbol(math, main, textord, "\u22ee", "\\varvdots");
+defineSymbol(text, main, textord, "\u22ee", "\\varvdots");
 defineSymbol(math, main, accent, "\u02ca", "\\acute");
 defineSymbol(math, main, accent, "\u02cb", "\\grave");
 defineSymbol(math, main, accent, "\u00a8", "\\ddot");
@@ -5097,7 +5105,7 @@ defineSymbol(text, main, accent, "\u02da", "\\r"); // ring above
 
 defineSymbol(text, main, accent, "\u02c7", "\\v"); // caron
 
-defineSymbol(text, main, accent, "\u00a8", '\\"'); // diaresis
+defineSymbol(text, main, accent, "\u00a8", '\\"'); // diaeresis
 
 defineSymbol(text, main, accent, "\u02dd", "\\H"); // double acute
 
@@ -5207,11 +5215,11 @@ for (var _i3 = 0; _i3 < letters.length; _i3++) {
 
   defineSymbol(math, main, mathord, _ch3, wideChar);
   defineSymbol(text, main, textord, _ch3, wideChar);
-  wideChar = String.fromCharCode(0xD835, 0xDD04 + _i3); // A-Z a-z Fractur
+  wideChar = String.fromCharCode(0xD835, 0xDD04 + _i3); // A-Z a-z Fraktur
 
   defineSymbol(math, main, mathord, _ch3, wideChar);
   defineSymbol(text, main, textord, _ch3, wideChar);
-  wideChar = String.fromCharCode(0xD835, 0xDD6C + _i3); // A-Z a-z bold Fractur
+  wideChar = String.fromCharCode(0xD835, 0xDD6C + _i3); // A-Z a-z bold Fraktur
 
   defineSymbol(math, main, mathord, _ch3, wideChar);
   defineSymbol(text, main, textord, _ch3, wideChar);
@@ -5970,6 +5978,10 @@ var fontMap = {
     variant: "italic",
     fontName: "Math-Italic"
   },
+  "mathsfit": {
+    variant: "sans-serif-italic",
+    fontName: "SansSerif-Italic"
+  },
   // "boldsymbol" is missing because they require the use of multiple fonts:
   // Math-BoldItalic and Main-Bold.  This is handled by a special case in
   // makeOrd which ends up calling boldsymbol.
@@ -6337,9 +6349,9 @@ var buildExpression$1 = function buildExpression(expression, options, isRealGrou
     var prevType = prev.classes[0];
     var type = node.classes[0];
 
-    if (prevType === "mbin" && utils.contains(binRightCanceller, type)) {
+    if (prevType === "mbin" && binRightCanceller.includes(type)) {
       prev.classes[0] = "mord";
-    } else if (type === "mbin" && utils.contains(binLeftCanceller, prevType)) {
+    } else if (type === "mbin" && binLeftCanceller.includes(prevType)) {
       node.classes[0] = "mord";
     }
   }, {
@@ -6683,7 +6695,19 @@ class MathNode {
     }
 
     for (var i = 0; i < this.children.length; i++) {
-      node.appendChild(this.children[i].toNode());
+      // Combine multiple TextNodes into one TextNode, to prevent
+      // screen readers from reading each as a separate word [#3995]
+      if (this.children[i] instanceof TextNode && this.children[i + 1] instanceof TextNode) {
+        var text = this.children[i].toText() + this.children[++i].toText();
+
+        while (this.children[i + 1] instanceof TextNode) {
+          text += this.children[++i].toText();
+        }
+
+        node.appendChild(new TextNode(text).toNode());
+      } else {
+        node.appendChild(this.children[i].toNode());
+      }
     }
 
     return node;
@@ -6922,6 +6946,8 @@ var getVariant = function getVariant(group, options) {
     return "bold";
   } else if (font === "mathbb") {
     return "double-struck";
+  } else if (font === "mathsfit") {
+    return "sans-serif-italic";
   } else if (font === "mathfrak") {
     return "fraktur";
   } else if (font === "mathscr" || font === "mathcal") {
@@ -6935,7 +6961,7 @@ var getVariant = function getVariant(group, options) {
 
   var text = group.text;
 
-  if (utils.contains(["\\imath", "\\jmath"], text)) {
+  if (["\\imath", "\\jmath"].includes(text)) {
     return null;
   }
 
@@ -6952,10 +6978,32 @@ var getVariant = function getVariant(group, options) {
   return null;
 };
 /**
+ * Check for <mi>.</mi> which is how a dot renders in MathML,
+ * or <mo separator="true" lspace="0em" rspace="0em">,</mo>
+ * which is how a braced comma {,} renders in MathML
+ */
+
+function isNumberPunctuation(group) {
+  if (!group) {
+    return false;
+  }
+
+  if (group.type === 'mi' && group.children.length === 1) {
+    var child = group.children[0];
+    return child instanceof TextNode && child.text === '.';
+  } else if (group.type === 'mo' && group.children.length === 1 && group.getAttribute('separator') === 'true' && group.getAttribute('lspace') === '0em' && group.getAttribute('rspace') === '0em') {
+    var _child = group.children[0];
+    return _child instanceof TextNode && _child.text === ',';
+  } else {
+    return false;
+  }
+}
+/**
  * Takes a list of nodes, builds them, and returns a list of the generated
  * MathML nodes.  Also combine consecutive <mtext> outputs into a single
  * <mtext> tag.
  */
+
 
 var buildExpression = function buildExpression(expression, options, isOrdgroup) {
   if (expression.length === 1) {
@@ -6985,22 +7033,30 @@ var buildExpression = function buildExpression(expression, options, isOrdgroup) 
       } else if (_group.type === 'mn' && lastGroup.type === 'mn') {
         lastGroup.children.push(..._group.children);
         continue; // Concatenate <mn>...</mn> followed by <mi>.</mi>
-      } else if (_group.type === 'mi' && _group.children.length === 1 && lastGroup.type === 'mn') {
-        var child = _group.children[0];
+      } else if (isNumberPunctuation(_group) && lastGroup.type === 'mn') {
+        lastGroup.children.push(..._group.children);
+        continue; // Concatenate <mi>.</mi> followed by <mn>...</mn>
+      } else if (_group.type === 'mn' && isNumberPunctuation(lastGroup)) {
+        _group.children = [...lastGroup.children, ..._group.children];
+        groups.pop(); // Put preceding <mn>...</mn> or <mi>.</mi> inside base of
+        // <msup><mn>...base...</mn>...exponent...</msup> (or <msub>)
+      } else if ((_group.type === 'msup' || _group.type === 'msub') && _group.children.length >= 1 && (lastGroup.type === 'mn' || isNumberPunctuation(lastGroup))) {
+        var base = _group.children[0];
 
-        if (child instanceof TextNode && child.text === '.') {
-          lastGroup.children.push(..._group.children);
-          continue;
-        }
+        if (base instanceof MathNode && base.type === 'mn') {
+          base.children = [...lastGroup.children, ...base.children];
+          groups.pop();
+        } // \not
+
       } else if (lastGroup.type === 'mi' && lastGroup.children.length === 1) {
         var lastChild = lastGroup.children[0];
 
         if (lastChild instanceof TextNode && lastChild.text === '\u0338' && (_group.type === 'mo' || _group.type === 'mi' || _group.type === 'mn')) {
-          var _child = _group.children[0];
+          var child = _group.children[0];
 
-          if (_child instanceof TextNode && _child.text.length > 0) {
+          if (child instanceof TextNode && child.text.length > 0) {
             // Overlay with combining character long solidus
-            _child.text = _child.text.slice(0, 1) + "\u0338" + _child.text.slice(1);
+            child.text = child.text.slice(0, 1) + "\u0338" + child.text.slice(1);
             groups.pop();
           }
         }
@@ -7060,7 +7116,7 @@ function buildMathML(tree, texExpression, options, isDisplayMode, forMathmlOnly)
 
   var wrapper;
 
-  if (expression.length === 1 && expression[0] instanceof MathNode && utils.contains(["mrow", "mtable"], expression[0].type)) {
+  if (expression.length === 1 && expression[0] instanceof MathNode && ["mrow", "mtable"].includes(expression[0].type)) {
     wrapper = expression[0];
   } else {
     wrapper = new mathMLTree.MathNode("mrow", expression);
@@ -7296,7 +7352,7 @@ var svgSpan = function svgSpan(group, options) {
 
     var label = group.label.slice(1);
 
-    if (utils.contains(["widehat", "widecheck", "widetilde", "utilde"], label)) {
+    if (["widehat", "widecheck", "widetilde", "utilde"].includes(label)) {
       // Each type in the `if` statement corresponds to one of the ParseNode
       // types below. This narrowing is required to access `grp.base`.
       // $FlowFixMe
@@ -9095,11 +9151,11 @@ var makeStackedDelim = function makeStackedDelim(delim, heightTotal, center, opt
     top = "\\Uparrow";
     repeat = "\u2016";
     bottom = "\\Downarrow";
-  } else if (utils.contains(verts, delim)) {
+  } else if (verts.includes(delim)) {
     repeat = "\u2223";
     svgLabel = "vert";
     viewBoxWidth = 333;
-  } else if (utils.contains(doubleVerts, delim)) {
+  } else if (doubleVerts.includes(delim)) {
     repeat = "\u2225";
     svgLabel = "doublevert";
     viewBoxWidth = 556;
@@ -9406,9 +9462,9 @@ var makeSizedDelim = function makeSizedDelim(delim, size, options, mode, classes
   } // Sized delimiters are never centered.
 
 
-  if (utils.contains(stackLargeDelimiters, delim) || utils.contains(stackNeverDelimiters, delim)) {
+  if (stackLargeDelimiters.includes(delim) || stackNeverDelimiters.includes(delim)) {
     return makeLargeDelim(delim, size, false, options, mode, classes);
-  } else if (utils.contains(stackAlwaysDelimiters, delim)) {
+  } else if (stackAlwaysDelimiters.includes(delim)) {
     return makeStackedDelim(delim, sizeToMaxHeight[size], false, options, mode, classes);
   } else {
     throw new ParseError("Illegal delimiter: '" + delim + "'");
@@ -9558,9 +9614,9 @@ var makeCustomSizedDelim = function makeCustomSizedDelim(delim, height, center, 
 
   var sequence;
 
-  if (utils.contains(stackNeverDelimiters, delim)) {
+  if (stackNeverDelimiters.includes(delim)) {
     sequence = stackNeverDelimiterSequence;
-  } else if (utils.contains(stackLargeDelimiters, delim)) {
+  } else if (stackLargeDelimiters.includes(delim)) {
     sequence = stackLargeDelimiterSequence;
   } else {
     sequence = stackAlwaysDelimiterSequence;
@@ -9690,7 +9746,7 @@ var delimiters = ["(", "\\lparen", ")", "\\rparen", "[", "\\lbrack", "]", "\\rbr
 function checkDelimiter(delim, context) {
   var symDelim = checkSymbolNodeType(delim);
 
-  if (symDelim && utils.contains(delimiters, symDelim.text)) {
+  if (symDelim && delimiters.includes(symDelim.text)) {
     return symDelim;
   } else if (symDelim) {
     throw new ParseError("Invalid delimiter '" + symDelim.text + "' after '" + context.funcName + "'", delim);
@@ -11383,7 +11439,7 @@ defineEnvironment({
   },
 
   handler(context) {
-    if (utils.contains(["gather", "gather*"], context.envName)) {
+    if (["gather", "gather*"].includes(context.envName)) {
       validateAmsEnvironmentContext(context);
     }
 
@@ -11566,7 +11622,7 @@ var fontAliases = {
 defineFunction({
   type: "font",
   names: [// styles, except \boldsymbol defined below
-  "\\mathrm", "\\mathit", "\\mathbf", "\\mathnormal", // families
+  "\\mathrm", "\\mathit", "\\mathbf", "\\mathnormal", "\\mathsfit", // families
   "\\mathbb", "\\mathcal", "\\mathfrak", "\\mathscr", "\\mathsf", "\\mathtt", // aliases, except \bm defined below
   "\\Bbb", "\\bold", "\\frak"],
   props: {
@@ -12500,13 +12556,18 @@ defineFunction({
           var data = value.split(",");
 
           for (var i = 0; i < data.length; i++) {
-            var keyVal = data[i].split("=");
+            var item = data[i];
+            var firstEquals = item.indexOf("=");
 
-            if (keyVal.length !== 2) {
-              throw new ParseError("Error parsing key-value for \\htmlData");
+            if (firstEquals < 0) {
+              throw new ParseError("\\htmlData key/value '" + item + "'" + " missing equals sign");
             }
 
-            attributes["data-" + keyVal[0].trim()] = keyVal[1].trim();
+            var key = item.slice(0, firstEquals);
+
+            var _value = item.slice(firstEquals + 1);
+
+            attributes["data-" + key.trim()] = _value;
           }
 
           trustContext = {
@@ -13125,7 +13186,7 @@ var htmlBuilder$2 = (grp, options) => {
   var style = options.style;
   var large = false;
 
-  if (style.size === Style$1.DISPLAY.size && group.symbol && !utils.contains(noSuccessor, group.name)) {
+  if (style.size === Style$1.DISPLAY.size && group.symbol && !noSuccessor.includes(group.name)) {
     // Most symbol operators get larger in displaystyle (rule 13)
     large = true;
   }
@@ -13226,7 +13287,7 @@ var mathmlBuilder$1 = (group, options) => {
     // This is a symbol. Just add the symbol.
     node = new MathNode("mo", [makeText(group.name, group.mode)]);
 
-    if (utils.contains(noSuccessor, group.name)) {
+    if (noSuccessor.includes(group.name)) {
       node.setAttribute("largeop", "false");
     }
   } else if (group.body) {
@@ -13387,7 +13448,8 @@ defineFunction({
   type: "op",
   names: ["\\int", "\\iint", "\\iiint", "\\oint", "\\oiint", "\\oiiint", "\u222b", "\u222c", "\u222d", "\u222e", "\u222f", "\u2230"],
   props: {
-    numArgs: 0
+    numArgs: 0,
+    allowedInArgument: true
   },
 
   handler(_ref5) {
@@ -13800,7 +13862,8 @@ defineFunction({
   names: ["\\relax"],
   props: {
     numArgs: 0,
-    allowedInText: true
+    allowedInText: true,
+    allowedInArgument: true
   },
 
   handler(_ref) {
@@ -13821,6 +13884,8 @@ defineFunction({
   props: {
     numArgs: 2,
     numOptionalArgs: 1,
+    allowedInText: true,
+    allowedInMath: true,
     argTypes: ["size", "size", "size"]
   },
 
@@ -14424,7 +14489,7 @@ defineFunctionBuilders({
   },
 
   mathmlBuilder(group, options) {
-    // Is the inner group a relevant horizonal brace?
+    // Is the inner group a relevant horizontal brace?
     var isBrace = false;
     var isOver;
     var isSup;
@@ -14690,9 +14755,11 @@ var optionsWithFont = (group, options) => {
     return options.withTextFontFamily(textFontFamilies[font]);
   } else if (textFontWeights[font]) {
     return options.withTextFontWeight(textFontWeights[font]);
-  } else {
-    return options.withTextFontShape(textFontShapes[font]);
+  } else if (font === "\\emph") {
+    return options.fontShape === "textit" ? options.withTextFontShape("textup") : options.withTextFontShape("textit");
   }
+
+  return options.withTextFontShape(textFontShapes[font]);
 };
 
 defineFunction({
@@ -14700,7 +14767,7 @@ defineFunction({
   names: [// Font families
   "\\text", "\\textrm", "\\textsf", "\\texttt", "\\textnormal", // Font weights
   "\\textbf", "\\textmd", // Font Shapes
-  "\\textit", "\\textup"],
+  "\\textit", "\\textup", "\\emph"],
   props: {
     numArgs: 1,
     argTypes: ["text"],
@@ -15333,7 +15400,7 @@ defineMacro("\\char", function (context) {
 // \renewcommand{\macro}[args]{definition}
 // TODO: Optional arguments: \newcommand{\macro}[args][default]{definition}
 
-var newcommand = (context, existsOK, nonexistsOK) => {
+var newcommand = (context, existsOK, nonexistsOK, skipIfExists) => {
   var arg = context.consumeArg().tokens;
 
   if (arg.length !== 1) {
@@ -15370,19 +15437,22 @@ var newcommand = (context, existsOK, nonexistsOK) => {
 
     numArgs = parseInt(argText);
     arg = context.consumeArg().tokens;
-  } // Final arg is the expansion of the macro
+  }
 
+  if (!(exists && skipIfExists)) {
+    // Final arg is the expansion of the macro
+    context.macros.set(name, {
+      tokens: arg,
+      numArgs
+    });
+  }
 
-  context.macros.set(name, {
-    tokens: arg,
-    numArgs
-  });
   return '';
 };
 
-defineMacro("\\newcommand", context => newcommand(context, false, true));
-defineMacro("\\renewcommand", context => newcommand(context, true, false));
-defineMacro("\\providecommand", context => newcommand(context, true, true)); // terminal (console) tools
+defineMacro("\\newcommand", context => newcommand(context, false, true, false));
+defineMacro("\\renewcommand", context => newcommand(context, true, false, false));
+defineMacro("\\providecommand", context => newcommand(context, true, true, true)); // terminal (console) tools
 
 defineMacro("\\message", context => {
   var arg = context.consumeArgs(1)[0]; // eslint-disable-next-line no-console
@@ -15503,7 +15573,7 @@ defineMacro("\\lrcorner", "\\html@mathml{\\@lrcorner}{\\mathop{\\char\"231f}}");
 // We'll call \varvdots, which gets a glyph from symbols.js.
 // The zero-width rule gets us an equivalent to the vertical 6pt kern.
 
-defineMacro("\\vdots", "\\mathord{\\varvdots\\rule{0pt}{15pt}}");
+defineMacro("\\vdots", "{\\varvdots\\rule{0pt}{15pt}}");
 defineMacro("\u22ee", "\\vdots"); //////////////////////////////////////////////////////////////////////
 // amsmath.sty
 // http://mirrors.concertpass.com/tex-archive/macros/latex/required/amsmath/amsmath.pdf
@@ -15533,7 +15603,12 @@ defineMacro("\\boxed", "\\fbox{$\\displaystyle{#1}$}"); // \def\iff{\DOTSB\;\Lon
 
 defineMacro("\\iff", "\\DOTSB\\;\\Longleftrightarrow\\;");
 defineMacro("\\implies", "\\DOTSB\\;\\Longrightarrow\\;");
-defineMacro("\\impliedby", "\\DOTSB\\;\\Longleftarrow\\;"); // AMSMath's automatic \dots, based on \mdots@@ macro.
+defineMacro("\\impliedby", "\\DOTSB\\;\\Longleftarrow\\;"); // \def\dddot#1{{\mathop{#1}\limits^{\vbox to-1.4\ex@{\kern-\tw@\ex@
+//  \hbox{\normalfont ...}\vss}}}}
+// We use \overset which avoids the vertical shift of \mathop.
+
+defineMacro("\\dddot", "{\\overset{\\raisebox{-0.1ex}{\\normalsize ...}}{#1}}");
+defineMacro("\\ddddot", "{\\overset{\\raisebox{-0.1ex}{\\normalsize ....}}{#1}}"); // AMSMath's automatic \dots, based on \mdots@@ macro.
 
 var dotsByToken = {
   ',': '\\dotsc',
@@ -15604,7 +15679,7 @@ defineMacro("\\dots", function (context) {
   } else if (next.slice(0, 4) === '\\not') {
     thedots = '\\dotsb';
   } else if (next in symbols.math) {
-    if (utils.contains(['bin', 'rel'], symbols.math[next].group)) {
+    if (['bin', 'rel'].includes(symbols.math[next].group)) {
       thedots = '\\dotsb';
     }
   }
@@ -16249,7 +16324,7 @@ class MacroExpander {
 
     this.pushToken(new Token("EOF", end.loc));
     this.pushTokens(tokens);
-    return start.range(end, "");
+    return new Token("", SourceLocation.range(start, end));
   }
   /**
    * Consume all following space tokens, without expansion.
@@ -17287,7 +17362,7 @@ class Parser {
    * Parses an "expression", which is a list of atoms.
    *
    * `breakOnInfix`: Should the parsing stop when we hit infix nodes? This
-   *                 happens when functions have higher precedence han infix
+   *                 happens when functions have higher precedence than infix
    *                 nodes in implicit parses.
    *
    * `breakOnTokenText`: The text of the token that the expression should end
@@ -17323,6 +17398,7 @@ class Parser {
       if (!atom) {
         break;
       } else if (atom.type === "internal") {
+        // Internal nodes do not appear in parse tree
         continue;
       }
 
@@ -17409,8 +17485,15 @@ class Parser {
     var symbol = symbolToken.text;
     this.consume();
     this.consumeSpaces(); // ignore spaces before sup/subscript argument
+    // Skip over allowed internal nodes such as \relax
 
-    var group = this.parseGroup(name);
+    var group;
+
+    do {
+      var _group;
+
+      group = this.parseGroup(name);
+    } while (((_group = group) == null ? void 0 : _group.type) === "internal");
 
     if (!group) {
       throw new ParseError("Expected group after '" + symbol + "'", symbolToken);
@@ -17456,7 +17539,13 @@ class Parser {
   parseAtom(breakOnTokenText) {
     // The body of an atom is an implicit group, so that things like
     // \left(x\right)^2 work correctly.
-    var base = this.parseGroup("atom", breakOnTokenText); // In text mode, we don't have superscripts or subscripts
+    var base = this.parseGroup("atom", breakOnTokenText); // Internal nodes (e.g. \relax) cannot support super/subscripts.
+    // Instead we will pick up super/subscripts with blank base next round.
+
+    if ((base == null ? void 0 : base.type) === "internal") {
+      return base;
+    } // In text mode, we don't have superscripts or subscripts
+
 
     if (this.mode === "text") {
       return base;
@@ -17743,13 +17832,13 @@ class Parser {
             throw new ParseError("A primitive argument cannot be optional");
           }
 
-          var _group = this.parseGroup(name);
+          var _group2 = this.parseGroup(name);
 
-          if (_group == null) {
+          if (_group2 == null) {
             throw new ParseError("Expected group as " + name, this.fetch());
           }
 
-          return _group;
+          return _group2;
         }
 
       case "original":
@@ -17836,7 +17925,7 @@ class Parser {
       return null;
     }
 
-    var match = /^(#[a-f0-9]{3}|#?[a-f0-9]{6}|[a-z]+)$/i.exec(res.text);
+    var match = /^(#[a-f0-9]{3,4}|#[a-f0-9]{6}|#[a-f0-9]{8}|[a-f0-9]{6}|[a-z]+)$/i.exec(res.text);
 
     if (!match) {
       throw new ParseError("Invalid color: '" + res.text + "'", res);
@@ -18366,11 +18455,21 @@ var renderToHTMLTree = function renderToHTMLTree(expression, options) {
   }
 };
 
+var version = "0.16.28";
+var __domTree = {
+  Span,
+  Anchor,
+  SymbolNode,
+  SvgNode,
+  PathNode,
+  LineNode
+}; // ESM exports
+
 var katex = {
   /**
    * Current KaTeX version
    */
-  version: "0.16.10",
+  version,
 
   /**
    * Renders the given LaTeX into an HTML+MathML combination, and adds
@@ -18390,7 +18489,7 @@ var katex = {
   ParseError,
 
   /**
-   * The shema of Settings
+   * The schema of Settings
    */
   SETTINGS_SCHEMA,
 
@@ -18450,18 +18549,11 @@ var katex = {
   /**
    * Expose the dom tree node types, which can be useful for type checking nodes.
    *
-   * NOTE: This method is not currently recommended for public use.
+   * NOTE: These methods are not currently recommended for public use.
    * The internal tree representation is unstable and is very likely
    * to change. Use at your own risk.
    */
-  __domTree: {
-    Span,
-    Anchor,
-    SymbolNode,
-    SvgNode,
-    PathNode,
-    LineNode
-  }
+  __domTree
 };
 
 
