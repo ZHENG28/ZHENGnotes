@@ -8,7 +8,6 @@ export default {
   url: "https://github.com",
   baseUrl: "/ZHENGnotes/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
   presets: [
     [
       "classic",
@@ -50,6 +49,9 @@ export default {
     }),
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
   },
   themes: ["@docusaurus/theme-mermaid"],
   stylesheets: [
