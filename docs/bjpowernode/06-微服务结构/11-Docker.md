@@ -1142,7 +1142,7 @@ sidebar_label: 11. Docker
     4. 滚动更新：更新和回滚操作均会新建task，更新时task会分配回原节点、回滚时task会被重新分配
         ```bash showLineNumbers
         docker service create \
-        ...
+        …
         --update-parallelism <parallelism-update-task-number> \
         --update-delay <update-delay-time> \
         --update-max-failure-ratio <max-failure-ratio> \
