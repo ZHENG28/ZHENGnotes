@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-leetcode-master/贪心算法" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">9. 贪心算法 | Zheng&#x27;s Notes</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://github.com/ZHENGnotes/leetcode-master/贪心算法"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="9. 贪心算法 | Zheng&#x27;s Notes"><meta data-rh="true" name="description" content="1. 贪心算法理论基础"><meta data-rh="true" property="og:description" content="1. 贪心算法理论基础"><link data-rh="true" rel="canonical" href="https://github.com/ZHENGnotes/leetcode-master/贪心算法"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/leetcode-master/贪心算法" hreflang="en"><link data-rh="true" rel="alternate" href="https://github.com/ZHENGnotes/leetcode-master/贪心算法" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"代码随想录","item":"https://github.com/ZHENGnotes/category/代码随想录"},{"@type":"ListItem","position":2,"name":"9. 贪心算法","item":"https://github.com/ZHENGnotes/leetcode-master/贪心算法"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/ZHENGnotes/assets/css/styles.88ab967c.css">
+<script src="/ZHENGnotes/assets/js/runtime~main.ed216023.js" defer="defer"></script>
+<script src="/ZHENGnotes/assets/js/main.52e88df3.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top navbarHideable_m1mJ"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/ZHENGnotes/"></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/ZHENG28" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd sidebarWithHideableNavbar_wUlq"><a tabindex="-1" class="sidebarLogo_isFc" href="/ZHENGnotes/"></a><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/ZHENGnotes/"><span title="首页" class="linkLabel_WmDU">首页</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/ZHENGnotes/category/琐碎知识"><span title="琐碎知识" class="categoryLinkLabel_W154">琐碎知识</span></a><button aria-label="Expand sidebar category &#x27;琐碎知识&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/ZHENGnotes/category/代码随想录"><span title="代码随想录" class="categoryLinkLabel_W154">代码随想录</span></a><button aria-label="Collapse sidebar category &#x27;代码随想录&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/数组"><span title="1. 数组" class="linkLabel_WmDU">1. 数组</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/链表"><span title="2. 链表" class="linkLabel_WmDU">2. 链表</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/哈希表"><span title="3. 哈希表" class="linkLabel_WmDU">3. 哈希表</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/字符串"><span title="4. 字符串" class="linkLabel_WmDU">4. 字符串</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/双指针法"><span title="5. 双指针法" class="linkLabel_WmDU">5. 双  指针法</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/栈与队列"><span title="6. 栈与队列" class="linkLabel_WmDU">6. 栈与队列</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/二叉树"><span title="7. 二叉树" class="linkLabel_WmDU">7. 二叉树</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/ZHENGnotes/leetcode-master/贪心算法"><span title="9. 贪心算法" class="linkLabel_WmDU">9. 贪心算法</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/ZHENGnotes/leetcode-master/动态规划"><span title="10. 动态规划" class="linkLabel_WmDU">10. 动态规划</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/ZHENGnotes/category/动力节点"><span title="动力节点" class="categoryLinkLabel_W154">动力节点</span></a><button aria-label="Expand sidebar category &#x27;动力节点&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/ZHENGnotes/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/ZHENGnotes/category/代码随想录"><span>代码随想录</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">9. 贪心算法</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>9. 贪心算法</h1></header>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="1-贪心算法理论基础">1. 贪心算法理论基础<a href="#1-贪心算法理论基础" class="hash-link" aria-label="Direct link to 1. 贪心算法理论基础" title="Direct link to 1. 贪心算法理论基础" translate="no">​</a></h2>
+<ol>
+<li class="">题目分类：<img decoding="async" loading="lazy" alt="category" src="/ZHENGnotes/assets/images/1.1.category-cdca0116b78d9b588c548194c160a2a4.png" width="992" height="986" class="img_ev3q"></li>
+<li class="">贪心：选择每一阶段的 <strong>局部最优</strong>，从而达到 <strong>全局最优</strong></li>
+<li class="">贪心的套路/什么时候用贪心：贪心算法没有固定的套路；<strong>手动模拟</strong> 感觉可以从局部最优推出整体最优，而且 <strong>想不到反例</strong>，那么就可以试一试贪心 → 常识性推导 + 举反例</li>
+<li class="">解题步骤：实际做题时，只要想清楚局部最优是什么，且推导出全局最优，就够了<!-- -->
+<ol>
+<li class="">将问题分解为若干个子问题</li>
+<li class="">找出适合的贪心策略</li>
+<li class="">求解每一个子问题的最优解</li>
+<li class="">将局部最优解堆叠成全  局最优解</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="2-分发饼干">2. 分发饼干<a href="#2-分发饼干" class="hash-link" aria-label="Direct link to 2. 分发饼干" title="Direct link to 2. 分发饼干" translate="no">​</a></h2>
+<blockquote>
+<p>【<a href="https://leetcode.cn/problems/assign-cookies/description/" target="_blank" rel="noopener noreferrer" class="">LC455</a>】假设你是一位很棒的家长，想要给你的孩子们一些小饼干。但是，每个孩子最多只能给一块饼干。对每个孩子 i，都有一个胃口值 g[i]，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 j，都有一个尺寸 s[j] 。如果 s[j] &gt;= g[i]，我们可以将这个饼干 j 分配给孩子 i ，这个孩子会得到满足。你的目标是满足尽可能多的孩子，并输出这个最大数值。</p>
+</blockquote>
+<ol>
+<li class="">贪心策略：<!-- -->
+<ul>
+<li class="">局部最优：大饼干喂给胃口大的，充分利用饼干尺寸喂饱一个</li>
+<li class="">全局最优：喂饱尽可能多的小孩</li>
+</ul>
+</li>
+<li class="">解法：</li>
+</ol>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#000000;--prism-background-color:#ffffff"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#000000;background-color:#ffffff"><code class="codeBlockLines_e6Vv codeBlockLinesWithNumbering_o6Pm" style="counter-reset:line-count 0"><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token keyword" style="color:rgb(0, 0, 255)">class</span><span class="token plain"> </span><span class="token class-name" style="color:rgb(38, 127, 153)">Solution</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token keyword" style="color:rgb(0, 0, 255)">public</span><span class="token operator" style="color:rgb(0, 0, 0)">:</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token keyword" style="color:rgb(0, 0, 255)">int</span><span class="token plain"> </span><span class="token function" style="color:rgb(0, 0, 255)">findContentChildren</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">vector</span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token keyword" style="color:rgb(0, 0, 255)">int</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token operator" style="color:rgb(0, 0, 0)">&amp;</span><span class="token plain"> g</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> vector</span><span class="token operator" style="color:rgb(0, 0, 0)">&lt;</span><span class="token keyword" style="color:rgb(0, 0, 255)">int</span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;</span><span class="token operator" style="color:rgb(0, 0, 0)">&amp;</span><span class="token plain"> s</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token function" style="color:rgb(0, 0, 255)">sort</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">g</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">begin</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> g</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">end</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token function" style="color:rgb(0, 0, 255)">sort</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">s</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">begin</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">,</span><span class="token plain"> s</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">end</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain" style="display:inline-block"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token comment" style="color:rgb(0, 128, 0)">// 大饼干先喂饱大胃口</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token keyword" style="color:rgb(0, 0, 255)">int</span><span class="token plain"> index </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> s</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">size</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">-</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token keyword" style="color:rgb(0, 0, 255)">int</span><span class="token plain"> result </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">0</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token keyword" style="color:rgb(0, 0, 255)">for</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token keyword" style="color:rgb(0, 0, 255)">int</span><span class="token plain"> i </span><span class="token operator" style="color:rgb(0, 0, 0)">=</span><span class="token plain"> g</span><span class="token punctuation" style="color:rgb(4, 81, 165)">.</span><span class="token function" style="color:rgb(0, 0, 255)">size</span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">-</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">1</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"> i </span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;=</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">0</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"> i</span><span class="token operator" style="color:rgb(0, 0, 0)">--</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token keyword" style="color:rgb(0, 0, 255)">if</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">(</span><span class="token plain">index </span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;=</span><span class="token plain"> </span><span class="token number" style="color:rgb(9, 134, 88)">0</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&amp;&amp;</span><span class="token plain"> s</span><span class="token punctuation" style="color:rgb(4, 81, 165)">[</span><span class="token plain">index</span><span class="token punctuation" style="color:rgb(4, 81, 165)">]</span><span class="token plain"> </span><span class="token operator" style="color:rgb(0, 0, 0)">&gt;=</span><span class="token plain"> g</span><span class="token punctuation" style="color:rgb(4, 81, 165)">[</span><span class="token plain">i</span><span class="token punctuation" style="color:rgb(4, 81, 165)">]</span><span class="token punctuation" style="color:rgb(4, 81, 165)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(4, 81, 165)">{</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">                result</span><span class="token operator" style="color:rgb(0, 0, 0)">++</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">                </span><span class="token comment" style="color:rgb(0, 128, 0)">// 自减代替两层for循环</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">                index</span><span class="token operator" style="color:rgb(0, 0, 0)">--</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">            </span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">        </span><span class="token keyword" style="color:rgb(0, 0, 255)">return</span><span class="token plain"> result</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token plain"></span></span><br></span><span class="token-line codeLine_lJS_" style="color:#000000"><span class="codeLineNumber_Tfdd"></span><span class="codeLineContent_feaV"><span class="token plain"></span><span class="token punctuation" style="color:rgb(4, 81, 165)">}</span><span class="token punctuation" style="color:rgb(4, 81, 165)">;</span></span><br></span></code></pre></div></div>
+<ol>
+<li class="">大饼干先喂饱大胃口：for循环控制胃口，里面的if条件控制饼干</li>
+<li class="">小饼干先喂饱小胃口：for循环控制饼干，里面的if条件控制胃口</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="3-摆动序列">3. 摆动序列<a href="#3-摆动序列" class="hash-link" aria-label="Direct link to 3. 摆动序列" title="Direct link to 3. 摆动序列" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="4-最大子序和">4. 最大子序和<a href="#4-最大子序和" class="hash-link" aria-label="Direct link to 4. 最大子序和" title="Direct link to 4. 最大子序和" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="5-贪心周总结">5. 贪心周总结<a href="#5-贪心周总结" class="hash-link" aria-label="Direct link to 5. 贪心周总结" title="Direct link to 5. 贪心周总结" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="6-买卖股票的最佳时机ii">6. 买卖股票的最佳时机II<a href="#6-买卖股票的最佳时机ii" class="hash-link" aria-label="Direct link to 6. 买卖股票的最佳时机II" title="Direct link to 6. 买卖股票的最佳时机II" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="7-跳跃游戏">7. 跳跃游戏<a href="#7-跳跃游戏" class="hash-link" aria-label="Direct link to 7. 跳跃游戏" title="Direct link to 7. 跳跃游戏" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="8-跳跃游戏ii">8. 跳跃游戏II<a href="#8-跳跃游戏ii" class="hash-link" aria-label="Direct link to 8. 跳跃游戏II" title="Direct link to 8. 跳跃游戏II" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="9-k次取反后最大化的数组和">9. K次取反后最大化的数组和<a href="#9-k次取反后最大化的数组和" class="hash-link" aria-label="Direct link to 9. K次取反后最大化的数组和" title="Direct link to 9. K次取反后最大化的数组和" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="10-贪心周总结">10. 贪心周总结<a href="#10-贪心周总结" class="hash-link" aria-label="Direct link to 10. 贪心周总结" title="Direct link to 10. 贪心周总结" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="11-加油站">11. 加油站<a href="#11-加油站" class="hash-link" aria-label="Direct link to 11. 加油站" title="Direct link to 11. 加油站" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="12-分发糖果">12. 分发糖果<a href="#12-分发糖果" class="hash-link" aria-label="Direct link to 12. 分发糖果" title="Direct link to 12. 分发糖果" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="13-柠檬水找零">13. 柠檬水找零<a href="#13-柠檬水找零" class="hash-link" aria-label="Direct link to 13. 柠檬水找零" title="Direct link to 13. 柠檬水找零" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="14-根据身高重建队列">14. 根据身高重建队列<a href="#14-根据身高重建队列" class="hash-link" aria-label="Direct link to 14. 根据身高重建队列" title="Direct link to 14. 根据身高重建队列" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="15-贪心周总结">15. 贪心周总结<a href="#15-贪心周总结" class="hash-link" aria-label="Direct link to 15. 贪心周总结" title="Direct link to 15. 贪心周总结" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="16-根据身高重建队列vector原理讲解">16. 根据身高重建队列（vector原理讲解）<a href="#16-根据身高重建队列vector原理讲解" class="hash-link" aria-label="Direct link to 16. 根据身高重建队列（vector原理讲解）" title="Direct link to 16. 根据身高重建队列（vector原理讲解）" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="17-用最少数量的箭引爆气球">17. 用最少数量的箭引爆气球<a href="#17-用最少数量的箭引爆气球" class="hash-link" aria-label="Direct link to 17. 用最少数量的箭引爆气球" title="Direct link to 17. 用最少数量的箭引爆气球" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="18-无重叠区间">18. 无重叠区间<a href="#18-无重叠区间" class="hash-link" aria-label="Direct link to 18. 无重叠区间" title="Direct link to 18. 无重叠区间" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="19-划分字母区间">19. 划分字母区间<a href="#19-划分字母区间" class="hash-link" aria-label="Direct link to 19. 划分字母 区间" title="Direct link to 19. 划分字母区间" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="20-合并区间">20. 合并区间<a href="#20-合并区间" class="hash-link" aria-label="Direct link to 20. 合并区间" title="Direct link to 20. 合并区间" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="21-贪心周总结">21. 贪心周总结<a href="#21-贪心周总结" class="hash-link" aria-label="Direct link to 21. 贪心周总结" title="Direct link to 21. 贪心周总结" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="22-单调递增的数字">22. 单调递增的数字<a href="#22-单调递增的数字" class="hash-link" aria-label="Direct link to 22. 单调递增的数字" title="Direct link to 22. 单调递增的数字" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="23-监控二叉树">23. 监控二叉树<a href="#23-监控二叉树" class="hash-link" aria-label="Direct link to 23. 监控二叉树" title="Direct link to 23. 监控二叉树" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetHideOnScrollNavbar_vjPI" id="24-贪心算法总结篇">24. 贪心算法总结篇<a href="#24-贪心算法总结篇" class="hash-link" aria-label="Direct link to 24. 贪心算法总结篇" title="Direct link to 24. 贪心算法总结篇" translate="no">​</a></h2>
+<blockquote>
+<p>【[LC]】</p>
+</blockquote>
+<ol>
+<li class=""></li>
+</ol>
+<hr></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/ZHENGnotes/leetcode-master/二叉树"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">7. 二叉树</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/ZHENGnotes/leetcode-master/动态规划"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">10. 动态规划</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#1-贪心算法理论基础" class="table-of-contents__link toc-highlight">1. 贪心算法理论基础</a></li><li><a href="#2-分发饼干" class="table-of-contents__link toc-highlight">2. 分发饼干</a></li><li><a href="#3-摆动序列" class="table-of-contents__link toc-highlight">3. 摆动序列</a></li><li><a href="#4-最大子序和" class="table-of-contents__link toc-highlight">4. 最大子序和</a></li><li><a href="#5-贪心周总结" class="table-of-contents__link toc-highlight">5. 贪心周总结</a></li><li><a href="#6-买卖股票的最佳时机ii" class="table-of-contents__link toc-highlight">6. 买卖股票的最佳时机II</a></li><li><a href="#7-跳跃游戏" class="table-of-contents__link toc-highlight">7. 跳跃游戏</a></li><li><a href="#8-跳跃游戏ii" class="table-of-contents__link toc-highlight">8. 跳跃游戏II</a></li><li><a href="#9-k次取反后最大化的数组和" class="table-of-contents__link toc-highlight">9. K次取反后最大化的数组和</a></li><li><a href="#10-贪心周总结" class="table-of-contents__link toc-highlight">10. 贪心周总结</a></li><li><a href="#11-加油站" class="table-of-contents__link toc-highlight">11. 加油站</a></li><li><a href="#12-分发糖果" class="table-of-contents__link toc-highlight">12. 分发糖果</a></li><li><a href="#13-柠檬水找零" class="table-of-contents__link toc-highlight">13. 柠檬水找零</a></li><li><a href="#14-根据身高重建队 列" class="table-of-contents__link toc-highlight">14. 根据身高重建队列</a></li><li><a href="#15-贪心周总结" class="table-of-contents__link toc-highlight">15. 贪心周总结</a></li><li><a href="#16-根据身高重建队列vector原理讲解" class="table-of-contents__link toc-highlight">16. 根据身高重建队列（vector原理讲解）</a></li><li><a href="#17-用最少数量的箭引爆气球" class="table-of-contents__link toc-highlight">17. 用最少数量的箭引爆气球</a></li><li><a href="#18-无重叠区间" class="table-of-contents__link toc-highlight">18. 无重叠区间</a></li><li><a href="#19-划分字母区间" class="table-of-contents__link toc-highlight">19. 划分字母区间</a></li><li><a href="#20-合并区间" class="table-of-contents__link toc-highlight">20. 合并区间</a></li><li><a href="#21-贪心周总结" class="table-of-contents__link toc-highlight">21. 贪心周总结</a></li><li><a href="#22-单调递增的数字" class="table-of-contents__link toc-highlight">22. 单调递增的数字</a></li><li><a href="#23-监控二叉树" class="table-of-contents__link toc-highlight">23. 监控二叉树</a></li><li><a href="#24-贪心算法总结篇" class="table-of-contents__link toc-highlight">24. 贪心算法总结篇</a></li></ul></div></div></div></div></main></div></div></div></div>
+</body>
+</html>
