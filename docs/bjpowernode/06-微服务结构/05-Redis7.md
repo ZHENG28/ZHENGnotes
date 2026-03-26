@@ -288,9 +288,9 @@ sidebar_label: 5. Redis7
     - 常用操作命令：
         ```bash showLineNumbers
         # 将一个或多个field-value对设置到哈希表中（如果key已经存在，会覆盖旧value值）
-        hset key filed1 value1 [field2 value2 …]
+        hset key field1 value1 [field2 value2 …]
         # 批量设置field-value对到哈希表中
-        hmset key filed1 value1 [field2 value2 …]
+        hmset key field1 value1 [field2 value2 …]
         # 当key-field已经存在时放弃设置，否则就设置file-value
         hsetnx key field value
         
